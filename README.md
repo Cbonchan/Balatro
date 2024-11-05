@@ -6,7 +6,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {09}
 
-* **Basterra Sebastián Nahuel - 110428** - [https://github.com/Cbonchan](https://github.com/integrante1)
+* **Basterra Sebastián Nahuel - 110428** - [Cbonchan](https://github.com/Cbonchan)
 * **Integrante 2** - [integrante3](https://github.com/integrante2)
 * **Integrante 3** - [integrante3](https://github.com/integrante3)
 * **Integrante 4** - [integrante4](https://github.com/integrante4)
