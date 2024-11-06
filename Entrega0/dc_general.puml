@@ -1,29 +1,72 @@
 @startuml Diagrama de Clases - General
 
-class Jugador{
-    - List<Carta> mano_cartas (limit 5) 
-    - Puntos
+class PanelDeJuego {
+    - puntosObjetivo : int
+    - rondas : int
+    - manosRestantes : int
+    - jugadas : int
+    - descartesRestantes : int
+
+    + iniciarJuego()
+    + mostrarInformacion()
+    + verificarPuntaje()
+}
+
+class Jugador {
+    - List<Carta> manoCartas
+    - puntos : int
 
     + descartarCartas()
     + jugarMano() // Debe elegir 5 primero
-    - elegirCarta() : return Carta unaCarta
+    - elegirCarta() : Carta
     - cancelarCarta() 
     + comprarCarta(Carta unaCarta)
-    
 }
 
-{abstract} class Carta{
-    - puntaje 
-    - efecto 
+abstract class Carta {
+    - puntaje : int
+    - efecto : String
 
     + calcularPuntaje()
-} 
+}
 
+class Inglesa extends Carta {
+    - simbolo : String
+    - valor : int
+}
+
+class Comodin extends Carta {
+    - tipoEfecto : String
+
+    + aplicarEfecto()
+}
+
+class Tarot extends Carta {
+    - tipoModificador : String
+
+    + modificarCarta(Carta carta)
+}
+
+class Mazo {
+    - cartas : List<Carta>
+
+    + mezclar()
+    + extraerCarta() : Carta
+}
+
+class Puntuacion {
+    - valor : int
+    - multiplicador : int
+
+    + calcular()
+}
 
 ' Relaciones
-Jugador --> Carta : Mano Max 8 
-Jugador --> Puntación
-Carta --> Puntuación
-
+PanelDeJuego --> Jugador
+PanelDeJuego --> Puntuacion
+Jugador --> Carta : manoCartas (Max 8)
+Jugador --> Puntuacion
+Carta --> Puntuacion
+Mazo --> Carta : contiene
 
 @enduml
