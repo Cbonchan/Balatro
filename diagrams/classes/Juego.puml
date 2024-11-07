@@ -13,7 +13,9 @@ class Jugador {
     +seleccionarCarta(cartas: CartaPoker): void
     +jugarMano(): void
     + obtenerPuntajeTotal(): int
+/'
     + obtenerMano(): Mano
+'/
     - asignarPuntaje(puntaje: int)
 
 }
@@ -21,7 +23,6 @@ class Jugador {
 class Mano {
     - cartas: List<Carta>
     + agregarCarta(carta: Carta): void
-    + obtenerCartas(): List<Carta>
     + puntajeMano(): int
 }
 
@@ -100,6 +101,12 @@ class PaloTrebol extends Palo{
 class PaloPica extends Palo{
 }
 
+class Mazo{
+    - cartas: List<Carta>
+    +Mazo(): void
+    +obtenerCartas(): List<CartaPoker>
+}
+
 class Tablero {
     - mano: Mano
     - cartasArcana: List<CartaArcana>
@@ -109,24 +116,25 @@ class Tablero {
     - calcularPuntajeFinal(): int
 }
 
-note right of Carta
+/'note right of Carta
     Falta implementar un mazo
     del cual el jugador obtiene
     las cartas al inicio de la ronda
-end note
+end note'/
 Jugador --> "8 " CartaPoker
 Evaluador ..> Jugada
 Juego ---> Jugador
 Jugador --> Mano
 Mano --> CartaPoker
 Juego --> Evaluador
-Evaluador <.. Mano
+Evaluador <... Mano
 Tablero --> Carta
 Mano <.. Tablero
 Jugador ..> Tablero
 Mano ---> Jugada
 Juego --> Tablero
-
+Jugador ..> Mazo
+Mazo --> "52 " CartaPoker
 CartaPoker --> Palo
 
 @enduml
