@@ -109,6 +109,11 @@ class Tablero {
     - calcularPuntajeFinal(): int
 }
 
+note right of Carta
+    Falta implementar un mazo
+    del cual el jugador obtiene
+    las cartas al inicio de la ronda
+end note
 Jugador --> "8 " CartaPoker
 Evaluador ..> Jugada
 Juego ---> Jugador
