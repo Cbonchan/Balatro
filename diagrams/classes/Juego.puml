@@ -1,0 +1,127 @@
+@startuml
+class Juego {
+    - jugador: Jugador
+    + iniciarRonda(): void
+    + finalizarRonda(): void
+}
+
+class Jugador {
+    - nombre: String
+    - mano: Mano
+    - puntaje: int
+
+    +seleccionarCarta(cartas: CartaPoker): void
+    +jugarMano(): void
+    + obtenerPuntajeTotal(): int
+    + obtenerMano(): Mano
+    - asignarPuntaje(puntaje: int)
+
+}
+
+class Mano {
+    - cartas: List<Carta>
+    + agregarCarta(carta: Carta): void
+    + obtenerCartas(): List<Carta>
+    + puntajeMano(): int
+}
+
+abstract class Carta {
+
+    + obtenerValor(): int
+    + obtenerPalo(): String
+}
+
+class CartaPoker extends Carta{
+    - valor: int
+    +sumarValor(valorAcumulado: int): int
+}
+
+class CartaArcana extends Carta{
+}
+
+class CartaJoker extends Carta{
+}
+
+class Evaluador {
+    + evaluarMano(mano: Mano): int
+}
+
+interface Jugada{
+    +Jugada(List<Carta>)
+    +calcularPuntaje(): int
+}
+
+class NoHayJugada extends Jugada{
+}
+
+class RoyalFlush extends Jugada{
+}
+
+class StraightFlush extends Jugada{
+}
+
+class FourOfAKind extends Jugada{
+}
+
+class FullHouse extends Jugada{
+}
+
+class Flush extends Jugada{
+}
+
+class Straight extends Jugada{
+}
+
+class ThreeOfAKind extends Jugada{
+}
+
+class TwoPair extends Jugada{
+}
+
+class Pair extends Jugada{
+}
+
+class HighCard extends Jugada{
+}
+
+
+abstract class Palo{
+}
+
+class PaloCorazon extends Palo{
+}
+
+class PaloDiamante extends Palo{
+}
+
+class PaloTrebol extends Palo{
+}
+
+class PaloPica extends Palo{
+}
+
+class Tablero {
+    - mano: Mano
+    - cartasArcana: List<CartaArcana>
+    - cartasJoker: List<CartaJoker>
+    + jugarMano(mano: Mano): int
+    - calcularPuntajePorMano(): int
+    - calcularPuntajeFinal(): int
+}
+
+Jugador --> "8 " CartaPoker
+Evaluador ..> Jugada
+Juego ---> Jugador
+Jugador --> Mano
+Mano --> CartaPoker
+Juego --> Evaluador
+Evaluador <.. Mano
+Tablero --> Carta
+Mano <.. Tablero
+Jugador ..> Tablero
+Mano ---> Jugada
+Juego --> Tablero
+
+CartaPoker --> Palo
+
+@enduml

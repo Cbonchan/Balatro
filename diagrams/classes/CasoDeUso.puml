@@ -1,0 +1,22 @@
+@startuml
+actor Usuario
+Usuario -> Jugador: jugarMano()
+Jugador -> Tablero: jugarMano(Mano)
+Tablero -> Tablero: calcularPuntajePorMano()
+Tablero -> Mano: puntajeMano()
+Mano -> Pair: calcularPuntaje()
+Pair --> Mano: un puntaje X
+note right of Pair
+        para este caso
+        el la jugada es Pair
+    end note
+Mano --> Tablero: un puntaje X
+Tablero -> Tablero: calcularPuntajeFinal()
+    note right of Tablero
+        se debe consultar a los jokers
+        y cartas arcanas para poder
+        calcular el puntaje final
+    end note
+Tablero --> Jugador: puntaje final X
+Jugador -> Jugador: asignarPuntaje(puntaje final X)
+@enduml
