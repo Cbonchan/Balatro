@@ -52,8 +52,6 @@ interface Jugada{
     +calcularPuntaje(): int
 }
 
-class CartaAlta extends Jugada{
-}
 
 class RoyalFlush extends Jugada{
 }
