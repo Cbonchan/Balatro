@@ -1,0 +1,144 @@
+@startuml
+class Juego {
+    - jugador: Jugador
+    + iniciarRonda(): void
+    + finalizarRonda(): void
+}
+
+class Jugador {
+    - nombre: String
+    - mano: Mano
+    - puntaje: int
+
+    +seleccionarCarta(cartas: CartaPoker): void
+    +jugarMano(): void
+    + obtenerPuntajeTotal(): int
+/'
+    + obtenerMano(): Mano
+'/
+    - asignarPuntaje(puntaje: int)
+
+}
+
+class Mano {
+    - cartas: List<Carta>
+    + agregarCarta(carta: Carta): void
+    + puntajeMano(): int
+}
+
+abstract class Carta {
+
+    + obtenerValor(): int
+    + obtenerPalo(): String
+}
+
+class CartaPoker extends Carta{
+    - valor: int
+    +sumarValor(valorAcumulado: int): int
+}
+
+class CartaArcana extends Carta{
+}
+
+class CartaJoker extends Carta{
+}
+
+class Evaluador {
+    + evaluarMano(mano: Mano): int
+}
+
+interface Jugada{
+    +Jugada(List<Carta>)
+    +calcularPuntaje(): int
+}
+
+class CartaAlta extends Jugada{
+}
+
+class RoyalFlush extends Jugada{
+}
+
+class StraightFlush extends Jugada{
+}
+
+class FourOfAKind extends Jugada{
+}
+
+class FullHouse extends Jugada{
+}
+
+class Flush extends Jugada{
+}
+
+class Straight extends Jugada{
+}
+
+class ThreeOfAKind extends Jugada{
+}
+
+class TwoPair extends Jugada{
+}
+
+class Pair extends Jugada{
+}
+
+class HighCard extends Jugada{
+}
+
+
+abstract class Palo{
+}
+
+class PaloCorazon extends Palo{
+}
+
+class PaloDiamante extends Palo{
+}
+
+class PaloTrebol extends Palo{
+}
+
+class PaloPica extends Palo{
+}
+
+class Mazo{
+    - cartas: List<Carta>
+    +Mazo(): void
+    +obtenerCartas(): List<CartaPoker>
+}
+
+class Tablero {
+    - mano: Mano
+    - cartasArcana: List<CartaArcana>
+    - cartasJoker: List<CartaJoker>
+    + jugarMano(mano: Mano): int
+    - calcularPuntajePorMano(): int
+    - calcularPuntajeFinal(): int
+}
+
+/'note right of Carta
+    Falta implementar un mazo
+    del cual el jugador obtiene
+    las cartas al inicio de la ronda
+end note'/
+Jugador --> "8 " CartaPoker
+Evaluador ..> Jugada
+Juego ---> Jugador
+Jugador --> Mano
+Mano --> CartaPoker
+Juego --> Evaluador
+Evaluador <... Mano
+Tablero --> Carta
+Mano <.. Tablero
+Jugador ..> Tablero
+note right of Jugada
+        la cantidad de jugadas de una mano
+        pueden variar
+end note
+Mano ---> Jugada
+Juego --> Tablero
+Jugador ..> Mazo
+Mazo --> "52 " CartaPoker
+CartaPoker --> Palo
+
+@enduml
