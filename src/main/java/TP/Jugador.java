@@ -18,11 +18,14 @@ public class Jugador {
         mano.vaciarMano();
     }
 
-    public void seleccionarCartas( CartaPoker cartaPoker) {
+    public void seleccionarCartas( CartaPoker cartaPoker)
+    {
         mano.agregarCarta(cartaPoker);
     }
 
-    public void jugarMano() {
+    public void jugar(Tablero tablero){
+        int valor = tablero.jugarMano(mano);
+        asignarPuntaje(valor);
     }
 
     public void agregarCartas(List<CartaPoker> cartasNuevas) {

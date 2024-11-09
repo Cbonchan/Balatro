@@ -15,4 +15,8 @@ public class CartaPoker {
         this.multiplicador = multiplicador;
     }
 
+    public int valorAgregadoPuntuacion(int puntaje){
+        return (puntaje + valor);
+    }
+
 }

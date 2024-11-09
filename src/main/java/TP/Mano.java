@@ -24,6 +24,19 @@ public class Mano {
 
     public void vaciarMano() {
         cartaPokers.clear();
+        multiplicador = 0;
+        puntaje = 0;
+    }
+
+    public void aumentarMultiplicador(int multiplicador) {
+        this.multiplicador += multiplicador;
+    }
+
+    public int calcularPuntaje() {
+        for (CartaPoker cartaPoker : cartaPokers) {
+            puntaje = cartaPoker.valorAgregadoPuntuacion(puntaje);
+        }
+        return (puntaje *= multiplicador);
     }
 
 }
