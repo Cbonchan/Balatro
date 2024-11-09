@@ -1,25 +1,24 @@
 package TP;
 
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.List;
 
 
 public class Mazo {
 
-    private final ArrayList<Carta> cartas;
+    private final ArrayList<CartaPoker> cartaPokers;
     private int cantidadCartas;
 
     public Mazo() {
         this.cantidadCartas = 52;
-        cartas = new ArrayList<Carta>();
+        cartaPokers = new ArrayList<CartaPoker>();
 
         String[] valores = {"As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         Palo[] palos = {new Corazones(), new Diamantes(), new Treboles(), new Picas()};
 
         for (Palo palo : palos) {
             for (String valor : valores ) {
-                cartas.add(new Carta(palo, Integer.parseInt(valor)));
+                cartaPokers.add(new CartaPoker(palo, Integer.parseInt(valor)));
             }
         }
     }
@@ -29,7 +28,7 @@ public class Mazo {
     }
 
     public void repartirCartas(Jugador jugador) {
-        List<Carta> cartasParaMandar = new ArrayList<>();
+        List<CartaPoker> cartasParaMandar = new ArrayList<>();
 
         for (int i = 0; i < 8; i++) {
             cartasParaMandar.add(cartaAleatoria());
@@ -37,11 +36,11 @@ public class Mazo {
         jugador.agregarCartas(cartasParaMandar);
     }
 
-    private Carta cartaAleatoria() {
+    private CartaPoker cartaAleatoria() {
         int indice = (int) (Math.random() * cantidadCartas);
-        Carta carta = cartas.get(indice);
-        cartas.remove(indice);
+        CartaPoker cartaPoker = cartaPokers.get(indice);
+        cartaPokers.remove(indice);
         cantidadCartas--;
-        return carta;
+        return cartaPoker;
     }
 }

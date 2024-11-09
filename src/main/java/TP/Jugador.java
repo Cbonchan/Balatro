@@ -1,25 +1,31 @@
 package TP;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Jugador {
     private int puntaje;
-    private List<Carta> cartas;
+    private List<CartaPoker> cartas;
+    private Mano mano;
 
     public Jugador(Mano mano) {
         this.puntaje = 0;
         this.cartas = new ArrayList<>();
-
+        this.mano = mano;
+    }
+    //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
+    //solucion momentanea a tener que deseleccionar cartas una por una
+    public void deshacerEleccion(){
+        mano.vaciarMano();
     }
 
-    public void seleccionarCartas() {
+    public void seleccionarCartas( CartaPoker cartaPoker) {
+        mano.agregarCarta(cartaPoker);
     }
 
     public void jugarMano() {
     }
 
-    public void agregarCartas(List<Carta> cartasNuevas) {
+    public void agregarCartas(List<CartaPoker> cartasNuevas) {
         cartas.addAll(cartasNuevas);
     }
 
