@@ -131,10 +131,7 @@ Evaluador <... Mano
 Tablero --> Carta
 Mano <.. Tablero
 Jugador ..> Tablero
-note right of Jugada
-        la cantidad de jugadas de una mano
-        pueden variar
-end note
+
 Mano ---> Jugada
 Juego --> Tablero
 Jugador ..> Mazo
