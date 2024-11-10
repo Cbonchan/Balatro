@@ -13,12 +13,12 @@ public class Mazo {
         this.cantidadCartas = 52;
         cartaPokers = new ArrayList<CartaPoker>();
 
-        String[] valores = {"As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        Figura[] valores = {new As(), new Dos(), new Tres(), new Cuatro(), new Cinco(), new Seis(), new Siete(), new Ocho(), new Nueve(), new Diez(), new J(), new Q(), new K()};
         Palo[] palos = {new Corazones(), new Diamantes(), new Treboles(), new Picas()};
 
         for (Palo palo : palos) {
-            for (String valor : valores ) {
-                cartaPokers.add(new CartaPoker(palo, Integer.parseInt(valor)));
+            for (Figura valor : valores ) {
+                cartaPokers.add(new CartaPoker(palo, valor));
             }
         }
     }

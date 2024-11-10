@@ -7,11 +7,9 @@ public class Tablero {
     private Jugador jugador;
     //private List<jockers> jockers;
 
-    public int jugarMano(Mano mano){
+    public int jugarMano(Mano mano) {
         return mano.calcularPuntaje();
     }
 
-    public int calcularPuntajeFinal(){
-        return 0;
-    }
+
 }

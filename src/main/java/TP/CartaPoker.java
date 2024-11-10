@@ -2,12 +2,15 @@ package TP;
 
 public class CartaPoker {
     private final Palo palo;
-    private final int valor;
+    private final Figura figura;
+    private int puntaje;
     private int multiplicador;
 
-    public CartaPoker(Palo palo, int valor) {
+    public CartaPoker(Palo palo, Figura figura) {
         this.palo = palo;
-        this.valor = valor;
+        this.figura = figura;
+
+        puntaje = figura.devolverPuntaje();
         this.multiplicador = 1;
     }
 
@@ -15,8 +18,8 @@ public class CartaPoker {
         this.multiplicador = multiplicador;
     }
 
-    public int valorAgregadoPuntuacion(int puntaje){
-        return (puntaje + valor);
+    public int sumarValorAgregadoPuntuacion(int puntajeRecibido){
+        return (puntajeRecibido + puntaje);
     }
 
 }

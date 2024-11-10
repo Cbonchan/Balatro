@@ -34,7 +34,7 @@ public class Mano {
 
     public int calcularPuntaje() {
         for (CartaPoker cartaPoker : cartaPokers) {
-            puntaje = cartaPoker.valorAgregadoPuntuacion(puntaje);
+            puntaje = cartaPoker.sumarValorAgregadoPuntuacion(puntaje);
         }
         return (puntaje *= multiplicador);
     }
