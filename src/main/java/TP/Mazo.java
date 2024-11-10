@@ -43,4 +43,8 @@ public class Mazo {
         cantidadCartas--;
         return cartaPoker;
     }
+
+    public int getCantidadCartas(){
+        return cantidadCartas;
+    }
 }

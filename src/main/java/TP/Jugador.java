@@ -18,7 +18,7 @@ public class Jugador {
         mano.vaciarMano();
     }
 
-    public void seleccionarCartas( CartaPoker cartaPoker)
+    public void seleccionarCarta( CartaPoker cartaPoker)
     {
         mano.agregarCarta(cartaPoker);
     }
@@ -34,6 +34,10 @@ public class Jugador {
 
     private void asignarPuntaje(int puntajeEntrante) {
         puntaje += puntajeEntrante;
+    }
+
+    public int getCantidadCartas(){
+        return cartas.size();
     }
 
 }
