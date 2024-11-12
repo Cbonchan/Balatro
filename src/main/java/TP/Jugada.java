@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Jugada {
+public abstract class Jugada {
     private int puntaje;
     private int multiplicador;
 
@@ -38,6 +38,22 @@ class Pair extends Jugada {
         }
         return false;
     }
+
+    public static List <CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
+        List<CartaPoker> cartasDelPar = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            for (int j = i + 1; j < cartaPokers.size(); j++) {
+                if (cartaPokers.get(i).esFiguraIgualA(cartaPokers.get(j).getFigura())) {
+                    cartasDelPar.add(cartaPokers.get(i));
+                    cartasDelPar.add(cartaPokers.get(j));
+                    return cartasDelPar; // Primer par encontrado
+                }
+            }
+        }
+
+        return cartasDelPar; // Vacío en caso de que no se haya encontrado par
+    }
 }
 
 class TwoPair extends Jugada {
@@ -65,6 +81,24 @@ class TwoPair extends Jugada {
         return figurasConPares.size() == 2; // Devuelve true si son dos pares distintos
     }
 
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
+        List<CartaPoker> cartasDeDosPares = new ArrayList<>();
+        List<Figura> figurasConPares = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            for (int j = i + 1; j < cartaPokers.size(); j++) {
+                Figura figuraActual = cartaPokers.get(i).getFigura();
+                if (cartaPokers.get(i).esFiguraIgualA(cartaPokers.get(j).getFigura())
+                        && !figurasConPares.contains(figuraActual)) {
+                    figurasConPares.add(figuraActual);
+                    cartasDeDosPares.add(cartaPokers.get(i));
+                    cartasDeDosPares.add(cartaPokers.get(j));
+                    break;
+                }
+            }
+        }
+        return cartasDeDosPares;
+    }
 }
 
 class ThreeOfAKind extends Jugada {
@@ -96,6 +130,28 @@ class ThreeOfAKind extends Jugada {
         }
         return figurasConThreeOfAKind.size() == 1;
     }
+
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
+        List<CartaPoker> cartasTresIguales = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            CartaPoker cartaActual = cartaPokers.get(i);
+            int cuenta = 0;
+
+            for (int j = 0; j < cartaPokers.size(); j++) {
+                if (cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())) {
+                    cartasTresIguales.add(cartaPokers.get(j));
+                    cuenta++;
+                }
+                if (cuenta == 3) break;
+            }
+
+            if (cuenta == 3) return cartasTresIguales;
+        }
+
+        return cartasTresIguales;
+    }
+
 }
 
 class HighCard extends Jugada {
@@ -106,11 +162,10 @@ class HighCard extends Jugada {
     public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
         return !cartaPokers.isEmpty();
     }
-//NOTA: Implementacion DE LA JUGADA, esto devuelve de una lista
-// las cartas que son aptas para la jugada
-    public static CartaPoker obtenerHighCard(List<CartaPoker> cartaPokers){
+
+    public static List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers){
         Collections.sort(cartaPokers, (c1, c2) -> Integer.compare(c2.getFigura().devolverPuntaje(), c1.getFigura().devolverPuntaje()));
-        return cartaPokers.get(0);
+        return List.of(cartaPokers.get(0));
     }
 }
 
@@ -137,6 +192,9 @@ class Straight extends Jugada {
         return true;
     }
 
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+        return new ArrayList<>(cartaPokers);
+    }
 }
 
 class Flush extends Jugada {
@@ -156,6 +214,10 @@ class Flush extends Jugada {
         }
 
         return true; // Si todas las cartas tienen el mismo palo, es un Flush
+    }
+
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+        return new ArrayList<>(cartaPokers);
     }
 }
 
@@ -193,6 +255,10 @@ class FullHouse extends Jugada {
         // Verificamos si tenemos un "Three of a Kind" y un "Pair" de diferentes figuras
         return figurasConThreeOfAKind.size() == 1 && figurasConPair.size() == 1;
     }
+
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+        return new ArrayList<>(cartaPokers);
+    }
 }
 
 class FourOfAKind extends Jugada {
@@ -222,6 +288,28 @@ class FourOfAKind extends Jugada {
         }
         return figurasConFourOfAKind.size() == 1;
     }
+
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+        List<CartaPoker> cartasCuatroIguales = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            CartaPoker cartaActual = cartaPokers.get(i);
+            int cuenta = 0;
+
+            for (int j = 0; j < cartaPokers.size(); j++) {
+                if (cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())) {
+                    cartasCuatroIguales.add(cartaPokers.get(j));
+                    cuenta++;
+                }
+                if (cuenta == 4) break;
+            }
+
+            if (cuenta == 4) return cartasCuatroIguales;
+            else cartasCuatroIguales.clear(); // Limpiamos si no se completó el grupo de 4
+        }
+
+        return cartasCuatroIguales;
+    }
 }
 
 class StraightFlush extends Jugada {
@@ -229,5 +317,9 @@ class StraightFlush extends Jugada {
 
     public StraightFlush() {
         super(100, 8);
+    }
+
+    public static List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+        return new ArrayList<>(cartaPokers);
     }
 }
