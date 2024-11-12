@@ -1,5 +1,8 @@
 package TP;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +26,7 @@ class Pair extends Jugada {
         super(10, 2);
     }
 
-    public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
         for (int i = 0; i < cartaPokers.size(); i++) {
             for (int j = i + 1; j < cartaPokers.size(); j++) {
                 Figura otraFigura = cartaPokers.get(j).getFigura();
@@ -44,7 +47,7 @@ class TwoPair extends Jugada {
         super(20, 2);
     }
 
-    public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
         List<Figura> figurasConPares = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {
@@ -71,7 +74,7 @@ class ThreeOfAKind extends Jugada {
         super(30, 3);
     }
 
-    public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
 
         List <Figura> figurasConThreeOfAKind = new ArrayList<>();
 
@@ -86,24 +89,28 @@ class ThreeOfAKind extends Jugada {
                 }
             }
 
-            if (cartaVecesEncontrada == 2 && !figurasConThreeOfAKind.contains(cartaActual.getFigura())){
+            if (cartaVecesEncontrada == 2){
                 figurasConThreeOfAKind.add(cartaActual.getFigura());
                 break;
             }
         }
-
-
-
         return figurasConThreeOfAKind.size() == 1;
     }
 }
 
-
-
-//NOTA: ADAPTAR EL CODIGO PARA LAS NUEVAS CLASES
 class HighCard extends Jugada {
     public HighCard() {
         super(5, 1);
+    }
+
+    public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
+        return !cartaPokers.isEmpty();
+    }
+//NOTA: Implementacion DE LA JUGADA, esto devuelve de una lista
+// las cartas que son aptas para la jugada
+    public static CartaPoker obtenerHighCard(List<CartaPoker> cartaPokers){
+        Collections.sort(cartaPokers, (c1, c2) -> Integer.compare(c2.getFigura().devolverPuntaje(), c1.getFigura().devolverPuntaje()));
+        return cartaPokers.get(0);
     }
 }
 
@@ -113,6 +120,23 @@ class Straight extends Jugada {
     public Straight() {
         super(30, 4);
     }
+
+    public static boolean esJugadaValida(List<CartaPoker> cartaPokers) {
+        // Ordenamos la lista en orden ascendente según la figura
+        Collections.sort(cartaPokers, (c1, c2) -> Integer.compare(c1.getFigura().devolverPuntaje(), c2.getFigura().devolverPuntaje()));
+
+        for (int i = 0; i < cartaPokers.size() - 1; i++) {
+            int valorActual = cartaPokers.get(i).getFigura().devolverPuntaje();
+            int valorSiguiente = cartaPokers.get(i + 1).getFigura().devolverPuntaje();
+
+            // Verificamos que cada carta sea un punto más que la anterior
+            if (valorSiguiente != valorActual + 1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 
 class Flush extends Jugada {
@@ -120,6 +144,18 @@ class Flush extends Jugada {
 
     public Flush() {
         super(35, 4);
+    }
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+        // Verificamos que todas las cartas tengan el mismo palo
+        Palo palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
+
+        for (CartaPoker carta : cartaPokers) {
+            if (!carta.getPalo().equals(palo)) {
+                return false; // Si alguna carta tiene un palo diferente, no es un Flush
+            }
+        }
+
+        return true; // Si todas las cartas tienen el mismo palo, es un Flush
     }
 }
 
@@ -129,6 +165,34 @@ class FullHouse extends Jugada {
     public FullHouse() {
         super(40, 4);
     }
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+        List<Figura> figurasConThreeOfAKind = new ArrayList<>();
+        List<Figura> figurasConPair = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            int cartaVecesEncontrada = 0;
+            CartaPoker cartaActual = cartaPokers.get(i);
+
+            // Contar cuántas veces aparece esta figura en el resto de la lista
+            for (int j = 0; j < cartaPokers.size(); j++) {
+                if (i != j && cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())) {
+                    cartaVecesEncontrada++;
+                }
+            }
+
+            // Si encontramos exactamente 2 coincidencias, es un "Three of a Kind"
+            if (cartaVecesEncontrada == 2 && !figurasConThreeOfAKind.contains(cartaActual.getFigura())) {
+                figurasConThreeOfAKind.add(cartaActual.getFigura());
+            }
+            // Si encontramos exactamente 1 coincidencia, es un "Pair"
+            else if (cartaVecesEncontrada == 1 && !figurasConPair.contains(cartaActual.getFigura())) {
+                figurasConPair.add(cartaActual.getFigura());
+            }
+        }
+
+        // Verificamos si tenemos un "Three of a Kind" y un "Pair" de diferentes figuras
+        return figurasConThreeOfAKind.size() == 1 && figurasConPair.size() == 1;
+    }
 }
 
 class FourOfAKind extends Jugada {
@@ -137,20 +201,33 @@ class FourOfAKind extends Jugada {
     public FourOfAKind() {
         super(60, 7);
     }
+
+    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+        List<Figura> figurasConFourOfAKind = new ArrayList<>();
+
+        for (int i = 0; i < cartaPokers.size(); i++) {
+            int cartaVecesEncontrada = 0;
+            CartaPoker cartaActual = cartaPokers.get(i);
+
+            for (int j = i + 1; j < cartaPokers.size(); j++) {
+                if(cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())){
+                    cartaVecesEncontrada++;
+                }
+            }
+
+            if (cartaVecesEncontrada ==3){
+                figurasConFourOfAKind.add(cartaActual.getFigura());
+                break;
+            }
+        }
+        return figurasConFourOfAKind.size() == 1;
+    }
 }
 
 class StraightFlush extends Jugada {
     //mult=8 puntaje=100
 
     public StraightFlush() {
-        super(100, 8);
-    }
-}
-
-class RoyalFlush extends Jugada {
-    //mult=8 puntaje=100
-
-    public RoyalFlush() {
         super(100, 8);
     }
 }

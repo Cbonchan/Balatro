@@ -15,20 +15,27 @@ public class CartaPoker {
     }
 
     public void setMultiplicador(int multiplicador) {
+
         this.multiplicador = multiplicador;
     }
 
     public int sumarValorAgregadoPuntuacion(int puntajeRecibido){
+
         return (puntajeRecibido + puntaje);
     }
 
     public boolean esFiguraIgualA(Figura figura){
+
         return this.figura.equals(figura);
     }
 
     // :'v
     public Figura getFigura(){
+
         return this.figura;
     }
 
+    public Palo getPalo() {
+        return palo;
+    }
 }
