@@ -22,4 +22,13 @@ public class CartaPoker {
         return (puntajeRecibido + puntaje);
     }
 
+    public boolean esFiguraIgualA(Figura figura){
+        return this.figura.equals(figura);
+    }
+
+    // :'v
+    public Figura getFigura(){
+        return this.figura;
+    }
+
 }

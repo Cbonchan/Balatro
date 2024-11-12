@@ -5,13 +5,10 @@ import java.util.List;
 
 public class Mano {
     private List<CartaPoker> cartaPokers;
-    private int multiplicador;
-    private int puntaje;
+    private Jugada jugada;
 
     public Mano() {
         this.cartaPokers = new ArrayList<>();
-        this.multiplicador = 0;
-        this.puntaje = 0;
     }
 
     public void agregarCarta(CartaPoker cartaPoker) {
@@ -20,13 +17,15 @@ public class Mano {
         } else {
             throw new IllegalStateException("La mano ya tiene 5 cartas.");
         }
+        // Se actualiza la jugada en cada agregado de carta
+        jugada = Manejador.determinarJugada(cartaPokers);
     }
 
     public void vaciarMano() {
         cartaPokers.clear();
-        multiplicador = 0;
-        puntaje = 0;
     }
+
+    // El multiplicador y puntaje ahora lo tendría Jugada, los metodos de abajo no tienen que manejarse aca
 
     public void aumentarMultiplicador(int multiplicador) {
         this.multiplicador += multiplicador;
@@ -38,5 +37,6 @@ public class Mano {
         }
         return (puntaje *= multiplicador);
     }
+
 
 }

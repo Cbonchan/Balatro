@@ -7,7 +7,8 @@ public class Jugador {
     private List<CartaPoker> cartas;
     private Mano mano;
 
-    public Jugador(Mano mano) {
+    public Jugador(Mano mano)
+    {
         this.puntaje = 0;
         this.cartas = new ArrayList<>();
         this.mano = mano;
@@ -18,12 +19,13 @@ public class Jugador {
         mano.vaciarMano();
     }
 
-    public void seleccionarCarta( CartaPoker cartaPoker)
+    public void seleccionarCarta(CartaPoker cartaPoker)
     {
         mano.agregarCarta(cartaPoker);
     }
 
-    public void jugar(Tablero tablero){
+    public void jugar(Tablero tablero)
+    {
         int valor = tablero.jugarMano(mano);
         asignarPuntaje(valor);
     }
@@ -32,11 +34,13 @@ public class Jugador {
         cartas.addAll(cartasNuevas);
     }
 
-    private void asignarPuntaje(int puntajeEntrante) {
+    private void asignarPuntaje(int puntajeEntrante)
+    {
         puntaje += puntajeEntrante;
     }
 
-    public int getCantidadCartas(){
+    public int getCantidadCartas()
+    {
         return cartas.size();
     }
 

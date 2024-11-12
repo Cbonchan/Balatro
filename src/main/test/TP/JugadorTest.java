@@ -7,6 +7,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Testear comportamiento no implementacion (rehacer)
+
 public class JugadorTest {
     @Test
     public void test01CantidadDeCartasCorrectas(){
