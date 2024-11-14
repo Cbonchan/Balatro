@@ -216,7 +216,7 @@ class Straight extends Jugada {
 
         cartaPokers.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
 
-        for (int i = 0; i < cartaPokers.size() - 1; i++) {
+        for (int i = 0; i < cartaPokers.size(); i++) {
             int valorActual = cartaPokers.get(i).getFigura().orden();
             int valorSiguiente = cartaPokers.get(i + 1).getFigura().orden();
 
@@ -246,9 +246,9 @@ class Flush extends Jugada {
             return false;
         }
         Palo palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
-
+//EN LA SEGUNDA ITERACION ENTRA AL CONDICIONAL Y SE ROMPE
         for (CartaPoker carta : cartaPokers) {
-            if (!carta.getPalo().equals(palo)) {
+            if (!(carta.getPalo().esPalo(palo.getNombre()))) {
                 return false; // Si alguna carta tiene un palo diferente, no es un Flush
             }
         }
@@ -261,7 +261,7 @@ class Flush extends Jugada {
     }
 }
 
-class RoyalFLush extends Jugada{
+/*class RoyalFLush extends Jugada{
 
     public RoyalFLush() {
         super(100, 8);
@@ -296,7 +296,7 @@ class RoyalFLush extends Jugada{
     public List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers) {
         return new ArrayList<>(cartaPokers);
     }
-}
+}*/
 
 class FullHouse extends Jugada {
     //mult=4 puntaje=40

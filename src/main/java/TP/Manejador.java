@@ -22,9 +22,9 @@ public class Manejador {
         if (Pair.esJugadaValida(cartaPokers)){
             return new Pair();
         }
-        if (RoyalFLush.esJugadaValida(cartaPokers)){
+        /*if (RoyalFLush.esJugadaValida(cartaPokers)){
             return new RoyalFLush();
-        }
+        }*/
         if(Straight.esJugadaValida(cartaPokers) && Flush.esJugadaValida(cartaPokers)){
             return new StraightFlush();
         }

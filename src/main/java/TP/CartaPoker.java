@@ -34,7 +34,7 @@ public class CartaPoker {
 
     public boolean esFiguraIgualA(Figura figura){
 
-        return this.figura.getNombre().equals(figura.getNombre());
+        return (this.figura.getNombre()==(figura.getNombre()));
     }
 
     // :'v
