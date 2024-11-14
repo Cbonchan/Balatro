@@ -9,7 +9,8 @@ abstract class Figura {
     }
 
     abstract public int devolverPuntaje();
-    abstract public boolean esMayorA(Figura figura);
+    abstract public int orden();
+    abstract public boolean LeSigueA(Figura figura);
 
     public String getNombre() {
         return nombre;
@@ -21,13 +22,18 @@ class As extends Figura {
         super("As");
     }
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof K;
     }
 
     @Override
     public int devolverPuntaje() {
         return 11;
+    }
+
+    @Override
+    public int orden() {
+         return 1;
     }
 }
 
@@ -37,11 +43,16 @@ class Dos extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof As;
     }
     @Override
     public int devolverPuntaje() {
+        return 2;
+    }
+
+    @Override
+    public int orden() {
         return 2;
     }
 }
@@ -52,11 +63,16 @@ class Tres extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Dos;
     }
     @Override
     public int devolverPuntaje() {
+        return 3;
+    }
+
+    @Override
+    public int orden() {
         return 3;
     }
 }
@@ -66,11 +82,16 @@ class Cuatro extends Figura {
         super("4");
     }
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Tres;
     }
     @Override
     public int devolverPuntaje() {
+        return 4;
+    }
+
+    @Override
+    public int orden() {
         return 4;
     }
 }
@@ -81,7 +102,7 @@ class Cinco extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Cuatro;
     }
 
@@ -89,6 +110,9 @@ class Cinco extends Figura {
     public int devolverPuntaje() {
         return 5;
     }
+
+    @Override
+    public int orden() {return 5;}
 }
 
 class Seis extends Figura {
@@ -97,11 +121,16 @@ class Seis extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Cinco;
     }
     @Override
     public int devolverPuntaje() {
+        return 6;
+    }
+
+    @Override
+    public int orden() {
         return 6;
     }
 }
@@ -112,11 +141,16 @@ class Siete extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Seis;
     }
     @Override
     public int devolverPuntaje() {
+        return 7;
+    }
+
+    @Override
+    public int orden() {
         return 7;
     }
 }
@@ -127,12 +161,17 @@ class Ocho extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Siete;
     }
 
     @Override
     public int devolverPuntaje() {
+        return 8;
+    }
+
+    @Override
+    public int orden() {
         return 8;
     }
 }
@@ -143,12 +182,17 @@ class Nueve extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Ocho;
     }
 
     @Override
     public int devolverPuntaje() {
+        return 9;
+    }
+
+    @Override
+    public int orden() {
         return 9;
     }
 }
@@ -159,11 +203,16 @@ class Diez extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Nueve;
     }
     @Override
     public int devolverPuntaje() {
+        return 10;
+    }
+
+    @Override
+    public int orden() {
         return 10;
     }
 }
@@ -173,12 +222,17 @@ class J extends Figura {
         super("J");
     }
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof  Diez;
     }
     @Override
     public int devolverPuntaje() {
         return 10;
+    }
+
+    @Override
+    public int orden() {
+        return 11;
     }
 }
 
@@ -188,12 +242,17 @@ class Q extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof J;
     }
     @Override
     public int devolverPuntaje() {
         return 10;
+    }
+
+    @Override
+    public int orden() {
+        return 12;
     }
 }
 
@@ -203,12 +262,18 @@ class K extends Figura {
     }
 
     @Override
-    public boolean esMayorA(Figura figura) {
+    public boolean LeSigueA(Figura figura) {
         return figura instanceof Q;
     }
 
     @Override
+
     public int devolverPuntaje() {
         return 10;
+    }
+
+    @Override
+    public int orden() {
+        return 13;
     }
 }

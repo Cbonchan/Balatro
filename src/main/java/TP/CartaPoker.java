@@ -42,7 +42,7 @@ public class CartaPoker {
         return this.figura;
     }
 
-    public String getPalo() {
-        return palo.getNombre();
+    public Palo getPalo() {
+        return this.palo;
     }
 }
