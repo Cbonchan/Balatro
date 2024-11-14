@@ -44,4 +44,8 @@ public class Jugador {
         return cartas.size();
     }
 
+    public int getPuntaje(){
+        return puntaje;
+    }
+
 }

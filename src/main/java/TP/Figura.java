@@ -10,6 +10,9 @@ abstract class Figura {
 
     abstract public int devolverPuntaje();
 
+    public String getNombre() {
+        return nombre;
+    }
 }
 
 class As extends Figura {

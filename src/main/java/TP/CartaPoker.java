@@ -11,14 +11,22 @@ public class CartaPoker {
         this.figura = figura;
 
         puntaje = figura.devolverPuntaje();
-        this.multiplicador = 1;
+        this.multiplicador = 0;
     }
 
+    public void setPuntaje(int puntaje){
+        this.puntaje = puntaje;
+    }
     public void setMultiplicador(int multiplicador) {
 
         this.multiplicador = multiplicador;
     }
+    //------------------------------------------------------------------------
+    public int sumarValorAgregadoMultiplicador(int multiplicadorRecibido){
 
+        return (multiplicadorRecibido + multiplicador);
+    }
+    //-----------------------------------------------------------------------
     public int sumarValorAgregadoPuntuacion(int puntajeRecibido){
 
         return (puntajeRecibido + puntaje);
@@ -26,7 +34,7 @@ public class CartaPoker {
 
     public boolean esFiguraIgualA(Figura figura){
 
-        return this.figura.equals(figura);
+        return this.figura.getNombre().equals(figura.getNombre());
     }
 
     // :'v
@@ -35,7 +43,7 @@ public class CartaPoker {
         return this.figura;
     }
 
-    public Palo getPalo() {
-        return palo;
+    public String getPalo() {
+        return palo.getNombre();
     }
 }
