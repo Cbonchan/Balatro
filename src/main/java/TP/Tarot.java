@@ -14,6 +14,16 @@ class TaroMultiplicadorX6 extends Tarot {
     public void usar(CartaPoker carta) {
         carta.setMultiplicador(multiplicador);
     }
-
-
 }
+
+class TarotPuntosX10 extends Tarot{
+    private int puntos;
+    public TarotPuntosX10(){
+        this.puntos = 10;
+    }
+    @Override
+    public void usar(CartaPoker carta) {
+        carta.setPuntaje(puntos);
+    }
+}
+

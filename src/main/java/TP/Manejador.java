@@ -1,10 +1,14 @@
 package TP;
 
 import java.util.List;
+import java.util.List;
 
 public class Manejador {
-    public static Jugada determinarJugada(List<CartaPoker> cartaPokers){
+    public static Jugada determinarJugada(List<CartaPoker> cartaPokers) {
 
+        if (RoyalFLush.esJugadaValida(cartaPokers)){
+            return new RoyalFLush();
+        }
         if (FourOfAKind.esJugadaValida(cartaPokers)){
             return new FourOfAKind();
         }
@@ -20,7 +24,7 @@ public class Manejador {
         if (Pair.esJugadaValida(cartaPokers)){
             return new Pair();
         }
-        if(Straight.esJugadaValida(cartaPokers)&&Flush.esJugadaValida(cartaPokers)){
+        if(Straight.esJugadaValida(cartaPokers) && Flush.esJugadaValida(cartaPokers)){
             return new StraightFlush();
         }
         if(Straight.esJugadaValida(cartaPokers)){
