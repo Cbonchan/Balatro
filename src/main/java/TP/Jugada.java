@@ -216,12 +216,12 @@ class Straight extends Jugada {
 
         cartaPokers.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
 
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            int valorActual = cartaPokers.get(i).getFigura().orden();
-            int valorSiguiente = cartaPokers.get(i + 1).getFigura().orden();
+        for (int i = 1; i < cartaPokers.size(); i++) {
+            int valorActual = cartaPokers.get(i-1).getFigura().orden();
+            int valorSiguiente = cartaPokers.get(i).getFigura().orden();
 
             // Verificamos que la carta siguiente tenga un valor consecutivo al anterior
-            if (valorSiguiente != valorActual + 1) {
+            if (valorSiguiente != valorActual - 1) {
                 return false;
             }
         }
