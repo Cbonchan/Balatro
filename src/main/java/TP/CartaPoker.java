@@ -39,7 +39,6 @@ public class CartaPoker {
 
     // :'v
     public Figura getFigura(){
-
         return this.figura;
     }
 

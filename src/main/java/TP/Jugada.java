@@ -36,6 +36,9 @@ class Pair extends Jugada {
     }
 
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+        if (cartaPokers.size() < 2){
+            return false;
+        }
         for (int i = 0; i < cartaPokers.size(); i++) {
             for (int j = i + 1; j < cartaPokers.size(); j++) {
                 Figura otraFigura = cartaPokers.get(j).getFigura();
@@ -73,6 +76,9 @@ class TwoPair extends Jugada {
     }
 
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+        if (cartaPokers.size() < 4){
+            return false;
+        }
         List<Figura> figurasConPares = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {
@@ -118,7 +124,9 @@ class ThreeOfAKind extends Jugada {
     }
 
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
-
+        if (cartaPokers.size() < 3){
+            return false;
+        }
         List <Figura> figurasConThreeOfAKind = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {
@@ -186,15 +194,17 @@ class Straight extends Jugada {
     }
 
     public static boolean esJugadaValida(List<CartaPoker> cartaPokers) {
-        // Ordenamos la lista en orden ascendente según la figura
-        Collections.sort(cartaPokers, (c1, c2) -> Integer.compare(c1.getFigura().devolverPuntaje(), c2.getFigura().devolverPuntaje()));
+        if (cartaPokers.size() != 5){
+            return false;
+        }
+
+        //TODO: hay que ordenar por esMayorA u alguna otra implementacion
+
+        Collections.sort(cartaPokers, (c1, c2) -> c1.getFigura().esMayorA(c2.getFigura()) ? 1 : -1);
 
         for (int i = 0; i < cartaPokers.size() - 1; i++) {
-            int valorActual = cartaPokers.get(i).getFigura().devolverPuntaje();
-            int valorSiguiente = cartaPokers.get(i + 1).getFigura().devolverPuntaje();
 
-            // Verificamos que cada carta sea un punto más que la anterior
-            if (valorSiguiente != valorActual + 1) {
+            if (!cartaPokers.get(i).getFigura().esMayorA(cartaPokers.get(i + 1).getFigura())) {
                 return false;
             }
         }
@@ -211,9 +221,13 @@ class Flush extends Jugada {
 
     public Flush() {
         super(35, 4);
+
     }
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
         // Verificamos que todas las cartas tengan el mismo palo
+        if (cartaPokers.size() != 5){
+            return false;
+        }
         String palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
 
         for (CartaPoker carta : cartaPokers) {
@@ -237,6 +251,9 @@ class RoyalFLush extends Jugada{
     }
 
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+        if (cartaPokers.size() != 5){
+            return false;
+        }
         // Verificamos que todas las cartas tengan el mismo palo
         String palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
 
@@ -271,6 +288,9 @@ class FullHouse extends Jugada {
         super(40, 4);
     }
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+        if (cartaPokers.size() != 5){
+            return false;
+        }
         List<Figura> figurasConThreeOfAKind = new ArrayList<>();
         List<Figura> figurasConPair = new ArrayList<>();
 
@@ -312,6 +332,9 @@ class FourOfAKind extends Jugada {
     }
 
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+        if (cartaPokers.size() < 4){
+            return false;
+        }
         List<Figura> figurasConFourOfAKind = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {

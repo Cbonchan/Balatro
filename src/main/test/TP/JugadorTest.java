@@ -313,7 +313,10 @@ public class JugadorTest {
     }
 
 
+    @Test
+    public void test15LaManoSeCalculaEnElOrdenCorrecto(){
 
+    }
 
 }
 
