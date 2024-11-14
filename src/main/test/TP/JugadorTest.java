@@ -312,9 +312,45 @@ public class JugadorTest {
 
     @Test
     public void test15LaManoSeCalculaEnElOrdenCorrecto(){
+        Mano mano = new Mano();
+        Jugador jugador = new Jugador(mano);
+        Tablero tablero = new Tablero();
+        CartaPoker cartaPoker1 = new CartaPoker(new Picas() ,new Q());
+        CartaPoker cartaPoker2 = new CartaPoker(new Picas() ,new J());
+        CartaPoker cartaPoker3 = new CartaPoker(new Picas() ,new Diez());
+        CartaPoker cartaPoker4 = new CartaPoker(new Picas() ,new Nueve());
+        CartaPoker cartaPoker5 = new CartaPoker(new Picas() ,new Ocho());
+        int primerValorEsperado = 15;
+        int segundoValorEsperado = 30;
+        int tercerValorEsperado = 45;
+        int cuartoValorEsperado = 60;
+        int quintoValorEsperado = 1236;
 
+        jugador.seleccionarCarta(cartaPoker1);
+        jugador.jugar(tablero);
+        int valorObtenido = jugador.getPuntaje();
+        assertEquals(primerValorEsperado,valorObtenido);
+
+        jugador.seleccionarCarta(cartaPoker2);
+        jugador.jugar(tablero);
+        valorObtenido = jugador.getPuntaje();
+        assertEquals(segundoValorEsperado,valorObtenido);
+
+        jugador.seleccionarCarta(cartaPoker3);
+        jugador.jugar(tablero);
+        valorObtenido = jugador.getPuntaje();
+        assertEquals(tercerValorEsperado,valorObtenido);
+
+        jugador.seleccionarCarta(cartaPoker4);
+        jugador.jugar(tablero);
+        valorObtenido = jugador.getPuntaje();
+        assertEquals(cuartoValorEsperado,valorObtenido);
+
+        jugador.seleccionarCarta(cartaPoker5);
+        jugador.jugar(tablero);
+        valorObtenido = jugador.getPuntaje();
+        assertEquals(quintoValorEsperado,valorObtenido);
     }
-
 }
 
 
