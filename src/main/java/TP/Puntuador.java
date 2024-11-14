@@ -11,7 +11,7 @@ public class Puntuador {
         this.jugada = jugada;
     }
 
-    public int calularSumatoriaChips( List<CartaPoker> cartaPokers){
+    public int calcularSumatoriaChips(List<CartaPoker> cartaPokers){
         puntaje = jugada.puntajeJugada();
         for (CartaPoker cartaPoker : cartaPokers) {
             puntaje = cartaPoker.sumarValorAgregadoPuntuacion(puntaje);
@@ -19,7 +19,7 @@ public class Puntuador {
         return puntaje;
     }
 
-    public int calularSumatoriaMultiplicadores( List<CartaPoker> cartaPokers){
+    public int calcularSumatoriaMultiplicadores(List<CartaPoker> cartaPokers){
         multiplicador = jugada.multiplicadorJugada();
         for (CartaPoker cartaPoker : cartaPokers) {
             multiplicador = cartaPoker.sumarValorAgregadoMultiplicador(multiplicador);
@@ -27,7 +27,7 @@ public class Puntuador {
         return multiplicador;
     }
 
-    public int calularPuntaje(List<CartaPoker> cartaPokers){
-        return calularSumatoriaChips(cartaPokers) * calularSumatoriaMultiplicadores(cartaPokers);
+    public int calcularPuntaje(List<CartaPoker> cartaPokers){
+        return (calcularSumatoriaChips(cartaPokers) * calcularSumatoriaMultiplicadores(cartaPokers));
     }
 }

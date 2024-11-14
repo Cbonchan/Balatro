@@ -17,8 +17,8 @@ public class CartaPoker {
     public void setPuntaje(int puntaje){
         this.puntaje = puntaje;
     }
-    public void setMultiplicador(int multiplicador) {
 
+    public void setMultiplicador(int multiplicador) {
         this.multiplicador = multiplicador;
     }
     //------------------------------------------------------------------------

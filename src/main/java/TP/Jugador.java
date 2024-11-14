@@ -34,13 +34,11 @@ public class Jugador {
         cartas.addAll(cartasNuevas);
     }
 
-    private void asignarPuntaje(int puntajeEntrante)
-    {
+    private void asignarPuntaje(int puntajeEntrante) {
         puntaje += puntajeEntrante;
     }
 
-    public int getCantidadCartas()
-    {
+    public int getCantidadCartas() {
         return cartas.size();
     }
 

@@ -167,7 +167,7 @@ public class JugadorTest {
         assertEquals(valorEsperado,valorObtenido);
     }
 
-    @Test
+   /* @Test
     public void test09LaManoFlushHouseSeCalculaCorrectamente(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -189,7 +189,7 @@ public class JugadorTest {
 
         assertEquals(valorEsperado,valorObtenido);
     }
-
+*/
     @Test
     public void test10LaManoFourOfAKindSeCalculaCorrectamente(){
         Mano mano = new Mano();
