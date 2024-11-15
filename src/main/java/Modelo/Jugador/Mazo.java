@@ -1,7 +1,12 @@
 package Modelo.Jugador;
 
-import Modelo.*;
+// Importaciones
 import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Poker.Palo.*;
+
+import Modelo.SistemaCartas.Poker.Figura.Figura;
+import Modelo.SistemaCartas.Poker.Palo.Palo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,25 +14,51 @@ import java.util.List;
 
 public class Mazo {
 
-    private final ArrayList<CartaPoker> cartaPokers;
-    private int cantidadCartas;
+    // Atributos
+    private final ArrayList<CartaPoker> mazoDeCartas;
+    private int cartasDisponibles;
 
+    // Constructor
     public Mazo() {
-        this.cantidadCartas = 52;
-        cartaPokers = new ArrayList<CartaPoker>();
+        this.cartasDisponibles = 52;
+        mazoDeCartas = new ArrayList<CartaPoker>();
 
-        Figura[] valores = {new As(), new Dos(), new Tres(), new Cuatro(), new Cinco(), new Seis(), new Siete(), new Ocho(), new Nueve(), new Diez(), new J(), new Q(), new K()};
-        Palo[] palos = {new Corazones(), new Diamantes(), new Treboles(), new Picas()};
+
+        Figura[] valores ={
+                new As(), new Dos(), new Tres(), new Cuatro(),
+                new Cinco(), new Seis(), new Siete(), new Ocho(),
+                new Nueve(), new Diez(), new Jota(), new Reina(),
+                new Rey()};
+        
+        Palo[] palos = {
+                new Corazon(), new Diamante(), new Trebol(), new Pica()};
 
         for (Palo palo : palos) {
             for (Figura valor : valores ) {
-                cartaPokers.add(new CartaPoker(palo, valor));
+                mazoDeCartas.add(new CartaPoker(palo, valor));
             }
         }
     }
 
+    // Getters y Setters
+    public int getCartasDisponibles(){
+        return cartasDisponibles;
+    }
+
+    // Métodos
+    
+    // Privados
+    private CartaPoker cartaAleatoria() {
+        int indice = (int) (Math.random() * cartasDisponibles);
+        CartaPoker cartaPoker = mazoDeCartas.get(indice);
+        mazoDeCartas.remove(indice);
+        cartasDisponibles--;
+        return cartaPoker;
+    }
+    
+    // Públicos
     public boolean mazoCompleto() {
-        return cantidadCartas == 52;
+        return cartasDisponibles == 52;
     }
 
     public void repartirCartas(Jugador jugador) {
@@ -39,15 +70,6 @@ public class Mazo {
         jugador.agregarCartas(cartasParaMandar);
     }
 
-    private CartaPoker cartaAleatoria() {
-        int indice = (int) (Math.random() * cantidadCartas);
-        CartaPoker cartaPoker = cartaPokers.get(indice);
-        cartaPokers.remove(indice);
-        cantidadCartas--;
-        return cartaPoker;
-    }
+  
 
-    public int getCantidadCartas(){
-        return cantidadCartas;
-    }
 }

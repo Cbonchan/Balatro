@@ -1,4 +1,6 @@
 package Modelo.Jugador;
+
+// Importaciones
 import Modelo.SistemaCartas.Poker.CartaPoker;
 import Modelo.Juego.Tablero;
 
@@ -6,16 +8,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Jugador {
+    // Atributos
     private int puntaje;
     private List<CartaPoker> cartas;
     private Mano mano;
 
-    public Jugador(Mano mano)
-    {
+    // Constructor
+    public Jugador(Mano mano) {
         this.puntaje = 0;
         this.cartas = new ArrayList<>();
         this.mano = mano;
     }
+
+    // Getters
+
+    public int getCantidadCartas() {
+        return cartas.size();
+    }
+
+    public int getPuntaje(){
+        return puntaje;
+    }
+
+    // Métodos
+
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
     public void deshacerEleccion(){
@@ -39,14 +55,6 @@ public class Jugador {
 
     private void asignarPuntaje(int puntajeEntrante) {
         puntaje += puntajeEntrante;
-    }
-
-    public int getCantidadCartas() {
-        return cartas.size();
-    }
-
-    public int getPuntaje(){
-        return puntaje;
     }
 
 }

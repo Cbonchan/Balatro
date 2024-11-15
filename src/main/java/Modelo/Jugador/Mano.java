@@ -1,5 +1,6 @@
 package Modelo.Jugador;
 
+// Importaciones
 import Modelo.SistemaPuntaje.Puntuador;
 import Modelo.SistemaCartas.Jugadas.Jugada;
 import Modelo.SistemaCartas.Jugadas.Manejador;
@@ -9,13 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Mano {
+    // Atributos
     private List<CartaPoker> cartaPokers;
     private Jugada jugada;
 
+    // Constructor
     public Mano() {
         this.cartaPokers = new ArrayList<>();
     }
 
+    // Métodos
     public void agregarCarta(CartaPoker cartaPoker) {
         if (cartaPokers.size() < 5) {
             cartaPokers.add(cartaPoker);
