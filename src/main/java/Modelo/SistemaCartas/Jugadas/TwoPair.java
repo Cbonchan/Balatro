@@ -2,10 +2,12 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 
+import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class TwoPair extends  Jugada {
 

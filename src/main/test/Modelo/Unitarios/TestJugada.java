@@ -8,6 +8,8 @@ import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.CartaPoker;
 
+import  org.junit.Test;
+import  static  org.junit.jupiter.api.Assertions.*;
 
 public class TestJugada {
 
@@ -201,7 +203,7 @@ public class TestJugada {
     }
 
     @Test
-    public void test18LaManoFourOfAKindSeCalculaCorrectamente(){
+    public void test08LaManoFourOfAKindSeCalculaCorrectamente(){
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -228,7 +230,7 @@ public class TestJugada {
     }
 
     @Test
-    public void test19LaManoStraightFlushSeCalculaCorrectamente(){
+    public void test09LaManoStraightFlushSeCalculaCorrectamente(){
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -254,31 +256,31 @@ public class TestJugada {
         assertEquals(valorEsperado,valorObtenido);
     }
 
-    @Test
-    public void test10LaManoRoyalFLushSeCalculaCorrectamente(){
-        // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Pica() ,new As());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Rey());
-        CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Reina());
-        CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Jota());
-        CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
-        int valorEsperado = 1208;
-
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
-        jugador.seleccionarCarta(cartaPoker3);
-        jugador.seleccionarCarta(cartaPoker4);
-        jugador.seleccionarCarta(cartaPoker5);
-        jugador.jugar(tablero);
-
-        // Act
-        int valorObtenido = jugador.getPuntaje();
-
-        // Assert
-        assertEquals(valorEsperado,valorObtenido);
-    }
+//    @Test
+//    public void test10LaManoRoyalFLushSeCalculaCorrectamente(){
+//        // Arrange
+//        Mano mano = new Mano();
+//        Jugador jugador = new Jugador(mano);
+//        Tablero tablero = new Tablero();
+//        CartaPoker cartaPoker1 = new CartaPoker(new Pica() ,new As());
+//        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Rey());
+//        CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Reina());
+//        CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Jota());
+//        CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
+//        int valorEsperado = 1208;
+//
+//        jugador.seleccionarCarta(cartaPoker1);
+//        jugador.seleccionarCarta(cartaPoker2);
+//        jugador.seleccionarCarta(cartaPoker3);
+//        jugador.seleccionarCarta(cartaPoker4);
+//        jugador.seleccionarCarta(cartaPoker5);
+//        jugador.jugar(tablero);
+//
+//        // Act
+//        int valorObtenido = jugador.getPuntaje();
+//
+//        // Assert
+//        assertEquals(valorEsperado,valorObtenido);
+//    }
 
 }

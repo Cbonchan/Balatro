@@ -4,6 +4,7 @@ import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.Collections;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class HighCard  extends  Jugada{
 
