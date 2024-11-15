@@ -6,6 +6,7 @@ import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.List;
 import java.util.ArrayList;
+import org.jetbrains.annotations.NotNull;
 
 public class ThreeOfAKind extends  Jugada{
 

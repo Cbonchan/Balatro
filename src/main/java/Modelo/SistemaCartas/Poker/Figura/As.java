@@ -18,6 +18,6 @@ public class As extends Figura {
     public int devolverPuntaje() {return 11;}
 
     @Override
-    public boolean LeSigueA(Figura figura) { return figura instanceof K;}
+    public boolean LeSigueA(Figura figura) { return figura instanceof  Rey;}
 
 }
