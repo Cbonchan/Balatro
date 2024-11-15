@@ -1,13 +1,16 @@
-package TP;
+package Modelo.SistemaCartas.Poker;
 
 abstract class Figura {
 
     private final String nombre;
 
+//Const
     public Figura(String nombre) {
         this.nombre = nombre;
     }
 
+
+//    Metodos
     abstract public int devolverPuntaje();
     abstract public int orden();
     abstract public boolean LeSigueA(Figura figura);

@@ -1,4 +1,7 @@
-package TP;
+package Modelo.SistemaPuntaje;
+
+import Modelo.SistemaCartas.Jugadas.Jugada;
+import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.List;
 

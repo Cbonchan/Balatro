@@ -1,6 +1,7 @@
-package TP;
+package Modelo.SistemaCartas.Jugadas;
 
-import javafx.scene.control.ListCell;
+import Modelo.Palo;
+import Modelo.SistemaCartas.Poker.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collections;

@@ -1,4 +1,7 @@
-package TP;
+package Modelo.Jugador;
+import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.Juego.Tablero;
+
 import java.util.ArrayList;
 import java.util.List;
 

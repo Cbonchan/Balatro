@@ -1,4 +1,4 @@
-package TP;
+package Modelo.SistemaPuntaje;
 
 public class Chip {
 

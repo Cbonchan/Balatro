@@ -1,4 +1,4 @@
-package TP;
+package Modelo.Juego;
 
 public class Juego {
 

@@ -1,4 +1,6 @@
-package TP;
+package Modelo.SistemaCartas.Tarot;
+
+import Modelo.SistemaCartas.Poker.CartaPoker;
 
 abstract class Tarot {
     public abstract void usar(CartaPoker carta);

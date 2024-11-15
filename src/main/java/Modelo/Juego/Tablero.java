@@ -1,5 +1,8 @@
-package TP;
-import java.util.ArrayList;
+package Modelo.Juego;
+import Modelo.Jugador.Jugador;
+import Modelo.Jugador.Mano;
+import Modelo.Tarot;
+
 import java.util.List;
 
 public class Tablero {

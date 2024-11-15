@@ -1,5 +1,13 @@
-package TP;
+package Modelo;
 
+import Modelo.Juego.Tablero;
+import Modelo.Jugador.Jugador;
+import Modelo.Jugador.Mano;
+import Modelo.Jugador.Mazo;
+import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaCartas.Tarot.TaroMultiplicadorX6;
+import Modelo.SistemaCartas.Tarot.Tarot;
+import Modelo.SistemaCartas.Tarot.TarotPuntosX10;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

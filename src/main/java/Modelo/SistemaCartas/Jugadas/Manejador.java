@@ -1,6 +1,7 @@
-package TP;
+package Modelo.SistemaCartas.Jugadas;
 
-import java.util.List;
+import Modelo.SistemaCartas.Poker.CartaPoker;
+
 import java.util.List;
 
 public class Manejador {

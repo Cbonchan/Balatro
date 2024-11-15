@@ -1,7 +1,4 @@
-package TP;
-
-import java.util.ArrayList;
-import java.util.List;
+package Modelo.SistemaCartas.Poker;
 
 abstract class Palo {
     private final String nombre;

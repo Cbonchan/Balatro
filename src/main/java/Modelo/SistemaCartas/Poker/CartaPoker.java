@@ -1,4 +1,7 @@
-package TP;
+package Modelo.SistemaCartas.Poker;
+
+import Modelo.Figura;
+import Modelo.Palo;
 
 public class CartaPoker {
     private final Palo palo;
