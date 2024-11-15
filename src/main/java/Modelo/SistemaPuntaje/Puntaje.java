@@ -2,10 +2,11 @@ package Modelo.SistemaPuntaje;
 
 public class Puntaje {
 
+    // Atributos
     private Chip chip;
     private Multiplicador multiplicador;
 
-    // Constructor
+    // Constructores
     public Puntaje(Chip chip) {
         this(chip, new Multiplicador(1));
     }
