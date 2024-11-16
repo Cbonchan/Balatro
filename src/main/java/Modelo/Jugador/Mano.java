@@ -26,8 +26,9 @@ public class Mano {
         } else {
             throw new IllegalStateException("La mano ya tiene 5 cartas.");
         }
-        // Se actualiza la jugada en cada agregado de carta
-        jugada = Manejador.determinarJugada(cartaPokers);
+        // Se actualiza la jugada en cada agregado de carta\
+        Manejador manejador = new Manejador();
+        jugada = manejador.determinarJugada(cartaPokers);
     }
 
     public void vaciarMano() {

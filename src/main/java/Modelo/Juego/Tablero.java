@@ -8,10 +8,11 @@ import Modelo.SistemaCartas.Tarot.*;
 import java.util.List;
 
 public class Tablero {
-    // Atribnutos
+
+    // Atributos
+    //private List<Jocker> jockers;
     private List<Tarot> tarots;
     private Jugador jugador;
-    //private List<jockers> jockers;
 
     // Constructor
     public int jugarMano(Mano mano) {

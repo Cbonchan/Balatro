@@ -21,7 +21,6 @@ public class Jugador {
     }
 
     // Getters
-
     public int getCantidadCartas() {
         return cartas.size();
     }
@@ -30,21 +29,21 @@ public class Jugador {
         return puntaje;
     }
 
+
     // Métodos
 
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
+
     public void deshacerEleccion(){
         mano.vaciarMano();
     }
 
-    public void seleccionarCarta(CartaPoker cartaPoker)
-    {
+    public void seleccionarCarta(CartaPoker cartaPoker){
         mano.agregarCarta(cartaPoker);
     }
 
-    public void jugar(Tablero tablero)
-    {
+    public void jugar(Tablero tablero){
         int valor = tablero.jugarMano(mano);
         asignarPuntaje(valor);
     }
