@@ -17,12 +17,14 @@ public class HighCard  extends  Jugada{
     }
 
     // Métodos
-    public static boolean esJugadaValida(List<CartaPoker> cartaPokers){
+    @Override
+    public boolean esJugadaValida(List<CartaPoker> cartaPokers) {
         return !cartaPokers.isEmpty();
     }
 
+    @Override
     public  List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers){
-        Collections.sort(cartaPokers, (c1, c2) -> Integer.compare(c2.getFigura().devolverPuntaje(), c1.getFigura().devolverPuntaje()));
-        return List.of(cartaPokers.get(0));
+        Collections.sort( cartaPokers, (c1, c2) -> Integer.compare(c2.getFigura().devolverPuntaje(), c1.getFigura().devolverPuntaje()) );
+        return List.of( cartaPokers.get(0) );
     }
 }

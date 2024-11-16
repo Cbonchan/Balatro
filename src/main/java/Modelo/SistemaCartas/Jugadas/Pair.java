@@ -21,7 +21,8 @@ public class Pair extends Jugada {
     }
 
     // Métodos
-    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+    @Override
+    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
          if (cartaPokers.size() < 2) {
             return false;
         }
@@ -37,6 +38,7 @@ public class Pair extends Jugada {
         return false;
     }
 
+    @Override
     public  List <CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
         List<CartaPoker> cartasDelPar = new ArrayList<>();
 

@@ -19,7 +19,8 @@ public class Straight  extends  Jugada{
     }
 
     // Métodos
-    public static boolean esJugadaValida(List<CartaPoker> cartaPokers) {
+    @Override
+    public  boolean esJugadaValida(List<CartaPoker> cartaPokers) {
         if (cartaPokers.size() != 5){
             return false;
         }
@@ -58,6 +59,7 @@ public class Straight  extends  Jugada{
         return true;
     }
 
+    @Override
     public  List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
         return new ArrayList<>(cartaPokers);
     }

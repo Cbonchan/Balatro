@@ -1,43 +1,32 @@
 package Modelo.SistemaCartas.Jugadas;
 
+// Importaciones
 import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.List;
 
+//! Esto irá en otro lado seguro
 public class Manejador {
-    public static Jugada determinarJugada(List<CartaPoker> cartaPokers) {
 
+    // Atributos
+    // Las jugadas serán constantes, no cambiaran == static
+    private static final List<Jugada> jugadas = List.of(
+            new FourOfAKind(), new FullHouse(), new ThreeOfAKind(),
+            new TwoPair(), new Pair(), new StraightFlush(),
+            new Straight(), new Flush(), new HighCard()
+    );
 
-        if (FourOfAKind.esJugadaValida(cartaPokers)){
-            return new FourOfAKind();
-        }
-        if (FullHouse.esJugadaValida(cartaPokers)){
-            return new FullHouse();
-        }
-        if(ThreeOfAKind.esJugadaValida(cartaPokers)){
-            return new ThreeOfAKind();
-        }
-        if (TwoPair.esJugadaValida(cartaPokers)){
-            return new TwoPair();
-        }
-        if (Pair.esJugadaValida(cartaPokers)){
-            return new Pair();
-        }
-        /*if (RoyalFLush.esJugadaValida(cartaPokers)){
-            return new RoyalFLush();
-        }*/
-        if(Straight.esJugadaValida(cartaPokers) && Flush.esJugadaValida(cartaPokers)){
-            return new StraightFlush();
-        }
-        if(Straight.esJugadaValida(cartaPokers)){
-            return new Straight();
-        }
-        if (Flush.esJugadaValida(cartaPokers)){
-            return new Flush();
-        }
-        else{
-            return new HighCard();
-        }
+    // Constructores
+    public Manejador() {
+    }
 
+    // Métodos
+    public Jugada determinarJugada(List<CartaPoker> cartaPokers) {
+        for (Jugada jugada : jugadas) {
+            if (jugada.esJugadaValida(cartaPokers)) {
+                return jugada;
+            }
+        }
+        return null;
     }
 }

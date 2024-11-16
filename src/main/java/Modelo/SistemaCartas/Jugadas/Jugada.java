@@ -21,8 +21,12 @@ public abstract class Jugada {
     }
 
     // Métodos
+    // Abstractos
     public abstract List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers);
 
+    public abstract boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers);
+
+    // Públicos
     public int puntajeJugada() {
         return chips;
     }
@@ -35,8 +39,3 @@ public abstract class Jugada {
 //las jugadas agregan al multiplicador y agregan
 //sus puntos al marcador cuando se realizan
 //NO EXISTE MANO QUE NO LLEVE A UNA JUGADA
-
-// Multip[lificador  = 2 y Chips = 20
-
-
-

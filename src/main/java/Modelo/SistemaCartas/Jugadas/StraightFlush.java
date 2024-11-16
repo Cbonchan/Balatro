@@ -11,12 +11,20 @@ public class StraightFlush extends  Jugada{
 
     // Atributos
     // Chips = 100 y Multiplicador = 8
-
+    Flush flush = new Flush();
+    Straight straight = new Straight();
 
     // Constructor
     public StraightFlush() {super(100, 8);}
 
     // Métodos
+
+    @Override
+    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+        return ( flush.esJugadaValida(cartaPokers) && straight.esJugadaValida(cartaPokers) );
+    }
+
+    @Override
     public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
         return new ArrayList<>(cartaPokers);
     }

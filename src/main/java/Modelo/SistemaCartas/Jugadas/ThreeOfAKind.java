@@ -17,11 +17,10 @@ public class ThreeOfAKind extends  Jugada{
     public ThreeOfAKind() {super(30, 3);}
 
     // Métodos
+    @Override
+    public  boolean esJugadaValida(@NotNull List< CartaPoker > cartaPokers){
+        if (cartaPokers.size() < 3){ return false; }
 
-    public static boolean esJugadaValida(@NotNull List< CartaPoker > cartaPokers){
-        if (cartaPokers.size() < 3){
-            return false;
-        }
         List<Figura> figurasConThreeOfAKind = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {
@@ -43,6 +42,7 @@ public class ThreeOfAKind extends  Jugada{
         return figurasConThreeOfAKind.size() == 1;
     }
 
+    @Override
     public  List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
         List<CartaPoker> cartasTresIguales = new ArrayList<>();
 

@@ -9,10 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
+//! Acá debería ser como StraightFlush, que verifique que solo tenga
+// 2 pares
 public class TwoPair extends  Jugada {
 
     // Atributos
     // Chips = 20 y Multiplicador = 2
+
 
     // Constructores
     public TwoPair() {
@@ -20,7 +23,8 @@ public class TwoPair extends  Jugada {
     }
 
     // Métodos
-    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+    @Override
+    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
         if (cartaPokers.size() < 4){
             return false;
         }
@@ -41,7 +45,8 @@ public class TwoPair extends  Jugada {
         return figurasConPares.size() == 2; // Devuelve true si son dos pares distintos
     }
 
-    public  List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
+    @Override
+    public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
         List<CartaPoker> cartasDeDosPares = new ArrayList<>();
         List<Figura> figurasConPares = new ArrayList<>();
 

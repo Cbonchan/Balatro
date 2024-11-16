@@ -21,7 +21,8 @@ public class RoyalFlush extends  Jugada {
 
 
     //  Métodos
-    public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+    @Override
+    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
         if (cartaPokers.size() != 5){return false;}
 
         // Verificamos que todas las cartas tengan el mismo palo
@@ -49,6 +50,7 @@ public class RoyalFlush extends  Jugada {
         return  cartaVecesEncontrada == 5;
     }
 
+    @Override
     public List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers) {
         return new ArrayList<>(cartaPokers);
     }
