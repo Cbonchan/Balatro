@@ -16,11 +16,9 @@ public class Mazo {
 
     // Atributos
     private final ArrayList<CartaPoker> mazoDeCartas;
-    private int cartasDisponibles;
 
     // Constructor
     public Mazo() {
-        this.cartasDisponibles = 52;
         mazoDeCartas = new ArrayList<CartaPoker>();
 
 
@@ -42,23 +40,22 @@ public class Mazo {
 
     // Getters y Setters
     public int getCartasDisponibles(){
-        return cartasDisponibles;
+        return mazoDeCartas.size();
     }
 
     // Métodos
     
     // Privados
     private CartaPoker cartaAleatoria() {
-        int indice = (int) (Math.random() * cartasDisponibles);
+        int indice = (int) (Math.random() * mazoDeCartas.size());
         CartaPoker cartaPoker = mazoDeCartas.get(indice);
         mazoDeCartas.remove(indice);
-        cartasDisponibles--;
         return cartaPoker;
     }
     
     // Públicos
     public boolean mazoCompleto() {
-        return cartasDisponibles == 52;
+        return mazoDeCartas.size() == 52;
     }
 
     public void repartirCartas(Jugador jugador) {
