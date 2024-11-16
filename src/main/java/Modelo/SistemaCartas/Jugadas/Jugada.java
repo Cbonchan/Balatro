@@ -5,14 +5,12 @@ import Modelo.SistemaCartas.Poker.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public abstract class Jugada {
 
     // Atributos
-    private int chips;
-    private int multiplicador;
+    private final int chips;
+    private final int multiplicador;
 
     // Constructor
     public Jugada(int puntaje, int multiplicador) {

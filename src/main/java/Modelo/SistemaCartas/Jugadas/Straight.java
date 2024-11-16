@@ -30,6 +30,7 @@ public class Straight  extends  Jugada{
 
         int cartaVecesEncontrada = 0;
 
+        //! Ver si es posible que no sea doble for
         for (int i = 0; i < cartaPokers.size(); i++){
             CartaPoker cartaActual = cartaPokers.get(i);
             for (int j = 0; j < figurasEsperados.size(); j++) {
