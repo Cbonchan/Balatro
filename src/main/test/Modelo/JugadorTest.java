@@ -17,28 +17,32 @@ import static org.junit.jupiter.api.Assertions.*;
 public class JugadorTest {
     @Test
     public void test01CantidadDeCartasCorrectas(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Mazo mazo = new Mazo();
+        int cantidadDeCartasEsperadas = 8;
 
+        // Act
         mazo.repartirCartas(jugador);
 
-        int cantidadDeCartasEsperadas = 8;
+        // Assert
         assertEquals(cantidadDeCartasEsperadas, jugador.getCantidadCartas(), "El jugador debe tener 8 cartas después de repartir.");
     }
 
     @Test
     public void test02CartasSuficientesEnMazo(){
+        // Arrange
         Mazo mazo = new Mazo();
         int cantidadDeCartasEsperadas = 52;
 
+        // Act y Assert
         assertEquals(cantidadDeCartasEsperadas, mazo.getCartasDisponibles(), "El mazo debe tener 52 cartas una vez inicializado");
-
-
     }
 
     @Test
     public void test03LaManoTwoPairSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -55,13 +59,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test04LaManoPairSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -78,13 +86,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test05LaManoThreeOfAKindSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -101,13 +113,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test06LaManoHighCardSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -124,13 +140,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test07LaManoStraightSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -147,13 +167,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test08LaManoFlushSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -170,8 +194,11 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
@@ -200,6 +227,7 @@ public class JugadorTest {
 */
     @Test
     public void test10LaManoFourOfAKindSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -216,13 +244,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test11LaManoStraightFlushSeCalculaCorrectamente(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -239,8 +271,11 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
@@ -269,6 +304,7 @@ public class JugadorTest {
 
     @Test
     public void test13SeAplicaTarotX6MultiplicadorYSeCalulaCorrectamenteElPutntaje(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -287,13 +323,18 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test14SeAplicaTarotX10PuntosYSeCalulaCorrectamenteElPutntaje(){
+
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -312,13 +353,17 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaPoker4);
         jugador.seleccionarCarta(cartaPoker5);
         jugador.jugar(tablero);
+
+        // Act
         int valorObtenido = jugador.getPuntaje();
 
+        // Assert
         assertEquals(valorEsperado,valorObtenido);
     }
 
     @Test
     public void test15LaManoSeCalculaEnElOrdenCorrecto(){
+        // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
@@ -333,6 +378,7 @@ public class JugadorTest {
         int cuartoValorEsperado = 60;
         int quintoValorEsperado = 1236;
 
+        //? Multiples Asserts -> Preguntar profes si esta bien
         jugador.seleccionarCarta(cartaPoker1);
         jugador.jugar(tablero);
         int valorObtenido = jugador.getPuntaje();
