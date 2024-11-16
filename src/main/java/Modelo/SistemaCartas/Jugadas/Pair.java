@@ -22,7 +22,7 @@ public class Pair extends Jugada {
 
     // Métodos
     public static boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
-        if (cartaPokers.size() < 2) {
+         if (cartaPokers.size() < 2) {
             return false;
         }
         for (int i = 0; i < cartaPokers.size(); i++) {
