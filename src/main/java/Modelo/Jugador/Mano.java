@@ -42,6 +42,9 @@ public class Mano {
     }
 */
     public int calcularPuntaje() {
+        if (cartaPokers.isEmpty()) {
+            return 0;
+        }
         List<CartaPoker> cartaPokers1 = jugada.cartasJugada(cartaPokers);
         Puntuador puntuador = new Puntuador(this.jugada); //TODO: se puede mandar directamente cartaPokers y no hacer una copia
         return  puntuador.calcularPuntaje(cartaPokers1); //! se pasan las cartas teniendo ya las cartas
