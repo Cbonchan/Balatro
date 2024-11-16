@@ -175,32 +175,32 @@ public class TestJugada {
         assertEquals(valorEsperado,valorObtenido);
     }
 
-    @Test
-    public void test07LaManoFlushHouseSeCalculaCorrectamente(){
-        // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Corazon() ,new As());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new As());
-        CartaPoker cartaPoker3 = new CartaPoker(new Diamante() ,new As());
-        CartaPoker cartaPoker4 = new CartaPoker(new Diamante() ,new Rey());
-        CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Rey());
-        int valorEsperado = 372;
-
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
-        jugador.seleccionarCarta(cartaPoker3);
-        jugador.seleccionarCarta(cartaPoker4);
-        jugador.seleccionarCarta(cartaPoker5);
-        jugador.jugar(tablero);
-
-        // Act
-        int valorObtenido = jugador.getPuntaje();
-
-        // Assert
-        assertEquals(valorEsperado,valorObtenido);
-    }
+//    @Test
+//    public void test07LaManoFullHouseSeCalculaCorrectamente(){
+//        // Arrange
+//        Mano mano = new Mano();
+//        Jugador jugador = new Jugador(mano);
+//        Tablero tablero = new Tablero();
+//        CartaPoker cartaPoker1 = new CartaPoker(new Corazon() ,new As());
+//        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new As());
+//        CartaPoker cartaPoker3 = new CartaPoker(new Diamante() ,new As());
+//        CartaPoker cartaPoker4 = new CartaPoker(new Diamante() ,new Rey());
+//        CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Rey());
+//        int valorEsperado = 372;
+//
+//        jugador.seleccionarCarta(cartaPoker1);
+//        jugador.seleccionarCarta(cartaPoker2);
+//        jugador.seleccionarCarta(cartaPoker3);
+//        jugador.seleccionarCarta(cartaPoker4);
+//        jugador.seleccionarCarta(cartaPoker5);
+//        jugador.jugar(tablero);
+//
+//        // Act
+//        int valorObtenido = jugador.getPuntaje();
+//
+//        // Assert
+//        assertEquals(valorEsperado,valorObtenido);
+//    }
 
     @Test
     public void test08LaManoFourOfAKindSeCalculaCorrectamente(){

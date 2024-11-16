@@ -8,8 +8,6 @@ import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Tarot.Tarot;
-import Modelo.SistemaCartas.Tarot.Multiplicadorx6;
-import Modelo.SistemaCartas.Tarot.Puntosx10;
 
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -279,10 +277,10 @@ public class JugadorTest {
         CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Reina());
         CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Jota());
         CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
-        Tarot taroMultiplicadorX6 = new Multiplicadorx6();
+        Tarot taroMultiplicadorX6 = new Tarot(0,6);
         int valorEsperado = 256;
 
-        taroMultiplicadorX6.usar(cartaPoker1);
+        taroMultiplicadorX6.cambiarMultiplicador(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker2);
         jugador.seleccionarCarta(cartaPoker3);
@@ -304,10 +302,10 @@ public class JugadorTest {
         CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Jota());
         CartaPoker cartaPoker4 = new CartaPoker(new Corazon() ,new Jota());
         CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
-        Tarot tarotPuntosX10 = new Puntosx10();
+        Tarot tarotPuntosX10 = new Tarot(10,0);
         int valorEsperado = 122;
 
-        tarotPuntosX10.usar(cartaPoker1);
+        tarotPuntosX10.cambiarPuntaje(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker2);
         jugador.seleccionarCarta(cartaPoker3);
@@ -318,7 +316,6 @@ public class JugadorTest {
 
         assertEquals(valorEsperado,valorObtenido);
     }
-
 
     @Test
     public void test15LaManoSeCalculaEnElOrdenCorrecto(){

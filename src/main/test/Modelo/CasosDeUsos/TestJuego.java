@@ -8,9 +8,7 @@ import Modelo.Jugador.Mazo;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.CartaPoker;
-import Modelo.SistemaCartas.Jugadas.*;
 import Modelo.SistemaCartas.Tarot.*;
-import Modelo.SistemaPuntaje.*;
 
 import  org.junit.Test;
 import  static  org.junit.jupiter.api.Assertions.*;
@@ -82,7 +80,7 @@ public class TestJuego {
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
         CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Rey());
-        CartaPoker cartaPoker2 = new CartaPoker(new Trebol() ,new Reina());
+        CartaPoker cartaPoker2 = new CartaPoker(new Trebol() ,new Rey());
         CartaPoker cartaPoker3 = new CartaPoker(new Trebol() ,new Siete());
         CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Dos());
         CartaPoker cartaPoker5 = new CartaPoker(new Corazon() ,new Jota());
@@ -99,7 +97,7 @@ public class TestJuego {
         int valorObtenido = jugador.getPuntaje();
 
         // Assert
-        assertEquals(valorEsperado,valorObtenido);
+        assertEquals(valorEsperado, valorObtenido);
     }
 
     @Test
@@ -158,10 +156,10 @@ public class TestJuego {
         CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Jota());
         CartaPoker cartaPoker4 = new CartaPoker(new Corazon() ,new Jota());
         CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
-        Tarot tarotPuntosX10 = new Puntosx10();
+        Tarot tarotPuntosX10 = new Tarot(10, 0);
         int valorEsperado = 122;
 
-        tarotPuntosX10.usar(cartaPoker1);
+        tarotPuntosX10.cambiarPuntaje(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker2);
         jugador.seleccionarCarta(cartaPoker3);
@@ -187,10 +185,10 @@ public class TestJuego {
         CartaPoker cartaPoker3 = new CartaPoker(new Pica() ,new Reina());
         CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Jota());
         CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
-        Tarot taroMultiplicadorX6 = new Multiplicadorx6();
+        Tarot taroMultiplicadorX6 = new Tarot(0, 6);
         int valorEsperado = 256;
 
-        taroMultiplicadorX6.usar(cartaPoker1);
+        taroMultiplicadorX6.cambiarMultiplicador(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker1);
         jugador.seleccionarCarta(cartaPoker2);
         jugador.seleccionarCarta(cartaPoker3);
