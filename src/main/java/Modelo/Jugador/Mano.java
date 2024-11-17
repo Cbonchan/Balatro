@@ -1,9 +1,8 @@
 package Modelo.Jugador;
 
 // Importaciones
+import Modelo.SistemaCartas.Jugadas.*;
 import Modelo.SistemaPuntaje.Puntuador;
-import Modelo.SistemaCartas.Jugadas.Jugada;
-import Modelo.SistemaCartas.Jugadas.Manejador;
 import Modelo.SistemaCartas.Poker.CartaPoker;
 
 import java.util.ArrayList;
@@ -13,6 +12,21 @@ public class Mano {
     // Atributos
     private List<CartaPoker> cartaPokers;
     private Jugada jugada;
+
+    private static final List<Jugada> jugadasPosibles = List.of(
+            new FourOfAKind(), new FullHouse(), new ThreeOfAKind(),
+            new TwoPair(), new Pair(), new StraightFlush(),
+            new Straight(), new Flush(), new HighCard()
+    );
+
+    public Jugada determinarJugada(List<CartaPoker> cartaPokers) {
+        for (Jugada jugada : jugadasPosibles) {
+            if (jugada.esJugadaValida(cartaPokers)) {
+                return jugada;
+            }
+        }
+        return null;
+    }
 
     // Constructor
     public Mano() {
@@ -27,8 +41,7 @@ public class Mano {
             throw new IllegalStateException("La mano ya tiene 5 cartas.");
         }
         // Se actualiza la jugada en cada agregado de carta\
-        Manejador manejador = new Manejador();
-        jugada = manejador.determinarJugada(cartaPokers);
+        jugada = determinarJugada(cartaPokers);
     }
 
     public void vaciarMano() {
