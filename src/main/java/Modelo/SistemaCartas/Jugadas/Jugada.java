@@ -6,6 +6,7 @@ import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Jugada {
@@ -22,9 +23,23 @@ public abstract class Jugada {
     // Abstractos
     public abstract List<Poker> cartasJugada(List<Poker> cartaPokers);
 
+    // Post : Devuelve true si la jugada corresponde a una de las hijas
     public abstract boolean esJugadaValida(@NotNull List<Poker> cartaPokers);
 
     // Públicos
+
+    // Post: Regresa la lista de cartas ordenadas de mayor a menor
+    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
+        return  new ArrayList<>(cartas);
+    }
+
+    public  int calcularPuntaje(Puntaje puntajeList){
+
+        puntaje.sumarNuevosChips(puntajeList);
+        puntaje.sumarNuevoMultiplicador(puntajeList);
+        return puntaje.calcularPuntaje();
+    }
 
 }
 
