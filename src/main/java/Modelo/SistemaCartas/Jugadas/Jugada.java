@@ -2,38 +2,47 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Jugada {
 
     // Atributos
-    private final int chips;
-    private final int multiplicador;
+    protected Puntaje puntaje;
 
     // Constructor
-    public Jugada(int puntaje, int multiplicador) {
-        this.chips = puntaje;
-        this.multiplicador = multiplicador;
+    public Jugada(Chip chips, Multiplicador mult) {
+        this.puntaje = new Puntaje(chips, mult);
     }
 
     // Métodos
     // Abstractos
-    public abstract List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers);
+    public abstract List<Poker> cartasJugada(List<Poker> cartaPokers);
 
-    public abstract boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers);
+    // Post : Devuelve true si la jugada corresponde a una de las hijas
+    public abstract boolean esJugadaValida(@NotNull List<Poker> cartaPokers);
 
     // Públicos
-    public int puntajeJugada() {
-        return chips;
+
+    // Post: Regresa la lista de cartas ordenadas de mayor a menor
+    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
+        return  new ArrayList<>(cartas);
     }
 
-    public int multiplicadorJugada() {
-        return multiplicador;
+    public  int calcularPuntaje(Puntaje puntajeList){
+
+        puntaje.sumarNuevosChips(puntajeList);
+        puntaje.sumarNuevoMultiplicador(puntajeList);
+        return puntaje.calcularPuntaje();
     }
+
 }
 
 //las jugadas agregan al multiplicador y agregan
 //sus puntos al marcador cuando se realizan
-//NO EXISTE MANO QUE NO LLEVE A UNA JUGADA
+//NO EXISTE MANO QUE NO LLEVE A UNA JUGA

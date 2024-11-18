@@ -1,7 +1,7 @@
 package Modelo.Jugador;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 import Modelo.Juego.Tablero;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 public class Jugador {
     // Atributos
     private int puntaje;
-    private List<CartaPoker> cartas;
+    private List<Poker> cartas;
     private Mano mano;
 
     // Constructor
@@ -39,7 +39,7 @@ public class Jugador {
         mano.vaciarMano();
     }
 
-    public void seleccionarCarta(CartaPoker cartaPoker){
+    public void seleccionarCarta(Poker cartaPoker){
         mano.agregarCarta(cartaPoker);
     }
 
@@ -48,7 +48,7 @@ public class Jugador {
         asignarPuntaje(valor);
     }
 
-    public void agregarCartas(List<CartaPoker> cartasNuevas) {
+    public void agregarCartas(List<Poker> cartasNuevas) {
         cartas.addAll(cartasNuevas);
     }
 

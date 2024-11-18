@@ -1,17 +1,31 @@
 package Modelo.SistemaCartas.Poker.Figura;
 
 // Importaciones
+import  Modelo.SistemaPuntaje.*;
 
 public class Tres extends  Figura{
 
     // Atributos
+    private  final  int puntaje = 3;
 
     // Constructor
-    public Tres() {
-        super("3");
-    }
+    public Tres() {super("3");}
 
     // Métodos
+    @Override
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Dos);
+    }
+
+
+
+
+
     @Override
     public int orden() {
         return 3;
