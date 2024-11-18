@@ -47,68 +47,6 @@ public class Straight  extends  Jugada{
         return true; // Todas las cartas son consecutivas
     }
 
-
-
-
-
-
-
-        List<Figura> figurasEsperados = List.of(
-                new As(), new Rey(), new Reina(), new Jota(), new Diez());
-
-        int cartaVecesEncontrada = 0;
-
-        //! Ver si es posible que no sea doble for
-        for (int i = 0; i < cartaPokers.size(); i++){
-
-            Poker cartaActual = cartaPokers.get(i);
-
-            for (int j = 0; j < figurasEsperados.size(); j++) {
-
-                if ( cartaActual.esFiguraIgualA(figurasEsperados.get(j)) ){
-                    cartaVecesEncontrada++;
-                }
-            }
-        }
-
-        if(cartaVecesEncontrada == 5){
-            return true;
-        }
-
-        //TODO: hay que ordenar por esMayorA u alguna otra implementacion
-
-        cartaPokers.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
-
-            /*
-            for (int i = 0; i < cartaPokers.size(); i++) {
-
-                cartaActual = cartaPokers.get(i);
-
-                if (cartaActual.laCartaSiguienteEs(cartaActual[1]) ) {
-                    return false;
-                }0'98'
-
-                if (carta[i].siguienteCarta() !=  carta[i + 1])
-                    return  false ;
-            }
-            */
-
-
-
-
-
-        for (int i = 1; i < cartaPokers.size(); i++) {
-            int valorActual = cartaPokers.get(i-1).getFigura().orden();
-            int valorSiguiente = cartaPokers.get(i).getFigura().orden();
-
-            // Verificamos que la carta siguiente tenga un valor consecutivo al anterior
-            if (valorSiguiente != valorActual - 1) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     @Override
     public  List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
         return new ArrayList<>(cartaPokers);
