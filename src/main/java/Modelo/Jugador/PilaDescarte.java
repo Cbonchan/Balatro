@@ -24,6 +24,8 @@ public class PilaDescarte {
 
     public void descartarManoJugada(Mano mano){
         manosDescartadas.add(mano);
+        //TODO: momentaneamente ambas funciones hacen lo mismo, pero diferenciar
+        //TODO: para el funcionamiento de jokers de descarte ETC.
     }
 
     public void reinsertarEnMazo(Mazo mazo){
