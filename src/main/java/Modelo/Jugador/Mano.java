@@ -79,4 +79,9 @@ public class Mano {
         // int
         return jugada.calcularPuntaje(puntajeTotal);
     }
+
+    public List<Poker> cartasAcumuladas(List<Poker> lista){
+        lista.addAll(cartas);
+        return lista;
+    }
 }

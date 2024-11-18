@@ -1,4 +1,4 @@
-package Modelo.CasosDeUsos;
+ package Modelo.CasosDeUsos;
 
 // Importaciones
 import Modelo.Juego.*;
