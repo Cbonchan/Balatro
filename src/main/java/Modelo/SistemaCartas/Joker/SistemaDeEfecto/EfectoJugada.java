@@ -6,7 +6,8 @@ public class EfectoJugada extends Efecto {
         super("Mano Jugada");
     }
     @Override
-    public void activar(int puntaje, Multiplicador multiplicador){
+    public void activar(int cantidad, Multiplicador multiplicador){
+        multiplicador.incrementar(cantidad);
         return;
     }
 }

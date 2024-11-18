@@ -24,5 +24,7 @@ public class Multiplicador {
         return this.valor;
     }
 
-
+    public void incrementar(int incremento){
+        valor += incremento;
+    }
 }
