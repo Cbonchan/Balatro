@@ -11,7 +11,7 @@ public class Multiplicador {
 
     // Métodos
     public Multiplicador sumar(Multiplicador otroMultiplicador) {
-        return new Multiplicador(this.valor + otroMultiplicador.valorNumerico());
+        return new Multiplicador(this.valor * otroMultiplicador.valorNumerico());
     }
 
     public int multiplicarCon(Chip chip) {
