@@ -1,5 +1,6 @@
 package Modelo.Unitarios;
 
+import Modelo.Juego.Tablero;
 import Modelo.Jugador.*;
 import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
@@ -66,6 +67,26 @@ public class DescarteTest {
         pilaDescarte.descartarMano(mano);
         pilaDescarte.reinsertarEnMazo(mazo);
         assertEquals(54, mazo.getCartasDisponibles());
+
+    }
+
+    @Test
+    public void test04descartoAlJugarDescartaLasCartasJugadas(){
+        Mano mano = new Mano();
+        Poker carta1 = new Poker(new Corazon(), new As());
+        Poker carta2 = new Poker(new Corazon(), new Dos());
+
+        Jugador jugador = new Jugador(mano);
+        Tablero tablero = new Tablero();
+
+        jugador.agregarCartas(List.of(carta1, carta2));
+
+        mano.agregarCarta(carta1);
+        mano.agregarCarta(carta2);
+
+        jugador.jugar(tablero);
+
+        assertEquals(8, jugador.cartasFaltantes());
 
     }
 }
