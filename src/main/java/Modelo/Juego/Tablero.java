@@ -3,7 +3,7 @@ package Modelo.Juego;
 // Importaciones
 import Modelo.Jugador.Jugador;
 import Modelo.Jugador.Mano;
-import Modelo.SistemaCartas.Joker.*;
+import Modelo.Jugador.PilaDescarte;
 import Modelo.SistemaCartas.Tarot.*;
 
 import java.util.List;
@@ -11,14 +11,27 @@ import java.util.List;
 public class Tablero {
 
     // Atributos
-    private List<Joker> jokers;
+    //private List<Jocker> jockers;
     private List<Tarot> tarots;
     private Jugador jugador;
+    private PilaDescarte pilaDescarte;
 
     // Constructor
-    public int jugarMano(Mano mano) {
-        return mano.calcularPuntaje();
+
+    public Tablero() {
+        this.pilaDescarte = new PilaDescarte();
     }
 
+
     //Métodos
+    public int jugarMano(Mano mano) {
+        int puntaje = mano.calcularPuntaje();
+        pilaDescarte.descartarManoJugada(mano);
+        return puntaje;
+    }
+
+    public void descarteMano(Mano mano) {
+        pilaDescarte.descartarMano(mano);
+    }
+
 }

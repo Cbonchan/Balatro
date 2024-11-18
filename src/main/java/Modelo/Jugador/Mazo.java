@@ -64,12 +64,15 @@ public class Mazo {
     public void repartirCartas(Jugador jugador) {
         List<Poker> cartasParaMandar = new ArrayList<>();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < jugador.cartasFaltantes(); i++) {
             cartasParaMandar.add(cartaAleatoria());
         }
         jugador.agregarCartas(cartasParaMandar);
     }
 
-  
+    public void reinsertarCartas(List<Poker> cartas) {
+        mazoDeCartas.addAll(cartas);
+        cartasDisponibles += cartas.size();
+    }
 
 }
