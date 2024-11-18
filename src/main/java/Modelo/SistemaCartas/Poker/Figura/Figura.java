@@ -21,9 +21,11 @@ public abstract class Figura {
     //Métodos
     abstract public int orden();
     abstract public boolean LeSigueA(Figura figura);
+    abstract public Puntaje asignarPuntaje();
+    abstract  public boolean miSiguienteFiguraEs(Figura figura);
+
 
     // Duda
     abstract public int devolverPuntaje();
-    abstract public Puntaje asignarPuntaje();
 }
 

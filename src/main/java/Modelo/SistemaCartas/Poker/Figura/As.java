@@ -13,6 +13,20 @@ public class As extends Figura {
 
     // Métodos
     @Override
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Rey);
+    }
+
+
+
+
+
+    @Override
     public int orden() {
         return 1;
     }
@@ -22,18 +36,13 @@ public class As extends Figura {
         return figura instanceof  Rey;
     }
 
-
     // Esto es lo que esta en duda
+
     @Override
     public int devolverPuntaje() {
         return 11;
     }
 
-
-    @Override
-    public Puntaje asignarPuntaje() {
-        return new Puntaje( new Chip(puntaje));
-    }
 }
 
 

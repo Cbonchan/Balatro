@@ -1,9 +1,11 @@
 package Modelo.SistemaCartas.Poker.Figura;
 
 // Importaciones
+import  Modelo.SistemaPuntaje.*;
 
 public class Ocho extends  Figura{
     // Atributos
+    private  final int puntaje = 8;
 
     // Constructores
     public Ocho() {
@@ -11,6 +13,19 @@ public class Ocho extends  Figura{
     }
 
     // Métodos
+    @Override
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Siete);
+    }
+
+
+
+
     @Override
     public int orden() {
         return 8;
