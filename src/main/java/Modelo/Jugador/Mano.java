@@ -69,14 +69,14 @@ public class Mano {
         // Calcula el puntaje de la mano
         Puntaje puntajeTotal = new Puntaje( new Chip(0));
 
-       List <Poker> cartasUtilizadas =   jugada.cartasJugada(cartas);
+       List <Poker> cartasUtilizadas =   jugada.cartasJugadas(cartas);
 
        // Suma de Puntaje de las cartas utilizadas
         for (Poker cartasUtilizada : cartasUtilizadas) {
-            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
+            cartasUtilizada.sumarPuntajeCon(puntajeTotal);;
         }
 
         // int
-        return puntajeTotal.calcularPuntaje();
+        return jugada.calcularPuntaje(puntajeTotal);
     }
 }
