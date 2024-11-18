@@ -1,6 +1,8 @@
 package Modelo.SistemaCartas.Poker.Figura;
 
 // Importaciones
+import  Modelo.SistemaPuntaje.Puntaje;
+
 
 public abstract class Figura {
     // Atributos
@@ -11,7 +13,6 @@ public abstract class Figura {
         this.nombre = nombre;
     }
 
-
     // Getters y Setters
     public String getNombre() {
         return nombre;
@@ -19,7 +20,10 @@ public abstract class Figura {
 
     //Métodos
     abstract public int orden();
-    abstract public int devolverPuntaje();
     abstract public boolean LeSigueA(Figura figura);
+
+    // Duda
+    abstract public int devolverPuntaje();
+    abstract public Puntaje asignarPuntaje();
 }
 

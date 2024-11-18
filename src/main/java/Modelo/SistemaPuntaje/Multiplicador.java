@@ -2,20 +2,27 @@ package Modelo.SistemaPuntaje;
 
 public class Multiplicador {
 
-    private float valor;
+    private int valor;
 
     // Constructor
-    public Multiplicador(float valor) {
+    public Multiplicador(int valor) {
         this.valor = valor;
     }
 
+    // Métodos
     public Multiplicador sumar(Multiplicador otroMultiplicador) {
         return new Multiplicador(this.valor + otroMultiplicador.valorNumerico());
     }
 
+    public int multiplicarCon(Chip chip) {
+        return  (chip.multiplicarCon(this.valor));
+    }
+
     // Solo usar en Puntajes, si se usa afuera, se rompe pilar
     // Recordar: Lo que pasa en Multiplicador queda en Multiplicador
-    public float valorNumerico() {
+    public int valorNumerico() {
         return this.valor;
     }
+
+
 }

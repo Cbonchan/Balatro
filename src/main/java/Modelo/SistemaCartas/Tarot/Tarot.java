@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Tarot;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 
 public class Tarot {
 
@@ -16,14 +16,14 @@ public class Tarot {
     }
 
     // Métodos públicos
-    public void cambiarPuntaje(CartaPoker carta) {
+    public void cambiarPuntaje(Poker carta) {
         if (carta == null) {
             throw new IllegalArgumentException("La carta no puede ser nula.");
         }
         carta.setPuntaje(chips);
     }
 
-    public void cambiarMultiplicador(CartaPoker carta) {
+    public void cambiarMultiplicador(Poker carta) {
         carta.setMultiplicador(multiplicador);
     }
 

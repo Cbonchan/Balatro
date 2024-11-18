@@ -3,10 +3,14 @@ package Modelo.SistemaCartas.Jugadas;
 // Importaciones
 
 import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Modelo.SistemaPuntaje.Chip;
+import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 //! Acá debería ser como StraightFlush, que verifique que solo tenga
@@ -19,12 +23,12 @@ public class TwoPair extends  Jugada {
 
     // Constructores
     public TwoPair() {
-        super(20, 2);
+        super( new Chip(20), new Multiplicador( 2));
     }
 
     // Métodos
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
         if (cartaPokers.size() < 4){
             return false;
         }
@@ -46,8 +50,8 @@ public class TwoPair extends  Jugada {
     }
 
     @Override
-    public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
-        List<CartaPoker> cartasDeDosPares = new ArrayList<>();
+    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers){
+        List<Poker> cartasDeDosPares = new ArrayList<>();
         List<Figura> figurasConPares = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {

@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
 
@@ -21,8 +21,10 @@ public class Manejador {
     }
 
     // Métodos
-    public Jugada determinarJugada(List<CartaPoker> cartaPokers) {
+    public Jugada determinarJugada(List<Poker> cartaPokers) {
+
         for (Jugada jugada : jugadas) {
+
             if (jugada.esJugadaValida(cartaPokers)) {
                 return jugada;
             }

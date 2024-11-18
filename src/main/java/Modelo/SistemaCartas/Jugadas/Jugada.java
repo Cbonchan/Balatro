@@ -2,6 +2,8 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -9,31 +11,23 @@ import java.util.List;
 public abstract class Jugada {
 
     // Atributos
-    private final int chips;
-    private final int multiplicador;
+    protected Puntaje puntaje;
 
     // Constructor
-    public Jugada(int puntaje, int multiplicador) {
-        this.chips = puntaje;
-        this.multiplicador = multiplicador;
+    public Jugada(Chip chips, Multiplicador mult) {
+        this.puntaje = new Puntaje(chips, mult);
     }
 
     // Métodos
     // Abstractos
-    public abstract List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers);
+    public abstract List<Poker> cartasJugada(List<Poker> cartaPokers);
 
-    public abstract boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers);
+    public abstract boolean esJugadaValida(@NotNull List<Poker> cartaPokers);
 
     // Públicos
-    public int puntajeJugada() {
-        return chips;
-    }
 
-    public int multiplicadorJugada() {
-        return multiplicador;
-    }
 }
 
 //las jugadas agregan al multiplicador y agregan
 //sus puntos al marcador cuando se realizan
-//NO EXISTE MANO QUE NO LLEVE A UNA JUGADA
+//NO EXISTE MANO QUE NO LLEVE A UNA JUGA

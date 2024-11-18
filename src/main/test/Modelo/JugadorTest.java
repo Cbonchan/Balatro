@@ -46,11 +46,11 @@ public class JugadorTest {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Reina());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Reina());
-        CartaPoker cartaPoker3 = new CartaPoker(new Corazon() ,new Cinco());
-        CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Cinco());
-        CartaPoker cartaPoker5 = new CartaPoker(new Trebol() ,new Dos());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
+        Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
+        Poker cartaPoker3 = new Poker(new Corazon() ,new Cinco());
+        Poker cartaPoker4 = new Poker(new Pica() ,new Cinco());
+        Poker cartaPoker5 = new Poker(new Trebol() ,new Dos());
         int valorEsperado = 100;
 
         jugador.seleccionarCarta(cartaPoker1);
@@ -73,11 +73,11 @@ public class JugadorTest {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Rey());
-        CartaPoker cartaPoker2 = new CartaPoker(new Trebol() ,new Rey());
-        CartaPoker cartaPoker3 = new CartaPoker(new Trebol() ,new Siete());
-        CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Dos());
-        CartaPoker cartaPoker5 = new CartaPoker(new Corazon() ,new Jota());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
+        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
+        Poker cartaPoker3 = new Poker(new Trebol() ,new Siete());
+        Poker cartaPoker4 = new Poker(new Pica() ,new Dos());
+        Poker cartaPoker5 = new Poker(new Corazon() ,new Jota());
         int valorEsperado = 60;
 
         jugador.seleccionarCarta(cartaPoker1);
@@ -100,11 +100,11 @@ public class JugadorTest {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Corazon() ,new Ocho());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Ocho());
-        CartaPoker cartaPoker3 = new CartaPoker(new Trebol() ,new Ocho());
-        CartaPoker cartaPoker4 = new CartaPoker(new Trebol() ,new Dos());
-        CartaPoker cartaPoker5 = new CartaPoker(new Diamante() ,new Diez());
+        Poker cartaPoker1 = new Poker(new Corazon() ,new Ocho());
+        Poker cartaPoker2 = new Poker(new Pica() ,new Ocho());
+        Poker cartaPoker3 = new Poker(new Trebol() ,new Ocho());
+        Poker cartaPoker4 = new Poker(new Trebol() ,new Dos());
+        Poker cartaPoker5 = new Poker(new Diamante() ,new Diez());
         int valorEsperado = 162;
 
         jugador.seleccionarCarta(cartaPoker1);
@@ -127,11 +127,11 @@ public class JugadorTest {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Reina());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Siete());
-        CartaPoker cartaPoker3 = new CartaPoker(new Corazon() ,new Cinco());
-        CartaPoker cartaPoker4 = new CartaPoker(new Trebol() ,new Tres());
-        CartaPoker cartaPoker5 = new CartaPoker(new Pica() ,new Diez());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
+        Poker cartaPoker2 = new Poker(new Pica() ,new Siete());
+        Poker cartaPoker3 = new Poker(new Corazon() ,new Cinco());
+        Poker cartaPoker4 = new Poker(new Trebol() ,new Tres());
+        Poker cartaPoker5 = new Poker(new Pica() ,new Diez());
         int valorEsperado = 15;
 
         jugador.seleccionarCarta(cartaPoker1);
@@ -154,10 +154,10 @@ public class JugadorTest {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Tres());
-        CartaPoker cartaPoker2 = new CartaPoker(new Trebol() ,new Cuatro());
-        CartaPoker cartaPoker3 = new CartaPoker(new Diamante() ,new Cinco());
-        CartaPoker cartaPoker4 = new CartaPoker(new Pica() ,new Seis());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Tres());
+        Poker cartaPoker2 = new Poker(new Trebol() ,new Cuatro());
+        Poker cartaPoker3 = new Poker(new Diamante() ,new Cinco());
+        Poker cartaPoker4 = new CartaPoker(new Pica() ,new Seis());
         CartaPoker cartaPoker5 = new CartaPoker(new Corazon() ,new Siete());
         int valorEsperado = 220;
 

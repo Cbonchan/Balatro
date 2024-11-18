@@ -15,14 +15,16 @@ import java.util.List;
 public class Mazo {
 
     // Atributos
-    private final ArrayList<CartaPoker> mazoDeCartas;
+    private final ArrayList<Poker> mazoDeCartas;
     private int cartasDisponibles;
 
     // Constructor
     public Mazo() {
         this.cartasDisponibles = 52;
-        mazoDeCartas = new ArrayList<CartaPoker>();
+        mazoDeCartas = new ArrayList<Poker>();
 
+        Palo[] palos = {
+                new Corazon(), new Diamante(), new Trebol(), new Pica()};
 
         Figura[] valores ={
                 new As(), new Dos(), new Tres(), new Cuatro(),
@@ -30,12 +32,10 @@ public class Mazo {
                 new Nueve(), new Diez(), new Jota(), new Reina(),
                 new Rey()};
         
-        Palo[] palos = {
-                new Corazon(), new Diamante(), new Trebol(), new Pica()};
 
         for (Palo palo : palos) {
             for (Figura valor : valores ) {
-                mazoDeCartas.add(new CartaPoker(palo, valor));
+                mazoDeCartas.add(new Poker(palo, valor));
             }
         }
     }
@@ -48,9 +48,9 @@ public class Mazo {
     // Métodos
     
     // Privados
-    private CartaPoker cartaAleatoria() {
+    private Poker cartaAleatoria() {
         int indice = (int) (Math.random() * cartasDisponibles);
-        CartaPoker cartaPoker = mazoDeCartas.get(indice);
+        Poker cartaPoker = mazoDeCartas.get(indice);
         mazoDeCartas.remove(indice);
         cartasDisponibles--;
         return cartaPoker;
@@ -62,7 +62,7 @@ public class Mazo {
     }
 
     public void repartirCartas(Jugador jugador) {
-        List<CartaPoker> cartasParaMandar = new ArrayList<>();
+        List<Poker> cartasParaMandar = new ArrayList<>();
 
         for (int i = 0; i < 8; i++) {
             cartasParaMandar.add(cartaAleatoria());
