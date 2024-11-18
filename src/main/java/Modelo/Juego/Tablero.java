@@ -3,6 +3,7 @@ package Modelo.Juego;
 // Importaciones
 import Modelo.Jugador.Jugador;
 import Modelo.Jugador.Mano;
+import Modelo.SistemaCartas.Joker.*;
 import Modelo.SistemaCartas.Tarot.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public class Tablero {
 
     // Atributos
-    //private List<Jocker> jockers;
+    private List<Joker> jokers;
     private List<Tarot> tarots;
     private Jugador jugador;
 
