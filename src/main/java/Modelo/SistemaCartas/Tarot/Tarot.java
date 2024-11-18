@@ -20,11 +20,11 @@ public class Tarot {
         if (carta == null) {
             throw new IllegalArgumentException("La carta no puede ser nula.");
         }
-        carta.setPuntaje(chips);
+       // carta.setPuntaje(chips);
     }
 
     public void cambiarMultiplicador(Poker carta) {
-        carta.setMultiplicador(multiplicador);
+        //carta.setMultiplicador(multiplicador);
     }
 
 }
