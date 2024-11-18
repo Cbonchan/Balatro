@@ -34,21 +34,21 @@ public class Poker {
 
     // Métodos
 
-    public boolean laCartaSiguienteEs(Poker otraCarta){
 
-        return otraCarta.miSiguienteCartaEs(figura);
+    // Privados
 
+    private boolean miAnteriorCartaEs(Figura figuraActualCartaList){
+        return figuraActualCartaList.miSiguienteFiguraEs(figura);
+    }
 
-        return figura.miSiguienteCartaEs()
+    // Públicos
 
-        return this.figura.LeSigueA(otraCarta.getFigura());
+    public boolean laCartaSiguienteEs(Poker siguienteCartaList){
+        return siguienteCartaList.miAnteriorCartaEs(figura);
+
     }
 
 
-    carta modifcarTarot (cartaPoker){
-        // 3 de trebol y cambia a 10 puntos
-        puntaje.modificarPuntaje(// CONDICION DEL TATOR
-    }
 
 
 
@@ -57,26 +57,9 @@ public class Poker {
     }
 
 
-
-
-
-
-
     public void sumarPuntajeCon(Puntaje otroPuntaje){
         otroPuntaje.sumarNuevosChips(this.puntaje);
         otroPuntaje.sumarNuevoMultiplicador(this.puntaje);
     }
 
-
-    public  int calcularPuntaje( ){
-        return  Figura.calcularPuntaje();
-        return  this.puntaje.calcularPuntaje();
-    }
-
 }
-
-// Mano(PUNTAJEFINAL)
-
-// PuntajeMano.sumarPuntajeCon(PUNTAJEFINAL) // Puntaje final = otroPuntaje
-
-// PUNTAJEFINAL.sumarnuevochips,(this.chips
