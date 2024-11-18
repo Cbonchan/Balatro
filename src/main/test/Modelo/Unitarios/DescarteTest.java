@@ -18,7 +18,7 @@ public class DescarteTest {
     public void test01descartoCartasYelJugadorTieneMenos() {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-
+        Tablero tablero = new Tablero();
         Poker carta1 = new Poker(new Corazon(), new As());
         Poker carta2 = new Poker(new Corazon(), new Dos());
         Poker carta3 = new Poker(new Corazon(), new Tres());
@@ -33,7 +33,7 @@ public class DescarteTest {
         jugador.seleccionarCarta(carta1);
         jugador.seleccionarCarta(carta2);
 
-        jugador.descartarMano();
+        jugador.descartarMano(tablero);
         assertEquals(6, jugador.getCantidadCartas());
     }
 

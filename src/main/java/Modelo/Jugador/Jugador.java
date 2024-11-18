@@ -52,8 +52,8 @@ public class Jugador {
         asignarPuntaje(valor);
     }
 
-    public void descartarMano(){
-        pilaDescarte.descartarMano(mano);
+    public void descartarMano(Tablero tablero){
+        tablero.descarteMano(mano);
         this.quitarCartas(mano);
         mano.vaciarMano();
     }
