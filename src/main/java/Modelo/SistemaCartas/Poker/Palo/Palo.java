@@ -17,5 +17,15 @@ public abstract class Palo {
     }
 
     // Métodos
+
+    // Post: Devuelve true si el palo es igual al palo de la instancia
+    abstract public boolean somosMismoPalo(Palo palo);
+
+
+    // Duda
+
+    // Post: Devuelve true si el palo es igual al palo de la instancia
     abstract public boolean esPalo(String palo);
+
+
 }

@@ -8,39 +8,31 @@ public class As extends Figura {
     // Atributos
     private  final int puntaje = 11;
 
+
     // Constructor
-    public As() { super("As");}
+    public As() {
+        super("As");
+    }
 
     // Métodos
-    @Override
-    public Puntaje asignarPuntaje() {
-        return new Puntaje( new Chip(puntaje));
-    }
-
-    @Override
-    public boolean miSiguienteFiguraEs(Figura otraFigura){
-        return  (otraFigura instanceof Rey);
-    }
-
-
-
-
-
     @Override
     public int orden() {
         return 1;
     }
 
     @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof  Rey;
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
     }
 
-    // Esto es lo que esta en duda
+    @Override
+     public  boolean esIgualA(Figura figura){
+        return figura instanceof As;
+    }
 
     @Override
-    public int devolverPuntaje() {
-        return 11;
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Rey);
     }
 
 }

@@ -15,8 +15,16 @@ public class Rey extends Figura {
 
     // Métodos
     @Override
+    public int orden() {return 13;}
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Rey;
     }
 
     @Override
@@ -24,17 +32,4 @@ public class Rey extends Figura {
         return  (otraFigura instanceof Reina);
     }
 
-
-    @Override
-    public int orden() {return 13;}
-
-    @Override
-    public int devolverPuntaje() {
-        return 10;
-    }
-
-    @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Reina;
-    }
 }

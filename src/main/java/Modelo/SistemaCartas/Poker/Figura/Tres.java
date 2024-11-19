@@ -9,36 +9,29 @@ public class Tres extends  Figura{
     private  final  int puntaje = 3;
 
     // Constructor
-    public Tres() {super("3");}
+    public Tres() {
+        super("3");
+    }
 
     // Métodos
-    @Override
-    public Puntaje asignarPuntaje() {
-        return new Puntaje( new Chip(puntaje));
-    }
-
-    @Override
-    public boolean miSiguienteFiguraEs(Figura otraFigura){
-        return  (otraFigura instanceof Dos);
-    }
-
-
-
-
-
     @Override
     public int orden() {
         return 3;
     }
 
     @Override
-    public int devolverPuntaje() {
-        return 3;
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
     }
 
     @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Dos;
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Tres;
+    }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Dos);
     }
 
 }

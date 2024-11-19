@@ -9,12 +9,24 @@ public class Reina extends Figura {
     private  final int puntaje = 10;
 
     // Constructor
-    public Reina() {super("Q");}
+    public Reina() {
+        super("Q");
+    }
 
     // Métodos
     @Override
+    public int orden() {
+        return 12;
+    }
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Reina;
     }
 
     @Override
@@ -23,21 +35,5 @@ public class Reina extends Figura {
     }
 
 
-
-
-    @Override
-    public int orden() {
-        return 12;
-    }
-
-    @Override
-    public int devolverPuntaje() {
-        return 10;
-    }
-
-    @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Jota;
-    }
 
 }

@@ -12,4 +12,9 @@ public class Diamante extends Palo {
     // Métodos
     @Override
     public boolean esPalo(String palo) { return palo.equals(this.getNombre());  }
+
+    @Override
+    public boolean somosMismoPalo(Palo palo) {
+        return palo instanceof Diamante;
+    }
 }
