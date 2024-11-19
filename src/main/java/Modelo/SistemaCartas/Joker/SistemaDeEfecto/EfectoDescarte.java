@@ -1,4 +1,5 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
+import Modelo.Jugador.Jugador;
 import Modelo.SistemaPuntaje.Multiplicador;
 
 public class EfectoDescarte extends Efecto {
@@ -6,7 +7,8 @@ public class EfectoDescarte extends Efecto {
         super("Descarte");
     }
     @Override
-    public void activar(int puntaje, Multiplicador multiplicador){
+    public void activar(int puntaje, int multiplicador, Jugador jugador){
+        jugador.aumentarChips(puntaje, multiplicador);
         return;
     }
 }

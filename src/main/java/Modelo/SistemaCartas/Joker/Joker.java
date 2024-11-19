@@ -5,6 +5,7 @@ import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoDescarte;
 import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoJugada;
 import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoUnoEn;
 import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Jugador.Jugador;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class Joker {
         this.descripcion = descripcion;
         this.multiplicador = unMultiplicador;
 
+
         for (String efectoCorrectoString: efectosPosibles){
             if (efecto.validarEfecto(efectoCorrectoString)){
                 this.efecto = efecto;
@@ -50,25 +52,26 @@ public class Joker {
         return descripcion;
     }
 
-    public void activar(Multiplicador multiplicadorDelJugador){
-        this.efecto.activar(this.multiplicador, multiplicadorDelJugador);
+    public void activar(Jugador jugador){
+        this.efecto.activar(puntaje, multiplicador, jugador);
     }
 
-    public void activarPorDescarte(Multiplicador multiplicadorDelJugador){
+    public void activarPorDescarte(Jugador jugador){
       if (this.efecto.validarEfecto("Descarte")){
-          this.efecto.activar(puntaje,multiplicadorDelJugador);
+          this.efecto.activar(puntaje, multiplicador, jugador);
         }
+
     }
 
-    public void activarPorJugada(Multiplicador multiplicadorDelJugador){
+    public void activarPorJugada(Jugador jugador){
         if (this.efecto.validarEfecto("Mano Jugada")){
-            this.efecto.activar(multiplicador,multiplicadorDelJugador);
+            this.efecto.activar(puntaje, multiplicador, jugador);
         }
     }
 
-    public void activarPorUnoEn(Multiplicador multiplicadorDelJugador){
+    public void activarPorUnoEn(Jugador jugador){
         if (this.efecto.validarEfecto("1 en")){
-         this.efecto.activar(puntaje,multiplicadorDelJugador);
+         this.efecto.activar(puntaje, multiplicador, jugador);
         }
     }
 }

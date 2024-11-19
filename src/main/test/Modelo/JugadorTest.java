@@ -46,7 +46,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
         Poker cartaPoker3 = new Poker(new Corazon() ,new Cinco());
@@ -73,7 +73,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
         Poker cartaPoker3 = new Poker(new Trebol() ,new Siete());
@@ -100,7 +100,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Corazon() ,new Ocho());
         Poker cartaPoker2 = new Poker(new Pica() ,new Ocho());
         Poker cartaPoker3 = new Poker(new Trebol() ,new Ocho());
@@ -127,7 +127,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Siete());
         Poker cartaPoker3 = new Poker(new Corazon() ,new Cinco());
@@ -154,7 +154,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Tres());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Cuatro());
         Poker cartaPoker3 = new Poker(new Diamante() ,new Cinco());
@@ -181,7 +181,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Trebol() ,new Siete());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Cuatro());
         Poker cartaPoker3 = new Poker(new Trebol() ,new Reina());
@@ -207,7 +207,7 @@ public class JugadorTest {
     public void test09LaManoFlushHouseSeCalculaCorrectamente(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Corazon() ,new As());
         Poker cartaPoker2 = new Poker(new Pica() ,new As());
         Poker cartaPoker3 = new Poker(new Diamante() ,new As());
@@ -231,7 +231,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Seis());
         Poker cartaPoker2 = new Poker(new Pica() ,new Seis());
         Poker cartaPoker3 = new Poker(new Corazon() ,new Seis());
@@ -258,7 +258,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Jota());
         Poker cartaPoker3 = new Poker(new Pica() ,new Diez());
@@ -284,7 +284,7 @@ public class JugadorTest {
     public void test12LaManoRoyalFLushSeCalculaCorrectamente(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new As());
         Poker cartaPoker2 = new Poker(new Pica() ,new Rey());
         Poker cartaPoker3 = new Poker(new Pica() ,new Reina());
@@ -308,7 +308,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new As());
         Poker cartaPoker2 = new Poker(new Corazon() ,new As());
         Poker cartaPoker3 = new Poker(new Pica() ,new Reina());
@@ -338,7 +338,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new As());
         Poker cartaPoker2 = new Poker(new Corazon() ,new As());
         Poker cartaPoker3 = new Poker(new Pica() ,new Jota());
@@ -367,7 +367,7 @@ public class JugadorTest {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Jota());
         Poker cartaPoker3 = new Poker(new Pica() ,new Diez());

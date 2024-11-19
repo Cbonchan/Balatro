@@ -12,14 +12,16 @@ public class Jugador {
     private int puntaje;
     private List<Poker> cartas;
     private Mano mano;
-    private PilaDescarte pilaDescarte;
+
 
     // Constructor
+
+    //? Por que Jugador recibe Mano y no la crea el mismo?
     public Jugador(Mano mano) {
         this.puntaje = 0;
         this.cartas = new ArrayList<>();
         this.mano = mano;
-        this.pilaDescarte = new PilaDescarte();
+
     }
 
     // Getters
@@ -34,6 +36,22 @@ public class Jugador {
 
     // Métodos
 
+    public int obtenerMultiplicador(){
+        return (mano.obtenerMultiplicador());
+    }
+
+    public void sumarMultiplicador(int multiplicador){
+        mano.sumarMultiplicador(multiplicador);
+    }
+
+    public int obtenerChips(){
+        return (mano.obtenerChips());
+    }
+
+    public void aumentarChips(int puntaje, int multiplicador){
+        this.mano.aumentarChips(puntaje, multiplicador);
+    }
+
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
 
@@ -47,7 +65,7 @@ public class Jugador {
 
     public void jugar(Tablero tablero){
         int valor = tablero.jugarMano(mano);
-        pilaDescarte.descartarManoJugada(mano);
+
         this.quitarCartas(mano);
         asignarPuntaje(valor);
     }

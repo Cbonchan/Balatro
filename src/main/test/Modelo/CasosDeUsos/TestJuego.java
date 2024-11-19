@@ -51,7 +51,7 @@ public class TestJuego {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
         Poker cartaPoker3 = new Poker(new Corazon() ,new Cinco());
@@ -78,7 +78,7 @@ public class TestJuego {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
         Poker cartaPoker3 = new Poker(new Trebol() ,new Siete());
@@ -105,7 +105,7 @@ public class TestJuego {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new Reina());
         Poker cartaPoker2 = new Poker(new Pica() ,new Jota());
         Poker cartaPoker3 = new Poker(new Pica() ,new Diez());
@@ -150,7 +150,7 @@ public class TestJuego {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new As());
         Poker cartaPoker2 = new Poker(new Corazon() ,new As());
         Poker cartaPoker3 = new Poker(new Pica() ,new Jota());
@@ -179,7 +179,7 @@ public class TestJuego {
         // Arrange
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Pica() ,new As());
         Poker cartaPoker2 = new Poker(new Corazon() ,new As());
         Poker cartaPoker3 = new Poker(new Pica() ,new Reina());

@@ -28,6 +28,28 @@ public abstract class Jugada {
 
     // Públicos
 
+    public int obtenerMultiplicador(){
+        return (puntaje.obtenerMultiplicador());
+    }
+
+    public void sumarMultiplicador(int incremento){
+        Chip chip = new Chip(0);
+        Multiplicador multiplicador = new Multiplicador(incremento);
+        Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
+
+
+        puntaje.incrementarMultiplicador(otroPuntaje);
+    }
+
+    public int obtenerChips(){
+        return (puntaje.obtenerChips());
+    }
+
+    public void aumentarChips(int puntos, int multiplicador){
+        Chip chip = new Chip(puntos);
+        puntaje.aumentarValorChip(chip);
+    }
+
     // Post: Regresa la lista de cartas ordenadas de mayor a menor
     public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
         cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));

@@ -18,16 +18,35 @@ public class Puntaje {
 
     // Métodos
 
+
     // Privados
     public Chip aumentarValorChip(Chip otroChip ){
           return  (this.chip.sumar(otroChip) );
     }
 
+
+    //! Rompe encapsulamiento
     public Multiplicador aumentarValorMultiplicador(Multiplicador otroMultiplicador ){
         return  (this.multiplicador.sumar(otroMultiplicador) );
     }
 
+    public void incrementarMultiplicador(Puntaje otroPuntaje){
+        this.multiplicador = otroPuntaje.sumarDeVerdadElMultiplicador(this.multiplicador);
+    }
+
+    public Multiplicador sumarDeVerdadElMultiplicador(Multiplicador otroMultiplicador){
+        return (this.multiplicador.sumarDeVerdad(otroMultiplicador));
+    }
+
     // Públicos
+    public int obtenerMultiplicador(){
+        return (multiplicador.valorNumerico());
+    }
+
+    public int obtenerChips(){
+        return (chip.valorNumerico());
+    }
+
     public void sumarNuevosChips( Puntaje otroPuntaje){
         // This == puntaje final
         this.chip = otroPuntaje.aumentarValorChip(this.chip);
@@ -37,6 +56,8 @@ public class Puntaje {
         // This == puntaje final
         this.multiplicador = otroPuntaje.aumentarValorMultiplicador(this.multiplicador);
     }
+
+
 
     public  int calcularPuntaje( ){
         return  this.multiplicador.multiplicarCon(this.chip);

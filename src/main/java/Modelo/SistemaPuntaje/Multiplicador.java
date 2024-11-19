@@ -14,6 +14,10 @@ public class Multiplicador {
         return new Multiplicador(this.valor * otroMultiplicador.valorNumerico());
     }
 
+    public Multiplicador sumarDeVerdad(Multiplicador otroMultiplicador) {
+        return new Multiplicador(this.valor + otroMultiplicador.valorNumerico());
+    }
+
     public int multiplicarCon(Chip chip) {
         return  (chip.multiplicarCon(this.valor));
     }

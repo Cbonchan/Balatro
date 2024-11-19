@@ -41,6 +41,22 @@ public class Mano {
 
     // Públicos
 
+    public int obtenerMultiplicador(){
+        return (jugada.obtenerMultiplicador());
+    }
+
+    public void sumarMultiplicador(int incremento){
+        jugada.sumarMultiplicador(incremento);
+    }
+
+    public int obtenerChips(){
+        return (jugada.obtenerChips());
+    }
+
+    public void aumentarChips(int puntaje, int multiplicador){
+        jugada.aumentarChips(puntaje, multiplicador);
+    }
+
     public void agregarCarta(Poker cartaPoker) {
         if (cartas.size() < 5) {
             cartas.add(cartaPoker);
