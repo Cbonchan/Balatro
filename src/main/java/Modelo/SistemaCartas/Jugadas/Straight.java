@@ -2,7 +2,6 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
@@ -29,15 +28,14 @@ public class Straight  extends  Jugada{
         }
 
         //  Ordenamos de mayor a menor
-        // Hay que preguntar
-        cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
+
+        List<Poker>cartasOrdenadas = ordenarCartas(cartas);
 
         //  Verificamos que las cartas sean consecutivas
-
-        for ( int i = 0; i < cartas.size() - 1; i++ ) {
+        for ( int i = 0; i < cartasOrdenadas.size() - 1; i++ ) {
             // variables para mayor claridad
-            Poker actual = cartas.get(i);
-            Poker siguiente = cartas.get(i + 1);
+            Poker actual = cartasOrdenadas.get(i);
+            Poker siguiente = cartasOrdenadas.get(i + 1);
 
             // Verificar si la carta actual no es consecutiva con la siguiente
             if (!actual.laCartaSiguienteEs(siguiente)) {
@@ -48,8 +46,9 @@ public class Straight  extends  Jugada{
     }
 
     @Override
-    public  List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+
+        return  ordenarCartas(cartas);
     }
 
 }

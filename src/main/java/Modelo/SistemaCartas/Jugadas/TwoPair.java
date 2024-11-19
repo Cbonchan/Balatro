@@ -19,6 +19,8 @@ public class TwoPair extends  Jugada {
 
     // Atributos
     // Chips = 20 y Multiplicador = 2
+    Pair primerPar = new Pair();
+    Pair segundoPar = new Pair();
 
 
     // Constructores
@@ -28,44 +30,42 @@ public class TwoPair extends  Jugada {
 
     // Métodos
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
-        if (cartaPokers.size() < 4){
+    public boolean esJugadaValida(@NotNull List<Poker> cartas){
+        if (cartas.size() < 4) {
             return false;
         }
-        List<Figura> figurasConPares = new ArrayList<>();
 
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            for (int j = i + 1; j < cartaPokers.size(); j++) {
-                Figura figuraActual = cartaPokers.get(i).getFigura();
-                Figura figuraAComparar = cartaPokers.get(j).getFigura();
-
-                if (cartaPokers.get(i).esFiguraIgualA(figuraAComparar) && !figurasConPares.contains(figuraActual)) {
-                    figurasConPares.add(figuraActual);
-                    break;
-                }
-            }
+        // Verificar el primer par
+        if (!primerPar.esJugadaValida(cartas)) {
+            return false;
         }
 
-        return figurasConPares.size() == 2; // Devuelve true si son dos pares distintos
+        // Remover las cartas del primer par
+        List<Poker> cartasRestantes = new ArrayList<>(cartas);
+        cartasRestantes.removeAll(primerPar.cartasJugadas(cartas));
+
+        // Verificar el segundo par
+        return segundoPar.esJugadaValida(cartasRestantes) ;
     }
+
 
     @Override
-    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers){
-        List<Poker> cartasDeDosPares = new ArrayList<>();
-        List<Figura> figurasConPares = new ArrayList<>();
+    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
 
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            for (int j = i + 1; j < cartaPokers.size(); j++) {
-                Figura figuraActual = cartaPokers.get(i).getFigura();
-                if (cartaPokers.get(i).esFiguraIgualA(cartaPokers.get(j).getFigura())
-                        && !figurasConPares.contains(figuraActual)) {
-                    figurasConPares.add(figuraActual);
-                    cartasDeDosPares.add(cartaPokers.get(i));
-                    cartasDeDosPares.add(cartaPokers.get(j));
-                    break;
-                }
-            }
-        }
+        // Obtener el primer par
+        List<Poker> primerParCartas = primerPar.cartasJugadas(cartas);
+
+        List<Poker> cartasDeDosPares = new ArrayList<>(primerParCartas);
+
+        // Remover las cartas del primer par
+        List<Poker> cartasRestantes = new ArrayList<>(cartas);
+        cartasRestantes.removeAll(primerParCartas);
+
+        // Obtener el segundo par
+        List<Poker> segundoParCartas = segundoPar.cartasJugadas(cartasRestantes);
+        cartasDeDosPares.addAll(segundoParCartas);
+
         return cartasDeDosPares;
     }
+
 }

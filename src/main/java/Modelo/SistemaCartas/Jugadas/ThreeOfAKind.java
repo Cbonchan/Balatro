@@ -1,15 +1,11 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
 import java.util.ArrayList;
-
-import Modelo.SistemaPuntaje.Chip;
-import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 public class ThreeOfAKind extends  Jugada{
@@ -24,50 +20,56 @@ public class ThreeOfAKind extends  Jugada{
 
     // Métodos
     @Override
-    public  boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
-        if (cartaPokers.size() < 3){ return false; }
+    public  boolean esJugadaValida(@NotNull List<Poker> cartas){
 
-        List<Figura> figurasConThreeOfAKind = new ArrayList<>();
+        // Primera condición, no existe Trio con menos de 3 cartas
+        if (cartas.size() < 3) {
+            return false;
+        }
 
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            int cartaVecesEncontrada = 0;
-            Poker cartaActual = cartaPokers.get(i);
+        // Ordenar de mayor a menor
+        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
 
-            for (int j = i + 1; j < cartaPokers.size(); j++) {
+        // Identificar si hay un trio (tres cartas con la misma figura)
+        for (int i = 0; i < cartasOrdenadas.size() - 2; i++) {
+            Poker actual = cartasOrdenadas.get(i);
+            Poker siguiente = cartasOrdenadas.get(i + 1);
+            Poker subsiguiente = cartasOrdenadas.get(i + 2);
 
-                if (cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())) {
-                    cartaVecesEncontrada++;
-                }
-            }
-
-            if (cartaVecesEncontrada == 2){
-                figurasConThreeOfAKind.add(cartaActual.getFigura());
-                break;
+            if (actual.tieneMismaFiguraQue(siguiente) && siguiente.tieneMismaFiguraQue(subsiguiente)) {
+                return true;
             }
         }
-        return figurasConThreeOfAKind.size() == 1;
+        return false;
     }
 
     @Override
-    public  List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers){
-        List<Poker> cartasTresIguales = new ArrayList<>();
+    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
 
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            Poker cartaActual = cartaPokers.get(i);
-            int cuenta = 0;
+        List<Poker> cartasDelTrio = new ArrayList<>();
 
-            for (int j = 0; j < cartaPokers.size(); j++) {
-                if (cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura())) {
-                    cartasTresIguales.add(cartaPokers.get(j));
-                    cuenta++;
-                }
-                if (cuenta == 3) break;
-            }
-
-            if (cuenta == 3) return cartasTresIguales;
+        // Primera condición, no existe Trio con menos de 3 cartas
+        if (cartas.size() < 3) {
+            return cartasDelTrio;
         }
 
-        return cartasTresIguales;
+        // Ordenar de mayor a menor
+        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
+
+        // Identificar las cartas que forman el trio
+        for (int i = 0; i < cartasOrdenadas.size() - 2; i++) {
+            Poker actual = cartasOrdenadas.get(i);
+            Poker siguiente = cartasOrdenadas.get(i + 1);
+            Poker subsiguiente = cartasOrdenadas.get(i + 2);
+
+            if (actual.tieneMismaFiguraQue(siguiente) && siguiente.tieneMismaFiguraQue(subsiguiente)) {
+                cartasDelTrio.add(actual);
+                cartasDelTrio.add(siguiente);
+                cartasDelTrio.add(subsiguiente);
+                return cartasDelTrio;
+            }
+        }
+        return cartasDelTrio;
     }
 
 }
