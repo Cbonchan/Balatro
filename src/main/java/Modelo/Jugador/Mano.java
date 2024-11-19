@@ -72,6 +72,10 @@ public class Mano {
         cartas.clear();
     }
 
+    public boolean validarNombreMano(String manoAValidar){
+        return this.jugada.validarNombreJugada(manoAValidar);
+    }
+
     /*
     // El multiplicador y puntaje ahora lo tendría Jugada, los metodos de abajo no tienen que manejarse aca
 
@@ -89,7 +93,7 @@ public class Mano {
 
        // Suma de Puntaje de las cartas utilizadas
         for (Poker cartasUtilizada : cartasUtilizadas) {
-            cartasUtilizada.sumarPuntajeCon(puntajeTotal);;
+            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
         }
 
         // int

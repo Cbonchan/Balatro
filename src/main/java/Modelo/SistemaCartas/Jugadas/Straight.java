@@ -21,6 +21,11 @@ public class Straight  extends  Jugada{
 
     // Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("escalera");
+    }
+
+    @Override
     public  boolean esJugadaValida(List<Poker> cartas) {
 
         // Primera condición, no existe escalera con menos de 5 cartas

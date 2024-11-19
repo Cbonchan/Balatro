@@ -23,6 +23,11 @@ public class Flush extends Jugada{
 
     // Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("color");
+    }
+
+    @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
         // Verificamos que todas las cartas tengan el mismo palo
         if (cartaPokers.size() != 5){ return false; }

@@ -22,6 +22,10 @@ public class FourOfAKind extends  Jugada {
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("poker");
+    }
 
     @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){

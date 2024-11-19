@@ -25,6 +25,8 @@ public abstract class Jugada {
 
     // Post : Devuelve true si la jugada corresponde a una de las hijas
     public abstract boolean esJugadaValida(@NotNull List<Poker> cartaPokers);
+    // Post: Devuelve true si el nombre de una jugada pasado por parametro es el nombre de esa instancia de jugada
+    public abstract boolean validarNombreJugada(String manoAValidar);
 
     // Públicos
 

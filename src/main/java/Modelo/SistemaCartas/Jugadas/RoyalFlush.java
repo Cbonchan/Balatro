@@ -24,6 +24,11 @@ public class RoyalFlush extends  Jugada {
 
     //  Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("escalera real");
+    }
+
+    @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
         if (cartaPokers.size() != 5){return false;}
 

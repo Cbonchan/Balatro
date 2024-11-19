@@ -18,6 +18,11 @@ public class HighCard  extends  Jugada{
 
     // Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("carta alta");
+    }
+
+    @Override
     public boolean esJugadaValida(List<Poker> cartaPokers) {
         return !cartaPokers.isEmpty();
     }

@@ -28,6 +28,11 @@ public class TwoPair extends  Jugada {
 
     // Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("doble par");
+    }
+
+    @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
         if (cartaPokers.size() < 4){
             return false;

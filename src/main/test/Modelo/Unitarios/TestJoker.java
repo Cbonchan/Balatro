@@ -4,22 +4,12 @@ package Modelo.Unitarios;
 import Modelo.Juego.Tablero;
 import Modelo.Jugador.Mano;
 import Modelo.SistemaCartas.Joker.Joker;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.Efecto;
 import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoDescarte;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoJugada;
-import Modelo.SistemaCartas.Jugadas.Jugada;
-import Modelo.SistemaCartas.Poker.Figura.Dos;
-import Modelo.SistemaCartas.Poker.Figura.Jota;
+import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoAutomatico;
 import Modelo.SistemaCartas.Poker.Figura.Rey;
-import Modelo.SistemaCartas.Poker.Figura.Siete;
-import Modelo.SistemaCartas.Poker.Palo.Corazon;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
-import Modelo.SistemaCartas.Poker.Palo.Pica;
 import Modelo.SistemaCartas.Poker.Palo.Trebol;
 import Modelo.SistemaCartas.Poker.Poker;
-import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.SistemaPuntaje.Puntaje;
-import org.jetbrains.annotations.TestOnly;
 import Modelo.Jugador.Jugador;
 import org.junit.Test;
 
@@ -33,7 +23,7 @@ public class TestJoker {
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        EfectoJugada efecto = new EfectoJugada();
+        EfectoAutomatico efecto = new EfectoAutomatico();
 
         Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());

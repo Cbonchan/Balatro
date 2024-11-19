@@ -24,6 +24,11 @@ public class StraightFlush extends  Jugada{
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("escalera de color");
+    }
+
 
     @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {

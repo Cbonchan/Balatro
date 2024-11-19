@@ -22,6 +22,11 @@ public class FullHouse extends  Jugada{
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("full");
+    }
+
 
     @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {

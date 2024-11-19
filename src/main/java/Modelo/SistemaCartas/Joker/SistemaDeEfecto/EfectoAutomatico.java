@@ -1,10 +1,9 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
-import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Jugador.Jugador;
 
-public class EfectoJugada extends Efecto {
-    public EfectoJugada() {
-        super("Mano Jugada");
+public class EfectoAutomatico extends Efecto {
+    public EfectoAutomatico() {
+        super("Automatico");
     }
     @Override
     public void activar(int puntos, int multiplicador, Jugador jugador){

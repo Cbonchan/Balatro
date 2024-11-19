@@ -25,6 +25,11 @@ public class Pair extends Jugada {
 
     // Métodos
     @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("par");
+    }
+
+    @Override
     public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
          if (cartaPokers.size() < 2) {
             return false;

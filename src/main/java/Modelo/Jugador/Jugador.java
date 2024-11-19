@@ -95,4 +95,7 @@ public class Jugador {
         puntaje += puntajeEntrante;
     }
 
+    public boolean validarMano(String manoAValidar){
+       return this.mano.validarNombreMano(manoAValidar);
+    }
 }

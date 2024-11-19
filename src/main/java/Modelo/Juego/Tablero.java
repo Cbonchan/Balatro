@@ -35,19 +35,31 @@ public class Tablero {
         return;
     }
 
+    public void destruirJoker(Joker joker) {
+        jokers.remove(joker);
+        return;
+    }
+
     public int jugarMano(Mano mano) {
         int puntaje = mano.calcularPuntaje();
+        this.chequearJokersJugada();
         pilaDescarte.descartarManoJugada(mano);
         return puntaje;
     }
 
     public void descarteMano(Mano mano) {
         pilaDescarte.descartarMano(mano);
-        this.chequearJokers();
+        this.chequearJokersDescarte();
 
     }
 
-    private void chequearJokers(){
+    private void chequearJokersJugada(){
+        for(Joker joker: this.jokers){
+            joker.activarPorJugada(this.jugador);
+        }
+    }
+
+    private void chequearJokersDescarte(){
         for(Joker joker: this.jokers){
             joker.activarPorDescarte(this.jugador);
         }
