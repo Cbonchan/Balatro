@@ -9,7 +9,6 @@ import  Modelo.SistemaCartas.Poker.Poker;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 
-import  Modelo.SistemaCartas.Jugadas.Jugada;
 import  Modelo.SistemaCartas.Jugadas.HighCard;
 
 public class TestHighCard {
