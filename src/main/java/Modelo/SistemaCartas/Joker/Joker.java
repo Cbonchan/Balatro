@@ -12,7 +12,7 @@ public class Joker {
            "Mano Jugada", "Descarte", "Automatico"
     );
     private static final List<Efecto> efectosCartaPosibles = List.of(
-            new EfectoDescarte(), new EfectoAutomatico(), new EfectoPorJugada()
+            new EfectoDescarte(), new EfectoAutomatico(), new EfectoPorJugada("No tiene")
     );
 
     private final String nombre;

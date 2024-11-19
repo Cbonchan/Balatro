@@ -38,9 +38,14 @@ public abstract class Jugada {
         Chip chip = new Chip(0);
         Multiplicador multiplicador = new Multiplicador(incremento);
         Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
-
-
         puntaje.incrementarMultiplicador(otroPuntaje);
+    }
+
+    public void multiplicarMultiplicador(int incremento){
+        Chip chip = new Chip(0);
+        Multiplicador multiplicador = new Multiplicador(incremento);
+        Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
+        puntaje.sumarNuevoMultiplicador(otroPuntaje);
     }
 
     public int obtenerChips(){

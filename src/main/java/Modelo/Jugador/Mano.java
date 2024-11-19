@@ -49,6 +49,10 @@ public class Mano {
         jugada.sumarMultiplicador(incremento);
     }
 
+    public void multiplicarMultiplicador(int incremento){
+        jugada.multiplicarMultiplicador(incremento);
+    }
+
     public int obtenerChips(){
         return (jugada.obtenerChips());
     }

@@ -44,6 +44,10 @@ public class Jugador {
         mano.sumarMultiplicador(multiplicador);
     }
 
+    public void multiplicarMultiplicador(int multiplicador){
+        mano.multiplicarMultiplicador(multiplicador);
+    }
+
     public int obtenerChips(){
         return (mano.obtenerChips());
     }

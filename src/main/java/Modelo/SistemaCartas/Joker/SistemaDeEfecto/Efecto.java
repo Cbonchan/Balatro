@@ -9,7 +9,7 @@ public abstract class Efecto {
 
     public Efecto(String activacion) {
         this.activacion = activacion;
-        this.jugadaActivacion = "No Tiene";
+        this.jugadaActivacion = "No tiene";
     }
 
     public Efecto(String activacion, String jugadaActivacion) {
