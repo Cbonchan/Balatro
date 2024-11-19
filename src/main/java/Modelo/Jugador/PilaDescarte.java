@@ -22,6 +22,7 @@ public class PilaDescarte {
         //TODO: para el funcionamiento de jokers de descarte ETC.
     }
 
+    //? Es realmente necesario?
     public void descartarManoJugada(Mano mano){
         manosDescartadas.add(mano);
         //TODO: momentaneamente ambas funciones hacen lo mismo, pero diferenciar
@@ -36,4 +37,6 @@ public class PilaDescarte {
         mazo.reinsertarCartas(cartas);
         manosDescartadas.clear();
     }
+
+
 }

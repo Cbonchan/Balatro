@@ -11,7 +11,7 @@ import java.util.List;
 public class Tablero {
 
     // Atributos
-    //private List<Jocker> jockers;
+    //private List<Joker> jokers;
     private List<Tarot> tarots;
     private Jugador jugador;
     private PilaDescarte pilaDescarte;
