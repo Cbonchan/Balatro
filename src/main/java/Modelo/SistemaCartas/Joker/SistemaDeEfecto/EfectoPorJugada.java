@@ -9,7 +9,15 @@ public class EfectoPorJugada extends Efecto{
     }
     @Override
     public void activar(int puntaje, int multiplicador, Jugador jugador){
-        jugador.multiplicarMultiplicador(multiplicador);
+        if (validarEfecto("Mano Jugada") && validarEfectoPorJugada(jugador)){
+            jugador.multiplicarMultiplicador(multiplicador);
+            this.activado = true;
+        }
+
         return;
+    }
+    @Override
+    public Boolean fueActivado(){
+        return activado;
     }
 }

@@ -8,7 +8,16 @@ public class EfectoDescarte extends Efecto {
     }
     @Override
     public void activar(int puntaje, int multiplicador, Jugador jugador){
-        jugador.aumentarChips(puntaje, multiplicador);
+        if (validarEfecto("Descarte")){
+            jugador.aumentarChips(puntaje, multiplicador);
+            this.activado = true;
+        }
+
         return;
+    }
+
+    @Override
+    public Boolean fueActivado(){
+        return activado;
     }
 }

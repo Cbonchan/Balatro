@@ -4,9 +4,7 @@ package Modelo.Unitarios;
 import Modelo.Juego.Tablero;
 import Modelo.Jugador.Mano;
 import Modelo.SistemaCartas.Joker.Joker;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoDescarte;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoAutomatico;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoPorJugada;
+import Modelo.SistemaCartas.Joker.SistemaDeEfecto.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.Palo.Corazon;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
@@ -16,7 +14,11 @@ import Modelo.SistemaCartas.Poker.Poker;
 import Modelo.Jugador.Jugador;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class TestJoker {
 
@@ -99,6 +101,32 @@ public class TestJoker {
 
         assertEquals(valorEsperado,valorObtenido);
     }
+
+    @Test
+    public void test04ComodinSeAutodestruyeCorrectamenteDespuesDeActivarse(){
+        Mano mano = new Mano();
+        Jugador jugador = new Jugador(mano);
+
+        Random mockRandom = mock(Random.class);
+        when(mockRandom.nextInt(1)).thenReturn(0);
+
+        Efecto efecto = new EfectoAutodestruccion(1, mockRandom);
+
+
+
+        Joker joker = new Joker(1, "Joker Autodestructivo", "Se autodestruye automáticamente",
+                3, efecto);
+
+
+        joker.activar(jugador);
+        boolean respuestaEsperada = false;
+        boolean respuestaObtenido = efecto.fueActivado();
+        assertEquals(respuestaEsperada,respuestaObtenido);
+
+    }
+
+
+
 
 
 }

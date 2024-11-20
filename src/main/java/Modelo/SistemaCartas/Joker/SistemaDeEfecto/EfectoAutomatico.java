@@ -7,7 +7,15 @@ public class EfectoAutomatico extends Efecto {
     }
     @Override
     public void activar(int puntos, int multiplicador, Jugador jugador){
-        jugador.sumarMultiplicador(multiplicador);
+        if(validarEfecto("Automatico")){
+            jugador.sumarMultiplicador(multiplicador);
+            this.activado = true;
+        }
         return;
+    }
+
+    @Override
+    public Boolean fueActivado(){
+        return activado;
     }
 }

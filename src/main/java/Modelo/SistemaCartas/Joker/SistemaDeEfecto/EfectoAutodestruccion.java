@@ -2,14 +2,34 @@ package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
 
 import Modelo.Jugador.Jugador;
 
+import java.util.Random;
+
 public class EfectoAutodestruccion extends Efecto{
-    public EfectoAutodestruccion() {
-        super("Automatico");//dejar en automatico porque es como se activa, no el "que" se activa
+    private Random random;
+    private int probabilidad;
+
+
+    public EfectoAutodestruccion(int probabilidad, Random random) {
+        super("Automatico"); //dejar en automatico porque es como se activa, no el "que" se activa
+        this.probabilidad = probabilidad;
+        this.random = random;
+
+    }
+
+    private boolean unoEn(){
+        return random.nextInt(probabilidad) == 0;
     }
     @Override
     public void activar(int puntos, int multiplicador, Jugador jugador){
-        //todavia no se como hacer este efecto, no se me cae una idea
-        //el check de activacion ya esta en
+        if(!this.unoEn() && validarEfecto("Automatico")){
+            jugador.sumarMultiplicador(multiplicador);
+            activado = true;
+
+        }
         return;
+    }
+    @Override
+    public Boolean fueActivado(){
+        return activado;
     }
 }
