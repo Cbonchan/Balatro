@@ -11,9 +11,9 @@ public class Joker {
     private static final List<String> efectosPosibles = List.of(
            "Mano Jugada", "Descarte", "Automatico"
     );
-    private static final List<Efecto> efectosCartaPosibles = List.of(
+    /*private static final List<Efecto> efectosCartaPosibles = List.of(
             new EfectoDescarte(), new EfectoAutomatico(), new EfectoPorJugada("No tiene")
-    );
+    );*/
 
     private final String nombre;
     private final String descripcion;
@@ -49,7 +49,7 @@ public class Joker {
         this.multiplicador = unMultiplicador;
         this.probabilidad = probabilidad;
 
-        for (String efectoCorrectoString: efectosPosibles){
+       for (String efectoCorrectoString: efectosPosibles){
             if (efecto.validarEfecto(efectoCorrectoString)){
                 this.efecto =efecto;
                 break; // El efecto es valido, no hace falta seguir iterando
