@@ -1,70 +1,56 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
-import Modelo.SistemaCartas.Poker.Figura.Figura;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
+
 
 public class FourOfAKind extends  Jugada {
 
     // Atributos
     // Chips = 60 y Multiplicador = 7
+    TwoPair dosPares = new TwoPair();
 
     // Constructor
     public FourOfAKind() {
-        super(60, 7);
+        super( new Chip(60), new Multiplicador( 7));
     }
 
     // Métodos
 
+    // Públicos
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
-        if ( cartaPokers.size() < 4 ){ return false; }
+    public boolean esJugadaValida(@NotNull List<Poker> cartas){
 
-        List<Figura> figurasConFourOfAKind = new ArrayList<>();
+        // No existe Four of a Kind con menos de 4 cartas
+        if (cartas.size() < 4) {
+            return false;
+        }
 
-        for ( int i = 0; i < cartaPokers.size(); i++ ) {
-            int cartaVecesEncontrada = 0;
-            CartaPoker cartaActual = cartaPokers.get(i);
+        // Verificar si hay Two Pair
+        if (!dosPares.esJugadaValida(cartas)) {
+            return false;
+        }
 
-            for ( int j = i + 1; j < cartaPokers.size(); j++ ) {
-                if( cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura()) ){
-                    cartaVecesEncontrada++;
-                }
-            }
+        // Verificar que ambos pares tengan la misma figura
+        List<Poker> candidatoFourOfAKind = dosPares.cartasJugadas(cartas);
+        Poker primeraCarta = candidatoFourOfAKind.get(0);
 
-            if ( cartaVecesEncontrada ==3 ){
-                figurasConFourOfAKind.add(cartaActual.getFigura());
-                break;
+        for (Poker carta : candidatoFourOfAKind) {
+            if (!primeraCarta.tieneMismaFiguraQue(carta)) {
+                return false;
             }
         }
-        return figurasConFourOfAKind.size() == 1;
+        return true;
     }
 
     @Override
-    public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
-        List<CartaPoker> cartasCuatroIguales = new ArrayList<>();
-
-        //! No esta bueno crear variables dentro del ciclo
-        for ( int i = 0;  i < cartaPokers.size(); i++ ) {
-            CartaPoker cartaActual = cartaPokers.get(i);
-            int cuenta = 0;
-
-            for ( int j = 0;  j < cartaPokers.size();  j++ ) {
-                if ( cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura()) ) {
-                    cartasCuatroIguales.add(cartaPokers.get(j));
-                    cuenta++;
-                }
-                if ( cuenta == 4 ) break;
-            }
-
-            if ( cuenta == 4 ) return cartasCuatroIguales;
-            cartasCuatroIguales.clear(); // Limpiamos si no se completó el grupo de 4
-        }
-        return cartasCuatroIguales;
+    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        return dosPares.cartasJugadas(cartas);
     }
+
 }
 

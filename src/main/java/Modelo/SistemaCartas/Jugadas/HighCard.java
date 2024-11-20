@@ -1,9 +1,10 @@
 package Modelo.SistemaCartas.Jugadas;
 
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Poker;
 
-import java.util.Collections;
 import java.util.List;
+import org.jetbrains.annotations.NotNull;
 
 public class HighCard  extends  Jugada{
 
@@ -12,18 +13,20 @@ public class HighCard  extends  Jugada{
 
     // Constructor
     public HighCard() {
-        super(5, 1);
+        super( new Chip(5), new Multiplicador( 1));
     }
 
     // Métodos
     @Override
-    public boolean esJugadaValida(List<CartaPoker> cartaPokers) {
-        return !cartaPokers.isEmpty();
+    public boolean esJugadaValida(List<Poker> cartas) {
+        return !cartas.isEmpty();
     }
 
     @Override
-    public  List<CartaPoker> cartasJugada(List<CartaPoker> cartaPokers){
-        Collections.sort( cartaPokers, (c1, c2) -> Integer.compare(c2.getFigura().devolverPuntaje(), c1.getFigura().devolverPuntaje()) );
-        return List.of( cartaPokers.get(0) );
+    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
+        Poker cartaAlta = cartasOrdenadas.get(0);
+        return List.of(cartaAlta);
     }
+
 }

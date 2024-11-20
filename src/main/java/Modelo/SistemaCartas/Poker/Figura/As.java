@@ -1,23 +1,42 @@
 package Modelo.SistemaCartas.Poker.Figura;
 
 // Importaciones
+import  Modelo.SistemaPuntaje.*;
 
 public class As extends Figura {
 
     // Atributos
+    private  final int puntaje = 11;
+
 
     // Constructor
-    public As() { super("As");}
+    public As() {
+        super("As");
+    }
 
     // Métodos
     @Override
-    public int orden() {return 1;
+    public int orden() {
+        return 1;
     }
 
     @Override
-    public int devolverPuntaje() {return 11;}
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
+    }
 
     @Override
-    public boolean LeSigueA(Figura figura) { return figura instanceof  Rey;}
+     public  boolean esIgualA(Figura figura){
+        return figura instanceof As;
+    }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Rey);
+    }
 
 }
+
+
+/// tarot.usar(cartaPoker)
+// cartaPoker.modificarPuntaje

@@ -1,11 +1,12 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
+
 
 public class StraightFlush extends  Jugada{
 
@@ -15,18 +16,20 @@ public class StraightFlush extends  Jugada{
     Straight straight = new Straight();
 
     // Constructor
-    public StraightFlush() {super(100, 8);}
+    public StraightFlush() {
+        super( new Chip(100), new Multiplicador( 8));
+    }
 
     // Métodos
 
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
-        return ( flush.esJugadaValida(cartaPokers) && straight.esJugadaValida(cartaPokers) );
+    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+        return ( flush.esJugadaValida(cartas) && straight.esJugadaValida(cartas) );
     }
 
     @Override
-    public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        return  ordenarCartas(cartas);
     }
 
 }

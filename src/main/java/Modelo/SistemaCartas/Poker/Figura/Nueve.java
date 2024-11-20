@@ -1,9 +1,12 @@
 package Modelo.SistemaCartas.Poker.Figura;
 
 // Importaciones
+import  Modelo.SistemaPuntaje.*;
 
 public class Nueve extends  Figura {
+
     // Atributos
+    private  final  int puntaje = 9;
 
     // Cnstructores
     public Nueve() {
@@ -16,15 +19,24 @@ public class Nueve extends  Figura {
         return 9;
     }
 
-
     @Override
-    public int devolverPuntaje() {
-        return 9;
+    public Puntaje asignarPuntaje() {
+        return new Puntaje( new Chip(puntaje));
     }
 
     @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Ocho;
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Nueve;
     }
+
+    @Override
+    public boolean miSiguienteFiguraEs(Figura otraFigura){
+        return  (otraFigura instanceof Ocho);
+    }
+
+
+
+
+
 }
 
