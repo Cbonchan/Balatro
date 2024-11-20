@@ -72,6 +72,7 @@ public class Jugador {
 
         this.quitarCartas(mano);
         asignarPuntaje(valor);
+        mano.vaciarMano();
     }
 
     public void descartarMano(Tablero tablero){

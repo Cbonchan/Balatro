@@ -43,7 +43,7 @@ public class Tablero {
     public int jugarMano(Mano mano) {
         int puntaje = mano.calcularPuntaje();
         this.chequearJokersJugada();
-        pilaDescarte.descartarManoJugada(mano);
+        pilaDescarte.descartarMano(mano);
         return puntaje;
     }
 
