@@ -4,13 +4,12 @@ import Modelo.Jugador.Jugador;
 
 import java.util.Random;
 
-public class EfectoAutodestruccion implements Efecto{
+public class ActivacionAleatoria implements Efecto{
     private final Random random;
     private final int probabilidad;
 
 
-    public EfectoAutodestruccion(int probabilidad, Random random) {
-
+    public ActivacionAleatoria(int probabilidad, Random random) {
         this.probabilidad = probabilidad;
         this.random = random;
 
@@ -19,6 +18,8 @@ public class EfectoAutodestruccion implements Efecto{
     private boolean seActivo(){
         return random.nextInt(probabilidad) == 0;
     }
+
+
     @Override
     public void activar(int puntos, int multiplicador, Jugador jugador){
         if(!this.seActivo()){

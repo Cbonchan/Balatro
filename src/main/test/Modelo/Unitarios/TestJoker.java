@@ -4,11 +4,9 @@ import Modelo.Juego.Tablero;
 import Modelo.Jugador.Jugador;
 import Modelo.Jugador.Mano;
 import Modelo.SistemaCartas.Joker.Jokers.Descarte;
-import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
-import Modelo.SistemaCartas.Joker.Jokers.JokerPorJugada;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.EfectoDescarte;
+import Modelo.SistemaCartas.Joker.Jokers.PorJugada;
 import  org.junit.Test;
-import Modelo.SistemaCartas.Joker.Jokers.MasCien;
+import Modelo.SistemaCartas.Joker.Jokers.Sumador;
 import Modelo.SistemaCartas.Poker.Figura.Rey;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
 import Modelo.SistemaCartas.Poker.Palo.Trebol;
@@ -24,7 +22,7 @@ public class TestJoker {
     public void test01CrearJokerQueSumaCienDevuelve100() {
 
 
-        MasCien joker = new MasCien("Prueba", "+100", 100, 1);
+        Sumador joker = new Sumador("Prueba", "+100", 100, 1);
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -47,7 +45,7 @@ public class TestJoker {
     public void test02CrearJokerQueSuma7Devuelve7() {
 
 
-        MasCien joker = new MasCien("Prueba", "+100", 7, 1);
+        Sumador joker = new Sumador("Prueba", "+100", 7, 1);
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -59,7 +57,7 @@ public class TestJoker {
 
         joker.activar(jugador);
 
-        int esperado = 17;
+        int esperado = 7;
         int obtenido = jugador.getPuntaje();
 
         assertEquals(esperado,obtenido);
@@ -123,7 +121,7 @@ public class TestJoker {
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        JokerPorJugada joker = new JokerPorJugada("Test", "Test",100, 1, "par");
+        PorJugada joker = new PorJugada("Test", "Test",100, 1, "par");
 
         Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
         Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());

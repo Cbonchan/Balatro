@@ -4,12 +4,12 @@ import Modelo.Jugador.Jugador;
 
 import java.util.ArrayList;
 
-public class SuperComodin implements Joker {
+public class Combinacion implements Joker {
     private final String nombre;
     private final String descripcion;
     private final ArrayList<Joker> subcomodines;
 
-    public SuperComodin(String nombre, String descripcion, ArrayList<Joker> subcomodines){
+    public Combinacion(String nombre, String descripcion, ArrayList<Joker> subcomodines){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.subcomodines = subcomodines;
