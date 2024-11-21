@@ -54,7 +54,7 @@ public abstract class Jugada {
 
     public void aumentarChips(int puntos, int multiplicador){
         Chip chip = new Chip(puntos);
-        puntaje.aumentarValorChip(chip);
+        puntaje.sumarChip(chip);
     }
 
     // Post: Regresa la lista de cartas ordenadas de mayor a menor

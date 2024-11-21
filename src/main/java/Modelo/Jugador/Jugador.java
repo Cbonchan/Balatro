@@ -34,6 +34,7 @@ public class Jugador {
     }
 
 
+
     // Métodos
 
     public int obtenerMultiplicador(){
@@ -55,6 +56,9 @@ public class Jugador {
     public void aumentarChips(int puntaje, int multiplicador){
         this.mano.aumentarChips(puntaje, multiplicador);
     }
+    public void aumentarPuntos(int puntaje){
+        this.puntaje += puntaje;
+    }
 
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
@@ -71,6 +75,7 @@ public class Jugador {
         int valor = tablero.jugarMano(mano);
 
         this.quitarCartas(mano);
+
         asignarPuntaje(valor);
         mano.vaciarMano();
     }

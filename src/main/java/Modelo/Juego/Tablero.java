@@ -4,7 +4,7 @@ package Modelo.Juego;
 import Modelo.Jugador.Jugador;
 import Modelo.Jugador.Mano;
 import Modelo.Jugador.PilaDescarte;
-import Modelo.SistemaCartas.Joker.Joker;
+import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
 import Modelo.SistemaCartas.Tarot.*;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.List;
 public class Tablero {
 
     // Atributos
-    private List<Joker> jokers;
+    private List<JokerGenerico> jokers;
     private List<Tarot> tarots;
     private Jugador jugador;
     private PilaDescarte pilaDescarte;
@@ -30,12 +30,12 @@ public class Tablero {
 
     //Métodos
 
-    public void agregarJoker(Joker joker) {
+    public void agregarJoker(JokerGenerico joker) {
         jokers.add(joker);
         return;
     }
 
-    public void destruirJoker(Joker joker) {
+    public void destruirJoker(JokerGenerico joker) {
         jokers.remove(joker);
         return;
     }
@@ -54,14 +54,14 @@ public class Tablero {
     }
 
     private void chequearJokersJugada(){
-        for(Joker joker: this.jokers){
-            joker.activarPorJugada(this.jugador);
+        for(JokerGenerico joker: this.jokers){
+            joker.activar(this.jugador);
         }
     }
 
     private void chequearJokersDescarte(){
-        for(Joker joker: this.jokers){
-            joker.activarPorDescarte(this.jugador);
+        for(JokerGenerico joker: this.jokers){
+            joker.activar(this.jugador);
         }
     }
 

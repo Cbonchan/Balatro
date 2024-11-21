@@ -21,7 +21,11 @@ public class Puntaje {
 
     // Privados
     public Chip aumentarValorChip(Chip otroChip){
-          return  (this.chip.sumar(otroChip) );
+          return (this.chip.sumar(otroChip) );
+    }
+
+    public void sumarChip(Chip otroChip){
+        this.chip = this.chip.sumar(otroChip);
     }
 
 
