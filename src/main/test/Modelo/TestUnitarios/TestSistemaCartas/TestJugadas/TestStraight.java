@@ -105,5 +105,23 @@ public class TestStraight {
         assertFalse(esValida);
     }
 
+    @Test
+public void test06JugadaValidaConCartasConsecutivasDeDistintosPalos() {
+    // Arrange
+    Straight straight = new Straight();
+    List<Poker> cartas = List.of(
+            new Poker(new Diamante(), new Seis()),
+            new Poker(new Pica(), new Siete()),
+            new Poker(new Corazon(), new Ocho()),
+            new Poker(new Trebol(), new Nueve()),
+            new Poker(new Diamante(), new Diez())
+    );
+
+    // Act
+    boolean esValida = straight.esJugadaValida(cartas);
+
+    // Assert
+    assertTrue(esValida);
+}
 
 }
