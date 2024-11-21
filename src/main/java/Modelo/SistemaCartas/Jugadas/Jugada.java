@@ -1,9 +1,8 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaPuntaje.Puntaje;
+import Modelo.SistemaCartas.Poker.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -15,8 +14,8 @@ public abstract class Jugada {
     protected Puntaje puntaje;
 
     // Constructor
-    public Jugada(Chip chips, Multiplicador mult) {
-        this.puntaje = new Puntaje(chips, mult);
+    public Jugada(Chip chips, Multiplicador multiplicador) {
+        this.puntaje = new Puntaje(chips, multiplicador);
     }
 
     // Métodos
@@ -31,7 +30,6 @@ public abstract class Jugada {
 
     // Protected
 
-    //? Preguntar si estos getters, están bien
     // Post: Devuelve la lista de cartas ordenadas de mayor a menor
     protected List<Poker> ordenarCartas(List<Poker> cartas) {
         List<Poker> cartasMutable = new ArrayList<>(cartas);

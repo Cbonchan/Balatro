@@ -2,7 +2,6 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 
-import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.List;
 
 import Modelo.SistemaPuntaje.Chip;
 import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 //! Acá debería ser como StraightFlush, que verifique que solo tenga

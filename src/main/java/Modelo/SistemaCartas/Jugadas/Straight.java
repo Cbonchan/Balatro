@@ -5,13 +5,12 @@ import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 public class Straight  extends  Jugada{
 
     // Atributos
-    // Chips = 30  y Multip[lificador  = 4
+    // Chips = 30 Multiplicador = 4
 
     // Constructor
     public Straight() {
@@ -20,7 +19,7 @@ public class Straight  extends  Jugada{
 
     // Métodos
     @Override
-    public  boolean esJugadaValida(List<Poker> cartas) {
+    public  boolean esJugadaValida(@NotNull List<Poker> cartas) {
 
         // Primera condición, no existe escalera con menos de 5 cartas
         if (cartas.size() != 5){

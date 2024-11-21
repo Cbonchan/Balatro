@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class Flush extends Jugada{
 
     // Atributos
-    //  Chips = 35 y Multiplificador  = 4
+    //  Chips = 35 y Multiplicador = 4
 
     // Constructor
     public Flush() {

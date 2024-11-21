@@ -18,7 +18,7 @@ public class HighCard  extends  Jugada{
 
     // Métodos
     @Override
-    public boolean esJugadaValida(List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
         return !cartas.isEmpty();
     }
 
