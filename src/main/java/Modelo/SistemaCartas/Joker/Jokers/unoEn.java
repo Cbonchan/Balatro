@@ -10,4 +10,15 @@ public class unoEn extends JokerGenerico {
         super(nombre, descripcion, puntaje, multiplicador);
         this.efecto = new ActivacionAleatoria(probabilidad, new Random());
     }
+
+    //TESTING
+
+    public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad, Random FProbabilidad){
+        super(nombre, descripcion, puntaje, multiplicador);
+        this.efecto = new ActivacionAleatoria(probabilidad, FProbabilidad);
+    }
+/*
+    public boolean FueActivado(){
+        return this.efecto.seActivo();
+    }*/
 }
