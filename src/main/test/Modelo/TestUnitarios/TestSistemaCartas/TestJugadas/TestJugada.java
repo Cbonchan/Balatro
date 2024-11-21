@@ -10,6 +10,8 @@ import Modelo.SistemaCartas.Poker.Poker;
 import  org.junit.Test;
 import  static  org.junit.jupiter.api.Assertions.*;
 
+//! Este test, realmente es de Jugador, no de Jugada
+
 public class TestJugada {
 
     @Test
