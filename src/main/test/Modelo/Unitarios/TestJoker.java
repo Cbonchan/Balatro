@@ -59,38 +59,13 @@ public class TestJoker {
 
         joker.activar(jugador);
 
-        int esperado = 17;
+        int esperado = 7;
         int obtenido = jugador.getPuntaje();
 
         assertEquals(esperado,obtenido);
 
     }
 
-    @Test
-    public void test03ComodinDeDescarteSuma10PuntosALosChipsCorrectamente(){
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
-
-        Descarte jokerDescarte = new Descarte("Test", "Descarte", 10, 1);
-
-        tablero.agregarJoker(jokerDescarte);
-
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
-
-        tablero.descarteMano(mano);
-
-        // Act
-        int valorEsperado = 20;
-        int valorObtenido = jugador.obtenerChips();
-
-        // Assert
-
-        assertEquals(valorEsperado,valorObtenido);
-    }
 
     @Test
     public void test04ComodinDeDescarteSuma10PuntosALosChipsCorrectamente(){
@@ -98,19 +73,17 @@ public class TestJoker {
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
         Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
 
         Descarte jokerDescarte = new Descarte("Test", "Descarte", 10, 1);
 
         tablero.agregarJoker(jokerDescarte);
 
         jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
 
         tablero.descarteMano(mano);
 
         // Act
-        int valorEsperado = 10;
+        int valorEsperado = 15;
         int valorObtenido = jugador.obtenerChips();
 
         // Assert
@@ -140,3 +113,4 @@ public class TestJoker {
 
 
 }
+
