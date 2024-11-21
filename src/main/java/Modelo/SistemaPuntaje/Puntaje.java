@@ -17,21 +17,55 @@ public class Puntaje {
     }
 
     // Métodos
-    public Puntaje aumentarValorChip(Chip nuevoChip){
-        // Suma el valor numérico del nuevo chip con el actual y devuelve un nuevo Puntaje
-        Chip nuevoChipTotal = this.chip.sumar(nuevoChip);
-        return new Puntaje(nuevoChipTotal, this.multiplicador); // Retorna un nuevo Puntaje con la suma
+
+
+    // Privados
+    public Chip aumentarValorChip(Chip otroChip){
+          return (this.chip.sumar(otroChip) );
     }
 
-    public Puntaje sumarMultiplicador(Multiplicador nuevoMultiplicador){
-
-        Multiplicador nuevoMultiplicadorTotal = this.multiplicador.sumar(nuevoMultiplicador);
-        return new Puntaje(this.chip, nuevoMultiplicadorTotal);
+    public void sumarChip(Chip otroChip){
+        this.chip = this.chip.sumar(otroChip);
     }
 
-    public Puntaje sumarChipCon(Puntaje otroPuntaje){
-        Chip chipTotal = this.chip.sumar(otroPuntaje.chip);
-        return new Puntaje(chipTotal, this.multiplicador); // Mantiene el mismo multiplicador
+
+    //! Rompe encapsulamiento
+    public Multiplicador aumentarValorMultiplicador(Multiplicador otroMultiplicador ){
+        return  (this.multiplicador.sumar(otroMultiplicador) );
+    }
+
+    public void incrementarMultiplicador(Puntaje otroPuntaje){
+        this.multiplicador = otroPuntaje.sumarDeVerdadElMultiplicador(this.multiplicador);
+    }
+
+    public Multiplicador sumarDeVerdadElMultiplicador(Multiplicador otroMultiplicador){
+        return (this.multiplicador.sumarDeVerdad(otroMultiplicador));
+    }
+
+    // Públicos
+    public int obtenerMultiplicador(){
+        return (multiplicador.valorNumerico());
+    }
+
+    public int obtenerChips(){
+        return (chip.valorNumerico());
+    }
+
+    public void sumarNuevosChips( Puntaje otroPuntaje){
+        // This == puntaje final
+        this.chip = otroPuntaje.aumentarValorChip(this.chip);
+    }
+
+    public void sumarNuevoMultiplicador( Puntaje otroPuntaje){
+        // This == puntaje final
+        this.multiplicador = otroPuntaje.aumentarValorMultiplicador(this.multiplicador);
+    }
+
+
+
+    public  int calcularPuntaje( ){
+        return  this.multiplicador.multiplicarCon(this.chip);
     }
 
 }
+

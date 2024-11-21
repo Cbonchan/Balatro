@@ -1,11 +1,14 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 public class FourOfAKind extends  Jugada {
@@ -15,20 +18,24 @@ public class FourOfAKind extends  Jugada {
 
     // Constructor
     public FourOfAKind() {
-        super(60, 7);
+        super( new Chip(60), new Multiplicador( 7));
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("poker");
+    }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers){
+    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
         if ( cartaPokers.size() < 4 ){ return false; }
 
         List<Figura> figurasConFourOfAKind = new ArrayList<>();
 
         for ( int i = 0; i < cartaPokers.size(); i++ ) {
             int cartaVecesEncontrada = 0;
-            CartaPoker cartaActual = cartaPokers.get(i);
+            Poker cartaActual = cartaPokers.get(i);
 
             for ( int j = i + 1; j < cartaPokers.size(); j++ ) {
                 if( cartaActual.esFiguraIgualA(cartaPokers.get(j).getFigura()) ){
@@ -45,12 +52,12 @@ public class FourOfAKind extends  Jugada {
     }
 
     @Override
-    public List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
-        List<CartaPoker> cartasCuatroIguales = new ArrayList<>();
+    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
+        List<Poker> cartasCuatroIguales = new ArrayList<>();
 
         //! No esta bueno crear variables dentro del ciclo
         for ( int i = 0;  i < cartaPokers.size(); i++ ) {
-            CartaPoker cartaActual = cartaPokers.get(i);
+            Poker cartaActual = cartaPokers.get(i);
             int cuenta = 0;
 
             for ( int j = 0;  j < cartaPokers.size();  j++ ) {

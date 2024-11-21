@@ -1,89 +1,111 @@
 package Modelo.Jugador;
 
 // Importaciones
+import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
-import Modelo.SistemaPuntaje.Puntuador;
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Mano {
     // Atributos
-    private List<CartaPoker> cartaPokers;
-    private Jugada jugada;
-
     private static final List<Jugada> jugadasPosibles = List.of(
             new FourOfAKind(), new FullHouse(), new ThreeOfAKind(),
             new TwoPair(), new Pair(), new StraightFlush(),
             new Straight(), new Flush(), new HighCard()
     );
 
-    public Jugada determinarJugada(List<CartaPoker> cartaPokers) {
+    private Jugada jugada;
+    private List<Poker> cartas;
+
+    // Constructor
+    public Mano() {
+        this.cartas = new ArrayList<>();
+    }
+
+    // Métodos
+
+    // Privados
+
+    private Jugada determinarJugada(List<Poker> cartas) {
+
         for (Jugada jugada : jugadasPosibles) {
-            if (jugada.esJugadaValida(cartaPokers)) {
+
+            if (jugada.esJugadaValida(cartas)) {
                 return jugada;
             }
         }
         return null;
     }
 
-    // Constructor
-    public Mano() {
-        this.cartaPokers = new ArrayList<>();
+    // Públicos
+
+    public int obtenerMultiplicador(){
+        return (jugada.obtenerMultiplicador());
     }
 
-    // Métodos
-    public void agregarCarta(CartaPoker cartaPoker) {
-        if (cartaPokers.size() < 5) {
-            cartaPokers.add(cartaPoker);
+    public void sumarMultiplicador(int incremento){
+        jugada.sumarMultiplicador(incremento);
+    }
+
+    public void multiplicarMultiplicador(int incremento){
+        jugada.multiplicarMultiplicador(incremento);
+    }
+
+    public int obtenerChips(){
+        return (jugada.obtenerChips());
+    }
+
+    public void aumentarChips(int puntaje, int multiplicador){
+        jugada.aumentarChips(puntaje, multiplicador);
+    }
+
+    public void agregarCarta(Poker cartaPoker) {
+        if (cartas.size() < 5) {
+            cartas.add(cartaPoker);
         } else {
             throw new IllegalStateException("La mano ya tiene 5 cartas.");
         }
+
         // Se actualiza la jugada en cada agregado de carta\
-        jugada = determinarJugada(cartaPokers);
+        jugada = determinarJugada(cartas);
     }
 
     public void vaciarMano() {
-        cartaPokers.clear();
+        cartas.clear();
     }
-/*
+
+    public boolean validarNombreMano(String manoAValidar){
+        return this.jugada.validarNombreJugada(manoAValidar);
+    }
+
+    /*
     // El multiplicador y puntaje ahora lo tendría Jugada, los metodos de abajo no tienen que manejarse aca
 
     public void aumentarMultiplicador(int multiplicador) {
         this.multiplicador += multiplicador;
     }
 */
+
     public int calcularPuntaje() {
-        if (cartaPokers.isEmpty()) {
-            return 0;
-        }
-        List<CartaPoker> cartaPokers1 = jugada.cartasJugada(cartaPokers);
-        Puntuador puntuador = new Puntuador(this.jugada); //TODO: se puede mandar directamente cartaPokers y no hacer una copia
-        return  puntuador.calcularPuntaje(cartaPokers1); //! se pasan las cartas teniendo ya las cartas
 
-        /*
-        CartaPoker cartaPoker = cartaPokers1.get(0);
-        int puntos = 0;
-        int multiplicador = 0;
-        for (CartaPoker cartaPoker1: cartaPokers1){
-            puntos += cartaPoker1.sumarValorAgregadoPuntuacion(jugada.getPuntaje())
+        // Calcula el puntaje de la mano
+        Puntaje puntajeTotal = new Puntaje( new Chip(0));
+
+       List <Poker> cartasUtilizadas =   jugada.cartasJugadas(cartas);
+
+       // Suma de Puntaje de las cartas utilizadas
+        for (Poker cartasUtilizada : cartasUtilizadas) {
+            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
         }
 
-
-        for (int i = 1; i < cartaPokers1.size(); i++) {
-            puntos = cartaPoker.sumarPuntosCartaPokerCon(cartaPokers1.get(i));
-            multiplicador = cartaPoker.sumarMultiplicadorCartaPokerCon(cartaPokers1.get(i));
-        }
-        return (puntos ) * (multiplicador);
-       */
-      /*
-        for (CartaPoker cartaPoker : cartaPokers1) {
-            puntaje = cartaPoker.sumarValorAgregadoPuntuacion(puntaje);
-        }
-        return (puntaje *= multiplicador);
-    */
+        // int
+        return jugada.calcularPuntaje(puntajeTotal);
     }
 
-
+    public List<Poker> cartasAcumuladas(List<Poker> lista){
+        lista.addAll(cartas);
+        return lista;
+    }
 }

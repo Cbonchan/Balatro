@@ -1,11 +1,14 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 public class FullHouse extends  Jugada{
@@ -15,13 +18,18 @@ public class FullHouse extends  Jugada{
 
     // Constructor
     public FullHouse() {
-        super(40, 4);
+        super( new Chip(40), new Multiplicador( 4));
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("full");
+    }
+
 
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
         if ( cartaPokers.size() != 5 ){ return false; }
 
         List<Figura> figurasConPair = new ArrayList<>();
@@ -30,7 +38,7 @@ public class FullHouse extends  Jugada{
         //! No esta bueno crear variables dentro del ciclo
         for ( int i = 0;  i < cartaPokers.size();  i++ ) {
             int cartaVecesEncontrada = 0;
-            CartaPoker cartaActual = cartaPokers.get(i);
+            Poker cartaActual = cartaPokers.get(i);
 
             // Contar cuántas veces aparece esta figura en el resto de la lista
             for ( int j = 0;  j < cartaPokers.size();  j++ ) {
@@ -54,7 +62,7 @@ public class FullHouse extends  Jugada{
     }
 
     @Override
-    public  List<CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers) {
+    public  List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
         return new ArrayList<>( cartaPokers );
     }
 

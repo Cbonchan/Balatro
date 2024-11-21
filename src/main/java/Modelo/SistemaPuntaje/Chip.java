@@ -9,8 +9,13 @@ public class Chip {
         this.valor = valor;
     }
 
+    // Métodos
     public Chip sumar(Chip otroChip) {
         return new Chip(this.valor + otroChip.valorNumerico());
+    }
+
+    public int multiplicarCon(int multiplicador) {
+        return  this.valor * multiplicador;
     }
 
     // Solo usar en Puntajes, si se usa afuera, se rompe pilar
@@ -18,4 +23,8 @@ public class Chip {
     public int valorNumerico() {
         return this.valor;
     }
+
+    // tarot.modifcar(Chip)
+    // chip.modificar(con lo que deba)
+
 }

@@ -1,0 +1,50 @@
+@startuml secuncia1
+actor "Usuario" as jugador
+
+
+loop para cada carta
+jugador -> Jugador :  seleccionarCarta(cartaPoker)
+Jugador -> "mano:Mano" as Mano: agregarCarta(cartaPoker)
+Mano -> Mano: this.cartas.add(cartaPoker)
+Mano -> Mano: determinarJugada(cartas)
+
+loop para cada Jugada posible
+Mano -> ":Jugada" as jugada: esJugadaValida(cartas)
+jugada --> Mano: jugada Straight
+end
+
+end
+
+jugador -> Jugador: jugar(tablero)
+
+Jugador -> Tablero: jugarMano(mano)
+Tablero -> Mano : calcularPuntaje()
+Mano -> "chip: Chip" **:new Chip(valor)
+Mano -> "puntajeTotal: Puntaje" as Puntaje **: new Puntaje(chip)
+Puntaje -> "multiplicador: Multiplicador" **: new Multiplicador(valor)
+Mano -> jugada: cartasJugadas(cartas)
+jugada --> Mano : Lista de cartas validas de la Jugada
+
+loop para cada carta Poker valida
+Mano -> Poker: sumarPuntajeCon(puntajeTotal)
+Poker -> Puntaje: sumarNuevosChips(unPuntaje)
+Puntaje -> Puntaje: aumentarValorChip(chip)
+Poker -> Puntaje: sumarNuevoMultiplicador(unPuntaje)
+Puntaje -> Puntaje:  aumentarValorMultiplicador(multiplicador)
+Puntaje --> Mano: puntajeTotal
+end
+
+Mano -> jugada: calcularPuntaje(puntajeTotal)
+jugada -> Puntaje: sumarNuevosChips(unPuntaje) 
+Puntaje -> Puntaje: aumentarValorChip(chip)
+jugada -> Puntaje: sumarNuevoMultiplicador(unPuntaje)
+Puntaje -> Puntaje:  aumentarValorMultiplicador(multiplicador)
+jugada -> Puntaje: calcularPuntaje()
+Puntaje --> jugada: puntajeCalculado
+jugada --> Mano: puntajeCalculado
+Mano --> Tablero: puntajeCalculado 
+Tablero --> Jugador: puntajeCalculado
+
+Jugador --> Jugador: asignarPuntaje(puntajeCalculado)
+
+@enduml

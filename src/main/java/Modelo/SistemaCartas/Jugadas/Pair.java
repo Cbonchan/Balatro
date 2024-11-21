@@ -2,12 +2,15 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
 
 
 import java.util.List;
 import java.util.ArrayList;
+
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 public class Pair extends Jugada {
@@ -17,12 +20,17 @@ public class Pair extends Jugada {
 
     // Constructor
     public Pair() {
-        super(10, 2);
+        super( new Chip(10), new Multiplicador( 2));
     }
 
     // Métodos
     @Override
-    public boolean esJugadaValida(@NotNull List<CartaPoker> cartaPokers) {
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("par");
+    }
+
+    @Override
+    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
          if (cartaPokers.size() < 2) {
             return false;
         }
@@ -39,8 +47,8 @@ public class Pair extends Jugada {
     }
 
     @Override
-    public  List <CartaPoker> cartasJugada(@NotNull List<CartaPoker> cartaPokers){
-        List<CartaPoker> cartasDelPar = new ArrayList<>();
+    public  List <Poker> cartasJugada(@NotNull List<Poker> cartaPokers){
+        List<Poker> cartasDelPar = new ArrayList<>();
 
         for (int i = 0; i < cartaPokers.size(); i++) {
             for (int j = i + 1; j < cartaPokers.size(); j++) {

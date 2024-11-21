@@ -15,12 +15,16 @@ import java.util.List;
 public class Mazo {
 
     // Atributos
-    private final ArrayList<CartaPoker> mazoDeCartas;
+    private final ArrayList<Poker> mazoDeCartas;
+    private int cartasDisponibles;
 
     // Constructor
     public Mazo() {
-        mazoDeCartas = new ArrayList<CartaPoker>();
+        this.cartasDisponibles = 52;
+        mazoDeCartas = new ArrayList<Poker>();
 
+        Palo[] palos = {
+                new Corazon(), new Diamante(), new Trebol(), new Pica()};
 
         Figura[] valores ={
                 new As(), new Dos(), new Tres(), new Cuatro(),
@@ -28,45 +32,47 @@ public class Mazo {
                 new Nueve(), new Diez(), new Jota(), new Reina(),
                 new Rey()};
         
-        Palo[] palos = {
-                new Corazon(), new Diamante(), new Trebol(), new Pica()};
 
         for (Palo palo : palos) {
             for (Figura valor : valores ) {
-                mazoDeCartas.add(new CartaPoker(palo, valor));
+                mazoDeCartas.add(new Poker(palo, valor));
             }
         }
     }
 
     // Getters y Setters
     public int getCartasDisponibles(){
-        return mazoDeCartas.size();
+        return cartasDisponibles;
     }
 
     // Métodos
     
     // Privados
-    private CartaPoker cartaAleatoria() {
-        int indice = (int) (Math.random() * mazoDeCartas.size());
-        CartaPoker cartaPoker = mazoDeCartas.get(indice);
+    private Poker cartaAleatoria() {
+        int indice = (int) (Math.random() * cartasDisponibles);
+        Poker cartaPoker = mazoDeCartas.get(indice);
         mazoDeCartas.remove(indice);
+        cartasDisponibles--;
         return cartaPoker;
     }
     
     // Públicos
     public boolean mazoCompleto() {
-        return mazoDeCartas.size() == 52;
+        return cartasDisponibles == 52;
     }
 
     public void repartirCartas(Jugador jugador) {
-        List<CartaPoker> cartasParaMandar = new ArrayList<>();
+        List<Poker> cartasParaMandar = new ArrayList<>();
 
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < jugador.cartasFaltantes(); i++) {
             cartasParaMandar.add(cartaAleatoria());
         }
         jugador.agregarCartas(cartasParaMandar);
     }
 
-  
+    public void reinsertarCartas(List<Poker> cartas) {
+        mazoDeCartas.addAll(cartas);
+        cartasDisponibles += cartas.size();
+    }
 
 }
