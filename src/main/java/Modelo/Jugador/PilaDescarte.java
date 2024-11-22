@@ -13,6 +13,9 @@ public class PilaDescarte {
         cartasDescartadas = new ArrayList<>();
         cantidadManosDescartadas = 0;
     }
+    public int cantidadManosDescartadas(){
+        return cantidadManosDescartadas;
+    }
 
     public void descartarMano(Mano mano){
         List<Poker> cartas = new ArrayList<>();

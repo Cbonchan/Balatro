@@ -26,7 +26,7 @@ public class Tablero {
     //Métodos
     public int jugarMano(Mano mano) {
         int puntaje = mano.calcularPuntaje();
-        pilaDescarte.descartarManoJugada(mano);
+        pilaDescarte.descartarMano(mano);
         return puntaje;
     }
 
