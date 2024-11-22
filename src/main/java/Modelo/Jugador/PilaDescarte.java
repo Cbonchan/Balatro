@@ -6,36 +6,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PilaDescarte {
-    List<Mano> manosDescartadas;
+    List<Poker> cartasDescartadas;
+    int cantidadManosDescartadas;
 
     public PilaDescarte(){
-        manosDescartadas = new ArrayList<>();
-    }
-
-    public int cantidadManosDescartadas(){
-        return manosDescartadas.size();
+        cartasDescartadas = new ArrayList<>();
+        cantidadManosDescartadas = 0;
     }
 
     public void descartarMano(Mano mano){
-        manosDescartadas.add(mano);
-        //TODO: momentaneamente ambas funciones hacen lo mismo, pero diferenciar
-        //TODO: para el funcionamiento de jokers de descarte ETC.
-    }
+        List<Poker> cartas = new ArrayList<>();
+        cartas = mano.cartasAcumuladas(cartas);
+        cartasDescartadas.addAll(cartas);
+        cantidadManosDescartadas++;
 
-    //? Es realmente necesario?
-    public void descartarManoJugada(Mano mano){
-        manosDescartadas.add(mano);
-        //TODO: momentaneamente ambas funciones hacen lo mismo, pero diferenciar
-        //TODO: para el funcionamiento de jokers de descarte ETC.
     }
 
     public void reinsertarEnMazo(Mazo mazo){
-        List<Poker> cartas = new ArrayList<>();
-        for (Mano mano : manosDescartadas) {
-            cartas = mano.cartasAcumuladas(cartas);
-        }
-        mazo.reinsertarCartas(cartas);
-        manosDescartadas.clear();
+        mazo.reinsertarCartas(cartasDescartadas);
+        cartasDescartadas.clear();
     }
 
 
