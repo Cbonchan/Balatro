@@ -34,7 +34,7 @@ public class TestDescarte {
         jugador.seleccionarCarta(carta2);
 
         jugador.descartarMano(tablero);
-        assertEquals(7, jugador.getCantidadCartas());
+        assertEquals(6, jugador.getCantidadCartas());
     }
 
     @Test

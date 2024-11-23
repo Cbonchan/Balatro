@@ -1,5 +1,6 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
-import Modelo.Jugador.Jugador;
+import Modelo.Usuario.Jugador;
+import Modelo.SistemaPuntaje.Multiplicador;
 
 public class ActivacionDescarte implements Efecto {
 
@@ -9,8 +10,10 @@ public class ActivacionDescarte implements Efecto {
             if (puntaje == 1){
                 jugador.multiplicarMultiplicador(multiplicador);
             } else {
-                jugador.aumentarPuntos(puntaje);
+                jugador.aumentarChips(puntaje, multiplicador);
             }
 
     }
+
+
 }

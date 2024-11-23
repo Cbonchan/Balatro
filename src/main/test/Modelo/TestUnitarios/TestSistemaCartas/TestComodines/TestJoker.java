@@ -1,8 +1,8 @@
-package Modelo.Unitarios;
+package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
 
 import Modelo.Juego.Tablero;
-import Modelo.Jugador.Jugador;
-import Modelo.Jugador.Mano;
+import Modelo.Usuario.Jugador;
+import Modelo.Usuario.Mano;
 import Modelo.SistemaCartas.Joker.Jokers.*;
 import Modelo.SistemaCartas.Joker.Jokers.Descarte;
 import Modelo.SistemaCartas.Joker.Jokers.PorJugada;
@@ -12,7 +12,7 @@ import Modelo.SistemaCartas.Joker.Jokers.Sumador;
 import Modelo.SistemaCartas.Poker.Figura.Rey;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
 import Modelo.SistemaCartas.Poker.Palo.Trebol;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,10 +35,10 @@ public class TestJoker {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
 
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         joker.activar(jugador);
 
@@ -58,10 +58,10 @@ public class TestJoker {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
 
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         joker.activar(jugador);
 
@@ -124,15 +124,15 @@ public class TestJoker {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
 
         Descarte jokerDescarte = new Descarte("Test", "Descarte", 10, 1);
 
         tablero.agregarJoker(jokerDescarte);
 
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         tablero.descarteMano(mano);
 
@@ -152,11 +152,11 @@ public class TestJoker {
         Jugador jugador = new Jugador(mano);
         PorJugada joker = new PorJugada("Test", "Test",100, 1, "par");
 
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
 
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         joker.activar(jugador);
         int valorEsperado =  110;
@@ -180,10 +180,10 @@ public class TestJoker {
         listaJokers.add(jokerJugada);
         Combinacion jokerMultiple = new Combinacion("test", "es una comb", listaJokers);
 
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Rey());
-        Poker cartaPoker2 = new Poker(new Trebol() ,new Rey());
-        jugador.seleccionarCarta(cartaPoker1);
-        jugador.seleccionarCarta(cartaPoker2);
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         jokerMultiple.activar(jugador);
         jugador.jugar(tablero);

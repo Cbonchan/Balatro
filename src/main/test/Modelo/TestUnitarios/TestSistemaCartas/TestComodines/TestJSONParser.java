@@ -15,7 +15,7 @@ public class TestJSONParser {
     @Test
     public void test01SeParseaJokerYSeObtieneDescripcionCorrectamente() throws FileNotFoundException {
 
-        Reader archivo = new FileReader("src/main/test/Modelo/Unitarios/example/comodines.json");
+        Reader archivo = new FileReader("src/main/test/Modelo/TestUnitarios/TestSistemaCartas/TestComodines/example/comodines.json");
 
         ArrayList<Joker> jokers = JSONReader.obtenerJokers(archivo);
         Joker joker = jokers.get(0);
