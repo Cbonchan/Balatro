@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class Pair extends Jugada {
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
 
         // Primera condición, no existe par con menos de 2 cartas
          if (cartas.size() < 2) {
@@ -34,15 +34,15 @@ public class Pair extends Jugada {
         }
 
          // Ordenar de mayor a menor
-        List<Poker>cartasOrdenadas = ordenarCartas(cartas);
+        List<Carta>cartasOrdenadas = ordenarCartas(cartas);
 
          // Identificar si hay un par, (Palo repetido)
 
         for ( int i = 0; i < cartasOrdenadas.size() - 1; i++ ) {
 
             // variables para mayor claridad
-            Poker actual = cartas.get(i);
-            Poker siguiente = cartas.get(i + 1);
+            Carta actual = cartas.get(i);
+            Carta siguiente = cartas.get(i + 1);
 
             // Verificar si la carta actual no es consecutiva con la siguiente
             if (actual.tieneMismaFiguraQue(siguiente)) {
@@ -53,18 +53,18 @@ public class Pair extends Jugada {
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
 
         //Cartas involucradas en el Par
-        List<Poker> cartasDelPar = new ArrayList<>();
+        List<Carta> cartasDelPar = new ArrayList<>();
 
         // Ordenar de mayor a menor
         cartas = ordenarCartas(cartas);
 
         // Busco esas cartas que forman el par
         for (int i = 0; i < cartas.size() - 1; i++) {
-            Poker cartaActual = cartas.get(i);
-            Poker cartaSiguiente = cartas.get(i+1);
+            Carta cartaActual = cartas.get(i);
+            Carta cartaSiguiente = cartas.get(i+1);
 
             if (cartaActual.tieneMismaFiguraQue(cartaSiguiente)) {
                 cartasDelPar.add(cartaActual);

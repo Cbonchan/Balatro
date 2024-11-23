@@ -1,7 +1,5 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
-import Modelo.Jugador.Jugador;
-import Modelo.SistemaPuntaje.Multiplicador;
-import java.util.Random;
+import Modelo.Usuario.Jugador;
 
 public interface Efecto {
 

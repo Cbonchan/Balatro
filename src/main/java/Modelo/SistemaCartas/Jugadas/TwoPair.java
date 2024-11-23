@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class TwoPair extends  Jugada {
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas){
+    public boolean esJugadaValida(@NotNull List<Carta> cartas){
         if (cartas.size() < 4) {
             return false;
         }
@@ -44,7 +44,7 @@ public class TwoPair extends  Jugada {
         }
 
         // Remover las cartas del primer par
-        List<Poker> cartasRestantes = new ArrayList<>(cartas);
+        List<Carta> cartasRestantes = new ArrayList<>(cartas);
         cartasRestantes.removeAll(primerPar.cartasJugadas(cartas));
 
         // Verificar el segundo par
@@ -53,19 +53,19 @@ public class TwoPair extends  Jugada {
 
 
     @Override
-    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public  List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
 
         // Obtener el primer par
-        List<Poker> primerParCartas = primerPar.cartasJugadas(cartas);
+        List<Carta> primerParCartas = primerPar.cartasJugadas(cartas);
 
-        List<Poker> cartasDeDosPares = new ArrayList<>(primerParCartas);
+        List<Carta> cartasDeDosPares = new ArrayList<>(primerParCartas);
 
         // Remover las cartas del primer par
-        List<Poker> cartasRestantes = new ArrayList<>(cartas);
+        List<Carta> cartasRestantes = new ArrayList<>(cartas);
         cartasRestantes.removeAll(primerParCartas);
 
         // Obtener el segundo par
-        List<Poker> segundoParCartas = segundoPar.cartasJugadas(cartasRestantes);
+        List<Carta> segundoParCartas = segundoPar.cartasJugadas(cartasRestantes);
         cartasDeDosPares.addAll(segundoParCartas);
 
         return cartasDeDosPares;

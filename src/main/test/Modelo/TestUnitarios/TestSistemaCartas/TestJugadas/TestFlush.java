@@ -5,7 +5,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Jugadas.Flush;
@@ -16,12 +16,12 @@ public class TestFlush {
     public void test01JugadaValidaConCincoCartasDelMismoPalo() {
         // Arrange
         Flush flush = new Flush();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Diamante(), new Dos()),
-                new Poker(new Diamante(), new Tres()),
-                new Poker(new Diamante(), new Cuatro()),
-                new Poker(new Diamante(), new Seis())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Diamante(), new Dos()),
+                new Carta(new Diamante(), new Tres()),
+                new Carta(new Diamante(), new Cuatro()),
+                new Carta(new Diamante(), new Seis())
         );
 
         // Act
@@ -35,12 +35,12 @@ public class TestFlush {
     public void test02JugadaNoValidaConCartasDeDistintoPalo() {
         // Arrange
         Flush flush = new Flush();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Dos()),
-                new Poker(new Corazon(), new Tres()),
-                new Poker(new Trebol(), new Cuatro()),
-                new Poker(new Diamante(), new Seis())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Dos()),
+                new Carta(new Corazon(), new Tres()),
+                new Carta(new Trebol(), new Cuatro()),
+                new Carta(new Diamante(), new Seis())
         );
 
         // Act
@@ -54,11 +54,11 @@ public class TestFlush {
     public void test03JugadaNoValidaConMenosDeCincoCartas() {
         // Arrange
         Flush flush = new Flush();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Diamante(), new Dos()),
-                new Poker(new Diamante(), new Tres()),
-                new Poker(new Diamante(), new Cuatro())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Diamante(), new Dos()),
+                new Carta(new Diamante(), new Tres()),
+                new Carta(new Diamante(), new Cuatro())
         );
 
         // Act
@@ -72,12 +72,12 @@ public class TestFlush {
     public void test04JugadaValidaConCincoCartasDelMismoPaloYDistintasFiguras() {
         // Arrange
         Flush flush = new Flush();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new As()),
-                new Poker(new Diamante(), new Rey()),
-                new Poker(new Diamante(), new Reina()),
-                new Poker(new Diamante(), new Jota()),
-                new Poker(new Diamante(), new Diez())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new As()),
+                new Carta(new Diamante(), new Rey()),
+                new Carta(new Diamante(), new Reina()),
+                new Carta(new Diamante(), new Jota()),
+                new Carta(new Diamante(), new Diez())
         );
 
         // Act
@@ -92,12 +92,12 @@ public class TestFlush {
     public void test05JugadaValidaConCincoCartasDelMismoPaloPeroNoConsecutivas() {
     // Arrange
     Flush flush = new Flush();
-    List<Poker> cartas = List.of(
-            new Poker(new Diamante(), new As()),
-            new Poker(new Diamante(), new Tres()),
-            new Poker(new Diamante(), new Cinco()),
-            new Poker(new Diamante(), new Siete()),
-            new Poker(new Diamante(), new Nueve())
+    List<Carta> cartas = List.of(
+            new Carta(new Diamante(), new As()),
+            new Carta(new Diamante(), new Tres()),
+            new Carta(new Diamante(), new Cinco()),
+            new Carta(new Diamante(), new Siete()),
+            new Carta(new Diamante(), new Nueve())
     );
 
     // Act
@@ -111,12 +111,12 @@ public class TestFlush {
     public void test06JugadaNoValidaConCuatroCartasDelMismoPaloYUnaDeOtroPalo() {
         // Arrange
         Flush flush = new Flush();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new As()),
-                new Poker(new Diamante(), new Tres()),
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Diamante(), new Siete()),
-                new Poker(new Pica(), new Nueve())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new As()),
+                new Carta(new Diamante(), new Tres()),
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Diamante(), new Siete()),
+                new Carta(new Pica(), new Nueve())
         );
 
         // Act

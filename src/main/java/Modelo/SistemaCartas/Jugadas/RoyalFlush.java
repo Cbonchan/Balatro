@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Figura.*;
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class RoyalFlush extends  Jugada {
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
 
        // Verificamos que haya 5 cartas
         if (cartas.size() != 5){
@@ -56,7 +56,7 @@ public class RoyalFlush extends  Jugada {
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
         return ordenarCartas(cartas);
     }
 

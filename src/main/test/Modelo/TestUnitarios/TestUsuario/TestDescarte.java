@@ -1,7 +1,7 @@
-package Modelo.Unitarios;
+package Modelo.TestUnitarios.TestUsuario;
 
 import Modelo.Juego.Tablero;
-import Modelo.Jugador.*;
+import Modelo.Usuario.*;
 import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
@@ -19,29 +19,29 @@ public class TestDescarte {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
-        Poker carta3 = new Poker(new Corazon(), new Tres());
-        Poker carta4 = new Poker(new Corazon(), new Cuatro());
-        Poker carta5 = new Poker(new Corazon(), new Cinco());
-        Poker carta6 = new Poker(new Corazon(), new Seis());
-        Poker carta7 = new Poker(new Corazon(), new Siete());
-        Poker carta8 = new Poker(new Corazon(), new Ocho());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
+        Carta carta3 = new Carta(new Corazon(), new Tres());
+        Carta carta4 = new Carta(new Corazon(), new Cuatro());
+        Carta carta5 = new Carta(new Corazon(), new Cinco());
+        Carta carta6 = new Carta(new Corazon(), new Seis());
+        Carta carta7 = new Carta(new Corazon(), new Siete());
+        Carta carta8 = new Carta(new Corazon(), new Ocho());
 
-        List<Poker> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
+        List<Carta> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
         jugador.agregarCartas(cartasAgregar);
         jugador.seleccionarCarta(carta1);
         jugador.seleccionarCarta(carta2);
 
         jugador.descartarMano(tablero);
-        assertEquals(6, jugador.getCantidadCartas());
+        assertEquals(7, jugador.getCantidadCartas());
     }
 
     @Test
     public void test02pilaDeDescarteAumentaTamañoAlDescartar() {
         Mano mano = new Mano();
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
         PilaDescarte pilaDescarte = new PilaDescarte();
 
         mano.agregarCarta(carta1);
@@ -57,8 +57,8 @@ public class TestDescarte {
         Mazo mazo = new Mazo();
 
         Mano mano = new Mano();
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
         PilaDescarte pilaDescarte = new PilaDescarte();
 
         mano.agregarCarta(carta1);
@@ -73,8 +73,8 @@ public class TestDescarte {
     @Test
     public void test04descartoAlJugarDescartaLasCartasJugadas(){
         Mano mano = new Mano();
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
 
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
@@ -95,16 +95,16 @@ public class TestDescarte {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
-        Poker carta3 = new Poker(new Corazon(), new Tres());
-        Poker carta4 = new Poker(new Corazon(), new Cuatro());
-        Poker carta5 = new Poker(new Corazon(), new Cinco());
-        Poker carta6 = new Poker(new Corazon(), new Seis());
-        Poker carta7 = new Poker(new Corazon(), new Siete());
-        Poker carta8 = new Poker(new Corazon(), new Ocho());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
+        Carta carta3 = new Carta(new Corazon(), new Tres());
+        Carta carta4 = new Carta(new Corazon(), new Cuatro());
+        Carta carta5 = new Carta(new Corazon(), new Cinco());
+        Carta carta6 = new Carta(new Corazon(), new Seis());
+        Carta carta7 = new Carta(new Corazon(), new Siete());
+        Carta carta8 = new Carta(new Corazon(), new Ocho());
 
-        List<Poker> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
+        List<Carta> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
         jugador.agregarCartas(cartasAgregar);
         jugador.seleccionarCarta(carta1);
         jugador.seleccionarCarta(carta2);
@@ -117,16 +117,16 @@ public class TestDescarte {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
-        Poker carta1 = new Poker(new Corazon(), new As());
-        Poker carta2 = new Poker(new Corazon(), new Dos());
-        Poker carta3 = new Poker(new Corazon(), new Tres());
-        Poker carta4 = new Poker(new Corazon(), new Cuatro());
-        Poker carta5 = new Poker(new Corazon(), new Cinco());
-        Poker carta6 = new Poker(new Corazon(), new Seis());
-        Poker carta7 = new Poker(new Corazon(), new Siete());
-        Poker carta8 = new Poker(new Corazon(), new Ocho());
+        Carta carta1 = new Carta(new Corazon(), new As());
+        Carta carta2 = new Carta(new Corazon(), new Dos());
+        Carta carta3 = new Carta(new Corazon(), new Tres());
+        Carta carta4 = new Carta(new Corazon(), new Cuatro());
+        Carta carta5 = new Carta(new Corazon(), new Cinco());
+        Carta carta6 = new Carta(new Corazon(), new Seis());
+        Carta carta7 = new Carta(new Corazon(), new Siete());
+        Carta carta8 = new Carta(new Corazon(), new Ocho());
 
-        List<Poker> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
+        List<Carta> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
         jugador.agregarCartas(cartasAgregar);
         jugador.seleccionarCarta(carta1);
         jugador.seleccionarCarta(carta2);

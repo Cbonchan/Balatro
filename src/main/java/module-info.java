@@ -8,7 +8,7 @@ module edu.fiuba.algo3 {
 
     // Arhivos del trabajo
     exports  Modelo.Juego;
-    exports Modelo.Jugador;
+    exports Modelo.Usuario;
     exports Modelo.SistemaCartas.Poker.Palo;
     exports Modelo.SistemaCartas.Poker.Figura;
     exports Modelo.SistemaCartas.Poker;

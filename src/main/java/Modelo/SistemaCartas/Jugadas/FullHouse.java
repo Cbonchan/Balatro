@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class FullHouse extends  Jugada{
 
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         // No existe Full House con menos de 5 cartas
         if ( cartas.size() != 5 ){
             return false;
@@ -41,7 +41,7 @@ public class FullHouse extends  Jugada{
         }
 
         // Remover las cartas del Three of a Kind
-        List<Poker> cartasRestantes = new ArrayList<>(cartas);
+        List<Carta> cartasRestantes = new ArrayList<>(cartas);
         cartasRestantes.removeAll(trio.cartasJugadas(cartas));
 
         // Verificar el Pair en las cartas restantes
@@ -50,7 +50,7 @@ public class FullHouse extends  Jugada{
 
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
         return  ordenarCartas(cartas);
     }
 

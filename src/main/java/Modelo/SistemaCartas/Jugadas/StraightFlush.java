@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -28,12 +28,12 @@ public class StraightFlush extends  Jugada{
 
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         return ( flush.esJugadaValida(cartas) && straight.esJugadaValida(cartas) );
     }
 
     @Override
-    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public  List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
         return  ordenarCartas(cartas);
     }
 

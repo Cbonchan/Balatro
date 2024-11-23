@@ -2,9 +2,11 @@ package Modelo.TestUnitarios.TestSistemaCartas.TestJugadas;
 
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,12 +20,17 @@ public class TestJugadaReal {
         }
 
         @Override
-        public boolean esJugadaValida(List<Poker> cartas) {
+        public boolean validarNombreJugada(String manoAValidar) {
             return false;
         }
 
         @Override
-        public List<Poker> cartasJugadas(List<Poker> cartas) {
+        public boolean esJugadaValida(@NotNull List<Carta> cartas) {
+            return false;
+        }
+
+        @Override
+        public List<Carta> cartasJugadas(@NotNull List<Carta> cartas) {
             return cartas;
         }
     }

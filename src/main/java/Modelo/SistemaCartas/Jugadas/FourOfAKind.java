@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -27,7 +27,7 @@ public class FourOfAKind extends  Jugada {
 
     // Públicos
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas){
+    public boolean esJugadaValida(@NotNull List<Carta> cartas){
 
         // No existe Four of a Kind con menos de 4 cartas
         if (cartas.size() < 4) {
@@ -40,10 +40,10 @@ public class FourOfAKind extends  Jugada {
         }
 
         // Verificar que ambos pares tengan la misma figura
-        List<Poker> candidatoFourOfAKind = dosPares.cartasJugadas(cartas);
-        Poker primeraCarta = candidatoFourOfAKind.get(0);
+        List<Carta> candidatoFourOfAKind = dosPares.cartasJugadas(cartas);
+        Carta primeraCarta = candidatoFourOfAKind.get(0);
 
-        for (Poker carta : candidatoFourOfAKind) {
+        for (Carta carta : candidatoFourOfAKind) {
             if (!primeraCarta.tieneMismaFiguraQue(carta)) {
                 return false;
             }
@@ -52,7 +52,7 @@ public class FourOfAKind extends  Jugada {
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
         return dosPares.cartasJugadas(cartas);
     }
 

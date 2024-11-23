@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Jugadas;
 
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;
@@ -23,14 +23,14 @@ public class HighCard  extends  Jugada{
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         return !cartas.isEmpty();
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
-        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
-        Poker cartaAlta = cartasOrdenadas.get(0);
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
+        List<Carta> cartasOrdenadas = ordenarCartas(cartas);
+        Carta cartaAlta = cartasOrdenadas.get(0);
         return List.of(cartaAlta);
     }
 

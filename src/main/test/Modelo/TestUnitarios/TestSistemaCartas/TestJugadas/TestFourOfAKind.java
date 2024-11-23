@@ -4,7 +4,7 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Jugadas.FourOfAKind;
@@ -15,12 +15,12 @@ public class TestFourOfAKind {
     public void test01JugadaValidaConCuatroCartasDeLaMismaFigura() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Cinco()),
-                new Poker(new Corazon(), new Cinco()),
-                new Poker(new Trebol(), new Cinco()),
-                new Poker(new Diamante(), new Seis())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Cinco()),
+                new Carta(new Corazon(), new Cinco()),
+                new Carta(new Trebol(), new Cinco()),
+                new Carta(new Diamante(), new Seis())
         );
 
         // Act
@@ -34,12 +34,12 @@ public class TestFourOfAKind {
     public void test02JugadaNoValidaConTresCartasDeLaMismaFigura() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Cinco()),
-                new Poker(new Corazon(), new Cinco()),
-                new Poker(new Trebol(), new Cuatro()),
-                new Poker(new Diamante(), new Seis())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Cinco()),
+                new Carta(new Corazon(), new Cinco()),
+                new Carta(new Trebol(), new Cuatro()),
+                new Carta(new Diamante(), new Seis())
         );
 
         // Act
@@ -53,10 +53,10 @@ public class TestFourOfAKind {
     public void test03JugadaNoValidaConMenosDeCuatroCartas() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Cinco()),
-                new Poker(new Corazon(), new Cinco())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Cinco()),
+                new Carta(new Corazon(), new Cinco())
         );
 
         // Act
@@ -70,15 +70,15 @@ public class TestFourOfAKind {
     public void test04CartasJugadasDevuelveCuatroCartasDeLaMismaFigura() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        Poker carta1 = new Poker(new Diamante(), new Cinco());
-        Poker carta2 = new Poker(new Pica(), new Cinco());
-        Poker carta3 = new Poker(new Corazon(), new Cinco());
-        Poker carta4 = new Poker(new Trebol(), new Cinco());
-        Poker carta5 = new Poker(new Diamante(), new Seis());
-        List<Poker> cartas = List.of(carta1, carta2, carta3, carta4, carta5);
+        Carta carta1 = new Carta(new Diamante(), new Cinco());
+        Carta carta2 = new Carta(new Pica(), new Cinco());
+        Carta carta3 = new Carta(new Corazon(), new Cinco());
+        Carta carta4 = new Carta(new Trebol(), new Cinco());
+        Carta carta5 = new Carta(new Diamante(), new Seis());
+        List<Carta> cartas = List.of(carta1, carta2, carta3, carta4, carta5);
 
         // Act
-        List<Poker> cartasJugadas = fourOfAKind.cartasJugadas(cartas);
+        List<Carta> cartasJugadas = fourOfAKind.cartasJugadas(cartas);
 
         // Assert
         assertEquals(List.of(carta1, carta2, carta3, carta4), cartasJugadas);
@@ -88,12 +88,12 @@ public class TestFourOfAKind {
     public void test05JugadaNoValidaConCincoCartasDistintasFiguras() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Rey()),
-                new Poker(new Corazon(), new Jota()),
-                new Poker(new Trebol(), new Cuatro()),
-                new Poker(new Diamante(), new Siete())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Rey()),
+                new Carta(new Corazon(), new Jota()),
+                new Carta(new Trebol(), new Cuatro()),
+                new Carta(new Diamante(), new Siete())
         );
 
         // Act
@@ -107,11 +107,11 @@ public class TestFourOfAKind {
     public void test06JugadaValidaConCuatroCartasDeLaMismaFigura() {
         // Arrange
         FourOfAKind fourOfAKind = new FourOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Diamante(), new Cinco()),
-                new Poker(new Pica(), new Cinco()),
-                new Poker(new Corazon(), new Cinco()),
-                new Poker(new Trebol(), new Cinco())
+        List<Carta> cartas = List.of(
+                new Carta(new Diamante(), new Cinco()),
+                new Carta(new Pica(), new Cinco()),
+                new Carta(new Corazon(), new Cinco()),
+                new Carta(new Trebol(), new Cinco())
         );
 
         // Act

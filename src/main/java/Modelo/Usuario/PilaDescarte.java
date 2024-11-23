@@ -1,4 +1,4 @@
-package Modelo.Jugador;
+package Modelo.Usuario;
 
 import Modelo.SistemaCartas.Poker.*;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PilaDescarte {
-    List<Poker> cartasDescartadas;
+    List<Carta> cartasDescartadas;
     int cantidadManosDescartadas;
 
     public PilaDescarte(){
@@ -18,7 +18,7 @@ public class PilaDescarte {
     }
 
     public void descartarMano(Mano mano){
-        List<Poker> cartas = new ArrayList<>();
+        List<Carta> cartas = new ArrayList<>();
         cartas = mano.cartasAcumuladas(cartas);
         cartasDescartadas.addAll(cartas);
         cantidadManosDescartadas++;

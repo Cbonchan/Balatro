@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ public class ThreeOfAKind extends  Jugada{
     }
 
     @Override
-    public  boolean esJugadaValida(@NotNull List<Poker> cartas){
+    public  boolean esJugadaValida(@NotNull List<Carta> cartas){
 
         // Primera condición, no existe Trio con menos de 3 cartas
         if (cartas.size() < 3) {
@@ -33,13 +33,13 @@ public class ThreeOfAKind extends  Jugada{
         }
 
         // Ordenar de mayor a menor
-        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
+        List<Carta> cartasOrdenadas = ordenarCartas(cartas);
 
         // Identificar si hay un trio (tres cartas con la misma figura)
         for (int i = 0; i < cartasOrdenadas.size() - 2; i++) {
-            Poker actual = cartasOrdenadas.get(i);
-            Poker siguiente = cartasOrdenadas.get(i + 1);
-            Poker subsiguiente = cartasOrdenadas.get(i + 2);
+            Carta actual = cartasOrdenadas.get(i);
+            Carta siguiente = cartasOrdenadas.get(i + 1);
+            Carta subsiguiente = cartasOrdenadas.get(i + 2);
 
             if (actual.tieneMismaFiguraQue(siguiente) && siguiente.tieneMismaFiguraQue(subsiguiente)) {
                 return true;
@@ -49,9 +49,9 @@ public class ThreeOfAKind extends  Jugada{
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
 
-        List<Poker> cartasDelTrio = new ArrayList<>();
+        List<Carta> cartasDelTrio = new ArrayList<>();
 
         // Primera condición, no existe Trio con menos de 3 cartas
         if (cartas.size() < 3) {
@@ -59,13 +59,13 @@ public class ThreeOfAKind extends  Jugada{
         }
 
         // Ordenar de mayor a menor
-        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
+        List<Carta> cartasOrdenadas = ordenarCartas(cartas);
 
         // Identificar las cartas que forman el trio
         for (int i = 0; i < cartasOrdenadas.size() - 2; i++) {
-            Poker actual = cartasOrdenadas.get(i);
-            Poker siguiente = cartasOrdenadas.get(i + 1);
-            Poker subsiguiente = cartasOrdenadas.get(i + 2);
+            Carta actual = cartasOrdenadas.get(i);
+            Carta siguiente = cartasOrdenadas.get(i + 1);
+            Carta subsiguiente = cartasOrdenadas.get(i + 2);
 
             if (actual.tieneMismaFiguraQue(siguiente) && siguiente.tieneMismaFiguraQue(subsiguiente)) {
                 cartasDelTrio.add(actual);

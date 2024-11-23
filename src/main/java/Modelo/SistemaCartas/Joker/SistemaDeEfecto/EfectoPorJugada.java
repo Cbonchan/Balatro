@@ -1,6 +1,6 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
 
-import Modelo.Jugador.Jugador;
+import Modelo.Usuario.Jugador;
 
 public class EfectoPorJugada implements Efecto{
     private final String jugada;

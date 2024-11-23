@@ -4,7 +4,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 
@@ -16,10 +16,10 @@ public class TestThreeOfAKind {
     public void test01JugadaValidaConTresCartasIguales() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As()),
-                new Poker(new Trebol(), new As())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As()),
+                new Carta(new Trebol(), new As())
         );
 
         // Act
@@ -33,9 +33,9 @@ public class TestThreeOfAKind {
     public void test02JugadaNoValidaConDosCartasIguales() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As())
         );
 
         // Act
@@ -49,10 +49,10 @@ public class TestThreeOfAKind {
     public void test03JugadaNoValidaConTresCartasDiferentes() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new Rey()),
-                new Poker(new Trebol(), new Reina())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new Rey()),
+                new Carta(new Trebol(), new Reina())
         );
 
         // Act
@@ -66,11 +66,11 @@ public class TestThreeOfAKind {
     public void test04JugadaValidaConMasDeTresCartasYUnTrio() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As()),
-                new Poker(new Trebol(), new As()),
-                new Poker(new Diamante(), new Rey())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As()),
+                new Carta(new Trebol(), new As()),
+                new Carta(new Diamante(), new Rey())
         );
 
         // Act
@@ -84,9 +84,9 @@ public class TestThreeOfAKind {
     public void test05JugadaNoValidaConMenosDeTresCartas() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new Rey())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new Rey())
         );
 
         // Act
@@ -100,12 +100,12 @@ public class TestThreeOfAKind {
     public void test06JugadaValidaConTresCartasIgualesYDosCartasDiferentes() {
         // Arrange
         ThreeOfAKind threeOfAKind = new ThreeOfAKind();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As()),
-                new Poker(new Trebol(), new As()),
-                new Poker(new Diamante(), new Rey()),
-                new Poker(new Corazon(), new Reina())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As()),
+                new Carta(new Trebol(), new As()),
+                new Carta(new Diamante(), new Rey()),
+                new Carta(new Corazon(), new Reina())
         );
 
         // Act

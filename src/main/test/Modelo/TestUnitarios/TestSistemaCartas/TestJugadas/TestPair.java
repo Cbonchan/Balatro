@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Figura.*;
 
 import Modelo.SistemaCartas.Jugadas.Pair;
@@ -16,9 +16,9 @@ public class TestPair {
     public void test01JugadaValidaConDosCartasIguales() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As())
         );
 
         // Act
@@ -32,9 +32,9 @@ public class TestPair {
     public void test02JugadaNoValidaConDosCartasDiferentes() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new Rey())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new Rey())
         );
 
         // Act
@@ -48,10 +48,10 @@ public class TestPair {
     public void test03JugadaValidaConMasDeDosCartasYUnPar() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new As()),
-                new Poker(new Trebol(), new Rey())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new As()),
+                new Carta(new Trebol(), new Rey())
         );
 
         // Act
@@ -65,10 +65,10 @@ public class TestPair {
     public void test04JugadaNoValidaConMasDeDosCartasSinPar() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new Rey()),
-                new Poker(new Trebol(), new Reina())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new Rey()),
+                new Carta(new Trebol(), new Reina())
         );
 
         // Act
@@ -82,8 +82,8 @@ public class TestPair {
     public void test05JugadaNoValidaConUnaSolaCarta() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As())
         );
 
         // Act
@@ -97,11 +97,11 @@ public class TestPair {
     public void test06NoJugadaValidaConCincoCartasDistintas() {
         // Arrange
         Pair pair = new Pair();
-        List<Poker> cartas = List.of(
-                new Poker(new Corazon(), new As()),
-                new Poker(new Pica(), new Dos()),
-                new Poker(new Trebol(), new Rey()),
-                new Poker(new Diamante(), new Ocho())
+        List<Carta> cartas = List.of(
+                new Carta(new Corazon(), new As()),
+                new Carta(new Pica(), new Dos()),
+                new Carta(new Trebol(), new Rey()),
+                new Carta(new Diamante(), new Ocho())
         );
 
         // Act

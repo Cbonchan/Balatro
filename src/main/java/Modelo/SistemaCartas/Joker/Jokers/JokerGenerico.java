@@ -1,6 +1,6 @@
 package Modelo.SistemaCartas.Joker.Jokers;
 
-import Modelo.Jugador.Jugador;
+import Modelo.Usuario.Jugador;
 import Modelo.SistemaCartas.Joker.SistemaDeEfecto.Efecto;
 
 public abstract class JokerGenerico implements Joker {

@@ -1,4 +1,4 @@
-package Modelo.Unitarios;
+package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
 
 import Modelo.Parser.JSONReader;
 import Modelo.SistemaCartas.Joker.Jokers.Joker;

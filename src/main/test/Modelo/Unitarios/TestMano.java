@@ -1,10 +1,10 @@
 package Modelo.Unitarios;
 
 // Importaciones
-import Modelo.Jugador.*;
+import Modelo.Usuario.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import  org.junit.Test;
 import  static  org.junit.jupiter.api.Assertions.*;
@@ -15,11 +15,11 @@ public class TestMano {
     @Test
     public void test01ManoEsJugadaValida() {
         Mano mano = new Mano();
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
-        Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
+        Carta cartaCarta1 = new Carta(new Diamante() ,new Reina());
+        Carta cartaCarta2 = new Carta(new Pica() ,new Reina());
         int valorEsperado = 60;
-        mano.agregarCarta(cartaPoker1);
-        mano.agregarCarta(cartaPoker2);
+        mano.agregarCarta(cartaCarta1);
+        mano.agregarCarta(cartaCarta2);
         assertEquals(valorEsperado, mano.calcularPuntaje());
     }
 
@@ -34,13 +34,13 @@ public class TestMano {
     public void test03VaciarMano() {
         Mano mano1 = new Mano();
         Mano mano2 = new Mano();
-        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
-        Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
+        Carta cartaCarta1 = new Carta(new Diamante() ,new Reina());
+        Carta cartaCarta2 = new Carta(new Pica() ,new Reina());
         int valorEsperado1 = 15;
         int valorEsperado2 = 0;
 
-        mano1.agregarCarta(cartaPoker1);
-        mano2.agregarCarta(cartaPoker2);
+        mano1.agregarCarta(cartaCarta1);
+        mano2.agregarCarta(cartaCarta2);
 
         mano2.vaciarMano();
 

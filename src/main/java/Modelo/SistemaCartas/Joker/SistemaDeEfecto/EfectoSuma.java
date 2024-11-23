@@ -1,5 +1,5 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
-import Modelo.Jugador.Jugador;
+import Modelo.Usuario.Jugador;
 
 public class EfectoSuma implements Efecto {
 

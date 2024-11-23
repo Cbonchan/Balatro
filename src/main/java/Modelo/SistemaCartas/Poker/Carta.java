@@ -5,7 +5,7 @@ import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Poker.Palo.Palo;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
 
-public class Poker {
+public class Carta {
     // Atributos
     private  String nombre;  // As de Trebol
     private  Palo palo;
@@ -13,7 +13,7 @@ public class Poker {
     private Puntaje puntaje;
 
     // Constructor
-    public Poker(Palo palo, Figura figura) {
+    public Carta(Palo palo, Figura figura) {
 
         this.palo = palo;
         this.figura = figura;
@@ -56,17 +56,17 @@ public class Poker {
     // Públicos
 
     // Post: Verifica si la carta siguiente es la siguiente en la secuencia
-    public boolean laCartaSiguienteEs(Poker siguienteCartaList){
+    public boolean laCartaSiguienteEs(Carta siguienteCartaList){
         return siguienteCartaList.miAnteriorCartaEs(figura);
     }
 
     // Post: compara su palo con el palo de la carta siguiente
-    public  boolean laCartaSiguienteMismoPalo(Poker siguienteCartaList){
+    public  boolean laCartaSiguienteMismoPalo(Carta siguienteCartaList){
         return  siguienteCartaList.miPaloEs(palo);
     }
 
     // Post: compara su figura con la figura de la carta siguiente
-    public boolean tieneMismaFiguraQue(Poker siguienteCartaList){
+    public boolean tieneMismaFiguraQue(Carta siguienteCartaList){
         return siguienteCartaList.esMismaFiguraQue(figura);
     }
 

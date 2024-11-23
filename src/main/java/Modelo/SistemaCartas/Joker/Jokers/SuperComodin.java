@@ -1,6 +1,6 @@
 package Modelo.SistemaCartas.Joker.Jokers;
 
-import Modelo.Jugador.Jugador;
+import Modelo.Usuario.Jugador;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import  Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class Flush extends Jugada{
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
 
         // No hay color con menos de 5 cartas
         if (cartas.size() != 5){
@@ -34,12 +34,12 @@ public class Flush extends Jugada{
         }
 
         // Ordenar la lista de cartas
-        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
-        Poker actual = cartasOrdenadas.get(0);
+        List<Carta> cartasOrdenadas = ordenarCartas(cartas);
+        Carta actual = cartasOrdenadas.get(0);
 
         for (int i = 0; i < cartasOrdenadas.size() - 1;  i++) {
             // Para mayo visualización
-            Poker siguiente = cartasOrdenadas.get(i + 1);
+            Carta siguiente = cartasOrdenadas.get(i + 1);
 
             if ( !actual.laCartaSiguienteMismoPalo(siguiente) ){
                 return false;
@@ -49,7 +49,7 @@ public class Flush extends Jugada{
     }
 
     @Override
-    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
         return ordenarCartas(cartas);
     }
 

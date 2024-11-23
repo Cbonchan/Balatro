@@ -1,9 +1,9 @@
 package Modelo.Juego;
 
 // Importaciones
-import Modelo.Jugador.Jugador;
-import Modelo.Jugador.Mano;
-import Modelo.Jugador.PilaDescarte;
+import Modelo.Usuario.Jugador;
+import Modelo.Usuario.Mano;
+import Modelo.Usuario.PilaDescarte;
 import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
 import Modelo.SistemaCartas.Tarot.*;
 
