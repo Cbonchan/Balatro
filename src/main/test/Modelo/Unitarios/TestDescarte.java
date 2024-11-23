@@ -89,4 +89,50 @@ public class TestDescarte {
         assertEquals(8, jugador.cartasFaltantes());
 
     }
+
+    @Test
+    public void test05seleccionarCartasDisminuyeLasDisponibles(){
+        Mano mano = new Mano();
+        Jugador jugador = new Jugador(mano);
+        Tablero tablero = new Tablero();
+        Poker carta1 = new Poker(new Corazon(), new As());
+        Poker carta2 = new Poker(new Corazon(), new Dos());
+        Poker carta3 = new Poker(new Corazon(), new Tres());
+        Poker carta4 = new Poker(new Corazon(), new Cuatro());
+        Poker carta5 = new Poker(new Corazon(), new Cinco());
+        Poker carta6 = new Poker(new Corazon(), new Seis());
+        Poker carta7 = new Poker(new Corazon(), new Siete());
+        Poker carta8 = new Poker(new Corazon(), new Ocho());
+
+        List<Poker> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
+        jugador.agregarCartas(cartasAgregar);
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
+
+        assertEquals(2, jugador.cartasFaltantes());
+    }
+
+    @Test
+    public void test06deshacerEleccionAumentaLasDisponibles(){
+        Mano mano = new Mano();
+        Jugador jugador = new Jugador(mano);
+        Tablero tablero = new Tablero();
+        Poker carta1 = new Poker(new Corazon(), new As());
+        Poker carta2 = new Poker(new Corazon(), new Dos());
+        Poker carta3 = new Poker(new Corazon(), new Tres());
+        Poker carta4 = new Poker(new Corazon(), new Cuatro());
+        Poker carta5 = new Poker(new Corazon(), new Cinco());
+        Poker carta6 = new Poker(new Corazon(), new Seis());
+        Poker carta7 = new Poker(new Corazon(), new Siete());
+        Poker carta8 = new Poker(new Corazon(), new Ocho());
+
+        List<Poker> cartasAgregar = List.of(carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8);
+        jugador.agregarCartas(cartasAgregar);
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
+
+        jugador.deshacerEleccion();
+
+        assertEquals(0, jugador.cartasFaltantes());
+    }
 }

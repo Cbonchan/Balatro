@@ -6,27 +6,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PilaDescarte {
-    List<Mano> manosDescartadas;
+    List<Poker> cartasDescartadas;
+    int cantidadManosDescartadas;
 
     public PilaDescarte(){
-        manosDescartadas = new ArrayList<>();
+        cartasDescartadas = new ArrayList<>();
+        cantidadManosDescartadas = 0;
     }
-
     public int cantidadManosDescartadas(){
-        return manosDescartadas.size();
+        return cantidadManosDescartadas;
     }
 
     public void descartarMano(Mano mano){
-        manosDescartadas.add(mano);
+        List<Poker> cartas = new ArrayList<>();
+        cartas = mano.cartasAcumuladas(cartas);
+        cartasDescartadas.addAll(cartas);
+        cantidadManosDescartadas++;
 
     }
 
     public void reinsertarEnMazo(Mazo mazo){
-        List<Poker> cartas = new ArrayList<>();
-        for (Mano mano : manosDescartadas) {
-            cartas = mano.cartasAcumuladas(cartas);
-        }
-        mazo.reinsertarCartas(cartas);
-        manosDescartadas.clear();
+        mazo.reinsertarCartas(cartasDescartadas);
+        cartasDescartadas.clear();
     }
+
+
 }
