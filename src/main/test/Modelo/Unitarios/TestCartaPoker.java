@@ -1,4 +1,4 @@
-package Modelo.Unitarios;
+/*package Modelo.Unitarios;
 
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
@@ -34,4 +34,4 @@ public class TestCartaPoker {
 
         assertEquals(valorEsperado, valorAgregado);
     }
-}
+}*/

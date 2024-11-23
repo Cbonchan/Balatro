@@ -94,7 +94,7 @@ public class TestDescarte {
     public void test05seleccionarCartasDisminuyeLasDisponibles(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker carta1 = new Poker(new Corazon(), new As());
         Poker carta2 = new Poker(new Corazon(), new Dos());
         Poker carta3 = new Poker(new Corazon(), new Tres());
@@ -116,7 +116,7 @@ public class TestDescarte {
     public void test06deshacerEleccionAumentaLasDisponibles(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero();
+        Tablero tablero = new Tablero(jugador);
         Poker carta1 = new Poker(new Corazon(), new As());
         Poker carta2 = new Poker(new Corazon(), new Dos());
         Poker carta3 = new Poker(new Corazon(), new Tres());

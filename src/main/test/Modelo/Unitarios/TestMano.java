@@ -4,7 +4,7 @@ package Modelo.Unitarios;
 import Modelo.Jugador.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.CartaPoker;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import  org.junit.Test;
 import  static  org.junit.jupiter.api.Assertions.*;
@@ -15,8 +15,8 @@ public class TestMano {
     @Test
     public void test01ManoEsJugadaValida() {
         Mano mano = new Mano();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Reina());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Reina());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
+        Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
         int valorEsperado = 60;
         mano.agregarCarta(cartaPoker1);
         mano.agregarCarta(cartaPoker2);
@@ -34,8 +34,8 @@ public class TestMano {
     public void test03VaciarMano() {
         Mano mano1 = new Mano();
         Mano mano2 = new Mano();
-        CartaPoker cartaPoker1 = new CartaPoker(new Diamante() ,new Reina());
-        CartaPoker cartaPoker2 = new CartaPoker(new Pica() ,new Reina());
+        Poker cartaPoker1 = new Poker(new Diamante() ,new Reina());
+        Poker cartaPoker2 = new Poker(new Pica() ,new Reina());
         int valorEsperado1 = 15;
         int valorEsperado2 = 0;
 

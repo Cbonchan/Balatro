@@ -64,11 +64,14 @@ public class Jugador {
     //solucion momentanea a tener que deseleccionar cartas una por una
 
     public void deshacerEleccion(){
+        List<Poker> cartasAReintegrar = mano.cartasAcumuladas(new ArrayList<>());
+        cartas.addAll(cartasAReintegrar);
         mano.vaciarMano();
     }
 
     public void seleccionarCarta(Poker cartaPoker){
         mano.agregarCarta(cartaPoker);
+        cartas.remove(cartaPoker);
     }
 
     public void jugar(Tablero tablero){
