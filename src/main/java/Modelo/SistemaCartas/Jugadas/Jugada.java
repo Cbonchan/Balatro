@@ -1,9 +1,8 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaPuntaje.Puntaje;
+import Modelo.SistemaCartas.Poker.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -15,20 +14,16 @@ public abstract class Jugada {
     protected Puntaje puntaje;
 
     // Constructor
-    public Jugada(Chip chips, Multiplicador mult) {
-        this.puntaje = new Puntaje(chips, mult);
+    public Jugada(Chip chips, Multiplicador multiplicador) {
+        this.puntaje = new Puntaje(chips, multiplicador);
     }
 
     // Métodos
     // Abstractos
-    public abstract List<Poker> cartasJugada(List<Poker> cartaPokers);
-
-    // Post : Devuelve true si la jugada corresponde a una de las hijas
-    public abstract boolean esJugadaValida(@NotNull List<Poker> cartaPokers);
-    // Post: Devuelve true si el nombre de una jugada pasado por parametro es el nombre de esa instancia de jugada
-    public abstract boolean validarNombreJugada(String manoAValidar);
 
     // Públicos
+    // Post: Devuelve true si la jugada corresponde a una de las hijas
+    public abstract boolean esJugadaValida(@NotNull List<Poker> cartas);
 
     public int obtenerMultiplicador(){
         return (puntaje.obtenerMultiplicador());
@@ -58,11 +53,34 @@ public abstract class Jugada {
     }
 
     // Post: Regresa la lista de cartas ordenadas de mayor a menor
-    public  List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
-        cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
-        return  new ArrayList<>(cartas);
+    public abstract List<Poker> cartasJugadas(@NotNull List<Poker> cartas);
+
+
+    // Protected
+
+    // Post: Devuelve la lista de cartas ordenadas de mayor a menor
+    protected List<Poker> ordenarCartas(List<Poker> cartas) {
+        List<Poker> cartasMutable = new ArrayList<>(cartas);
+        cartasMutable.sort((carta1, carta2) -> {
+
+            int valor1 = carta1.obtenerOrden();
+            int valor2 = carta2.obtenerOrden();
+
+            // Considerar As como 1 o 14
+            if (valor1 == 1 && (valor2 >= 10 )) {
+                valor1 = 14;
+            } else if (valor2 == 1 && (valor1 >= 10 )) {
+                valor2 = 14;
+            }
+
+            return Integer.compare(valor2, valor1); // Ordenar de mayor a menor
+        });
+        return cartasMutable;
     }
 
+    // Públicos
+
+    // Post: Devuelve el puntaje de la jugada
     public  int calcularPuntaje(Puntaje puntajeList){
 
         puntaje.sumarNuevosChips(puntajeList);
@@ -71,7 +89,3 @@ public abstract class Jugada {
     }
 
 }
-
-//las jugadas agregan al multiplicador y agregan
-//sus puntos al marcador cuando se realizan
-//NO EXISTE MANO QUE NO LLEVE A UNA JUGA

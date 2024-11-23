@@ -9,12 +9,22 @@ public class Jota  extends  Figura{
     private  final int puntaje = 10;
 
     // Constructor
-    public Jota() {super("J");}
+    public Jota() {
+        super("J");
+    }
 
     // Métodos
     @Override
+    public int orden() {return 11;}
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Jota;
     }
 
     @Override
@@ -25,13 +35,4 @@ public class Jota  extends  Figura{
 
 
 
-
-    @Override
-    public int orden() {return 11;}
-
-    @Override
-    public int devolverPuntaje() {return 10;}
-
-    @Override
-    public boolean LeSigueA(Figura figura) {return figura instanceof  Diez;}
 }

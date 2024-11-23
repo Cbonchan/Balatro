@@ -1,12 +1,10 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import  Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Poker;
 import  Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Poker;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import Modelo.SistemaPuntaje.Chip;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class Flush extends Jugada{
 
     // Atributos
-    //  Chips = 35 y Multiplificador  = 4
+    //  Chips = 35 y Multiplicador = 4
 
     // Constructor
     public Flush() {
@@ -28,22 +26,31 @@ public class Flush extends Jugada{
     }
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
-        // Verificamos que todas las cartas tengan el mismo palo
-        if (cartaPokers.size() != 5){ return false; }
+    public boolean esJugadaValida(@NotNull List<Poker> cartas) {
 
-        Palo palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
+        // No hay color con menos de 5 cartas
+        if (cartas.size() != 5){
+            return false;
+        }
 
-        for (Poker carta : cartaPokers) {
-            if (!(carta.getPalo().esPalo(palo.getNombre()))) {
-                return false; // Si alguna carta tiene un palo diferente, no es un Flush
+        // Ordenar la lista de cartas
+        List<Poker> cartasOrdenadas = ordenarCartas(cartas);
+        Poker actual = cartasOrdenadas.get(0);
+
+        for (int i = 0; i < cartasOrdenadas.size() - 1;  i++) {
+            // Para mayo visualización
+            Poker siguiente = cartasOrdenadas.get(i + 1);
+
+            if ( !actual.laCartaSiguienteMismoPalo(siguiente) ){
+                return false;
             }
         }
-        return true; // Si todas las cartas tienen el mismo palo, es un Flush
+        return true;
     }
 
     @Override
-    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public   List<Poker> cartasJugadas(@NotNull List<Poker> cartas){
+        return ordenarCartas(cartas);
     }
+
 }

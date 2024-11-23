@@ -11,12 +11,23 @@ public class Seis extends Figura {
     // Constructores
     public Seis() {
         super("6");
+
     }
 
     // Métodos
     @Override
+    public int orden() {
+        return 6;
+    }
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Seis;
     }
 
     @Override
@@ -24,21 +35,4 @@ public class Seis extends Figura {
         return  (otraFigura instanceof Cinco);
     }
 
-
-
-
-    @Override
-    public int orden() {
-        return 6;
-    }
-
-    @Override
-    public int devolverPuntaje() {
-        return 6;
-    }
-
-    @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Cinco;
-    }
 }
