@@ -2,9 +2,9 @@ package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
 
 import Modelo.Usuario.Jugador;
 
-public class EfectoPorJugada implements Efecto{
+public class ActivacionJugada implements Efecto{
     private final String jugada;
-    public EfectoPorJugada(String jugada) {
+    public ActivacionJugada(String jugada) {
         this.jugada = jugada;
 
     }

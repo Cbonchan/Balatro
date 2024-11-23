@@ -2,7 +2,7 @@ package Modelo.Parser;
 
 import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
 import Modelo.SistemaCartas.Joker.Jokers.*;
-import Modelo.SistemaCartas.Joker.Jokers.SuperComodin;
+import Modelo.SistemaCartas.Joker.Jokers.Combinacion;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -65,7 +65,7 @@ public class JSONReader {
                 JsonArray subsubcomodines = jokerObject.get("comodines").getAsJsonArray();
 
                 subComodinesList.addAll(procesarComodines(subsubcomodines));
-                jokerList.add(new SuperComodin(nombre, descripcion, subComodinesList));
+                jokerList.add(new Combinacion(nombre, descripcion, subComodinesList));
             } else {
                 //! Verificar que no esten vacios
                 String grupoActivacion = "";
@@ -120,7 +120,7 @@ public class JSONReader {
 
     private static JokerGenerico parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, int multiplicador){
         if (grupoActivacion.equals("Mano Jugada")){
-            return new JokerPorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
+            return new PorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
         } else if (grupoActivacion.equals("1 en")){
             int valor = Integer.parseInt(valorActivacion);
             return new unoEn(nombre, descripcion, puntos, multiplicador, valor);
@@ -130,9 +130,9 @@ public class JSONReader {
 
         } else {
             if (multiplicador > 1){
-                return new PorCuatro(nombre, descripcion, puntos, multiplicador);
+                return new Multiplicador(nombre, descripcion, puntos, multiplicador);
             } else if (puntos != 1){
-                return new MasCien(nombre, descripcion, puntos, multiplicador);
+                return new Sumador(nombre, descripcion, puntos, multiplicador);
             } else{
                 throw new RuntimeException("Efecto invalido");
 

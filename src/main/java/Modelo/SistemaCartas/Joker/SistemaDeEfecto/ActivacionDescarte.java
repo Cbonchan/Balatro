@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
-import Modelo.Usuario.Jugador;
+import Modelo.Jugador.Jugador;
 
-public class EfectoDescarte implements Efecto {
+public class ActivacionDescarte implements Efecto {
 
     @Override
     public void activar(int puntaje, int multiplicador, Jugador jugador){
@@ -9,10 +9,8 @@ public class EfectoDescarte implements Efecto {
             if (puntaje == 1){
                 jugador.multiplicarMultiplicador(multiplicador);
             } else {
-                jugador.aumentarChips(puntaje, multiplicador);
+                jugador.aumentarPuntos(puntaje);
             }
 
     }
-
-
 }
