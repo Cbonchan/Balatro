@@ -1,8 +1,6 @@
 package Modelo.Parser;
 
-import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
-import Modelo.SistemaCartas.Joker.Jokers.*;
-import Modelo.SistemaCartas.Joker.Jokers.Combinacion;
+import Modelo.SistemaCartas.Activables.Activable;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -52,16 +50,16 @@ public class JSONReader {
         return jokers;
     }
 
-    private static ArrayList<Joker> procesarComodines(JsonArray comodines){
+    private static ArrayList<Activable> procesarComodines(JsonArray comodines){
 
-        ArrayList<Joker> jokerList = new ArrayList<>();
+        ArrayList<Activable> jokerList = new ArrayList<>();
         for (JsonElement joker: comodines){
             JsonObject jokerObject = joker.getAsJsonObject();
             String nombre = jokerObject.get("nombre").getAsString();
             String descripcion = jokerObject.get("descripcion").getAsString();
 
             if (!jokerObject.has("activacion")){
-                ArrayList<Joker> subComodinesList = new ArrayList<>();
+                ArrayList<Activable> subComodinesList = new ArrayList<>();
                 JsonArray subsubcomodines = jokerObject.get("comodines").getAsJsonArray();
 
                 subComodinesList.addAll(procesarComodines(subsubcomodines));
@@ -95,12 +93,12 @@ public class JSONReader {
         return jokerList;
     }
 
-    public static ArrayList<Joker> obtenerJokers(Reader reader){
+    public static ArrayList<Activable> obtenerJokers(Reader reader){
         JsonElement jsonElement = JsonParser.parseReader(reader);
         JsonObject jsonObject = jsonElement.getAsJsonObject();
 
 
-        ArrayList<Joker> jokerList = new ArrayList<>();
+        ArrayList<Activable> jokerList = new ArrayList<>();
 
         for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()){
 

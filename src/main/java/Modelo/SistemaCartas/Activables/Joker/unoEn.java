@@ -1,10 +1,10 @@
-package Modelo.SistemaCartas.Joker.Jokers;
+package Modelo.SistemaCartas.Activables.Joker;
 
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.ActivacionAleatoria;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionAleatoria;
 
 import java.util.Random;
 
-public class unoEn extends JokerGenerico {
+public class unoEn extends Joker {
 
     public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad){
         super(nombre, descripcion, puntaje, multiplicador);

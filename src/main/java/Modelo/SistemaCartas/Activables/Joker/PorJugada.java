@@ -1,8 +1,8 @@
-package Modelo.SistemaCartas.Joker.Jokers;
+package Modelo.SistemaCartas.Activables.Joker;
 
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.ActivacionJugada;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionJugada;
 
-public class PorJugada extends JokerGenerico {
+public class PorJugada extends Joker {
     public PorJugada(String nombre, String descripcion, int puntaje, int multiplicador, String jugada) {
         super(nombre, descripcion, puntaje, multiplicador);
         this.efecto = new ActivacionJugada(jugada);

@@ -1,11 +1,11 @@
 package Modelo.Juego;
 
 // Importaciones
+import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
 import Modelo.Usuario.PilaDescarte;
-import Modelo.SistemaCartas.Joker.Jokers.JokerGenerico;
-import Modelo.SistemaCartas.Tarot.*;
+import Modelo.SistemaCartas.Activables.Activable.JokerGenerico;
 
 import java.util.ArrayList;
 import java.util.List;

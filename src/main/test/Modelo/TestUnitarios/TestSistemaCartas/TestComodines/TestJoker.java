@@ -1,21 +1,17 @@
 package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
 
 import Modelo.Juego.Tablero;
+import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
-import Modelo.SistemaCartas.Joker.Jokers.*;
-import Modelo.SistemaCartas.Joker.Jokers.Descarte;
-import Modelo.SistemaCartas.Joker.Jokers.PorJugada;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.ActivacionAleatoria;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionAleatoria;
 import  org.junit.Test;
-import Modelo.SistemaCartas.Joker.Jokers.Sumador;
 import Modelo.SistemaCartas.Poker.Figura.Rey;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
 import Modelo.SistemaCartas.Poker.Palo.Trebol;
 import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -174,7 +170,7 @@ public class TestJoker {
         PorJugada jokerJugada = new PorJugada("Test", "Test",100, 1, "par");
         Sumador jokerSumador = new Sumador("Prueba", "+100", 100, 1);
         unoEn jokerAleatorio = new unoEn("Prueba", "+100", 100, 1,1);
-        ArrayList<Joker> listaJokers = new ArrayList<Joker>();
+        ArrayList<Activable> listaJokers = new ArrayList<Activable>();
         listaJokers.add(jokerAleatorio);
         listaJokers.add(jokerSumador);
         listaJokers.add(jokerJugada);

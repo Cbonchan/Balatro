@@ -13,6 +13,6 @@ module edu.fiuba.algo3 {
     exports Modelo.SistemaCartas.Poker.Figura;
     exports Modelo.SistemaCartas.Poker;
     exports Modelo.SistemaCartas.Jugadas;
-    exports Modelo.SistemaCartas.Tarot;
+    exports Modelo.SistemaCartas.Activables.Tarot;
     exports Modelo.SistemaPuntaje;
 }

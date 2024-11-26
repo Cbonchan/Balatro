@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
+package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
 import Modelo.Usuario.Jugador;
 
 public class MultiplicacionMult implements Efecto {

@@ -7,7 +7,7 @@ import Modelo.Usuario.Mazo;
 import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Tarot.Tarot;
+import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;

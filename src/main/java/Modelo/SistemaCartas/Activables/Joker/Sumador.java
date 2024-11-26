@@ -1,8 +1,8 @@
-package Modelo.SistemaCartas.Joker.Jokers;
+package Modelo.SistemaCartas.Activables.Joker;
 
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.SumaPuntaje;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumaPuntaje;
 
-public class Sumador extends JokerGenerico {
+public class Sumador extends Joker {
 
     public Sumador(String nombre, String descripcion, int puntaje, int multiplicador) {
         super(nombre, descripcion, puntaje, multiplicador);

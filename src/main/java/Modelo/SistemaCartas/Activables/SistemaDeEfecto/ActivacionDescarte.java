@@ -1,6 +1,5 @@
-package Modelo.SistemaCartas.Joker.SistemaDeEfecto;
+package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
 import Modelo.Usuario.Jugador;
-import Modelo.SistemaPuntaje.Multiplicador;
 
 public class ActivacionDescarte implements Efecto {
 

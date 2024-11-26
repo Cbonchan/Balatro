@@ -1,9 +1,12 @@
-package Modelo.SistemaCartas.Joker.Jokers;
+package Modelo.SistemaCartas.Activables.Tarot;
+
+// Importaciones
+import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 
 import Modelo.Usuario.Jugador;
-import Modelo.SistemaCartas.Joker.SistemaDeEfecto.Efecto;
 
-public abstract class JokerGenerico implements Joker {
+public abstract class Tarot implements Activable {
 
     protected final String nombre;
     protected final String descripcion;
@@ -11,7 +14,7 @@ public abstract class JokerGenerico implements Joker {
     protected final int multiplicador;
     protected Efecto efecto;
 
-    public JokerGenerico(String nombre, String descripcion, int puntaje, int multiplicador) {
+    public Tarot(String nombre, String descripcion, int puntaje, int multiplicador) {
 
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -33,3 +36,5 @@ public abstract class JokerGenerico implements Joker {
         efecto.activar(this.puntaje, this.multiplicador, jugador);
     }
 }
+
+

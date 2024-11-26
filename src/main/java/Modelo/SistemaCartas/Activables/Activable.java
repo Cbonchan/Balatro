@@ -1,8 +1,8 @@
-package Modelo.SistemaCartas.Joker.Jokers;
+package Modelo.SistemaCartas.Activables;
 
 import Modelo.Usuario.Jugador;
 
-public interface Joker {
+public interface Activable {
 
     public void activar(Jugador jugador);
 
