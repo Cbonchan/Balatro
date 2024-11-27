@@ -1,6 +1,5 @@
 package Modelo.SistemaCartas.Activables.Tarot;
 
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionDescarte;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarChips;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarMult;
 

@@ -4,7 +4,7 @@ import Modelo.Juego.Tablero;
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionAleatoria;
+import Modelo.deprecated.ActivacionAleatoria;
 import  org.junit.Test;
 import Modelo.SistemaCartas.Poker.Figura.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
@@ -25,7 +25,7 @@ public class TestJoker {
     public void test01CrearJokerQueSumaCienDevuelve100() {
 
 
-        Sumador joker = new Sumador("Prueba", "+100", 100, 1);
+        SumadorPuntaje joker = new SumadorPuntaje("Prueba", "+100", 100, 1);
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -48,7 +48,7 @@ public class TestJoker {
     public void test02CrearJokerQueSuma7Devuelve7() {
 
 
-        Sumador joker = new Sumador("Prueba", "+100", 7, 1);
+        SumadorPuntaje joker = new SumadorPuntaje("Prueba", "+100", 7, 1);
 
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
@@ -71,12 +71,14 @@ public class TestJoker {
     public void test03ComodinAleatorioSuma100PuntosALosChipsCorrectamente(){
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
+        Tablero tablero = new Tablero(jugador);
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        Carta carta2 = new Carta(new Trebol() ,new Rey());
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
         Random mockRandom = mock(Random.class);
         when(mockRandom.nextInt(3)).thenReturn(0);
-
-        ActivacionAleatoria efecto = new ActivacionAleatoria(1, mockRandom);
-
 
 
         unoEn joker = new unoEn("loco", "Joker Aleatorio", 100,
@@ -84,7 +86,8 @@ public class TestJoker {
 
 
         joker.activar(jugador);
-        int respuestaEsperada = 100;
+        jugador.jugar(tablero);
+        int respuestaEsperada = 260;
         int respuestaObtenido = jugador.getPuntaje();
         assertEquals(respuestaEsperada,respuestaObtenido);
 
@@ -165,14 +168,18 @@ public class TestJoker {
         Mano mano = new Mano();
         Jugador jugador = new Jugador(mano);
         Tablero tablero = new Tablero(jugador);
+        Random mockRandom = mock(Random.class);
+        when(mockRandom.nextInt(3)).thenReturn(0);
 
         PorJugada jokerJugada = new PorJugada("Test", "Test",100, 1, "par");
-        Sumador jokerSumador = new Sumador("Prueba", "+100", 100, 1);
-        unoEn jokerAleatorio = new unoEn("Prueba", "+100", 100, 1,1);
+        SumadorPuntaje jokerSumadorPuntaje = new SumadorPuntaje("Prueba", "+100", 100, 1);
+        unoEn jokerAleatorio = new unoEn("Prueba", "+100", 100, 1,3, mockRandom);
+
         ArrayList<Activable> listaJokers = new ArrayList<Activable>();
-        listaJokers.add(jokerAleatorio);
-        listaJokers.add(jokerSumador);
         listaJokers.add(jokerJugada);
+        listaJokers.add(jokerAleatorio);
+        listaJokers.add(jokerSumadorPuntaje);
+
         Combinacion jokerMultiple = new Combinacion("test", "es una comb", listaJokers);
 
         Carta carta1 = new Carta(new Diamante() ,new Rey());
@@ -183,7 +190,7 @@ public class TestJoker {
         jokerMultiple.activar(jugador);
         jugador.jugar(tablero);
 
-        int esperado = 460;
+        int esperado = 560;
         int obtenido = jugador.getPuntaje();
 
         assertEquals(esperado,obtenido);

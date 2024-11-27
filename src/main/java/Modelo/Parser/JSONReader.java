@@ -130,7 +130,7 @@ public class JSONReader {
             if (multiplicador > 1){
                 return new Multiplicador(nombre, descripcion, puntos, multiplicador);
             } else if (puntos != 1){
-                return new Sumador(nombre, descripcion, puntos, multiplicador);
+                return new SumadorPuntaje(nombre, descripcion, puntos, multiplicador);
             } else{
                 throw new RuntimeException("Efecto invalido");
 

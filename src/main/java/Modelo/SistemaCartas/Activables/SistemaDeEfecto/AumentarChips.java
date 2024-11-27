@@ -1,10 +1,11 @@
 package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
+
 import Modelo.Usuario.Jugador;
 
-public class SumaPuntaje implements Efecto {
+public class AumentarChips implements Efecto {
 
     @Override
     public void activar(int puntos, int multiplicador, Jugador jugador){
-        jugador.aumentarPuntos(puntos);
+        jugador.aumentarChips(puntos, multiplicador);
     }
 }
