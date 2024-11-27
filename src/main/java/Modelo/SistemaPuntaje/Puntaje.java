@@ -61,7 +61,13 @@ public class Puntaje {
         this.multiplicador = otroPuntaje.aumentarValorMultiplicador(this.multiplicador);
     }
 
+    public void cambiarMultiplicador(int nuevoMultiplicador){
+        this.multiplicador= new Multiplicador(nuevoMultiplicador);
+    }
 
+    public void cambiarChip(int nuevoChip){
+        this.chip = new Chip(nuevoChip);
+    }
 
     public  int calcularPuntaje( ){
         return  this.multiplicador.multiplicarCon(this.chip);

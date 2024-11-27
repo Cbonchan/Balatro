@@ -81,5 +81,13 @@ public class Carta {
         otroPuntaje.sumarNuevoMultiplicador(this.puntaje);
     }
 
+    public void cambiarMult(int nuevoMultiplicador){
+        this.puntaje.cambiarMultiplicador(nuevoMultiplicador);
+    }
+
+    public void cambiarChip(int nuevoChip){
+        this.puntaje.cambiarChip(nuevoChip);
+    }
+
 
 }

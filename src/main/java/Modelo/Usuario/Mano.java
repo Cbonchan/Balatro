@@ -61,6 +61,14 @@ public class Mano {
     public void aumentarChips(int puntaje, int multiplicador){
         jugada.aumentarChips(puntaje, multiplicador);
     }
+//post:cambia el valor de mult de la primer carta seleccionada
+    public void cambiarMult(int multiplicador){
+        cartas.getFirst().cambiarMult(multiplicador);
+    }
+//post:cambiar el valor de chips de la pprimer carta seleccionada
+    public void cambiarChip(int chips){
+        cartas.getFirst().cambiarChip(chips);
+    }
 
     public void agregarCarta(Carta cartaCarta) {
         if (cartas.size() < 5) {

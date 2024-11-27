@@ -60,6 +60,14 @@ public class Jugador {
         this.puntaje += puntaje;
     }
 
+    public void cambiarMultiplicador(int multiplicador){
+        this.mano.cambiarMult(multiplicador);
+    }
+
+    public void cambiarChips(int chips){
+        this.mano.cambiarChip(chips);
+    }
+
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
 
