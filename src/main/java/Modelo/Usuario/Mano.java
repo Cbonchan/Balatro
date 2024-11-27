@@ -63,11 +63,13 @@ public class Mano {
     }
 //post:cambia el valor de mult de la primer carta seleccionada
     public void cambiarMult(int multiplicador){
-        cartas.getFirst().cambiarMult(multiplicador);
+        Carta cartaSeleccionada=cartas.get(0);
+        cartaSeleccionada.cambiarMult(multiplicador);
     }
 //post:cambiar el valor de chips de la pprimer carta seleccionada
     public void cambiarChip(int chips){
-        cartas.getFirst().cambiarChip(chips);
+        Carta cartaSeleccionada=cartas.get(0);
+        cartaSeleccionada.cambiarChip(chips);
     }
 //post:aumenta el valor de los chips y mult de una jugada pasada por string
     public void mejorarJugada(int puntos, int multiplicador, String jugada){
@@ -77,7 +79,7 @@ public class Mano {
             }
         }
     }
-    
+//post: agrega a la mano una carta pasada por parametro
     public void agregarCarta(Carta cartaCarta) {
         if (cartas.size() < 5) {
             cartas.add(cartaCarta);
@@ -88,7 +90,7 @@ public class Mano {
         // Se actualiza la jugada en cada agregado de carta\
         jugada = determinarJugada(cartas);
     }
-
+//Post: vacia la lista de cartas de la mano
     public void vaciarMano() {
         cartas.clear();
         jugada = null;

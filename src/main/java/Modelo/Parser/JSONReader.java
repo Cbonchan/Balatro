@@ -6,7 +6,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-
+import Modelo.SistemaCartas.Activables.Joker.*;
 import java.util.ArrayList;
 
 
@@ -116,7 +116,7 @@ public class JSONReader {
         return jokerList;
     }
 
-    private static JokerGenerico parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, int multiplicador){
+    private static Joker parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, int multiplicador){
         if (grupoActivacion.equals("Mano Jugada")){
             return new PorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
         } else if (grupoActivacion.equals("1 en")){

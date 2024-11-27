@@ -3,7 +3,6 @@ package Modelo.SistemaCartas.Activables.Tarot;
 // Importaciones
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
-import Modelo.SistemaCartas.Poker.*;
 import Modelo.Usuario.Jugador;
 
 public abstract class Tarot implements Activable {

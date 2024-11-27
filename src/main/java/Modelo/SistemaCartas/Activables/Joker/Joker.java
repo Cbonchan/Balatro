@@ -19,7 +19,6 @@ public abstract class Joker implements Activable {
         this.puntaje = puntaje;
         this.multiplicador = multiplicador;
 
-
     }
 
     public String getNombre(){

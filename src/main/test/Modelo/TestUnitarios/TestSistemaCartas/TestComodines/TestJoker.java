@@ -6,11 +6,10 @@ import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.ActivacionAleatoria;
 import  org.junit.Test;
-import Modelo.SistemaCartas.Poker.Figura.Rey;
-import Modelo.SistemaCartas.Poker.Palo.Diamante;
-import Modelo.SistemaCartas.Poker.Palo.Trebol;
+import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Carta;
-
+import Modelo.SistemaCartas.Activables.Joker.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -134,7 +133,7 @@ public class TestJoker {
 
         // Act
         int valorEsperado = 10;
-        int valorObtenido = jugador.obtenerChips();
+        int valorObtenido = jugador.getPuntaje();
 
         // Assert
 

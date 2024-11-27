@@ -30,6 +30,10 @@ public class Carta {
     // Métodos
 
     // Getters
+
+    public int getValorNumChips(){
+        return this.puntaje.obtenerChips();
+    }
     //! No logro encontrar otra forma de hacerlo
     public  int obtenerOrden(){
         return figura.orden();

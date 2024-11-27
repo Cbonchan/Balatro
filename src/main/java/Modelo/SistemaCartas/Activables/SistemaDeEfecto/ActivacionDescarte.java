@@ -9,7 +9,7 @@ public class ActivacionDescarte implements Efecto {
             if (puntaje == 1){
                 jugador.multiplicarMultiplicador(multiplicador);
             } else {
-                jugador.aumentarChips(puntaje, multiplicador);
+                jugador.aumentarPuntos(puntaje);
             }
 
     }

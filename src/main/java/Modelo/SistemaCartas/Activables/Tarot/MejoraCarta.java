@@ -10,7 +10,8 @@ public class MejoraCarta extends Tarot{
         if (this.multiplicador==1){
             this.efecto = new CambiarChips();
         }
-        else{this.efecto = new CambiarMult();
+        else{
+            this.efecto = new CambiarMult();
         }
     }
 }
