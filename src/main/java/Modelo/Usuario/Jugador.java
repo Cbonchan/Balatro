@@ -68,6 +68,10 @@ public class Jugador {
         this.mano.cambiarChip(chips);
     }
 
+    public void mejorarJugada(int puntos, int multiplicador, String jugada){
+        this.mano.mejorarJugada(puntos, multiplicador, jugada);
+    }
+
     //si se selecciona una mano pero te arrepentis, con este metodo la mano se vacia
     //solucion momentanea a tener que deseleccionar cartas una por una
 

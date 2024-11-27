@@ -15,6 +15,7 @@ public abstract class Jugada {
 
     // Constructor
     public Jugada(Chip chips, Multiplicador multiplicador) {
+
         this.puntaje = new Puntaje(chips, multiplicador);
     }
 
@@ -64,7 +65,7 @@ public abstract class Jugada {
         Chip chip = new Chip(0);
         Multiplicador multiplicador = new Multiplicador(incremento);
         Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
-        puntaje.incrementarMultiplicador(otroPuntaje);
+        puntaje.aumentarMultiplicador(otroPuntaje);
     }
 
     public void multiplicarMultiplicador(int incremento){
@@ -89,6 +90,11 @@ public abstract class Jugada {
         puntaje.sumarNuevosChips(puntajeList);
         puntaje.sumarNuevoMultiplicador(puntajeList);
         return puntaje.calcularPuntaje();
+    }
+
+    public void mejorar(int puntos, int multiplicador){
+        this.puntaje.sumarChip(new Chip(puntos));
+        this.puntaje.incrementarMult(multiplicador);
     }
 
 }

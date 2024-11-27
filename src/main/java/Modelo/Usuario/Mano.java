@@ -69,7 +69,15 @@ public class Mano {
     public void cambiarChip(int chips){
         cartas.getFirst().cambiarChip(chips);
     }
-
+//post:aumenta el valor de los chips y mult de una jugada pasada por string
+    public void mejorarJugada(int puntos, int multiplicador, String jugada){
+        for (Jugada jugadaAMejorar:jugadasPosibles){
+            if (jugadaAMejorar.validarNombreJugada(jugada)) {
+                jugadaAMejorar.mejorar(puntos, multiplicador);
+            }
+        }
+    }
+    
     public void agregarCarta(Carta cartaCarta) {
         if (cartas.size() < 5) {
             cartas.add(cartaCarta);
