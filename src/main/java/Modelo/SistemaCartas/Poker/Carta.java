@@ -4,6 +4,9 @@ package Modelo.SistemaCartas.Poker;
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Poker.Palo.Palo;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
+import javafx.scene.image.Image;
+
+import java.util.Objects;
 
 public class Carta {
     // Atributos
@@ -93,5 +96,10 @@ public class Carta {
         this.puntaje.cambiarChip(nuevoChip);
     }
 
-
+//Metodos JavaFX
+    //post: devuelve una imagen correspondiente dependiendo de el estado de la carta
+    public Image getImage(){
+        String pathname = "images/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
+        return new Image(Objects.requireNonNull(Carta.class.getResourceAsStream(pathname)));
+    }
 }
