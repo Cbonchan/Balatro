@@ -14,7 +14,7 @@ public class Chip {
         return new Chip(this.valor + otroChip.valorNumerico());
     }
 
-    public  int multiplicarCon(int multiplicador) {
+    public int multiplicarCon(int multiplicador) {
         return  this.valor * multiplicador;
     }
 

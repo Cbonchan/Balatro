@@ -2,15 +2,13 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Modelo.SistemaPuntaje.Chip;
 import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
 
 //! Acá debería ser como StraightFlush, que verifique que solo tenga
@@ -19,6 +17,8 @@ public class TwoPair extends  Jugada {
 
     // Atributos
     // Chips = 20 y Multiplicador = 2
+    Pair primerPar = new Pair();
+    Pair segundoPar = new Pair();
 
 
     // Constructores
@@ -28,44 +28,47 @@ public class TwoPair extends  Jugada {
 
     // Métodos
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers){
-        if (cartaPokers.size() < 4){
-            return false;
-        }
-        List<Figura> figurasConPares = new ArrayList<>();
-
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            for (int j = i + 1; j < cartaPokers.size(); j++) {
-                Figura figuraActual = cartaPokers.get(i).getFigura();
-                Figura figuraAComparar = cartaPokers.get(j).getFigura();
-
-                if (cartaPokers.get(i).esFiguraIgualA(figuraAComparar) && !figurasConPares.contains(figuraActual)) {
-                    figurasConPares.add(figuraActual);
-                    break;
-                }
-            }
-        }
-
-        return figurasConPares.size() == 2; // Devuelve true si son dos pares distintos
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("doble par");
     }
 
     @Override
-    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers){
-        List<Poker> cartasDeDosPares = new ArrayList<>();
-        List<Figura> figurasConPares = new ArrayList<>();
-
-        for (int i = 0; i < cartaPokers.size(); i++) {
-            for (int j = i + 1; j < cartaPokers.size(); j++) {
-                Figura figuraActual = cartaPokers.get(i).getFigura();
-                if (cartaPokers.get(i).esFiguraIgualA(cartaPokers.get(j).getFigura())
-                        && !figurasConPares.contains(figuraActual)) {
-                    figurasConPares.add(figuraActual);
-                    cartasDeDosPares.add(cartaPokers.get(i));
-                    cartasDeDosPares.add(cartaPokers.get(j));
-                    break;
-                }
-            }
+    public boolean esJugadaValida(@NotNull List<Carta> cartas){
+        if (cartas.size() < 4) {
+            return false;
         }
+
+        // Verificar el primer par
+        if (!primerPar.esJugadaValida(cartas)) {
+            return false;
+        }
+
+        // Remover las cartas del primer par
+        List<Carta> cartasRestantes = new ArrayList<>(cartas);
+        cartasRestantes.removeAll(primerPar.cartasJugadas(cartas));
+
+        // Verificar el segundo par
+        return segundoPar.esJugadaValida(cartasRestantes) ;
+    }
+
+
+    @Override
+    public  List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
+
+        // Obtener el primer par
+        List<Carta> primerParCartas = primerPar.cartasJugadas(cartas);
+
+        List<Carta> cartasDeDosPares = new ArrayList<>(primerParCartas);
+
+        // Remover las cartas del primer par
+        List<Carta> cartasRestantes = new ArrayList<>(cartas);
+        cartasRestantes.removeAll(primerParCartas);
+
+        // Obtener el segundo par
+        List<Carta> segundoParCartas = segundoPar.cartasJugadas(cartasRestantes);
+        cartasDeDosPares.addAll(segundoParCartas);
+
         return cartasDeDosPares;
     }
+
 }

@@ -1,15 +1,12 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
-import java.util.ArrayList;
-
-import Modelo.SistemaPuntaje.Chip;
-import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.SistemaPuntaje.Puntaje;
 import org.jetbrains.annotations.NotNull;
+
 
 public class StraightFlush extends  Jugada{
 
@@ -24,15 +21,20 @@ public class StraightFlush extends  Jugada{
     }
 
     // Métodos
+    @Override
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("escalera de color");
+    }
+
 
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
-        return ( flush.esJugadaValida(cartaPokers) && straight.esJugadaValida(cartaPokers) );
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
+        return ( flush.esJugadaValida(cartas) && straight.esJugadaValida(cartas) );
     }
 
     @Override
-    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public  List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
+        return  ordenarCartas(cartas);
     }
 
 }

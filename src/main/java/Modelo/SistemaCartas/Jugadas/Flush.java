@@ -1,12 +1,10 @@
 package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
-import  Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Poker;
 import  Modelo.SistemaPuntaje.*;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
-import java.util.ArrayList;
 
 import Modelo.SistemaPuntaje.Chip;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 public class Flush extends Jugada{
 
     // Atributos
-    //  Chips = 35 y Multiplificador  = 4
+    //  Chips = 35 y Multiplicador = 4
 
     // Constructor
     public Flush() {
@@ -23,22 +21,36 @@ public class Flush extends Jugada{
 
     // Métodos
     @Override
-    public boolean esJugadaValida(@NotNull List<Poker> cartaPokers) {
-        // Verificamos que todas las cartas tengan el mismo palo
-        if (cartaPokers.size() != 5){ return false; }
-
-        Palo palo = cartaPokers.get(0).getPalo(); // Tomamos el palo de la primera carta
-
-        for (Poker carta : cartaPokers) {
-            if (!(carta.getPalo().esPalo(palo.getNombre()))) {
-                return false; // Si alguna carta tiene un palo diferente, no es un Flush
-            }
-        }
-        return true; // Si todas las cartas tienen el mismo palo, es un Flush
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("color");
     }
 
     @Override
-    public List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public boolean esJugadaValida(@NotNull List<Carta> cartas) {
+
+        // No hay color con menos de 5 cartas
+        if (cartas.size() != 5){
+            return false;
+        }
+
+        // Ordenar la lista de cartas
+        List<Carta> cartasOrdenadas = ordenarCartas(cartas);
+        Carta actual = cartasOrdenadas.get(0);
+
+        for (int i = 0; i < cartasOrdenadas.size() - 1;  i++) {
+            // Para mayo visualización
+            Carta siguiente = cartasOrdenadas.get(i + 1);
+
+            if ( !actual.laCartaSiguienteMismoPalo(siguiente) ){
+                return false;
+            }
+        }
+        return true;
     }
+
+    @Override
+    public   List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
+        return ordenarCartas(cartas);
+    }
+
 }

@@ -9,12 +9,24 @@ public class Nueve extends  Figura {
     private  final  int puntaje = 9;
 
     // Cnstructores
-    public Nueve() {super("9");}
+    public Nueve() {
+        super("9");
+    }
 
     // Métodos
     @Override
+    public int orden() {
+        return 9;
+    }
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Nueve;
     }
 
     @Override
@@ -26,20 +38,5 @@ public class Nueve extends  Figura {
 
 
 
-    @Override
-    public int orden() {
-        return 9;
-    }
-
-
-    @Override
-    public int devolverPuntaje() {
-        return 9;
-    }
-
-    @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Ocho;
-    }
 }
 

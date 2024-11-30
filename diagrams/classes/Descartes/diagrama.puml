@@ -1,0 +1,76 @@
+@@startuml diagramaClases
+
+
+ class Jugador {
+     - puntaje: int
+     - mano: Mano
+     - List<Poker> cartas
+
+     + Jugador(mano: Mano)
+     + seleccionarCarta(cartas: Poker): void
+     + jugar(tablero: Tablero): void
+     + descartarMano(tablero: Tablero): void
+     + cartasFaltantes(): int
+     + agregarCartas(List<Poker>): int
+     + deshacerEleccion(): void
+     - quitarCartas(mano: Mano): void
+
+ }
+
+
+ class Poker {
+     - palo: Palo
+     - figuta: Figura
+
+     + Poker(palo: Palo, figura: Figura)
+
+ }
+ class Mano {
+      - determinarJugada(List<Poker>): Jugada
+      +Mano()
+      + agregarCarta(cartaPoker: Poker): void
+      + vaciarMano(): void
+      + calcularPuntaje(): int
+      + cartasAcumuladas(List<Poker>)): List<Poker>
+
+  }
+
+
+
+ class Tablero {
+     + jugarMano(mano: Mano): int
+     + descartarMano(mano: Mano): void
+     - chequearJokersJugada(): void
+     - chequearJokersDescarte(): void
+ }
+
+class PilaDescarte {
+    - manosDescartadas: List<Poker>
+
+    + PilaDescarte()
+    + cantidadManosDescartadas(): int
+    + descartarMano(mano: Mano): void
+    + reinsertarEnMazo(Mazo: mazo): void
+ }
+
+class Mazo{
+    -List<Poker> mazoDeCartas
+    +Mazo()
+    +getCartasDisponibles(): int
+    +cartaAleatoria(): Poker
+    +repartirCartas(jugador: Jugador): void
+    +reinsertarCartas(List<Poker>): void
+}
+
+Tablero *-- PilaDescarte
+Tablero o-- Jugador
+Jugador *-- Mano
+Mano -->"0..5   " Poker
+Jugador --->"0..8  " Poker
+PilaDescarte -->"*" Mano
+Mazo <.. PilaDescarte
+Mazo ...> Jugador
+Tablero ..> Mano
+Tablero <.. Jugador
+Mazo -->"0..52 " Poker
+ @enduml

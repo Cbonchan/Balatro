@@ -7,6 +7,7 @@ public class Ocho extends  Figura{
     // Atributos
     private  final int puntaje = 8;
 
+
     // Constructores
     public Ocho() {
         super("8");
@@ -14,8 +15,18 @@ public class Ocho extends  Figura{
 
     // Métodos
     @Override
+    public int orden() {
+        return 8;
+    }
+
+    @Override
     public Puntaje asignarPuntaje() {
         return new Puntaje( new Chip(puntaje));
+    }
+
+    @Override
+    public  boolean esIgualA(Figura figura){
+        return figura instanceof Ocho;
     }
 
     @Override
@@ -24,22 +35,6 @@ public class Ocho extends  Figura{
     }
 
 
-
-
-    @Override
-    public int orden() {
-        return 8;
-    }
-
-    @Override
-    public int devolverPuntaje() {
-        return 8;
-    }
-
-    @Override
-    public boolean LeSigueA(Figura figura) {
-        return figura instanceof Siete;
-    }
 
 
 }

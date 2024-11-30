@@ -2,17 +2,15 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Poker;
+import Modelo.SistemaCartas.Poker.Carta;
 
 import java.util.List;
-import java.util.ArrayList;
 import org.jetbrains.annotations.NotNull;
 
 public class Straight  extends  Jugada{
 
     // Atributos
-    // Chips = 30  y Multip[lificador  = 4
+    // Chips = 30 Multiplicador = 4
 
     // Constructor
     public Straight() {
@@ -21,7 +19,12 @@ public class Straight  extends  Jugada{
 
     // Métodos
     @Override
-    public  boolean esJugadaValida(List<Poker> cartas) {
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals("escalera");
+    }
+
+    @Override
+    public  boolean esJugadaValida(@NotNull List<Carta> cartas) {
 
         // Primera condición, no existe escalera con menos de 5 cartas
         if (cartas.size() != 5){
@@ -29,15 +32,14 @@ public class Straight  extends  Jugada{
         }
 
         //  Ordenamos de mayor a menor
-        // Hay que preguntar
-        cartas.sort((c1, c2) -> Integer.compare(c2.getFigura().orden(), c1.getFigura().orden()));
+
+        List<Carta>cartasOrdenadas = ordenarCartas(cartas);
 
         //  Verificamos que las cartas sean consecutivas
-
-        for ( int i = 0; i < cartas.size() - 1; i++ ) {
+        for ( int i = 0; i < cartasOrdenadas.size() - 1; i++ ) {
             // variables para mayor claridad
-            Poker actual = cartas.get(i);
-            Poker siguiente = cartas.get(i + 1);
+            Carta actual = cartasOrdenadas.get(i);
+            Carta siguiente = cartasOrdenadas.get(i + 1);
 
             // Verificar si la carta actual no es consecutiva con la siguiente
             if (!actual.laCartaSiguienteEs(siguiente)) {
@@ -48,8 +50,9 @@ public class Straight  extends  Jugada{
     }
 
     @Override
-    public  List<Poker> cartasJugada(@NotNull List<Poker> cartaPokers) {
-        return new ArrayList<>(cartaPokers);
+    public  List<Carta> cartasJugadas(@NotNull List<Carta> cartas){
+
+        return  ordenarCartas(cartas);
     }
 
 }
