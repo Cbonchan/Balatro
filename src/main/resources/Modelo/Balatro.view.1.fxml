@@ -56,7 +56,7 @@
          </ImageView>
       </children></FlowPane>
 
-   <FlowPane id="Slots_Jokers" layoutX="355.0" layoutY="14.0" prefHeight="137.0" prefWidth="491.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+   <FlowPane id="Slots_Jokers" layoutX="390.0" layoutY="14.0" prefHeight="137.0" prefWidth="491.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -156,9 +156,9 @@
             </image>
          </ImageView>
       </children></FlowPane>
-   <Button layoutX="1045.0" layoutY="364.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="191.0" text="Jugar" />
-   <Button layoutX="1055.0" layoutY="441.0" mnemonicParsing="false" text="descartar" />
-   <GridPane layoutX="8.0" layoutY="342.0" prefHeight="90.0" prefWidth="340.0">
+   <Button id="boton_jugar" fx:id="boton_jugar" layoutX="936.0" layoutY="387.0" mnemonicParsing="false" onAction="#jugar" prefHeight="55.0" prefWidth="119.0" text="Jugar" />
+   <Button id="boton-descartar" fx:id="boton_descartar" layoutX="1072.0" layoutY="387.0" mnemonicParsing="false" onAction="#descartarMano" prefHeight="71.0" prefWidth="178.0" text="Descartar" />
+   <GridPane alignment="TOP_CENTER" layoutX="14.0" layoutY="376.0" prefHeight="90.0" prefWidth="340.0">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="225.0" />
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="115.0" />
@@ -168,18 +168,30 @@
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <Label text="Chips" />
-         <Label prefHeight="47.0" prefWidth="206.0" text="Multiplicador" GridPane.rowIndex="1" />
-         <Label text="nroC" GridPane.columnIndex="1" />
-         <Label text="nroM" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <Label text="Chips:" textAlignment="CENTER" />
+         <Label prefHeight="47.0" prefWidth="221.0" text="Multiplicador:" GridPane.rowIndex="1" />
+         <Label id="chips" fx:id="nro_chips" text="nroC" GridPane.columnIndex="1" />
+         <Label id="multiplicador" fx:id="nro_mult" text="nroM" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
    </GridPane>
-   <VBox layoutX="20.0" layoutY="34.0" prefHeight="224.0" prefWidth="291.0">
+   <VBox alignment="CENTER" layoutX="20.0" layoutY="34.0" prefHeight="224.0" prefWidth="291.0">
       <children>
-         <Label prefHeight="71.0" prefWidth="280.0" text="Puntos a superar:" />
-         <Label prefHeight="47.0" prefWidth="103.0" text="nroPS" />
-         <Label prefHeight="47.0" prefWidth="278.0" text="puntos:" textAlignment="CENTER" />
-         <Label text="nroP" />
+         <Label prefHeight="54.0" prefWidth="265.0" text="Puntos a superar:" />
+         <Label id="puntos_a_superar" fx:id="puntos_a_superar" contentDisplay="CENTER" prefHeight="47.0" prefWidth="103.0" text="nroPS" />
+         <Label contentDisplay="CENTER" prefHeight="47.0" prefWidth="121.0" text="puntos:" textAlignment="CENTER" />
+         <Label id="puntos" fx:id="puntaje" text="nroP" />
+      </children>
+   </VBox>
+   <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="258.0" prefHeight="94.0" prefWidth="143.0">
+      <children>
+         <Label text="Jugada:" textAlignment="CENTER" />
+         <Label id="tipo_jugada" fx:id="tipo_jugada" text="tipoJ" />
+      </children>
+   </VBox>
+   <VBox alignment="TOP_CENTER" layoutX="157.0" layoutY="258.0" prefHeight="94.0" prefWidth="143.0">
+      <children>
+         <Label text="Ronda:" textAlignment="CENTER" />
+         <Label id="nro_ronda" fx:id="nro_ronda" text="nroR" />
       </children>
    </VBox>
 </AnchorPane>
