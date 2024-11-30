@@ -39,6 +39,8 @@ public class TestJoker {
 
         int esperado = 100;
         int obtenido = jugador.getPuntaje();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
 
         assertEquals(esperado,obtenido);
 
@@ -62,6 +64,8 @@ public class TestJoker {
 
         int esperado = 7;
         int obtenido = jugador.getPuntaje();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
 
         assertEquals(esperado,obtenido);
 
@@ -89,33 +93,12 @@ public class TestJoker {
         jugador.jugar(tablero);
         int respuestaEsperada = 260;
         int respuestaObtenido = jugador.getPuntaje();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
+
         assertEquals(respuestaEsperada,respuestaObtenido);
 
     }
-
-    @Test
-    public void test07ComodinAleatorioNoSuma100PuntosALosChipsCorrectamente(){
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-
-        Random mockRandom = mock(Random.class);
-        when(mockRandom.nextInt(3)).thenReturn(1);
-
-        ActivacionAleatoria efecto = new ActivacionAleatoria(1, mockRandom);
-
-
-
-        unoEn joker = new unoEn("loco", "Joker Aleatorio", 100,
-                1, 3, mockRandom);
-
-
-        joker.activar(jugador);
-        int respuestaEsperada = 0;
-        int respuestaObtenido = jugador.getPuntaje();
-        assertEquals(respuestaEsperada,respuestaObtenido);
-
-    }
-
 
     @Test
     public void test04ComodinDeDescarteSuma10PuntosALosChipsCorrectamente(){
@@ -137,6 +120,7 @@ public class TestJoker {
         // Act
         int valorEsperado = 10;
         int valorObtenido = jugador.getPuntaje();
+        jugador.deshacerEleccion();
 
         // Assert
 
@@ -159,6 +143,9 @@ public class TestJoker {
         joker.activar(jugador);
         int valorEsperado =  110;
         int valorObtenido = jugador.obtenerChips();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
+
 
         assertEquals(valorEsperado,valorObtenido);
     }
@@ -192,8 +179,37 @@ public class TestJoker {
 
         int esperado = 560;
         int obtenido = jugador.getPuntaje();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
+
 
         assertEquals(esperado,obtenido);
+
+    }
+
+    @Test
+    public void test07ComodinAleatorioNoSuma100PuntosALosChipsCorrectamente(){
+        Mano mano = new Mano();
+        Jugador jugador = new Jugador(mano);
+
+        Random mockRandom = mock(Random.class);
+        when(mockRandom.nextInt(3)).thenReturn(1);
+
+        ActivacionAleatoria efecto = new ActivacionAleatoria(1, mockRandom);
+
+
+
+        unoEn joker = new unoEn("loco", "Joker Aleatorio", 100,
+                1, 3, mockRandom);
+
+
+        joker.activar(jugador);
+        int respuestaEsperada = 0;
+        int respuestaObtenido = jugador.getPuntaje();
+        mano.vaciarMano();
+        jugador.deshacerEleccion();
+
+        assertEquals(respuestaEsperada,respuestaObtenido);
 
     }
 

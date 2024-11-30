@@ -1,4 +1,5 @@
 package Modelo.Juego;
+import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.Usuario.Jugador;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
-    private final List<Joker> jokersALaVenta;//Max de 2 jokers
+    private final List<Activable> jokersALaVenta;//Max de 2 jokers
     private final List<Tarot> tarotsALaVenta;//Max de 2 Tarots
     private final List<Carta> cartasALaVenta;//Max 1 carta
     //Estos numeros podrian cambiar en un futuro, asi que los definimos como atributos
@@ -23,7 +24,7 @@ public class Tienda {
     private Carta cartaAComprar;
 
 
-    public Tienda(List<Joker> jokers, List<Tarot> tarots, List<Carta> cartas) {
+    public Tienda(List<Activable> jokers, List<Tarot> tarots, List<Carta> cartas) {
         this.jokersALaVenta = jokers;
         this.tarotsALaVenta = tarots;
         this.cartasALaVenta = cartas;

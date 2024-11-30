@@ -123,4 +123,5 @@ public class Jugador {
     public boolean validarMano(String manoAValidar){
        return this.mano.validarNombreMano(manoAValidar);
     }
+
 }

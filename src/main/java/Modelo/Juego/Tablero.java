@@ -1,6 +1,7 @@
 package Modelo.Juego;
 
 // Importaciones
+import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Tablero {
 
     // Atributos
-    private List<Joker> jokers;
+    private List<Activable> jokers;
     private List<Tarot> tarots;
     //Experimetal
     private Tarot tarotAJugar;
@@ -79,13 +80,13 @@ public class Tablero {
 
     //Post: activa Jokers correspondientes tras realizar una jugada
     private void chequearJokersJugada(){
-        for(Joker joker: this.jokers){
+        for(Activable joker: this.jokers){
             joker.activar(this.jugador);
         }
     }
     //Post: activa Jokers correspondientes al realizar un descarte
     private void chequearJokersDescarte(){
-        for(Joker joker: this.jokers){
+        for(Activable joker: this.jokers){
             joker.activar(this.jugador);
         }
     }
