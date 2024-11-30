@@ -8,7 +8,9 @@ module edu.fiuba.algo3 {
     exports edu.fiuba.algo3.vistas;
 
     // Arhivos del trabajo
-    exports  Modelo.Juego;
+    opens Modelo to javafx.fxml;
+    exports Modelo;
+    exports Modelo.Juego;
     exports Modelo.Usuario;
     exports Modelo.SistemaCartas.Poker.Palo;
     exports Modelo.SistemaCartas.Poker.Figura;
