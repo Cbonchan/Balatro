@@ -3,6 +3,7 @@ module edu.fiuba.algo3 {
     requires json.simple;
     requires com.google.gson;
     requires org.jetbrains.annotations;
+    requires javafx.fxml;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.vistas;
 

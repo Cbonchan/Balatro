@@ -1,11 +1,15 @@
 package Modelo;
 
 import javafx.event.ActionEvent;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
-public class ModeloController{
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ModeloController implements Initializable {
 
     @FXML
     private Button boton_descartar;
@@ -41,5 +45,12 @@ public class ModeloController{
 
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        nro_chips.setText("0");
+        nro_mult.setText("0");
+        nro_ronda.setText("1");
+        puntaje.setText("0");
+    }
 }
 
