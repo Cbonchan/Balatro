@@ -34,22 +34,18 @@ public class Tablero {
 
     public void agregarJoker(Joker joker) {
         jokers.add(joker);
-        return;
     }
 
     public void destruirJoker(Joker joker) {
         jokers.remove(joker);
-        return;
     }
 
     public void agregarTarot(Tarot tarot) {
         tarots.add(tarot);
-        return;
     }
 
     public void destruirTarot(Tarot tarot) {
         tarots.remove(tarot);
-        return;
     }
 
     public int jugarMano(Mano mano) {
@@ -70,18 +66,15 @@ public class Tablero {
     public void seleccionarTarot(Tarot tarot) {
         tarotAJugar = tarot;
         tarots.remove(tarot);
-        return;
     }
     public void deseleccionarTarot(Tarot tarot) {
         tarots.add(tarot);
         tarotAJugar= null;
-        return;
     }
     public void jugarTarot(){
         this.tarotAJugar.activar(this.jugador);
         deseleccionarTarot(this.tarotAJugar);
         destruirTarot(this.tarotAJugar);
-        return;
     }
 
     //Post: activa Jokers correspondientes tras realizar una jugada

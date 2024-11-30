@@ -10,7 +10,7 @@ import Modelo.SistemaCartas.Poker.Palo.Palo;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Collections;
 
 public class Mazo {
 
@@ -73,6 +73,10 @@ public class Mazo {
     public void reinsertarCartas(List<Carta> cartas) {
         mazoDeCartas.addAll(cartas);
         cartasDisponibles += cartas.size();
+    }
+//TODO: este metodo puede simplificar significativamente el como se reparten las cartas, investigar
+    public void shuffle() {
+        Collections.shuffle(mazoDeCartas);
     }
 
 }
