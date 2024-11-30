@@ -1,6 +1,7 @@
 package Modelo.Usuario;
 
 // Importaciones
+import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
 import Modelo.SistemaCartas.Poker.Carta;
@@ -40,11 +41,17 @@ public class Mano {
         return null;
     }
 
-    // Públicos
+    // Getters
+
+    public int obtenerChips(){
+        return (jugada.obtenerChips());
+    }
 
     public int obtenerMultiplicador(){
         return (jugada.obtenerMultiplicador());
     }
+
+    // Públicos
 
     public void sumarMultiplicador(int incremento){
         jugada.sumarMultiplicador(incremento);
@@ -54,24 +61,32 @@ public class Mano {
         jugada.multiplicarMultiplicador(incremento);
     }
 
-    public int obtenerChips(){
-        return (jugada.obtenerChips());
-    }
-
     public void aumentarChips(int puntaje, int multiplicador){
         jugada.aumentarChips(puntaje, multiplicador);
     }
-//post:cambia el valor de mult de la primer carta seleccionada
+
+
+
+    //! METODOS RELACIONADOS A TAROT:
+
+    // cambiarMult y cambiarChip deberìa recibir por parametro el indice para modificar, no decidirlo
+    // dentro de la implementacion
+
+    //post:cambia el valor de mult de la primer carta seleccionada
     public void cambiarMult(int multiplicador){
         Carta cartaSeleccionada=cartas.get(0);
         cartaSeleccionada.cambiarMult(multiplicador);
     }
-//post:cambiar el valor de chips de la pprimer carta seleccionada
+
+
+    //post:cambiar el valor de chips de la pprimer carta seleccionada
     public void cambiarChip(int chips){
         Carta cartaSeleccionada=cartas.get(0);
         cartaSeleccionada.cambiarChip(chips);
     }
-//post:aumenta el valor de los chips y mult de una jugada pasada por string
+
+    // Trabajar con class Multiplicador y Chips (hacer un new donde se llame solo chips)
+    //post:aumenta el valor de los chips y mult de una jugada pasada por string
     public void mejorarJugada(int puntos, int multiplicador, String jugada){
         for (Jugada jugadaAMejorar:jugadasPosibles){
             if (jugadaAMejorar.validarNombreJugada(jugada)) {
@@ -79,7 +94,25 @@ public class Mano {
             }
         }
     }
-//post: agrega a la mano una carta pasada por parametro
+
+
+
+    //! METODOS RELACIONADOS A JOKER
+
+    public boolean validarNombreMano(String manoAValidar){
+        return this.jugada.validarNombreJugada(manoAValidar);
+    }
+
+    public List<Carta> cartasAcumuladas(List<Carta> lista){
+        lista.addAll(cartas);
+        return lista;
+    }
+
+
+
+    //! METODOS RELACIONADOS A JUGADOR
+
+    //post: agrega a la mano una carta pasada por parametro
     public void agregarCarta(Carta cartaCarta) {
         if (cartas.size() < 5) {
             cartas.add(cartaCarta);
@@ -90,23 +123,12 @@ public class Mano {
         // Se actualiza la jugada en cada agregado de carta\
         jugada = determinarJugada(cartas);
     }
-//Post: vacia la lista de cartas de la mano
+
+    //Post: vacia la lista de cartas de la mano
     public void vaciarMano() {
         cartas.clear();
         jugada = null;
     }
-
-    public boolean validarNombreMano(String manoAValidar){
-        return this.jugada.validarNombreJugada(manoAValidar);
-    }
-
-    /*
-    // El multiplicador y puntaje ahora lo tendría Jugada, los metodos de abajo no tienen que manejarse aca
-
-    public void aumentarMultiplicador(int multiplicador) {
-        this.multiplicador += multiplicador;
-    }
-*/
 
     public int calcularPuntaje() {
 
@@ -128,8 +150,26 @@ public class Mano {
         return jugada.calcularPuntaje(puntajeTotal);
     }
 
-    public List<Carta> cartasAcumuladas(List<Carta> lista){
-        lista.addAll(cartas);
-        return lista;
+    public int calcularPuntaje(List<Joker> jokers) {
+
+        if (jugada == null) {
+            return 0;
+        }
+
+        // Calcula el puntaje de la mano
+        Puntaje puntajeTotal = new Puntaje( new Chip(0));
+
+
+        List <Carta> cartasUtilizadas =   jugada.cartasJugadas(cartas);
+
+        // Suma de Puntaje de las cartas utilizadas
+        for (Carta cartasUtilizada : cartasUtilizadas) {
+            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
+        }
+
+        jokers.chequearJokersJugada(this.jugada, puntajeTotal);
+
+        // int
+        return jugada.calcularPuntaje(puntajeTotal);
     }
 }

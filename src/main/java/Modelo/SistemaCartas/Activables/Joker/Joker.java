@@ -29,6 +29,7 @@ public abstract class Joker implements Activable {
         return descripcion;
     }
 
+    //TODO: Va a recibir: Mano y Puntaje (No recibe Jugador)
     public void activar(Jugador jugador){
         efecto.activar(this.puntaje, this.multiplicador, jugador);
     }
