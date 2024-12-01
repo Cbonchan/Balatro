@@ -44,7 +44,9 @@ public class Jugador {
         return cartas.size();
     }
 
+    public List<Carta> obtenerCartas(){return cartas;}
 
+    public Mano obtenerMano(){return mano;}
     // Métodos
 
     //! MÉTODOS RELACIONADOS A MAZO:

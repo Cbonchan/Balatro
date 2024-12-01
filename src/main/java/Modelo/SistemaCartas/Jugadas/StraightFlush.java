@@ -17,7 +17,7 @@ public class StraightFlush extends  Jugada{
 
     // Constructor
     public StraightFlush() {
-        super( new Chip(100), new Multiplicador( 8));
+        super("Escalera de Color", new Chip(100), new Multiplicador( 8));
     }
 
     // Métodos

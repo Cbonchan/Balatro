@@ -13,7 +13,7 @@ public class HighCard  extends  Jugada{
 
     // Constructor
     public HighCard() {
-        super( new Chip(5), new Multiplicador( 1));
+        super( "Carta alta",new Chip(5), new Multiplicador( 1));
     }
 
     // Métodos
