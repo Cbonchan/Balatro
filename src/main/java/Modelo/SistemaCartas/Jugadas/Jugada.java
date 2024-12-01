@@ -55,34 +55,44 @@ public abstract class Jugada {
 
 
     // Públicos
+
+    // Listos:
+
+    public void aumentarChips(Chip incremento){
+        puntaje.sumarChipCon(incremento);
+    }
+
+    public void sumarMultiplicador(Multiplicador incremento){
+        puntaje.sumarMultiplicador(incremento);
+    }
+
+    public void multiplicarMultiplicador(Multiplicador incremento){
+        puntaje.multiplicarMultiplicadorPor(incremento);
+    }
+
+    public void mejorar(int incrementador, Multiplicador multiplicador){
+        this.puntaje.sumarChipCon(new Chip(incrementador));
+        this.puntaje.sumarMultiplicador(multiplicador);
+    }
+
+
+
+
+    // Falta
+
     // Post: Devuelve true si la jugada corresponde a una de las hijas
 
     public int obtenerMultiplicador(){
         return (puntaje.obtenerMultiplicador());
     }
 
-    public void sumarMultiplicador(int incremento){
-        Chip chip = new Chip(0);
-        Multiplicador multiplicador = new Multiplicador(incremento);
-        Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
-        puntaje.aumentarMultiplicador(otroPuntaje);
-    }
 
-    public void multiplicarMultiplicador(int incremento){
-        Chip chip = new Chip(0);
-        Multiplicador multiplicador = new Multiplicador(incremento);
-        Puntaje otroPuntaje = new Puntaje(chip, multiplicador);
-        puntaje.sumarNuevoMultiplicador(otroPuntaje);
-    }
 
     public int obtenerChips(){
         return (puntaje.obtenerChips());
     }
 
-    public void aumentarChips(int puntos, int multiplicador){
-        Chip chip = new Chip(puntos);
-        puntaje.sumarChip(chip);
-    }
+
 
     // Post: Devuelve el puntaje de la jugada
     public  int calcularPuntaje(Puntaje puntajeList){
@@ -92,9 +102,5 @@ public abstract class Jugada {
         return puntaje.calcularPuntaje();
     }
 
-    public void mejorar(int puntos, int multiplicador){
-        this.puntaje.sumarChip(new Chip(puntos));
-        this.puntaje.incrementarMult(multiplicador);
-    }
 
 }
