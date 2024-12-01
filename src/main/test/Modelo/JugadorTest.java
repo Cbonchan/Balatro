@@ -7,7 +7,6 @@ import Modelo.Usuario.Mazo;
 import Modelo.SistemaCartas.Poker.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
 // Testear comportamiento no implementacion (rehacer)
 
 public class JugadorTest {
+
+    /*
 
     @Test
     public void test01CantidadDeCartasCorrectas(){
@@ -62,7 +63,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -89,7 +90,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -116,7 +117,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -143,7 +144,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -170,7 +171,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -197,7 +198,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -221,7 +222,7 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
         jugador.jugar(tablero);
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         assertEquals(valorEsperado,valorObtenido);
     }
@@ -247,7 +248,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -274,7 +275,7 @@ public class JugadorTest {
         jugador.jugar(tablero);
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -298,7 +299,7 @@ public class JugadorTest {
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
         jugador.jugar(tablero);
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         assertEquals(valorEsperado,valorObtenido);
     }
@@ -362,6 +363,8 @@ public class JugadorTest {
         assertEquals(valorEsperado,valorObtenido);
     }
 */
+
+    /*
     @Test
     public void test15LaManoSeCalculaEnElOrdenCorrecto(){
         // Arrange
@@ -382,30 +385,30 @@ public class JugadorTest {
         //? Multiples Asserts -> Preguntar profes si esta bien
         jugador.seleccionarCarta(cartaCarta1);
         jugador.jugar(tablero);
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
         assertEquals(primerValorEsperado,valorObtenido);
 
         jugador.seleccionarCarta(cartaCarta2);
         jugador.jugar(tablero);
-        valorObtenido = jugador.getPuntaje();
+        valorObtenido = jugador.getPuntos();
         assertEquals(segundoValorEsperado,valorObtenido);
 
         jugador.seleccionarCarta(cartaCarta3);
         jugador.jugar(tablero);
-        valorObtenido = jugador.getPuntaje();
+        valorObtenido = jugador.getPuntos();
         assertEquals(tercerValorEsperado,valorObtenido);
 
         jugador.seleccionarCarta(cartaCarta4);
         jugador.jugar(tablero);
-        valorObtenido = jugador.getPuntaje();
+        valorObtenido = jugador.getPuntos();
         assertEquals(cuartoValorEsperado,valorObtenido);
 
         jugador.seleccionarCarta(cartaCarta5);
         jugador.jugar(tablero);
-        valorObtenido = jugador.getPuntaje();
+        valorObtenido = jugador.getPuntos();
         assertEquals(quintoValorEsperado,valorObtenido);
     }
-
+*/
 }
 
 

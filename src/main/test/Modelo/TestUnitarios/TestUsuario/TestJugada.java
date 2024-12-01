@@ -1,7 +1,6 @@
 package Modelo.TestUnitarios.TestUsuario;
 
 // Importaciones
-import Modelo.Juego.*;
 import Modelo.Usuario.*;
 import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
@@ -17,9 +16,7 @@ public class TestJugada {
     @Test
     public void test01LaManoHighCardSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Diamante() ,new Reina());
         Carta cartaCarta2 = new Carta(new Pica() ,new Siete());
         Carta cartaCarta3 = new Carta(new Corazon() ,new Cinco());
@@ -32,10 +29,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -44,9 +42,7 @@ public class TestJugada {
     @Test
     public void test02LaManoPairSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Diamante() ,new Rey());
         Carta cartaCarta2 = new Carta(new Trebol() ,new Rey());
         Carta cartaCarta3 = new Carta(new Trebol() ,new Siete());
@@ -59,10 +55,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -71,9 +68,7 @@ public class TestJugada {
     @Test
     public void test03LaManoTwoPairSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Diamante() ,new Reina());
         Carta cartaCarta2 = new Carta(new Pica() ,new Reina());
         Carta cartaCarta3 = new Carta(new Corazon() ,new Cinco());
@@ -86,10 +81,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -99,9 +95,7 @@ public class TestJugada {
     @Test
     public void test04LaManoThreeOfAKindSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Corazon() ,new Ocho());
         Carta cartaCarta2 = new Carta(new Pica() ,new Ocho());
         Carta cartaCarta3 = new Carta(new Trebol() ,new Ocho());
@@ -114,10 +108,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -126,9 +121,7 @@ public class TestJugada {
     @Test
     public void test05LaManoStraightSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Diamante() ,new Tres());
         Carta cartaCarta2 = new Carta(new Trebol() ,new Cuatro());
         Carta cartaCarta3 = new Carta(new Diamante() ,new Cinco());
@@ -141,10 +134,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -153,9 +147,7 @@ public class TestJugada {
     @Test
     public void test06LaManoFlushSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Trebol() ,new Siete());
         Carta cartaCarta2 = new Carta(new Trebol() ,new Cuatro());
         Carta cartaCarta3 = new Carta(new Trebol() ,new Reina());
@@ -168,10 +160,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -180,9 +173,7 @@ public class TestJugada {
     @Test
     public void test07LaManoFullHouseSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Corazon() ,new As());
         Carta cartaCarta2 = new Carta(new Pica() ,new As());
         Carta cartaCarta3 = new Carta(new Diamante() ,new As());
@@ -195,10 +186,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -207,9 +199,7 @@ public class TestJugada {
     @Test
     public void test08LaManoFourOfAKindSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Diamante() ,new Seis());
         Carta cartaCarta2 = new Carta(new Pica() ,new Seis());
         Carta cartaCarta3 = new Carta(new Corazon() ,new Seis());
@@ -222,10 +212,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -234,9 +225,7 @@ public class TestJugada {
     @Test
     public void test09LaManoStraightFlushSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Pica() ,new Reina());
         Carta cartaCarta2 = new Carta(new Pica() ,new Jota());
         Carta cartaCarta3 = new Carta(new Pica() ,new Diez());
@@ -249,10 +238,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);
@@ -261,9 +251,7 @@ public class TestJugada {
     @Test
     public void test10LaManoRoyalFLushSeCalculaCorrectamente(){
         // Arrange
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta cartaCarta1 = new Carta(new Pica() ,new As());
         Carta cartaCarta2 = new Carta(new Pica() ,new Rey());
         Carta cartaCarta3 = new Carta(new Pica() ,new Reina());
@@ -276,10 +264,11 @@ public class TestJugada {
         jugador.seleccionarCarta(cartaCarta3);
         jugador.seleccionarCarta(cartaCarta4);
         jugador.seleccionarCarta(cartaCarta5);
-        jugador.jugar(tablero);
+
+        jugador.jugarMano();
 
         // Act
-        int valorObtenido = jugador.getPuntaje();
+        int valorObtenido = jugador.getPuntos();
 
         // Assert
         assertEquals(valorEsperado,valorObtenido);

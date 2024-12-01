@@ -27,7 +27,7 @@ public class TestMultiplicador {
         Multiplicador multiplicador2 = new Multiplicador(4);
 
         // Act
-        Multiplicador resultado = multiplicador1.sumar(multiplicador2);
+        Multiplicador resultado = multiplicador1.multiplicarCon(multiplicador2);
 
         // Assert
         assertEquals(12, resultado.valorNumerico());
@@ -53,7 +53,7 @@ public class TestMultiplicador {
         Multiplicador multiplicador2 = new Multiplicador(-3);
 
         // Act
-        Multiplicador resultado = multiplicador1.sumar(multiplicador2);
+        Multiplicador resultado = multiplicador1.multiplicarCon(multiplicador2);
 
         // Assert
         assertEquals(-15, resultado.valorNumerico());
