@@ -1,5 +1,7 @@
-package Modelo.SistemaCartas.Activables.Joker;
+/*
+package Modelo.deprecated;
 
+import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumaPuntaje;
 
 public class SumadorPuntaje extends Joker {
@@ -10,3 +12,5 @@ public class SumadorPuntaje extends Joker {
     }
 
 }
+
+*/

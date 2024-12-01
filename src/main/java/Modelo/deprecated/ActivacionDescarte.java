@@ -1,17 +1,18 @@
 package Modelo.deprecated;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
-import Modelo.Usuario.Jugador;
+import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Usuario.Mano;
 
 public class ActivacionDescarte implements Efecto {
 
+
     @Override
-    public void activar(int puntaje, int multiplicador, Jugador jugador){
-/*
-            if (puntaje == 1){
-                jugador.multiplicarMultiplicador(multiplicador);
+    public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
+            if ( incrementador == 1){
+                mano.sumarMultiplicador(multiplicador);
             } else {
-                jugador.aumentarPuntos(puntaje);
+                mano.aumentarPuntos(incrementador);
             }
-            */
     }
+
 }
