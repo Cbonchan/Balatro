@@ -6,6 +6,7 @@ import Modelo.SistemaCartas.Poker.Palo.Palo;
 import Modelo.SistemaCartas.Poker.Figura.Figura;
 import javafx.scene.image.Image;
 
+import javax.swing.text.Element;
 import java.util.Objects;
 
 public class Carta {
@@ -112,4 +113,5 @@ public class Carta {
         String pathname = "images/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
         return new Image(Objects.requireNonNull(Carta.class.getResourceAsStream(pathname)));
     }
+
 }

@@ -16,7 +16,7 @@ public class Flush extends Jugada{
 
     // Constructor
     public Flush() {
-        super( new Chip(35), new Multiplicador( 4));
+        super("color", new Chip(35), new Multiplicador( 4));
     }
 
     // Métodos
@@ -24,6 +24,7 @@ public class Flush extends Jugada{
     public boolean validarNombreJugada(String manoAValidar){
         return manoAValidar.equals("color");
     }
+
 
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {

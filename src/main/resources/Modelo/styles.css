@@ -1,6 +1,6 @@
 .root{
     -fx-font-size: 24pt;
-    -fx-background-color: linear-gradient(red, yellow, blue);
+    -fx-background-color: linear-gradient(red, blue);
     /*-fx-background-color: #536dfe;*/
 }
 
