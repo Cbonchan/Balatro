@@ -88,13 +88,23 @@ public class Carta {
         otroPuntaje.sumarNuevoMultiplicador(this.puntaje);
     }
 
-    public void cambiarMult(int nuevoMultiplicador){
+
+
+
+    // Arreglado
+
+    public void cambiarChip(int nuevoValorDeChip){
+        puntaje.cambiarChip(nuevoValorDeChip);
+    }
+
+
+    public void cambiarMultiplicador(Multiplicador nuevoMultiplicador){
         this.puntaje.cambiarMultiplicador(nuevoMultiplicador);
     }
 
-    public void cambiarChip(int nuevoChip){
-        this.puntaje.cambiarChip(nuevoChip);
-    }
+    // Falta :
+
+
 
 //Metodos JavaFX
     //post: devuelve una imagen correspondiente dependiendo de el estado de la carta
