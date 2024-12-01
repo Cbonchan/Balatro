@@ -1,6 +1,8 @@
 package Modelo.Parser;
 
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
+import Modelo.SistemaPuntaje.Multiplicador;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -130,7 +132,7 @@ public class JSONReader {
             if (multiplicador > 1){
                 return new Multiplicador(nombre, descripcion, puntos, multiplicador);
             } else if (puntos != 1){
-                return new SumadorPuntaje(nombre, descripcion, puntos, multiplicador);
+                return new SumarPuntaje(nombre, descripcion, puntos, multiplicador);
             } else{
                 throw new RuntimeException("Efecto invalido");
 
@@ -140,4 +142,3 @@ public class JSONReader {
 
     }
 }
-
