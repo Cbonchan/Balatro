@@ -1,55 +1,61 @@
 package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
-import Modelo.Usuario.Jugador;
+import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Usuario.Mano;
 
+import java.util.Objects;
 import java.util.Random;
 
 public class unoEn extends Joker {
 
-    private final Random random;
+    // Atributos
     private final int probabilidad;
+    private final Random random;
 
-    public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad){
-        super(nombre, descripcion, puntaje, multiplicador);
 
-        this.probabilidad = probabilidad;
+    // Constructor
+    public unoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador,  int probabilidad, Efecto efecto) {
+        super(nombre, descripcion, incrementador, multiplicador, "1 En", efecto);
+
         random = new Random();
+        this.probabilidad = probabilidad;
+    }
 
-        if (puntaje == 1){
-            this.efecto = new MultiplicacionMult();
-        }
-        else{
-            this.efecto = new SumaPuntaje();
-        }
+    // Viejo Constructor
+    public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad){
+
+        super(nombre, descripcion, puntaje, new Multiplicador(multiplicador), "1 En" );
+        this.probabilidad = probabilidad;
+
+        random = new Random();
     }
 
     //TESTING, CONSTRUCTOR SOLO USADO PARA TESTS
     public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad, Random FProbabilidad) {
-        super(nombre, descripcion, puntaje, multiplicador);
+        super(nombre, descripcion, puntaje, new Multiplicador(multiplicador), "1 En");
 
         this.probabilidad = probabilidad;
         random = FProbabilidad;
-
-        if (puntaje == 1) {
-            this.efecto = new SumarMult();
-        } else {
-            this.efecto = new AumentarChips();
-        }
     }
 
-    private boolean seActivo(){
-        return random.nextInt(this.probabilidad) == 0;
-    }
     /*
     public boolean FueActivado(){
         return this.efecto.seActivo();
     }*/
 
-    @Override
-    public void activar(Jugador jugador){
-        if (seActivo()) {
-            this.efecto.activar(this.puntaje, this.multiplicador, jugador);
-        }
+    // Métodos
+    private boolean seActivo(){
+        return random.nextInt(this.probabilidad) == 0;
     }
+
+
+    @Override
+    public void activar(Mano mano, int puntos, String contexto) {
+        if ( activacion.equals(contexto) && seActivo()  ) {
+                efecto.activar(this.incrementador, this.multiplicador, mano, puntos);
+            }
+    }
+
+
 }

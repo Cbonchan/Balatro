@@ -1,25 +1,28 @@
 package Modelo.SistemaCartas.Activables.Joker;
+
+import Modelo.Usuario.Mano;
+import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
-import Modelo.Usuario.Jugador;
 
 public class PorJugada extends Joker {
+    // Atributos
     private final String jugada;
 
-    public PorJugada(String nombre, String descripcion, int puntaje, int multiplicador, String jugada) {
-        super(nombre, descripcion, puntaje, multiplicador);
+    // Constructor
+    public PorJugada(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String jugada,  Efecto efecto) {
+        super(nombre, descripcion, incrementador, multiplicador, "Mano Jugada",  efecto);
+
         this.jugada = jugada;
-        if (puntaje == 1){
-            this.efecto = new SumarMult();
-        }
-        else{
-            this.efecto = new AumentarChips();
+    }
+
+    // Métodos
+
+    // Post: Se activa el efecto del Joker
+    @Override
+    public void activar(Mano mano, int puntos, String contexto) {
+        if ( activacion.equals(contexto) && mano.validarNombreMano(jugada) ) {
+            efecto.activar(this.incrementador, this.multiplicador, mano, puntos);
         }
     }
 
-    @Override
-    public void activar(Jugador jugador){
-        if (jugador.validarMano(jugada)) {
-            efecto.activar(this.puntaje, this.multiplicador, jugador);
-        }
-    }
 }

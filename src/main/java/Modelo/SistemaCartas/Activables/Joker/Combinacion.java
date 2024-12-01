@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Activables.Joker;
 
+import Modelo.Usuario.Mano;
 import Modelo.SistemaCartas.Activables.Activable;
-import Modelo.Usuario.Jugador;
 
 import java.util.ArrayList;
 
@@ -16,11 +16,13 @@ public class Combinacion implements Activable {
         this.subcomodines = subcomodines;
     }
 
-    public void activar(Jugador jugador){
-        for (int i = 0; i < subcomodines.size(); i++){
-            subcomodines.get(i).activar(jugador);
+
+    public void activar(Mano mano, int puntos, String contexto) {
+        for (Activable comodin : subcomodines) {
+            comodin.activar(mano, puntos, contexto);
         }
     }
+
     public String getDescripcion(){
         return descripcion;
     }

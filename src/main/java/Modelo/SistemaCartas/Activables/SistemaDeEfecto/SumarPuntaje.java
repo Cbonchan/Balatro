@@ -1,19 +1,11 @@
 package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
-
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
-public class MejorarJugada implements Efecto {
-    private final String jugada;
-
-    public MejorarJugada(String jugada) {
-        this.jugada = jugada;
-    }
+public class SumarPuntaje implements Efecto {
 
     @Override
     public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
-        mano.mejorarJugada(incrementador, multiplicador, jugada);
+        mano.aumentarPuntos(puntos);
     }
-
-
 }

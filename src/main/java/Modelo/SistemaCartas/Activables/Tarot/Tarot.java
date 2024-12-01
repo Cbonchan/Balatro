@@ -31,9 +31,6 @@ public abstract class Tarot implements Activable {
         return descripcion;
     }
 
-    public void activar(Jugador jugador){
-        efecto.activar(this.puntaje, this.multiplicador, jugador);
-    }
 }
 
 

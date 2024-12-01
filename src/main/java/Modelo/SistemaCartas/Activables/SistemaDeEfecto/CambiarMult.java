@@ -1,13 +1,13 @@
 package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
 
-import Modelo.Usuario.Jugador;
+import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Usuario.Mano;
 
 public class CambiarMult implements Efecto {
 
     @Override
-    public void activar(int puntos, int multiplicador, Jugador jugador){
-
-        jugador.cambiarMultiplicador(multiplicador);
+    public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
+        mano.cambiarMultiplicadorPor(multiplicador);
     }
 
 

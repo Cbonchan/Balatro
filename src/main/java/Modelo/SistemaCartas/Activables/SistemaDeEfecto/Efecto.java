@@ -1,5 +1,7 @@
 package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
-import Modelo.Usuario.Jugador;
+
+import Modelo.Usuario.Mano;
+import Modelo.SistemaPuntaje.Multiplicador;
 
 public interface Efecto {
 
@@ -9,8 +11,7 @@ public interface Efecto {
     }
      */
 
-    void activar(int puntaje, int multiplicador, Jugador jugador);
-
+    void activar(int  incrementador, Multiplicador multiplicador, Mano mano, int puntos);
 
 
 }
