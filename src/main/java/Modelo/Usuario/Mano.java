@@ -18,6 +18,7 @@ public class Mano {
             new Straight(), new Flush(), new HighCard()
     );
 
+    private  int puntos;
     private Jugada jugada;
     private List<Carta> cartas;
 
@@ -29,7 +30,6 @@ public class Mano {
     // Métodos
 
     // Privados
-
     private Jugada determinarJugada(List<Carta> cartas) {
 
         for (Jugada jugada : jugadasPosibles) {
@@ -53,44 +53,58 @@ public class Mano {
 
     // Públicos
 
-    public void sumarMultiplicador(int incremento){
+    // Relación con Chips
+    public void aumentarChips(Chip incremento){
+        jugada.aumentarChips(incremento);
+    }
+
+    //post:cambiar el valor de chips de la pprimer carta seleccionada
+    public void cambiarChipPor(int nuevoValorDeChip){
+        Carta cartaSeleccionada=cartas.get(0);
+        cartaSeleccionada.cambiarChip(nuevoValorDeChip);
+    }
+
+
+
+    // Relación con Multiplicador
+
+    // Arreglado
+
+    // Post: Suma el valor de los multiplicadores
+    public void sumarMultiplicador(Multiplicador incremento){
         jugada.sumarMultiplicador(incremento);
     }
 
-    public void multiplicarMultiplicador(int incremento){
+    public void multiplicarMultiplicador(Multiplicador incremento){
         jugada.multiplicarMultiplicador(incremento);
     }
 
-    public void aumentarChips(int puntaje, int multiplicador){
-        jugada.aumentarChips(puntaje, multiplicador);
+    // Post:cambia el valor de mult de la primer carta seleccionada
+    public void cambiarMultiplicadorPor(Multiplicador multiplicador){
+        Carta cartaSeleccionada=cartas.get(0);
+        cartaSeleccionada.cambiarMultiplicador(multiplicador);
     }
+
+
+
+    // Faltan :
+
+
+
 
 
 
     //! METODOS RELACIONADOS A TAROT:
 
-    // cambiarMult y cambiarChip deberìa recibir por parametro el indice para modificar, no decidirlo
-    // dentro de la implementacion
-
-    //post:cambia el valor de mult de la primer carta seleccionada
-    public void cambiarMult(int multiplicador){
-        Carta cartaSeleccionada=cartas.get(0);
-        cartaSeleccionada.cambiarMult(multiplicador);
-    }
-
-
-    //post:cambiar el valor de chips de la pprimer carta seleccionada
-    public void cambiarChip(int chips){
-        Carta cartaSeleccionada=cartas.get(0);
-        cartaSeleccionada.cambiarChip(chips);
-    }
 
     // Trabajar con class Multiplicador y Chips (hacer un new donde se llame solo chips)
+
     //post:aumenta el valor de los chips y mult de una jugada pasada por string
-    public void mejorarJugada(int puntos, int multiplicador, String jugada){
+    public void mejorarJugada(int incrementador, Multiplicador multiplicador, String jugada){
+
         for (Jugada jugadaAMejorar:jugadasPosibles){
             if (jugadaAMejorar.validarNombreJugada(jugada)) {
-                jugadaAMejorar.mejorar(puntos, multiplicador);
+                jugadaAMejorar.mejorar(incrementador, multiplicador);
             }
         }
     }
@@ -108,11 +122,35 @@ public class Mano {
         return lista;
     }
 
+    public  void aumentarPuntos(int incremento){
+         puntos += incremento;
+    }
 
 
     //! METODOS RELACIONADOS A JUGADOR
 
-    //post: agrega a la mano una carta pasada por parametro
+    // Post: Calcula el puntaje con Jokers involucrados por Jugada
+    public int calcularPuntaje() {
+
+        if (jugada == null) {
+            return 0;
+        }
+
+        // Calcula el puntaje de la mano
+        Puntaje puntajeTotal = new Puntaje( new Chip(0));
+
+        List <Carta> cartasUtilizadas =   jugada.cartasJugadas(cartas);
+
+        // Suma de Puntaje de las cartas utilizadas
+        for (Carta cartasUtilizada : cartasUtilizadas) {
+            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
+        }
+
+        // int
+        return jugada.calcularPuntaje(puntajeTotal);
+    }
+
+    // Post: agrega a la mano una carta pasada por parametro
     public void agregarCarta(Carta cartaCarta) {
         if (cartas.size() < 5) {
             cartas.add(cartaCarta);
@@ -124,52 +162,17 @@ public class Mano {
         jugada = determinarJugada(cartas);
     }
 
-    //Post: vacia la lista de cartas de la mano
+    // Post: vacía la lista de cartas de la mano
     public void vaciarMano() {
         cartas.clear();
         jugada = null;
     }
 
-    public int calcularPuntaje() {
-
-        if (jugada == null) {
-            return 0;
-        }
-
-        // Calcula el puntaje de la mano
-        Puntaje puntajeTotal = new Puntaje( new Chip(0));
-
-       List <Carta> cartasUtilizadas =   jugada.cartasJugadas(cartas);
-
-       // Suma de Puntaje de las cartas utilizadas
-        for (Carta cartasUtilizada : cartasUtilizadas) {
-            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
-        }
-
-        // int
-        return jugada.calcularPuntaje(puntajeTotal);
-    }
-
-    public int calcularPuntaje(List<Joker> jokers) {
-
-        if (jugada == null) {
-            return 0;
-        }
-
-        // Calcula el puntaje de la mano
-        Puntaje puntajeTotal = new Puntaje( new Chip(0));
 
 
-        List <Carta> cartasUtilizadas =   jugada.cartasJugadas(cartas);
 
-        // Suma de Puntaje de las cartas utilizadas
-        for (Carta cartasUtilizada : cartasUtilizadas) {
-            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
-        }
 
-        jokers.chequearJokersJugada(this.jugada, puntajeTotal);
+    // Viejo
 
-        // int
-        return jugada.calcularPuntaje(puntajeTotal);
-    }
+
 }

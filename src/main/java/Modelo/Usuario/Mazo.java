@@ -15,13 +15,13 @@ import java.util.Collections;
 public class Mazo {
 
     // Atributos
-    private final ArrayList<Carta> mazoDeCartas;
     private int cartasDisponibles;
+    private final ArrayList<Carta> mazoDeCartas;
 
     // Constructor
     public Mazo() {
         this.cartasDisponibles = 52;
-        mazoDeCartas = new ArrayList<Carta>();
+        mazoDeCartas = new ArrayList<>();
 
         Palo[] palos = {
                 new Corazon(), new Diamante(), new Trebol(), new Pica()};
@@ -55,12 +55,26 @@ public class Mazo {
         cartasDisponibles--;
         return cartaCarta;
     }
-    
+
     // Públicos
-    public boolean mazoCompleto() {
-        return cartasDisponibles == 52;
+
+    // Post: Reparte cartas hasta que tenga 8 cartas
+    public void  repartirCartas(List<Carta> cartasACompletar) {
+        while ( cartasACompletar.size() != 8 ){
+            cartasACompletar.add(cartaAleatoria());
+            cartasDisponibles--;
+        }
     }
 
+    public void reinsertarCartas(List<Carta> cartas) {
+        mazoDeCartas.addAll(cartas);
+        cartasDisponibles += cartas.size();
+    }
+
+
+
+
+    // Viejo
     public void repartirCartas(Jugador jugador) {
         List<Carta> cartasParaMandar = new ArrayList<>();
 
@@ -70,10 +84,11 @@ public class Mazo {
         jugador.agregarCartas(cartasParaMandar);
     }
 
-    public void reinsertarCartas(List<Carta> cartas) {
-        mazoDeCartas.addAll(cartas);
-        cartasDisponibles += cartas.size();
-    }
+
+
+
+
+
 //TODO: este metodo puede simplificar significativamente el como se reparten las cartas, investigar
     public void shuffle() {
         Collections.shuffle(mazoDeCartas);

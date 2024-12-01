@@ -1,191 +1,179 @@
 package Modelo.Usuario;
 
 // Importaciones
+
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.Juego.Tablero;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Jugador {
     // Atributos
+    private final  PilaDescarte cartasDescartadas;
+    private final List<Carta> cartas;          // Cartas para elegir max 8
+    private final List<Joker> jokers;         // Jokers para activar max 5
+    private final List<Tarot> tarots;          // Tarots para activar max 2
+    private final Mazo mazo;
+    private final Mano mano;
+    private int puntos;
 
-    private List<Carta> cartas;
-    private List<Joker> jokers;
-    private List<Tarot> tarots;
-    private Mano mano;
-    private Mazo mazo;
-
-    private int puntaje;
     // Constructor
     public Jugador(){
         this.cartas = new ArrayList<>();
         this.jokers = new ArrayList<>();
         this.tarots = new ArrayList<>();
-        this.mano = new Mano(); // Suponiendo que Mano tiene un constructor sin parámetros
-        this.mazo = new Mazo(); // Suponiendo que Mazo tiene un constructor sin parámetros
-        this.puntaje = 0; // Inicializamos el puntaje en 0
+        this.mano = new Mano();
+        this.mazo = new Mazo();
+        this.puntos = 0;
+        this.cartasDescartadas = new PilaDescarte();
     }
 
+    //! Getters y Setters
 
-    //? Por que Jugador recibe Mano y no la crea el mismo?
-    //? BORRAR CAMILO
-    public Jugador(Mano mano) {
-        this.puntaje = 0;
-        this.cartas = new ArrayList<>();
-        this.mano = mano;
-
-
-    }
-
-
-    //! Getters
-
-    private void asignarPuntaje(int puntajeEntrante) {
-        puntaje += puntajeEntrante;
-    }
-
-    public int getCantidadCartas() {
-        return cartas.size();
-    }
-
-    public int getPuntaje(){
-        return puntaje;
+    public int getPuntos(){
+        return puntos;
     }
 
     public int obtenerChips(){
         return (mano.obtenerChips());
     }
 
+    public int getCantidadCartas() {
+        return cartas.size();
+    }
+
+
     // Métodos
 
-    //! METODOS RELACIONADOS A MAZO:
+    //! MÉTODOS RELACIONADOS A MAZO:
 
 
+    // Post: Rellena la mano hasta tener 8 Cartas
+    public void agregarCartasFaltantes() {
+        mazo.repartirCartas(cartas);
+    }
+
+    //! EN DUDA
+    //Post: Agrega una carta del Mazo a mi lista de cartas
+    public int cartasFaltantes(){
+        int actuales = cartas.size();
+        return 8 - actuales;
+    }
+
+    //Post: Agrega una lista de cartas del Mazo a mi lista de cartas
     public void agregarCartas(List<Carta> cartasNuevas) {
         cartas.addAll(cartasNuevas);
     }
 
 
-    //! METODOS RELACIONADOS A MANO:
 
+    //! MÉTODOS RELACIONADOS A MANO:
 
+    // Públicos
+
+    // Post: Selecciona una carta de mi lista de cartas y la agrega a mi mano
     public void seleccionarCarta(Carta cartaCarta){
         mano.agregarCarta(cartaCarta);
         cartas.remove(cartaCarta);
     }
 
-    public void quitarCartas(Mano mano){
-        List<Carta> cartasARemover = new ArrayList<>();
-        cartasARemover = mano.cartasAcumuladas(cartasARemover);
-        cartas.removeAll(cartasARemover);
-    }
-
-    public void deshacerEleccion(){
+    // Post: Deshace la elección de cartas de mi mano
+    public void cancelarEleccion(){
         List<Carta> cartasAReintegrar = mano.cartasAcumuladas(new ArrayList<>());
         cartas.addAll(cartasAReintegrar);
         mano.vaciarMano();
     }
 
-    public void descartarMano(Tablero tablero){
-        tablero.descarteMano(mano);
-        this.quitarCartas(mano);
-        mano.vaciarMano();
+    // Post: Descarta la mano actual y la agrega a la pila de descarte
+    public  void descartarMano(){
+        cartasDescartadas.descartarMano(mano);
+
+        for (Joker joker: jokers){
+            joker.activar(mano, puntos, "Descarte");
+        }
+
+        cartasDescartadas.reinsertarEnMazo(mazo);
+        this.agregarCartasFaltantes();
     }
 
-    public boolean validarMano(String manoAValidar){
-        return this.mano.validarNombreMano(manoAValidar);
+    //! MÉTODOS RELACIONADOS A JOKER:
+
+    // Post: Agrega un Joker a mi lista de Jokers si no tengo 5
+    public void agregarJoker(Joker joker) {
+        if (jokers.size() < 5){
+            jokers.add(joker);
+        }
     }
 
-    public void mejorarJugada(int puntos, int multiplicador, String jugada){
-        this.mano.mejorarJugada(puntos, multiplicador, jugada);
+    // Post: Elimina un Joker de mi lista de Jokers
+    public  void eliminarJoker(Joker joker){
+        jokers.remove(joker);
     }
-
-        //! PUNTAJE DE MANO:
-
-    public void aumentarChips(int puntaje, int multiplicador){
-        this.mano.aumentarChips(puntaje, multiplicador);
-    }
-
-    public void aumentarPuntos(int puntaje){
-        this.puntaje += puntaje;
-    }
-
-    public void cambiarChips(int chips){
-        this.mano.cambiarChip(chips);
-    }
-
-    public void sumarMultiplicador(int multiplicador){
-        mano.sumarMultiplicador(multiplicador);
-    }
-
-    public void multiplicarMultiplicador(int multiplicador){
-        mano.multiplicarMultiplicador(multiplicador);
-    }
-
-    public void cambiarMultiplicador(int multiplicador){
-        this.mano.cambiarMult(multiplicador);
-    }
-
-
-
-    //! METODOS RELACIONADOS A JOKER:
 
     //Post: activa Jokers correspondientes tras realizar una jugada
     private void chequearJokersDescarte(Mano mano, int puntaje){
         for(Joker joker: this.jokers){
-            joker.activar(mano, puntaje);
+            joker.activar(mano, puntaje, "Descarte");
         }
     }
 
     //Post: activa Jokers correspondientes tras realizar una jugada
     private void chequearJokersJugada(Mano mano, int puntaje){
         for(Joker joker: this.jokers){
-            joker.activar(mano, puntaje);
+            joker.activar(mano, puntaje, "Jugada");
         }
     }
 
+
+
+
     //! METODOS RELACIONADOS A TAROT:
+
+    // Post: Agrega un Tarot a mi lista de Tarots si no tengo 2
+    public void agregarTarot(Tarot tarot) {
+        if (tarots.size() < 2){
+            tarots.add(tarot);
+        }
+    }
+
+    // Post: Elimina un Tarot de mi lista de Tarots
+    public void venderTarot(Tarot tarot){
+        tarots.remove(tarot);
+    }
+
 
     //TODO: METODOS RELACIONADOS A TIENDA:
 
 
 
+
+
     //! METODOS PROPIOS:
-    public void jugar(Tablero tablero){
-        int valor = tablero.jugarMano(mano);
 
-        this.quitarCartas(mano);
-
-        asignarPuntaje(valor);
-        mano.vaciarMano();
-    }
-
-
+    // Post: Juega una mano
     public void jugarMano(){
 
-        chequearJokers(mano, puntaje);
-        int puntos = mano.calcularPuntaje();
+        for (Joker joker: jokers){
+            joker.activar(mano, puntos, "Mano Jugada");
+        }
+
+        puntos = mano.calcularPuntaje();
+        mano.vaciarMano();
 
         //Mano CalcularPuntaje(Jokers) -> Calculo mi mano teniendo en cuenta los Jokers
         //chequearJokersJugada(Jugada, PuntajeLocal) -> Se chequean los Jokers dentro del calcular puntaje
-                                                        // de mano
+        // de mano
         //Me devuelve el puntaje final
         // chequeo jokers que afecten al puntaje final
         //reset Mano
         //me guardo el puntaje final
-
     }
 
-
+    // Post: Compara si supero un puntaje
     public Boolean soyMayorA(int puntosASuperar){
-        return (puntaje >= puntosASuperar);
+        return (puntos >= puntosASuperar);
     }
 
-    public int cartasFaltantes(){
-        int actuales = cartas.size();
-        return 8 - actuales;
-    }
 }

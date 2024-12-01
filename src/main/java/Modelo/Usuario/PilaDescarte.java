@@ -21,8 +21,8 @@ public class PilaDescarte {
         List<Carta> cartas = new ArrayList<>();
         cartas = mano.cartasAcumuladas(cartas);
         cartasDescartadas.addAll(cartas);
+        mano.vaciarMano();
         cantidadManosDescartadas++;
-
     }
 
     public void reinsertarEnMazo(Mazo mazo){
