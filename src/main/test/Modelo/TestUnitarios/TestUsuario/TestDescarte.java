@@ -1,17 +1,5 @@
 package Modelo.TestUnitarios.TestUsuario;
 
-import Modelo.Juego.Tablero;
-import Modelo.Usuario.*;
-import Modelo.SistemaCartas.Poker.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-
-import  org.junit.Test;
-
-import java.util.List;
-
-import  static  org.junit.jupiter.api.Assertions.*;
-
 public class TestDescarte {
 
     /*

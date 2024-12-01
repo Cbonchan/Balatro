@@ -1,15 +1,5 @@
 package Modelo.TestUnitarios.TestSistemaCartas.TestTarots;
 
-import Modelo.Juego.Tablero;
-import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
-import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.SistemaCartas.Poker.Figura.Rey;
-import Modelo.SistemaCartas.Poker.Palo.Diamante;
-import Modelo.Usuario.Jugador;
-import Modelo.Usuario.Mano;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 
 public class TestTarot {

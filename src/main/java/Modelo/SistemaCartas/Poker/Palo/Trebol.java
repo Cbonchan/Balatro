@@ -7,7 +7,7 @@ public class Trebol extends Palo {
     // Atributos
 
     // Constructor
-    public Trebol() { super("Tréboles"); }
+    public Trebol() { super("Treboles"); }
 
     // Métodos
     @Override

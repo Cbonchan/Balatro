@@ -1,7 +1,6 @@
 package Modelo.Usuario;
 
 // Importaciones
-import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
 import Modelo.SistemaCartas.Poker.Carta;

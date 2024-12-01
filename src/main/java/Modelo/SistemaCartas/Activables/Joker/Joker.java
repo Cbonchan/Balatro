@@ -2,7 +2,6 @@ package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
 import Modelo.Usuario.Mano;
-import Modelo.Usuario.Jugador;
 
 import Modelo.SistemaCartas.Activables.Activable;
 

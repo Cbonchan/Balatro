@@ -1,6 +1,5 @@
 package Modelo.SistemaCartas.Activables.Tarot;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarJugada;
-import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
 public class MejoraJugada extends Tarot{

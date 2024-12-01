@@ -87,13 +87,9 @@ public abstract class Jugada {
         return (puntaje.obtenerMultiplicador());
     }
 
-
-
     public int obtenerChips(){
         return (puntaje.obtenerChips());
     }
-
-
 
     // Post: Devuelve el puntaje de la jugada
     public  int calcularPuntaje(Puntaje puntajeList){

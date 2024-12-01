@@ -1,14 +1,5 @@
 package Modelo.Unitarios;
 
-import Modelo.Juego.*;
-import Modelo.Usuario.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Carta;
-
-import  org.junit.Test;
-import  static  org.junit.jupiter.api.Assertions.*;
-
 public class TestTablero {
 
     /*

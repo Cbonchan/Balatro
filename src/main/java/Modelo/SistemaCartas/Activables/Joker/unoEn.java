@@ -4,7 +4,6 @@ import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
-import java.util.Objects;
 import java.util.Random;
 
 public class unoEn extends Joker {

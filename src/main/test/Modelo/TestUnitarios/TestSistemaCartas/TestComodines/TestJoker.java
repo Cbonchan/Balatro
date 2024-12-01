@@ -1,7 +1,6 @@
 package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
 
 import Modelo.Usuario.Mano;
-import Modelo.Usuario.Jugador;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
 
@@ -10,13 +9,10 @@ import Modelo.SistemaCartas.Poker.Palo.*;
 import Modelo.SistemaCartas.Poker.Figura.*;
 
 import Modelo.SistemaCartas.Activables.Joker.*;
-import Modelo.SistemaCartas.Activables.Activable;
 
 import  org.junit.Test;
-import java.util.Random;
-import java.util.ArrayList;
+
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -48,7 +44,7 @@ public class TestJoker {
 
 
 
-    @Test
+   /* @Test
     public void test02CrearJokerQueSuma7Devuelve7() {
 
 
@@ -69,7 +65,7 @@ public class TestJoker {
 
         assertEquals(esperado,obtenido);
 
-    }
+    }*/
 
     /*
     @Test

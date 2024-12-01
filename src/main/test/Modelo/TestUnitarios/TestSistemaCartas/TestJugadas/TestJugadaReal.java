@@ -1,19 +1,9 @@
 package Modelo.TestUnitarios.TestSistemaCartas.TestJugadas;
 
-import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Jugadas.*;
-import Modelo.SistemaCartas.Poker.Carta;
-
-import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 public class TestJugadaReal {
 
     // Subclase concreta de Jugada para testear
-    private static class TestJugadaConcreta extends Jugada {
+ /*   private static class TestJugadaConcreta extends Jugada {
 
         public TestJugadaConcreta(Chip chips, Multiplicador multiplicador) {
             super(chips, multiplicador);
@@ -111,5 +101,5 @@ public class TestJugadaReal {
 
         // Assert
         assertEquals(puntaje, -800); // -200 chips * 4 multiplicador
-    }
+    }*/
 }

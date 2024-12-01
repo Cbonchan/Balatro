@@ -1,16 +1,6 @@
  package Modelo.CasosDeUsos;
 
 // Importaciones
-import Modelo.Juego.*;
-import Modelo.Usuario.Jugador;
-import Modelo.Usuario.Mano;
-import Modelo.Usuario.Mazo;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Carta;
-
-import  org.junit.Test;
-import  static  org.junit.jupiter.api.Assertions.*;
 
 
 //! NO ENTIENDO DIFERENCIA ENTRE TEST 3 Y 4 (Ver enunciado)

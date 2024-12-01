@@ -1,9 +1,5 @@
 package Modelo.Juego;
 
-import Modelo.Usuario.Jugador;
-
-import java.util.List;
-
 public class Juego {
 
     /*

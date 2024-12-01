@@ -1,16 +1,5 @@
 package Modelo;
 
-import Modelo.Juego.Tablero;
-import Modelo.Usuario.Jugador;
-import Modelo.Usuario.Mano;
-import Modelo.Usuario.Mazo;
-import Modelo.SistemaCartas.Poker.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-
-import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 // Testear comportamiento no implementacion (rehacer)
 
 public class JugadorTest {
