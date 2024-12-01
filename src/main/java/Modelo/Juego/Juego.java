@@ -2,14 +2,31 @@ package Modelo.Juego;
 
 import Modelo.Usuario.Jugador;
 
-public class Juego {
-    Jugador jugador;
-    Tablero tablero;
+import java.util.List;
 
-    List<Ronda>rondas[8];
+public class Juego {
+
+    /*
+
+    // Atributos
+    Jugador jugador;
+
+    List<Ronda> rondas;
+
+     public Juego(){
+        this.jugador = Jugador();
+        this.rondas = List.of(
+            new Ronda(),
+            new Ronda(),
+            new Ronda(),
+            new Ronda(),
+            new Ronda()
+        );
+    }
+
 
     void comenzarJuego(){
-        // inicializamos mazo
+        jugador
         // inicializamos rondas
 
         for each ronda in rondas:
@@ -17,15 +34,6 @@ public class Juego {
 
     }
 
+    */
 }
 
-public class Ronda{
-    private int id;
-    private int manos; // cantidad de "jugar" de usuario
-    private int descartes; // cantidad de "descarte" de usuario
-    private int puntajeASuperar;
-
-    public void comenzar(){
-        mazo.repartirCartas()
-    }
-}

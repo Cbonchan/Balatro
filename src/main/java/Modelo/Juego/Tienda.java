@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tienda {
+
+    // Atributos
     private final List<Joker> jokersALaVenta;//Max de 2 jokers
     private final List<Tarot> tarotsALaVenta;//Max de 2 Tarots
     private final List<Carta> cartasALaVenta;//Max 1 carta
@@ -23,6 +25,7 @@ public class Tienda {
     private Carta cartaAComprar;
 
 
+    // Constructor
     public Tienda(List<Joker> jokers, List<Tarot> tarots, List<Carta> cartas) {
         this.jokersALaVenta = jokers;
         this.tarotsALaVenta = tarots;

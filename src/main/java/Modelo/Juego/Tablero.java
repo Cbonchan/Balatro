@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tablero {
-
+/*
     // Atributos
     private List<Joker> jokers;
     private List<Tarot> tarots;
@@ -55,14 +55,11 @@ public class Tablero {
         return puntaje;
     }
 
-    public void descarteMano(Mano mano) {
-        pilaDescarte.descartarMano(mano);
-        this.chequearJokersDescarte();
-
-    }
     /*TODO:revisar si estas acciones pueden ser realizadas por el jugador,
        quiza haciendo que jugador conozca al tablero y pidiendole a el que
         haga estos movimientos, por ahora esto funciona*/
+
+   /*
     public void seleccionarTarot(Tarot tarot) {
         tarotAJugar = tarot;
         tarots.remove(tarot);
@@ -90,4 +87,6 @@ public class Tablero {
         }
     }
 
+
+    */
 }
