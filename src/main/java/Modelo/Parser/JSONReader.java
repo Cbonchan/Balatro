@@ -1,6 +1,8 @@
 package Modelo.Parser;
 
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarMult;
+import Modelo.SistemaPuntaje.Multiplicador;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -118,15 +120,18 @@ public class JSONReader {
 
     private static Joker parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, int multiplicador){
         if (grupoActivacion.equals("Mano Jugada")){
-            return new PorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
+            return new PorJugada(nombre, descripcion, puntos, new Multiplicador(multiplicador), valorActivacion, new CambiarMult());
         } else if (grupoActivacion.equals("1 en")){
             int valor = Integer.parseInt(valorActivacion);
             return new unoEn(nombre, descripcion, puntos, multiplicador, valor);
 
-        } else if (grupoActivacion.equals("Descarte")){
+        } else {if (grupoActivacion.equals("Descarte")){
             return new Descarte(nombre, descripcion, puntos, multiplicador);
+        }
+            return null;
 
-        } else {
+        } /*
+        else {
             if (multiplicador > 1){
                 return new Multiplicador(nombre, descripcion, puntos, multiplicador);
             } else if (puntos != 1){
@@ -135,9 +140,8 @@ public class JSONReader {
                 throw new RuntimeException("Efecto invalido");
 
             }
-        }
 
-
+        }*/
     }
 }
 

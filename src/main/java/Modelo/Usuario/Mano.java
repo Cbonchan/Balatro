@@ -51,6 +51,8 @@ public class Mano {
         return (jugada.obtenerMultiplicador());
     }
 
+    public Jugada obtenerJugada(){return jugada;}
+
     // Públicos
 
     // Relación con Chips

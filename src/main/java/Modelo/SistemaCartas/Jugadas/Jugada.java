@@ -12,10 +12,10 @@ public abstract class Jugada {
 
     // Atributos
     protected Puntaje puntaje;
-
+    private final String nombre;
     // Constructor
-    public Jugada(Chip chips, Multiplicador multiplicador) {
-
+    public Jugada(String nombre, Chip chips, Multiplicador multiplicador) {
+        this.nombre = nombre;
         this.puntaje = new Puntaje(chips, multiplicador);
     }
 
@@ -75,8 +75,9 @@ public abstract class Jugada {
         this.puntaje.sumarMultiplicador(multiplicador);
     }
 
-
-
+    public String getNombre() {
+        return nombre;
+    }
 
     // Falta
 

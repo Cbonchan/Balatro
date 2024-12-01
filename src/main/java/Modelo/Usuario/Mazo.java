@@ -87,8 +87,6 @@ public class Mazo {
 
 
 
-
-
 //TODO: este metodo puede simplificar significativamente el como se reparten las cartas, investigar
     public void shuffle() {
         Collections.shuffle(mazoDeCartas);
