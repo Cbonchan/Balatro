@@ -163,91 +163,69 @@ public class TestJoker {
     public void test06ComodinMultipleSeAplicaCorrectamente() {
 
         // Arrange
-        int esperado = 0;
+
         Mano mano = new Mano();
         int puntos = 0;
         Random mockRandom = mock(Random.class);
         when(mockRandom.nextInt(1)).thenReturn(0);
 
-        Carta carta2 = new Carta(new Trebol() ,new Rey());
-        Carta carta1 = new Carta(new Diamante() ,new Rey());
+
+        Carta carta1 = new Carta(new Diamante() ,new Diez()); // Chips 5 Mult. 1
 
         mano.agregarCarta(carta1);
-        mano.agregarCarta(carta2);
+
 
         unoEn jokerUnoEn = new unoEn("Test03", "+100 al puntaje", 100, new Multiplicador(1),
                 1, new SumarPuntaje(), mockRandom);
 
-        PorJugada jokerPorJugada = new PorJugada("Test02", "x4", 100, new Multiplicador(4),
-                "par", new MultiplicacionMult() );
+        PorJugada jokerPorJugada = new PorJugada("Test02", "x4", 1, new Multiplicador(4),
+                "carta alta", new MultiplicacionMult() );
 
         ArrayList<Activable> subcomodines = new ArrayList<>();
         subcomodines.add(jokerPorJugada);
         subcomodines.add(jokerUnoEn);
 
         Combinacion joker = new Combinacion("Test06", "+10 fichas", subcomodines);
-
+        int esperado = 160;
         // Act
-        joker.activar(mano, "Combinacion");
+        joker.activar(mano, "Mano Jugada"); // 100 pts | Chips 5 y Mult 1
+        joker.activar(mano, "1 En"); // 100 pts | Chips 5 y Mult 4
 
-        int resultado = mano.calcularPuntaje();
+        int resultado = mano.calcularPuntaje(); // 100 | Chips 15 y Mult 4 -> 60 + 100
 
         //Assert
         assertEquals(esperado, resultado);
 
-        /*
 
-
-        PorJugada jokerJugada = new PorJugada("Test", "Test", 100, 1, "par");
-        SumadorPuntaje jokerSumadorPuntaje = new SumadorPuntaje("Prueba", "+100", 100, 1);
-        unoEn jokerAleatorio = new unoEn("Prueba", "+100", 100, 1, 3, mockRandom);
-
-        ArrayList<Activable> listaJokers = new ArrayList<Activable>();
-        listaJokers.add(jokerJugada);
-        listaJokers.add(jokerAleatorio);
-        listaJokers.add(jokerSumadorPuntaje);
-
-        Combinacion jokerMultiple = new Combinacion("test", "es una comb", listaJokers);
-
-        Carta carta1 = new Carta(new Diamante(), new Rey());
-        Carta carta2 = new Carta(new Trebol(), new Rey());
-        jugador.seleccionarCarta(carta1);
-        jugador.seleccionarCarta(carta2);
-
-        jokerMultiple.activar(mano, puntos, "Jugada");
-        //jugador.jugar(tablero);
-
-        int esperado = 560;
-        int obtenido = jugador.getPuntos();
-
-        assertEquals(esperado, obtenido);
-         */
 
 
     }
-    /*
+
     @Test
-    public void test06ComodinPorJugadaParSuma100ALosChipsCorrectamente(){
+    public void test07AlPuntajeSumaAlPuntajeCorrectamente(){
 
+        // Arrange
+        int incrementador = 10;
         Mano mano = new Mano();
-        Jugador jugador = new Jugador();
-        int puntos = 0;
-        PorJugada joker = new PorJugada("Test", "Test",100, 1, "par");
-
-        Carta carta1 = new Carta(new Diamante() ,new Rey());
         Carta carta2 = new Carta(new Trebol() ,new Rey());
+        Carta carta1 = new Carta(new Diamante() ,new Rey());
+        mano.agregarCarta(carta1);
+        mano.agregarCarta(carta2);
 
-        jugador.seleccionarCarta(carta1);
-        jugador.seleccionarCarta(carta2);
 
-        joker.activar(mano, puntos, "Jugada");
-        int valorEsperado =  110;
-        int valorObtenido = jugador.obtenerChips();
+        AlPuntaje joker = new AlPuntaje("Test05", "+10 fichas", incrementador,
+                new Multiplicador(1), "par", new SumarPuntaje());
 
-        assertEquals(valorEsperado,valorObtenido);
+
+        int esperado = 70;
+
+        // Act
+        joker.activar(mano, "Sin contexto");
+        //Assert
+        int resultado = mano.calcularPuntaje();
+
+
+        assertEquals(esperado,resultado);
     }
 
-    }
-
-*/
 }

@@ -1,5 +1,6 @@
 package Modelo.Parser;
 
+import Modelo.Factories.JokerFactory;
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
 import Modelo.SistemaPuntaje.Multiplicador;
@@ -87,7 +88,9 @@ public class JSONReader {
 
                 JsonObject efecto = jokerObject.getAsJsonObject("efecto");
                 int puntos = efecto.get("puntos").getAsInt();
-                int multiplicador = efecto.get("multiplicador").getAsInt();
+                // int multiplicador = efecto.get("multiplicador").getAsInt(); <- Viejo multiplicador
+                Multiplicador multiplicador = new Multiplicador(efecto.get("multiplicador").getAsInt());
+
                 jokerList.add(parsearJoker(nombre, descripcion, grupoActivacion, valorActivacion, puntos, multiplicador));
             }
 
@@ -118,7 +121,11 @@ public class JSONReader {
         return jokerList;
     }
 
-    private static Joker parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, int multiplicador){
+    private static Joker parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, Multiplicador multiplicador){
+        Joker nuevoJoker = JokerFactory.crearJoker(nombre, descripcion, grupoActivacion, puntos, multiplicador, valorActivacion);
+
+        return nuevoJoker;
+        /*
         if (grupoActivacion.equals("Mano Jugada")){
             return new PorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
         } else if (grupoActivacion.equals("1 en")){
@@ -138,7 +145,6 @@ public class JSONReader {
 
             }
         }
-
-
+         */
     }
 }

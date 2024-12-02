@@ -27,4 +27,20 @@ public class TestJSONParser {
 
 
     }
+
+    @Test
+    public void test02SeParseaBalatro() throws FileNotFoundException {
+
+        Reader archivo = new FileReader("src/main/test/Modelo/TestUnitarios/TestSistemaCartas/TestComodines/example/comodines.json");
+
+        ArrayList<Activable> jokers = JSONReader.obtenerJokers(archivo);
+        Activable joker = jokers.get(0);
+
+        String esperado = "x4";
+        String obtenido = joker.getDescripcion();
+
+        assertEquals(esperado, obtenido);
+
+
+    }
 }
