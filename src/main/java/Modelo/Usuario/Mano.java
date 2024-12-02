@@ -42,6 +42,8 @@ public class Mano {
 
     // Getters
 
+    public List<Carta> obtenerCartas(){return cartas;}
+
     public int obtenerChips(){
         return (jugada.obtenerChips());
     }

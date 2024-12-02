@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.fxml.FXML;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 
@@ -74,21 +75,25 @@ public class ModeloController implements Initializable {
     @FXML
     void jugar() {
         jugador.agregarCartasFaltantes();
-        List<Carta> cartasJugador = jugador.obtenerCartas();
-
-        for(int i = 0; i <cartas_jugador.getChildren().size(); i++){
-            Carta unaCartaJugador = jugador.obtenerCartas().get(i);
-            cartasJugador.add(unaCartaJugador);
-        }
-
         updateCartasJugador();
+        updateCartasMano();
     }
 
-    private void updateLabels()
-    {
+    private void updateLabels() {
         puntaje.setText(Integer.toString(jugador.getPuntos()));
         tipo_jugada.setText(jugador.obtenerMano().obtenerJugada().getNombre());
+    }
 
+    private void mouseHoverEvents(ImageView imageView) {
+        // ** Configurar efecto de hover **
+        imageView.setOnMouseEntered(event -> {
+            imageView.setFitWidth(150); // Aumentar tamaño al pasar el mouse
+            imageView.setFitHeight(200);
+        });
+        imageView.setOnMouseExited(event -> {
+            imageView.setFitWidth(140); // Restaurar tamaño al retirar el mouse
+            imageView.setFitHeight(190);
+        });
     }
 
     private void updateCartasJugador(){
@@ -97,22 +102,44 @@ public class ModeloController implements Initializable {
         for (Carta carta : jugador.obtenerCartas()) {
             // Crear un ImageView para la carta
             ImageView imageView = new ImageView(carta.getImage());
-            imageView.setFitWidth(100); // Ancho de la carta
-            imageView.setFitHeight(150); // Alto de la carta
+            imageView.setFitWidth(140); // Ancho de la carta
+            imageView.setFitHeight(190); // Alto de la carta
 
             // Asociar la carta al ImageView utilizando setUserData
             imageView.setUserData(carta);
+            mouseHoverEvents(imageView);
 
             // Configurar evento al hacer clic
+            //Seleccionar Carta
             imageView.setOnMouseClicked(event -> {
                 Carta cartaSeleccionada = (Carta) imageView.getUserData();
-                //manejarCartaSeleccionada(cartaSeleccionada);
+                jugador.seleccionarCarta(cartaSeleccionada);
+                updateLabels();
+                updateCartasMano();
             });
+
+
+            Tooltip tooltip = new Tooltip("Carta: " + carta.getFigura().getNombre() + " de " + carta.getPalo().getNombre());
+            Tooltip.install(imageView, tooltip);
 
             // Agregar el ImageView al FlowPane
             cartas_jugador.getChildren().add(imageView);
         }
     }
 
+    private void updateCartasMano(){
+        cartas_mano.getChildren().clear();
+        for (Carta carta : jugador.obtenerMano().obtenerCartas()) {
+            ImageView imageView = new ImageView(carta.getImage());
+            imageView.setFitWidth(100); // Ancho de la carta
+            imageView.setFitHeight(150); // Alto de la carta
+
+            // Asociar la carta al ImageView utilizando setUserData
+            imageView.setUserData(carta);
+            mouseHoverEvents(imageView);
+
+            cartas_mano.getChildren().add(imageView);
+        }
+    }
 }
 
