@@ -4,10 +4,9 @@ import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
-import java.util.Objects;
 import java.util.Random;
 
-public class unoEn extends Joker {
+public class UnoEn extends Joker {
 
     // Atributos
     private final int probabilidad;
@@ -15,7 +14,7 @@ public class unoEn extends Joker {
 
 
     // Constructor
-    public unoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador,  int probabilidad, Efecto efecto) {
+    public UnoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, int probabilidad, Efecto efecto) {
         super(nombre, descripcion, incrementador, multiplicador, "1 En", efecto);
 
         random = new Random();
@@ -23,7 +22,7 @@ public class unoEn extends Joker {
     }
 
     // Viejo Constructor
-    public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad){
+    public UnoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad){
 
         super(nombre, descripcion, puntaje, new Multiplicador(multiplicador), "1 En" );
         this.probabilidad = probabilidad;
@@ -32,7 +31,7 @@ public class unoEn extends Joker {
     }
 
     //TESTING, CONSTRUCTOR SOLO USADO PARA TESTS
-    public unoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, int probabilidad, Efecto efecto, Random FProbabilidad) {
+    public UnoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, int probabilidad, Efecto efecto, Random FProbabilidad) {
         super(nombre, descripcion, incrementador, multiplicador, "1 En", efecto);
         random = FProbabilidad;
         this.probabilidad = probabilidad;

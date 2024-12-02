@@ -3,7 +3,6 @@ package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MultiplicacionMult;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
 import Modelo.Usuario.Mano;
-import Modelo.Usuario.Jugador;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
 
@@ -70,6 +69,7 @@ public class TestJoker {
 
         //Assert
         int resultado = mano.calcularPuntaje();
+        mano.vaciarMano();
         assertEquals(esperado,resultado);
 
     }
@@ -89,7 +89,7 @@ public class TestJoker {
         mano.agregarCarta(carta1);
         mano.agregarCarta(carta2);
 
-        unoEn joker = new unoEn("Test03", "+100 chips", 100, new Multiplicador(1),
+        UnoEn joker = new UnoEn("Test03", "+100 chips", 100, new Multiplicador(1),
                 1, new AumentarChips(), mockRandom);
         int esperado = 260;
 
@@ -98,6 +98,9 @@ public class TestJoker {
 
         //Assert
         int resultado = mano.calcularPuntaje();
+        mano.vaciarMano();
+        mano.resetearPuntos();
+
         assertEquals(esperado,resultado);
     }
 
@@ -115,7 +118,7 @@ public class TestJoker {
         mano.agregarCarta(carta1);
         mano.agregarCarta(carta2);
 
-        unoEn joker = new unoEn("Test03", "+100 al puntaje", 100, new Multiplicador(1),
+        UnoEn joker = new UnoEn("Test03", "+100 al puntaje", 100, new Multiplicador(1),
                 1, new SumarPuntaje(), mockRandom);
         int esperado = 160;
 
@@ -124,7 +127,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-
+        mano.vaciarMano();
+        mano.resetearPuntos();
         assertEquals(esperado,resultado);
     }
 
@@ -153,7 +157,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-
+        mano.vaciarMano();
+        mano.resetearPuntos();
         assertEquals(esperado,resultado);
     }
 
@@ -175,7 +180,7 @@ public class TestJoker {
         mano.agregarCarta(carta1);
 
 
-        unoEn jokerUnoEn = new unoEn("Test03", "+100 al puntaje", 100, new Multiplicador(1),
+        UnoEn jokerUnoEn = new UnoEn("Test03", "+100 al puntaje", 100, new Multiplicador(1),
                 1, new SumarPuntaje(), mockRandom);
 
         PorJugada jokerPorJugada = new PorJugada("Test02", "x4", 1, new Multiplicador(4),
@@ -194,6 +199,8 @@ public class TestJoker {
         int resultado = mano.calcularPuntaje(); // 100 | Chips 15 y Mult 4 -> 60 + 100
 
         //Assert
+        mano.vaciarMano();
+        mano.resetearPuntos();
         assertEquals(esperado, resultado);
 
 
@@ -224,7 +231,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-
+        mano.vaciarMano();
+        mano.resetearPuntos();
         assertEquals(esperado,resultado);
     }
 

@@ -2,7 +2,6 @@ package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
 import Modelo.Usuario.Mano;
-import Modelo.Usuario.Jugador;
 
 import Modelo.SistemaCartas.Activables.Activable;
 
@@ -69,7 +68,7 @@ public abstract class Joker implements Activable {
                 efecto = new SumarPuntaje();
             }
 
-            return new unoEn(nombre, descripcion, incrementador, multiplicador, limitadorDeProbabilidad, efecto);
+            return new UnoEn(nombre, descripcion, incrementador, multiplicador, limitadorDeProbabilidad, efecto);
         }
 
         else if (activacionObject.has("Descarte")) {

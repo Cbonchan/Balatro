@@ -3,9 +3,8 @@ package Modelo.Factories;
 import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
-import Modelo.SistemaCartas.Activables.Joker.unoEn;
+import Modelo.SistemaCartas.Activables.Joker.UnoEn;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MultiplicacionMult;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
 import Modelo.SistemaPuntaje.Multiplicador;
@@ -23,9 +22,9 @@ public class JokerFactory {
         } else if (grupoActivacion.equals("1 en")){
             int probabilidad = Integer.parseInt(activacion);
             if (incrementador > 1){
-                return new unoEn(nombre, descripcion, incrementador, multiplicador, probabilidad, new SumarPuntaje());
+                return new UnoEn(nombre, descripcion, incrementador, multiplicador, probabilidad, new SumarPuntaje());
             } else{
-                return new unoEn(nombre, descripcion, incrementador, multiplicador, probabilidad, new MultiplicacionMult());
+                return new UnoEn(nombre, descripcion, incrementador, multiplicador, probabilidad, new MultiplicacionMult());
             }
         }
         else if (grupoActivacion.equals("Descarte")){
