@@ -11,7 +11,7 @@ public interface Efecto {
     }
      */
 
-    void activar(int  incrementador, Multiplicador multiplicador, Mano mano, int puntos);
+    void activar(int incrementador, Multiplicador multiplicador, Mano mano);
 
 
 }

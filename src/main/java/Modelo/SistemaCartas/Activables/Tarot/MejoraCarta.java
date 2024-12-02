@@ -18,7 +18,7 @@ public class MejoraCarta extends Tarot{
     }
 
     @Override
-    public void activar(Mano mano, int puntos, String contexto) {
+    public void activar(Mano mano, String contexto) {
         // Implementar
     }
 }

@@ -17,9 +17,9 @@ public class Combinacion implements Activable {
     }
 
 
-    public void activar(Mano mano, int puntos, String contexto) {
+    public void activar(Mano mano, String contexto) {
         for (Activable comodin : subcomodines) {
-            comodin.activar(mano, puntos, contexto);
+            comodin.activar(mano, contexto);
         }
     }
 

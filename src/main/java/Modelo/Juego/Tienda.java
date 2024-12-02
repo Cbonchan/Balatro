@@ -29,7 +29,7 @@ public class Tienda {
 
         /*TODO: METODOS PARA COMPRAR LAS CARTAS, NO CREO QUE HAYA QUE IMPLEMENTAR DINERO
            PORQUE NO APARECE EN NINGUN LUGAR DE LA DOCUMENTACION, PERO CUIDADO.
-    */
+        */
 
     public void seleccionarActivable(Activable comprable) {
         this.aComprar = comprable;

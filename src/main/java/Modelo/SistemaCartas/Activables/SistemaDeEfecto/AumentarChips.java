@@ -8,7 +8,7 @@ public class AumentarChips implements Efecto {
 
 
     @Override
-    public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
+    public void activar(int incrementador, Multiplicador multiplicador, Mano mano) {
         mano.aumentarChips(new Chip(incrementador));
     }
 

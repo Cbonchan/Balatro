@@ -19,6 +19,12 @@ public abstract class Jugada {
         this.puntaje = new Puntaje(chips, multiplicador);
     }
 
+    public Jugada(Chip chips, Multiplicador multiplicador) {
+        this.nombre = "Vacio";
+        this.puntaje = new Puntaje(chips, multiplicador);
+    }
+
+
     // Métodos
     // Abstractos
 

@@ -32,11 +32,11 @@ public class unoEn extends Joker {
     }
 
     //TESTING, CONSTRUCTOR SOLO USADO PARA TESTS
-    public unoEn(String nombre, String descripcion, int puntaje, int multiplicador, int probabilidad, Random FProbabilidad) {
-        super(nombre, descripcion, puntaje, new Multiplicador(multiplicador), "1 En");
-
-        this.probabilidad = probabilidad;
+    public unoEn(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, int probabilidad, Efecto efecto, Random FProbabilidad) {
+        super(nombre, descripcion, incrementador, multiplicador, "1 En", efecto);
         random = FProbabilidad;
+        this.probabilidad = probabilidad;
+
     }
 
     /*
@@ -51,9 +51,9 @@ public class unoEn extends Joker {
 
 
     @Override
-    public void activar(Mano mano, int puntos, String contexto) {
-        if ( activacion.equals(contexto) && seActivo()  ) {
-                efecto.activar(this.incrementador, this.multiplicador, mano, puntos);
+    public void activar(Mano mano, String contexto) {
+        if ( activacion.equals(contexto) && seActivo()) {
+                efecto.activar(this.incrementador, this.multiplicador, mano);
             }
     }
 

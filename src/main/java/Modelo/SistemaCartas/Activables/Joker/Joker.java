@@ -139,7 +139,7 @@ public abstract class Joker implements Activable {
     }
 
     // Post: Se activa el efecto del Joker
-     public  abstract void activar(Mano mano, int puntos, String contexto);
+     public  abstract void activar(Mano mano, String contexto);
 
 
 }

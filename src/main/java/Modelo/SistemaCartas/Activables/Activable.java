@@ -4,7 +4,7 @@ import Modelo.Usuario.Mano;
 
 public interface Activable {
 
-    public  void activar(Mano mano, int puntos, String contexto);
+    public  void activar(Mano mano, String contexto);
 
     public String getDescripcion();
 }

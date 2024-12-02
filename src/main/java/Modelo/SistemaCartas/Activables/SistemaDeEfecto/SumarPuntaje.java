@@ -5,7 +5,7 @@ import Modelo.Usuario.Mano;
 public class SumarPuntaje implements Efecto {
 
     @Override
-    public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
-        mano.aumentarPuntos(puntos);
+    public void activar(int incrementador, Multiplicador multiplicador, Mano mano) {
+        mano.aumentarPuntos(incrementador);
     }
 }

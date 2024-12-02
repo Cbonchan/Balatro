@@ -17,15 +17,16 @@ public class Descarte extends Joker {
 
     // Viejo constructor
     public Descarte(String nombre, String descripcion, int puntaje, int multiplicador){
-        super( nombre, descripcion,puntaje, new Multiplicador(multiplicador), "Descarte");
+        super( nombre, descripcion, puntaje, new Multiplicador(multiplicador), "Descarte");
     }
 
 
     @Override
-    public void activar(Mano mano, int puntos, String contexto) {
+    public void activar(Mano mano, String contexto) {
         if ( activacion.equals(contexto))  {
-            efecto.activar(this.incrementador, this.multiplicador, mano, puntos);
+            efecto.activar(this.incrementador, this.multiplicador, mano);
         }
     }
+
 }
 

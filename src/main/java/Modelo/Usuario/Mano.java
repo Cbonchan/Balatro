@@ -149,7 +149,7 @@ public class Mano {
         }
 
         // int
-        return jugada.calcularPuntaje(puntajeTotal);
+        return this.puntos + (jugada.calcularPuntaje(puntajeTotal));
     }
 
     // Post: agrega a la mano una carta pasada por parametro

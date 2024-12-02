@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Jugador {
     // Atributos
-    private final  PilaDescarte cartasDescartadas;
+    private final PilaDescarte cartasDescartadas;
     private final List<Carta> cartas;          // Cartas para elegir max 8
     private final List<Joker> jokers;         // Jokers para activar max 5
     private final List<Tarot> tarots;          // Tarots para activar max 2
@@ -93,7 +93,7 @@ public class Jugador {
         cartasDescartadas.descartarMano(mano);
 
         for (Joker joker: jokers){
-            joker.activar(mano, puntos, "Descarte");
+            joker.activar(mano, "Descarte");
         }
 
         cartasDescartadas.reinsertarEnMazo(mazo);
@@ -117,14 +117,14 @@ public class Jugador {
     //Post: activa Jokers correspondientes tras realizar una jugada
     private void chequearJokersDescarte(Mano mano, int puntaje){
         for(Joker joker: this.jokers){
-            joker.activar(mano, puntaje, "Descarte");
+            joker.activar(mano, "Descarte");
         }
     }
 
     //Post: activa Jokers correspondientes tras realizar una jugada
     private void chequearJokersJugada(Mano mano, int puntaje){
         for(Joker joker: this.jokers){
-            joker.activar(mano, puntaje, "Jugada");
+            joker.activar(mano, "Jugada");
         }
     }
 
@@ -158,7 +158,7 @@ public class Jugador {
     public void jugarMano(){
 
         for (Joker joker: jokers){
-            joker.activar(mano, puntos, "Mano Jugada");
+            joker.activar(mano, "Mano Jugada");
         }
 
         puntos = mano.calcularPuntaje();

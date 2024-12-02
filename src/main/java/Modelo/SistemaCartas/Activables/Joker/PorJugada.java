@@ -15,13 +15,14 @@ public class PorJugada extends Joker {
         this.jugada = jugada;
     }
 
+
     // Métodos
 
     // Post: Se activa el efecto del Joker
     @Override
-    public void activar(Mano mano, int puntos, String contexto) {
+    public void activar(Mano mano, String contexto) {
         if ( activacion.equals(contexto) && mano.validarNombreMano(jugada) ) {
-            efecto.activar(this.incrementador, this.multiplicador, mano, puntos);
+            efecto.activar(this.incrementador, this.multiplicador, mano);
         }
     }
 

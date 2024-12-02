@@ -11,7 +11,7 @@ public class MejorarJugada implements Efecto {
     }
 
     @Override
-    public void activar(int incrementador, Multiplicador multiplicador, Mano mano, int puntos) {
+    public void activar(int incrementador, Multiplicador multiplicador, Mano mano) {
         mano.mejorarJugada(incrementador, multiplicador, jugada);
     }
 

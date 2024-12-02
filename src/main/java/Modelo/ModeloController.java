@@ -1,3 +1,6 @@
+/*
+
+
 package Modelo;
 
 import Modelo.SistemaCartas.Poker.Carta;
@@ -84,4 +87,6 @@ public class ModeloController implements Initializable {
     }
 
 }
+ */
+
 
