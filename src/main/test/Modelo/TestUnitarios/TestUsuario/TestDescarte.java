@@ -14,13 +14,10 @@ import  static  org.junit.jupiter.api.Assertions.*;
 
 public class TestDescarte {
 
-    /*
-
     @Test
-    public void test01descartoCartasYelJugadorTieneMenos() {
+    public void test01deshacerEleccionAumentaLasDisponibles(){
         Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta carta1 = new Carta(new Corazon(), new As());
         Carta carta2 = new Carta(new Corazon(), new Dos());
         Carta carta3 = new Carta(new Corazon(), new Tres());
@@ -35,9 +32,11 @@ public class TestDescarte {
         jugador.seleccionarCarta(carta1);
         jugador.seleccionarCarta(carta2);
 
-        jugador.descartarMano();
-        assertEquals(6, jugador.getCantidadCartas());
+        jugador.cancelarEleccion();
+
+        assertEquals(0, jugador.cartasFaltantes());
     }
+
 
     @Test
     public void test02pilaDeDescarteAumentaTamañoAlDescartar() {
@@ -78,15 +77,14 @@ public class TestDescarte {
         Carta carta1 = new Carta(new Corazon(), new As());
         Carta carta2 = new Carta(new Corazon(), new Dos());
 
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
 
         jugador.agregarCartas(List.of(carta1, carta2));
 
-        mano.agregarCarta(carta1);
-        mano.agregarCarta(carta2);
+        jugador.seleccionarCarta(carta1);
+        jugador.seleccionarCarta(carta2);
 
-        jugador.jugar(tablero);
+        jugador.jugarMano();
 
         assertEquals(8, jugador.cartasFaltantes());
 
@@ -94,9 +92,7 @@ public class TestDescarte {
 
     @Test
     public void test05seleccionarCartasDisminuyeLasDisponibles(){
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta carta1 = new Carta(new Corazon(), new As());
         Carta carta2 = new Carta(new Corazon(), new Dos());
         Carta carta3 = new Carta(new Corazon(), new Tres());
@@ -117,8 +113,7 @@ public class TestDescarte {
     @Test
     public void test06deshacerEleccionAumentaLasDisponibles(){
         Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
+        Jugador jugador = new Jugador();
         Carta carta1 = new Carta(new Corazon(), new As());
         Carta carta2 = new Carta(new Corazon(), new Dos());
         Carta carta3 = new Carta(new Corazon(), new Tres());
@@ -139,5 +134,4 @@ public class TestDescarte {
     }
 
 
-     */
 }
