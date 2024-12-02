@@ -2,23 +2,24 @@ package Modelo.SistemaCartas.Activables.Tarot;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarChips;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarMult;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
+import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
-public class MejoraCarta extends Tarot{
+public class MejoraCarta extends TarotEnCarta{
 
-    public MejoraCarta(String nombre, String descripcion, int puntaje, int multiplicador){
-        super(nombre,descripcion,puntaje,multiplicador);
+    public MejoraCarta(String nombre, String descripcion, int puntaje, Multiplicador multiplicador, EfectoEnCarta efecto){
+        super(nombre,descripcion,puntaje, multiplicador, efecto);
 
-        if (this.multiplicador==1){
-            this.efecto = new CambiarChips();
-        }
-        else{
-            this.efecto = new CambiarMult();
-        }
     }
 
     @Override
-    public void activar(Mano mano, String contexto) {
-        // Implementar
+    public void activar(Carta carta, String contexto) {
+        this.efecto.activar(incrementador, multiplicador, carta);
+
     }
+
+
 }

@@ -22,6 +22,10 @@ public class Multiplicador {
         return new Multiplicador(this.valor * otroMultiplicador.valorNumerico());
     }
 
+    public void cambiarMultiplicador(Multiplicador otroMultiplicador) {
+        this.valor = otroMultiplicador.valorNumerico();
+    }
+
     // Solo usar en Multiplicador, si se usa afuera, se rompe pilar
     // Recordar: Lo que pasa en Multiplicador queda en Multiplicador
     public int valorNumerico() {

@@ -1,11 +1,15 @@
 package Modelo.TestUnitarios.TestSistemaCartas.TestTarots;
 
 import Modelo.Juego.Tablero;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarCarta;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarJugada;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
 import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaCartas.Poker.Figura.Rey;
 import Modelo.SistemaCartas.Poker.Palo.Diamante;
+import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
 import org.junit.Test;
@@ -14,74 +18,69 @@ import static org.junit.Assert.assertEquals;
 
 public class TestTarot {
 
-    /*
+
 
     @Test
-    public void test01tarotCambiaLosPuntosDeUnaCartaA50() {
+    public void test01TarotCambiaLosPuntosDeUnaCartaA50() {
 
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
-        Carta carta1 = new Carta(new Diamante() ,new Rey());
-        MejoraCarta cartaPiedra = new MejoraCarta("carta piedra", "el puntaje pasa a ser 50", 50, 1);
+        // Arrange
+        Carta carta1 = new Carta(new Diamante(), new Rey());
 
-        tablero.agregarTarot(cartaPiedra);
+        MejoraCarta tarot = new MejoraCarta("Test01", "El puntaje pasa a ser 50",50, new Multiplicador(1), new MejorarCarta());
 
-        tablero.seleccionarTarot(cartaPiedra);
-        jugador.seleccionarCarta(carta1);
-        tablero.jugarTarot();
+        // Act
+        tarot.activar(carta1, "Sin contexto");
+        // Assert
+        int valorChipsObtenido = carta1.getValorNumChips(); //! TESTEO POR IMPLEMENTACION
+        int valorChipsEsperado = 50;
 
-        int valorEsperado = 50;
-        int valorObtenido = carta1.getValorNumChips();
+        assertEquals(valorChipsEsperado, valorChipsObtenido);
 
-        assertEquals(valorObtenido,valorEsperado);
     }
+
 
     @Test
-    public void test02tarotCambiaElMultiplicadorDeUnaCartaA2() {
+    public void test02TarotCambiaElMultiplicadorDeUnaCartaA2() {
 
-        Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
-        Carta carta1 = new Carta(new Diamante() ,new Rey());
-        MejoraCarta cartaVidrio = new MejoraCarta("carta vidrio", "el multiplicador pasa a ser 2", 1, 2);
+        // Arrange
+        Carta carta1 = new Carta(new Diamante(), new Rey());
 
-        tablero.agregarTarot(cartaVidrio);
+        MejoraCarta tarot = new MejoraCarta("Test02", "El multiplicador pasa a ser 2",10, new Multiplicador(2), new MejorarCarta());
 
-        tablero.seleccionarTarot(cartaVidrio);
-        jugador.seleccionarCarta(carta1);
+        // Act
+        tarot.activar(carta1, "Sin contexto");
 
-        tablero.jugarTarot();
-        jugador.jugar(tablero);
+        // Assert
+        int valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
+        int valorMultiplicadorEsperado = 2;
 
-        int valorEsperado = 30;
-        int valorObtenido = jugador.getPuntos();
+        assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido);
 
-        assertEquals(valorObtenido,valorEsperado);
     }
 
+//TODO: Este test falla porque todavia esa parte de Tarot no esta implementada con el refactor actual.
+// Revisar la clase "CambiarPuntaje" de "SistemaDeEfecto" para mas detalles
+/*
     @Test
-    public void test03tarotMejoraLaManoHighCardSegunLosParametrosDados() {
+    public void test03tarotMejoraLaManoHighCardA20Puntos() {
 
+        //Arrrange
+        Carta carta1 = new Carta(new Diamante(), new Rey());
         Mano mano = new Mano();
-        Jugador jugador = new Jugador(mano);
-        Tablero tablero = new Tablero(jugador);
-        Carta carta1 = new Carta(new Diamante() ,new Rey());
-        MejoraJugada ElTonto = new MejoraJugada("el tonto", "mejora la mano HighCard", 10, 2, "carta alta");
+        mano.agregarCarta(carta1);
 
-        tablero.agregarTarot(ElTonto);
+        MejoraJugada tarot = new MejoraJugada("Test03", "Mejora high card", 20, new Multiplicador(5),
+                "Carta Alta", new MejorarJugada("Carta Alta"));
 
-        tablero.seleccionarTarot(ElTonto);
-        jugador.seleccionarCarta(carta1);
+        //Act
+        tarot.activar(mano, "Sin contexto");
 
-        tablero.jugarTarot();
-        jugador.jugar(tablero);
 
-        int valorEsperado = 75;
-        int valorObtenido = jugador.getPuntos();
-
-        assertEquals(valorObtenido,valorEsperado);
+        //Assert
+        assertEquals(20, mano.obtenerMultiplicador());
     }
 
-     */
+ */
+
+
 }

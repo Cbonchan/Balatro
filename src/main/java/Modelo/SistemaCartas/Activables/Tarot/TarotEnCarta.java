@@ -1,7 +1,5 @@
 package Modelo.SistemaCartas.Activables.Tarot;
 
-// Importaciones
-import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.ActivableEnCarta;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
@@ -9,16 +7,15 @@ import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
-public abstract class Tarot implements Activable {
+public abstract class TarotEnCarta implements ActivableEnCarta {
 
     protected final String nombre;
     protected final String descripcion;
     protected final int incrementador;
     protected final Multiplicador multiplicador;
-    protected Efecto efecto;
+    protected EfectoEnCarta efecto;
 
-
-    public Tarot(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, Efecto efecto) {
+    public TarotEnCarta(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, EfectoEnCarta efecto) {
 
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -36,8 +33,6 @@ public abstract class Tarot implements Activable {
         return descripcion;
     }
 
-    public  abstract void activar(Mano mano, String contexto);
+    public  abstract void activar(Carta carta, String contexto);
 
 }
-
-

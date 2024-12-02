@@ -40,11 +40,6 @@ public abstract class Joker implements Activable {
         this.multiplicador = multiplicador;
     }
 
-
-
-
-
-
     // No sé que factory
 
     private static Joker crearJokerPorActivacion(JsonObject jokerObject,  String nombre, String descripcion,

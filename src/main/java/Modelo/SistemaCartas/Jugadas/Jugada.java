@@ -77,8 +77,8 @@ public abstract class Jugada {
     }
 
     public void mejorar(int incrementador, Multiplicador multiplicador){
-        this.puntaje.sumarChipCon(new Chip(incrementador));
-        this.puntaje.sumarMultiplicador(multiplicador);
+        this.puntaje.cambiarPuntaje(incrementador, multiplicador);
+
     }
 
     public String getNombre() {

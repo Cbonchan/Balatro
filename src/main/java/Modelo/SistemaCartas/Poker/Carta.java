@@ -38,6 +38,8 @@ public class Carta {
     public int getValorNumChips(){
         return this.puntaje.obtenerChips();
     }
+
+    public int getValorNumMultiplicador(){ return this.puntaje.obtenerMultiplicador();}
     //! No logro encontrar otra forma de hacerlo
     public  int obtenerOrden(){
         return figura.orden();
@@ -87,6 +89,9 @@ public class Carta {
     public void sumarPuntajeCon(Puntaje otroPuntaje){
         otroPuntaje.sumarNuevosChips(this.puntaje);
         otroPuntaje.sumarNuevoMultiplicador(this.puntaje);
+    }
+    public void cambiarPuntaje(int incremento, Multiplicador multiplicador){
+        puntaje.cambiarPuntaje(incremento, multiplicador);
     }
 
 

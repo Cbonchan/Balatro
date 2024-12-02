@@ -21,6 +21,11 @@ public class Puntaje {
     //TODO: Poner post condiciones a estos metodos por favor, son un bardo
 
 
+    public void cambiarPuntaje(int incrementador, Multiplicador multiplicador){
+        this.chip.cambiarChip(incrementador);
+        this.multiplicador.cambiarMultiplicador(multiplicador);
+
+    }
 
 
     public Chip aumentarValorChip(Chip otroChip){

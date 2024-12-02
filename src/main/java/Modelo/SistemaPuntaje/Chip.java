@@ -24,6 +24,9 @@ public class Chip {
         return this.valor;
     }
 
+    public void cambiarChip(int valor) {
+        this.valor = valor;
+    }
     // tarot.modifcar(Chip)
     // chip.modificar(con lo que deba)
 

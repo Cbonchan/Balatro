@@ -2,6 +2,7 @@ package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
 
 import Modelo.Usuario.Mano;
 import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.SistemaCartas.Poker.Carta;
 
 public interface Efecto {
 
