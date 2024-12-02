@@ -47,5 +47,20 @@ public class TestMano {
         assertEquals(valorEsperado1, mano1.calcularPuntaje());
         assertEquals(valorEsperado2, mano2.calcularPuntaje());
     }
+
+    @Test
+    public void test04ManoEsJugadaParValida(){
+        Mano mano = new Mano();
+        Carta cartaCarta1 = new Carta(new Diamante() ,new Reina());
+        Carta cartaCarta2 = new Carta(new Pica() ,new Rey());
+        Carta cartaCarta3 = new Carta(new Pica() ,new Reina());
+        int valorEsperado = 60;
+
+        mano.agregarCarta(cartaCarta1);
+        mano.agregarCarta(cartaCarta2);
+        mano.agregarCarta(cartaCarta3);
+
+        assertEquals(valorEsperado, mano.calcularPuntaje());
+    }
 }
 

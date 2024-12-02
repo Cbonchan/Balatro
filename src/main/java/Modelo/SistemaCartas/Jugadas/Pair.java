@@ -41,8 +41,8 @@ public class Pair extends Jugada {
         for ( int i = 0; i < cartasOrdenadas.size() - 1; i++ ) {
 
             // variables para mayor claridad
-            Carta actual = cartas.get(i);
-            Carta siguiente = cartas.get(i + 1);
+            Carta actual = cartasOrdenadas.get(i);
+            Carta siguiente = cartasOrdenadas.get(i + 1);
 
             // Verificar si la carta actual no es consecutiva con la siguiente
             if (actual.tieneMismaFiguraQue(siguiente)) {
