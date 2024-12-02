@@ -1,6 +1,7 @@
 package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
+import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.Usuario.Mano;
 
 import Modelo.SistemaCartas.Activables.Activable;
@@ -8,6 +9,7 @@ import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaPuntaje.Multiplicador;
 
 import com.google.gson.JsonObject;
+import javafx.scene.image.Image;
 
 public abstract class Joker implements Activable {
 
@@ -15,7 +17,7 @@ public abstract class Joker implements Activable {
     protected final String nombre;
     protected final String descripcion;
     protected final String activacion;
-    protected  Efecto efecto;
+    protected Efecto efecto;
     protected final int incrementador;
     protected final Multiplicador multiplicador;
 
@@ -40,53 +42,43 @@ public abstract class Joker implements Activable {
     }
 
 
-
-
-
-
     // No sé que factory
 
-    private static Joker crearJokerPorActivacion(JsonObject jokerObject,  String nombre, String descripcion,
-            JsonObject activacionObject, Efecto efecto, int incrementador, Multiplicador multiplicador) {
+    private static Joker crearJokerPorActivacion(JsonObject jokerObject, String nombre, String descripcion,
+                                                 JsonObject activacionObject, Efecto efecto, int incrementador, Multiplicador multiplicador) {
 
 
         if (activacionObject.has("Mano Jugada")) {
             String jugadaEspecifica = jokerObject.getAsJsonObject("activacion").get("Mano Jugada").getAsString();
 
-            if (incrementador == 1){
+            if (incrementador == 1) {
                 efecto = new SumarMultiplicador();
-            }
-            else {
+            } else {
                 efecto = new AumentarChips();
             }
 
             return new PorJugada(nombre, descripcion, incrementador, multiplicador, jugadaEspecifica, efecto);
-        }
+        } else if (activacionObject.has("1 en")) {
+            int limitadorDeProbabilidad = jokerObject.getAsJsonObject("activacion").get("1 en").getAsInt();
 
-        else if (activacionObject.has("1 en")) {
-            int  limitadorDeProbabilidad = jokerObject.getAsJsonObject("activacion").get("1 en").getAsInt();
-
-            if (incrementador == 1){
+            if (incrementador == 1) {
                 efecto = new MultiplicacionMult();
-            }
-            else {
+            } else {
                 efecto = new SumarPuntaje();
             }
 
             return new unoEn(nombre, descripcion, incrementador, multiplicador, limitadorDeProbabilidad, efecto);
-        }
+        } else if (activacionObject.has("Descarte")) {
 
-        else if (activacionObject.has("Descarte")) {
-
-            if (incrementador == 1){
+            if (incrementador == 1) {
                 efecto = new MultiplicacionMult();
-            }
-            else {
+            } else {
                 efecto = new SumarPuntaje();
             }
 
             return new Descarte(nombre, descripcion, incrementador, multiplicador, efecto);
-        };
+        }
+        ;
 
         // Falta ver el caso de combinación de jokers
         return null;
@@ -126,19 +118,20 @@ public abstract class Joker implements Activable {
    */
 
 
-
-
     // Getters y Setters
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
 
-    public String getDescripcion(){
+    public String getDescripcion() {
         return descripcion;
     }
 
     // Post: Se activa el efecto del Joker
-     public  abstract void activar(Mano mano, int puntos, String contexto);
+    public abstract void activar(Mano mano, int puntos, String contexto);
 
-
+    public Image getImage() {
+        String pathname = "/images/"+this.getNombre()+".png";
+        return new Image(Joker.class.getResourceAsStream(pathname));
+    }
 }

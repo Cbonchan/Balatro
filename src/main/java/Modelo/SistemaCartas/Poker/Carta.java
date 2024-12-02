@@ -112,14 +112,6 @@ public class Carta {
     public Image getImage(){
         String pathname = "/images/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
         return new Image(Carta.class.getResourceAsStream(pathname));
-       /* InputStream inputStream = Carta.class.getResourceAsStream(pathname);
-
-        if (inputStream == null) {
-            System.out.println("No se encontró la imagen: " + pathname + ". Usando imagen predeterminada.");
-            inputStream = Carta.class.getResourceAsStream("images/red_joker.png");
-        }
-
-        return new Image(Objects.requireNonNull(inputStream, "No se pudo cargar ninguna imagen"));
-    */}
+       }
 
 }

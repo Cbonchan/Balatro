@@ -17,6 +17,7 @@ module Modelo {
     exports Modelo.SistemaCartas.Poker.Figura;
     exports Modelo.SistemaCartas.Poker;
     exports Modelo.SistemaCartas.Jugadas;
+    exports Modelo.SistemaCartas.Activables.Joker;
     exports Modelo.SistemaCartas.Activables.Tarot;
     exports Modelo.SistemaPuntaje;
 }
