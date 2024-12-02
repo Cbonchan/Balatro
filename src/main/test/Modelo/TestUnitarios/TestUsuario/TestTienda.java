@@ -6,10 +6,7 @@ import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarMultiplicador;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
@@ -27,14 +24,13 @@ import java.util.List;
 
 import  static  org.junit.jupiter.api.Assertions.*;
 
-/*
 
 
 public class TestTienda {
 
         @Test
         public void test01creoTiendaConElementosYComproCarta() {
-            List<Activable> tarots = List.of(new MejoraJugada("Test", "Test", 100, 1, "par"), new MejoraCarta("Test", "Test", 100, 1));
+            List<Activable> tarots = List.of(new PorJugada("Test", "Test", 100, new Multiplicador(1), "par", new SumarPuntaje()));
             Carta cartaNueva = new Carta(new Corazon(), new As());
             Tienda tienda = new Tienda(tarots, cartaNueva);
 
@@ -46,7 +42,9 @@ public class TestTienda {
         @Test
         public void test02creoTiendaConElementosYComproTarot() {
             List<Joker> jokers = new ArrayList<>();
-            List<Activable> tarots = List.of(new MejoraJugada("Test", "Test", 100, 1, "par"), new MejoraCarta("Test", "Test", 100, 1));
+            List<Activable> tarots = List.of(
+                    new MejoraJugada("Test", "Test", 100, new Multiplicador(1), "par",new CambiarChips()),
+                    new MejoraJugada("Test2", "Test2", 100, new Multiplicador(1), "par",new CambiarChips()));
             Carta cartaNueva = new Carta(new Corazon(), new As());
             Tienda tienda = new Tienda(tarots, cartaNueva);
 
@@ -58,7 +56,7 @@ public class TestTienda {
         }
 
 
-        //TODO: Implementar el refactor de joker antes de testear
+
         @Test
         public void test03creoTiendaConElementosYComproJoker() {
             Carta cartaNueva = new Carta(new Corazon(), new As());
@@ -73,4 +71,3 @@ public class TestTienda {
         }
 }
 
- */
