@@ -25,15 +25,28 @@ public class Juego {
     }
 
 
-    void comenzarJuego(){
+    public void comenzarJuego(){
         jugador
         // inicializamos rondas
 
-        for each ronda in rondas:
-            rondas.comenzar();
+        for (Ronda ronda : rondas){
+            ronda.comenzar();
+            while(ronda.puedoContinuar() && !ronda.superoPuntaje(jugador)){
+                //! desconozco como funciona esto secuencialmente con javaFX como para completar
+            }
+            if(!ronda.superoPuntaje(jugador)){
+                terminarJuego();
+            }
+            }
+       }
+
 
     }
 
+
+    public void terminarJuego(){
+        //TODO implementar
+    }
     */
 }
 

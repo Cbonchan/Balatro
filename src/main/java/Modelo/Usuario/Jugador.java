@@ -178,4 +178,7 @@ public class Jugador {
         return (puntos >= puntosASuperar);
     }
 
+    public void tomarCartas() {
+        mazo.repartirCartas(cartas);
+    }
 }
