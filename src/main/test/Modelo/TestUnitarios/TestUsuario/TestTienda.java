@@ -3,10 +3,17 @@ package Modelo.TestUnitarios.TestUsuario;
 import Modelo.Juego.Tablero;
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
+import Modelo.SistemaCartas.Activables.Joker.PorJugada;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarMultiplicador;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
+import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.*;
 import Modelo.Juego.Tienda.*;
 import Modelo.SistemaCartas.Poker.*;
@@ -47,9 +54,19 @@ public class TestTienda {
             assertEquals(tarots.get(0), tarotComprado);
 
         }
+
+
         //TODO: Implementar el refactor de joker antes de testear
         @Test
         public void test03creoTiendaConElementosYComproJoker() {
+            Carta cartaNueva = new Carta(new Corazon(), new As());
+            List<Activable> activables = List.of(new PorJugada("Test", "Test", 100, new Multiplicador(1), "par", new SumarPuntaje()), new Descarte("Test", "Test", 100, new Multiplicador(1), new AumentarChips()));
+            Tienda tienda = new Tienda(activables, cartaNueva);
+
+            tienda.seleccionarActivable(activables.get(0));
+            Activable jokerComprado = tienda.comprarActibable();
+
+            assertEquals(activables.get(0), jokerComprado);
 
         }
 }

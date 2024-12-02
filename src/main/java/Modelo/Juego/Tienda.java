@@ -31,6 +31,7 @@ public class Tienda {
            PORQUE NO APARECE EN NINGUN LUGAR DE LA DOCUMENTACION, PERO CUIDADO.
         */
 
+    // al manejar comprables utilizamos polimorfismo
     public void seleccionarActivable(Activable comprable) {
         this.aComprar = comprable;
     }
@@ -41,7 +42,7 @@ public class Tienda {
         deseleccionarActivable();
         return aux;
     }
-
+    //debido a que cartas no es activable, no se me ocurre como se podría comprar de la misma forma
     public Carta comprarCarta(){
         Carta aux = this.carta;
         this.carta = null;
