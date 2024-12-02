@@ -50,8 +50,8 @@ public class TestPair {
         Pair pair = new Pair();
         List<Carta> cartas = List.of(
                 new Carta(new Corazon(), new As()),
-                new Carta(new Pica(), new As()),
-                new Carta(new Trebol(), new Rey())
+                new Carta(new Trebol(), new Rey()),
+                new Carta(new Pica(), new As())
         );
 
         // Act
