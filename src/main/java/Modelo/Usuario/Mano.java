@@ -170,11 +170,6 @@ public class Mano {
         jugada = null;
     }
 
-    public void resetearPuntos(){
-        puntos = 0;
-    }
-
-
 
 
 

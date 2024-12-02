@@ -69,7 +69,7 @@ public class TestJoker {
 
         //Assert
         int resultado = mano.calcularPuntaje();
-        mano.vaciarMano();
+
         assertEquals(esperado,resultado);
 
     }
@@ -98,8 +98,8 @@ public class TestJoker {
 
         //Assert
         int resultado = mano.calcularPuntaje();
-        mano.vaciarMano();
-        mano.resetearPuntos();
+
+
 
         assertEquals(esperado,resultado);
     }
@@ -127,8 +127,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-        mano.vaciarMano();
-        mano.resetearPuntos();
+
+
         assertEquals(esperado,resultado);
     }
 
@@ -157,8 +157,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-        mano.vaciarMano();
-        mano.resetearPuntos();
+
+
         assertEquals(esperado,resultado);
     }
 
@@ -199,8 +199,8 @@ public class TestJoker {
         int resultado = mano.calcularPuntaje(); // 100 | Chips 15 y Mult 4 -> 60 + 100
 
         //Assert
-        mano.vaciarMano();
-        mano.resetearPuntos();
+
+
         assertEquals(esperado, resultado);
 
 
@@ -231,8 +231,8 @@ public class TestJoker {
         //Assert
         int resultado = mano.calcularPuntaje();
 
-        mano.vaciarMano();
-        mano.resetearPuntos();
+
+
         assertEquals(esperado,resultado);
     }
 
