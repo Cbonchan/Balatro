@@ -1,4 +1,4 @@
-package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
+package Modelo.TestUnitarios.TestSistemaCartas.TestJokers;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MultiplicacionMult;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
@@ -25,7 +25,7 @@ public class TestJoker {
 
 
     @Test
-    public void test01JokerPorJugadaQueSumaCienALosChipsDeLaJugada() {
+    public void test01PorJugadaQueSumaCienALosChipsDeLaJugada() {
         // Arrange
         int puntos = 0;
         Mano mano = new Mano();
@@ -50,7 +50,7 @@ public class TestJoker {
 
 
     @Test
-    public void test02JokerPorJugadaQueMultiplicaMultiplicadorCorrectamente() {
+    public void test02PorJugadaQueMultiplicaMultiplicadorCorrectamente() {
 
         // Arrange
         int puntos = 0;
@@ -76,7 +76,7 @@ public class TestJoker {
 
 
     @Test
-    public void test03JokerUnoEnSuma100PuntosALosChipsCorrectamente(){
+    public void test03UnoEnSuma100PuntosALosChipsCorrectamente(){
         // Arrange
         int puntos = 0;
         Random mockRandom = mock(Random.class);
@@ -105,7 +105,7 @@ public class TestJoker {
     }
 
     @Test
-    public void test04JokerUnoEnSuma100PuntosAlPuntajeCorrectamente(){
+    public void test04UnoEnSuma100PuntosAlPuntajeCorrectamente(){
         // Arrange
 
         Random mockRandom = mock(Random.class);
@@ -135,7 +135,7 @@ public class TestJoker {
 
 
     @Test
-    public void test05ComodinDeDescarteSuma10PuntosALosChipsCorrectamente(){
+    public void test05DescarteSuma10PuntosALosChipsCorrectamente(){
 
         // Arrange
         int incrementador = 10;
@@ -165,7 +165,7 @@ public class TestJoker {
 
 
     @Test
-    public void test06ComodinMultipleSeAplicaCorrectamente() {
+    public void test06CombinacionSeAplicaCorrectamente() {
 
         // Arrange
 

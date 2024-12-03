@@ -1,4 +1,4 @@
-package Modelo.TestUnitarios.TestSistemaCartas.TestComodines;
+package Modelo.TestUnitarios.TestSistemaCartas.TestJokers;
 
 import Modelo.Parser.JSONReader;
 import Modelo.SistemaCartas.Activables.Activable;
