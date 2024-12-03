@@ -1,21 +1,16 @@
 package Modelo.TestUnitarios.TestUsuario;
 
-import Modelo.Juego.Tablero;
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
-import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
-import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.Usuario.*;
-import Modelo.Juego.Tienda.*;
-import Modelo.SistemaCartas.Poker.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Cartas.*;
+import Modelo.SistemaCartas.Cartas.Palo.*;
+import Modelo.SistemaCartas.Cartas.Figura.*;
 
 import  org.junit.Test;
 

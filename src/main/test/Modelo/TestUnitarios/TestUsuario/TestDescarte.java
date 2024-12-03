@@ -1,10 +1,9 @@
 package Modelo.TestUnitarios.TestUsuario;
 
-import Modelo.Juego.Tablero;
 import Modelo.Usuario.*;
-import Modelo.SistemaCartas.Poker.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Cartas.*;
+import Modelo.SistemaCartas.Cartas.Palo.*;
+import Modelo.SistemaCartas.Cartas.Figura.*;
 
 import  org.junit.Test;
 

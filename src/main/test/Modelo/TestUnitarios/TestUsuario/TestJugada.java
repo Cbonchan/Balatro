@@ -2,9 +2,9 @@ package Modelo.TestUnitarios.TestUsuario;
 
 // Importaciones
 import Modelo.Usuario.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Palo.*;
+import Modelo.SistemaCartas.Cartas.Figura.*;
+import Modelo.SistemaCartas.Cartas.Carta;
 
 import  org.junit.Test;
 import  static  org.junit.jupiter.api.Assertions.*;
