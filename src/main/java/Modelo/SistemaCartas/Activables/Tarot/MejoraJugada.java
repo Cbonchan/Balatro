@@ -1,7 +1,5 @@
 package Modelo.SistemaCartas.Activables.Tarot;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarJugada;
-import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 

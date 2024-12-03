@@ -2,10 +2,7 @@ package Modelo.SistemaCartas.Activables.Tarot;
 
 // Importaciones
 import Modelo.SistemaCartas.Activables.Activable;
-import Modelo.SistemaCartas.Activables.ActivableEnCarta;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
-import Modelo.SistemaCartas.Poker.Carta;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 

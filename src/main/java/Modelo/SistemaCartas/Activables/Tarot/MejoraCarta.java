@@ -1,12 +1,8 @@
 package Modelo.SistemaCartas.Activables.Tarot;
 
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarChips;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.CambiarMult;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.Usuario.Mano;
 
 public class MejoraCarta extends TarotEnCarta{
 
