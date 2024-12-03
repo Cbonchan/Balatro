@@ -2,7 +2,7 @@ package Modelo.TestUnitarios.TestSistemaCartas.TestJugadas;
 
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.List;
 

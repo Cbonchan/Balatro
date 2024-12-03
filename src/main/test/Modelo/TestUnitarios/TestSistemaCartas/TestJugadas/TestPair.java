@@ -4,9 +4,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Cartas.Palo.*;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Figura.*;
 
 import Modelo.SistemaCartas.Jugadas.Pair;
 
