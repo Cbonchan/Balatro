@@ -14,14 +14,17 @@ public class Multiplicador {
         return  (chip.multiplicarCon(this.valor));
     }
 
+    // Post: Suma el valor de los multiplicadores
     public Multiplicador sumarMultiplicador(Multiplicador otroMultiplicador) {
         return new Multiplicador(this.valor + otroMultiplicador.valorNumerico());
     }
 
+    // Post: Multiplica el valor de los multiplicadores
     public Multiplicador multiplicarCon(Multiplicador otroMultiplicador) {
         return new Multiplicador(this.valor * otroMultiplicador.valorNumerico());
     }
 
+    // Post: Cambia el multiplicador por otro
     public void cambiarMultiplicador(Multiplicador otroMultiplicador) {
         this.valor = otroMultiplicador.valorNumerico();
     }

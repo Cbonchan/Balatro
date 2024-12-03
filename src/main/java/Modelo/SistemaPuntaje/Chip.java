@@ -14,8 +14,14 @@ public class Chip {
         return new Chip(this.valor + otroChip.valorNumerico());
     }
 
+    // Post: Multiplica el valor de los chips
     public int multiplicarCon(int multiplicador) {
         return  this.valor * multiplicador;
+    }
+
+    // Post: Cambia el chip por otro
+    public void cambiarChip(int valor) {
+        this.valor = valor;
     }
 
     // Solo usar en Puntajes, si se usa afuera, se rompe pilar
@@ -24,10 +30,5 @@ public class Chip {
         return this.valor;
     }
 
-    public void cambiarChip(int valor) {
-        this.valor = valor;
-    }
-    // tarot.modifcar(Chip)
-    // chip.modificar(con lo que deba)
 
 }
