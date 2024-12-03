@@ -1,4 +1,4 @@
-package Modelo.TestUnitarios.TestSistemaCartas.TestJokers;
+package Modelo.TestUnitarios.TestSistemaCartas.TestActivables.TestJokers;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MultiplicacionMult;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
@@ -6,9 +6,9 @@ import Modelo.Usuario.Mano;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
 
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.SistemaCartas.Poker.Palo.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Palo.*;
+import Modelo.SistemaCartas.Cartas.Figura.*;
 
 import Modelo.SistemaCartas.Activables.Joker.*;
 import Modelo.SistemaCartas.Activables.Activable;

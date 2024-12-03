@@ -1,16 +1,13 @@
-package Modelo.TestUnitarios.TestSistemaCartas.TestTarots;
+package Modelo.TestUnitarios.TestSistemaCartas.TestActivables.TestTarots;
 
-import Modelo.Juego.Tablero;
-import Modelo.SistemaCartas.Activables.SistemaDeEfecto.EfectoEnCarta;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarCarta;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarJugada;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.SistemaCartas.Poker.Figura.Rey;
-import Modelo.SistemaCartas.Poker.Palo.Diamante;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Figura.Rey;
+import Modelo.SistemaCartas.Cartas.Palo.Diamante;
 import Modelo.SistemaPuntaje.Multiplicador;
-import Modelo.Usuario.Jugador;
 import Modelo.Usuario.Mano;
 import org.junit.Test;
 
