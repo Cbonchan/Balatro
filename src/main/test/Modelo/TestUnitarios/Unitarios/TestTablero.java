@@ -1,4 +1,4 @@
-package Modelo.Unitarios;
+package Modelo.TestUnitarios.Unitarios;
 
 import Modelo.Juego.*;
 import Modelo.Usuario.*;
