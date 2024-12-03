@@ -18,27 +18,34 @@ public class Puntaje {
 
     // Métodos
 
-    //TODO: Poner post condiciones a estos metodos por favor, son un bardo
+    // Privados
 
-
-    public void cambiarPuntaje(int incrementador, Multiplicador multiplicador){
-        this.chip.cambiarChip(incrementador);
-        this.multiplicador.cambiarMultiplicador(multiplicador);
-
-    }
-
-
-    public Chip aumentarValorChip(Chip otroChip){
+    // Post: aumenta el valor del puntaje según la cantidad de chips que se le otorguen
+    private Chip aumentarValorChip(Chip otroChip){
         return (this.chip.sumar(otroChip) );
     }
 
+    // Post: aumenta el valor del multiplicador según la cantidad de multiplicadores que se le otorguen
+    private Multiplicador aumentarValorMultiplicador(Multiplicador otroMultiplicador ){
+        return  (this.multiplicador.multiplicarCon(otroMultiplicador) );
+    }
 
 
     // Públicos
 
-    // Relación con Chip
+    // Post: Cambia el puntaje por otro
+    public void cambiarPuntaje(int incrementador, Multiplicador multiplicador){
+        this.chip.cambiarChip(incrementador);
+        this.multiplicador.cambiarMultiplicador(multiplicador);
+    }
 
-    // Arreglado
+    //Post: Calcula en valor final del puntaje
+    public  int calcularPuntaje( ){
+        return  this.multiplicador.multiplicarCon(this.chip);
+    }
+
+
+    // Relación con Chip
 
     // Post: Cambia los chips por otros, usado en Tarot
     public void cambiarChip(int  nuevoValorDeChip){
@@ -50,14 +57,14 @@ public class Puntaje {
         this.chip = this.chip.sumar(otroChip);
     }
 
-
+    // Post: suma el valor de los chips
     public void sumarNuevosChips( Puntaje otroPuntaje){
         // This == puntaje final
         this.chip = otroPuntaje.aumentarValorChip(this.chip);
     }
 
-   // Falta:
 
+   // Falta:
     public int obtenerChips(){
         return (chip.valorNumerico());
     }
@@ -83,45 +90,20 @@ public class Puntaje {
         this.multiplicador = multiplicador.multiplicarCon(incremento);
     }
 
-
-
-
-    // Falta:
-
-    //! Rompe encapsulamiento
-
-    public int obtenerMultiplicador(){
-        return (multiplicador.valorNumerico());
-    }
-
-
-    public Multiplicador aumentarValorMultiplicador(Multiplicador otroMultiplicador ){
-        return  (this.multiplicador.multiplicarCon(otroMultiplicador) );
-    }
-
-    public Multiplicador sumarDeVerdadElMultiplicador(Multiplicador otroMultiplicador){
-        return (this.multiplicador.sumarMultiplicador(otroMultiplicador));
-    }
-
+    // Post: suma el valor de los multiplicadores
     public void sumarNuevoMultiplicador( Puntaje otroPuntaje){
         // This == puntaje final
         this.multiplicador = otroPuntaje.aumentarValorMultiplicador(this.multiplicador);
     }
 
 
+    // Falta:
 
-
-
-
-    // Propios
-
-
-
-
-    //Post: Calcula en valor final del puntaje
-    public  int calcularPuntaje( ){
-        return  this.multiplicador.multiplicarCon(this.chip);
+    //! Rompe encapsulamiento
+    public int obtenerMultiplicador(){
+        return (multiplicador.valorNumerico());
     }
+
 
 }
 
