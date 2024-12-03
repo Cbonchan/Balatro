@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Palo;
+package Modelo.SistemaCartas.Cartas.Palo;
 
 // Importaciones
 
@@ -8,10 +8,6 @@ public class Diamante extends Palo {
 
     // Constructor
     public Diamante() { super("Diamantes"); }
-
-    // Métodos
-    @Override
-    public boolean esPalo(String palo) { return palo.equals(this.getNombre());  }
 
     @Override
     public boolean somosMismoPalo(Palo palo) {

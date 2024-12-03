@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Figura;
+package Modelo.SistemaCartas.Cartas.Figura;
 
 // Importaciones
 import  Modelo.SistemaPuntaje.*;
@@ -36,7 +36,3 @@ public class As extends Figura {
     }
 
 }
-
-
-/// tarot.usar(cartaPoker)
-// cartaPoker.modificarPuntaje

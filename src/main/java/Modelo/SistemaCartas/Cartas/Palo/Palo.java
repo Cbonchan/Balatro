@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Palo;
+package Modelo.SistemaCartas.Cartas.Palo;
 
 // Importaciones
 
@@ -20,12 +20,5 @@ public abstract class Palo {
 
     // Post: Devuelve true si el palo es igual al palo de la instancia
     abstract public boolean somosMismoPalo(Palo palo);
-
-
-    // Duda
-
-    // Post: Devuelve true si el palo es igual al palo de la instancia
-    abstract public boolean esPalo(String palo);
-
 
 }

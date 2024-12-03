@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Figura;
+package Modelo.SistemaCartas.Cartas.Figura;
 
 // Importaciones
 import  Modelo.SistemaPuntaje.Puntaje;
@@ -33,10 +33,6 @@ public abstract class Figura {
 
     // Post: Devuelve si la siguiente figura es igual a otra figura
     abstract  public boolean miSiguienteFiguraEs(Figura figura);
-
-
-    // Públicos
-
 
 }
 

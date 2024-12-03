@@ -1,8 +1,6 @@
-package Modelo.SistemaCartas.Poker.Palo;
+package Modelo.SistemaCartas.Cartas.Palo;
 
 // Importaciones
-
-import java.util.Objects;
 
 public class Corazon extends Palo {
 
@@ -10,10 +8,6 @@ public class Corazon extends Palo {
 
     // Constructor
     public Corazon() { super("Corazones"); }
-
-    // Métodos
-    @Override
-    public boolean esPalo(String palo) { return Objects.equals(palo, this.getNombre());  }
 
     @Override
     public boolean somosMismoPalo(Palo palo) {

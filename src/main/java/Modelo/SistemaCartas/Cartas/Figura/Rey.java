@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Figura;
+package Modelo.SistemaCartas.Cartas.Figura;
 
 // importaciones
 import Modelo.SistemaPuntaje.*;

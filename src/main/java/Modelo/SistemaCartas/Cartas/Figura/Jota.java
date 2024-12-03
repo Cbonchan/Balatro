@@ -1,23 +1,21 @@
-package Modelo.SistemaCartas.Poker.Figura;
+package Modelo.SistemaCartas.Cartas.Figura;
 
 // Importaciones
 import  Modelo.SistemaPuntaje.*;
 
-public class Tres extends  Figura{
+public class Jota  extends  Figura{
 
     // Atributos
-    private  final  int puntaje = 3;
+    private  final int puntaje = 10;
 
     // Constructor
-    public Tres() {
-        super("3");
+    public Jota() {
+        super("J");
     }
 
     // Métodos
     @Override
-    public int orden() {
-        return 3;
-    }
+    public int orden() {return 11;}
 
     @Override
     public Puntaje asignarPuntaje() {
@@ -26,12 +24,15 @@ public class Tres extends  Figura{
 
     @Override
     public  boolean esIgualA(Figura figura){
-        return figura instanceof Tres;
+        return figura instanceof Jota;
     }
 
     @Override
     public boolean miSiguienteFiguraEs(Figura otraFigura){
-        return  (otraFigura instanceof Dos);
+        return  (otraFigura instanceof Diez);
     }
+
+
+
 
 }

@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Figura;
+package Modelo.SistemaCartas.Cartas.Figura;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
@@ -31,9 +31,6 @@ public class Cinco extends Figura{
     public boolean miSiguienteFiguraEs(Figura otraFigura){
         return  (otraFigura instanceof Cuatro);
     }
-
-
-
 
 }
 

@@ -1,4 +1,4 @@
-package Modelo.SistemaCartas.Poker.Palo;
+package Modelo.SistemaCartas.Cartas.Palo;
 
 // Importaciones
 
@@ -8,10 +8,6 @@ public class Pica extends Palo {
 
     // Constructor
     public Pica() { super("Picas"); }
-
-    // Métodos
-    @Override
-    public boolean esPalo(String palo) { return palo.equals(this.getNombre());  }
 
     @Override
     public boolean somosMismoPalo(Palo palo) {
