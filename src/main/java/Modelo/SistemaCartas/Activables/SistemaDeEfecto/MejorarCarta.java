@@ -1,6 +1,6 @@
 package Modelo.SistemaCartas.Activables.SistemaDeEfecto;
 
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.SistemaPuntaje.Multiplicador;
 
 public class MejorarCarta implements EfectoEnCarta{
