@@ -2,7 +2,7 @@ package Modelo.Usuario;
 
 // Importaciones
 
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 

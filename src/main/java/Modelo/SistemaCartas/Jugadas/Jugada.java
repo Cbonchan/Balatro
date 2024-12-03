@@ -2,7 +2,7 @@ package Modelo.SistemaCartas.Jugadas;
 
 // Importaciones
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaCartas.Cartas.*;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

@@ -1,12 +1,12 @@
 package Modelo.Usuario;
 
 // Importaciones
-import Modelo.SistemaCartas.Poker.*;
-import Modelo.SistemaCartas.Poker.Figura.*;
-import Modelo.SistemaCartas.Poker.Palo.*;
+import Modelo.SistemaCartas.Cartas.*;
+import Modelo.SistemaCartas.Cartas.Figura.*;
+import Modelo.SistemaCartas.Cartas.Palo.*;
 
-import Modelo.SistemaCartas.Poker.Figura.Figura;
-import Modelo.SistemaCartas.Poker.Palo.Palo;
+import Modelo.SistemaCartas.Cartas.Figura.Figura;
+import Modelo.SistemaCartas.Cartas.Palo.Palo;
 
 import java.util.ArrayList;
 import java.util.List;

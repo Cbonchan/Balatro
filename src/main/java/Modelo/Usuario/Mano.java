@@ -1,10 +1,9 @@
 package Modelo.Usuario;
 
 // Importaciones
-import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Jugadas.*;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.ArrayList;
 import java.util.List;

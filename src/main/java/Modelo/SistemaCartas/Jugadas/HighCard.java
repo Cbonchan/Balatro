@@ -1,7 +1,7 @@
 package Modelo.SistemaCartas.Jugadas;
 
 import Modelo.SistemaPuntaje.*;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.List;
 import org.jetbrains.annotations.NotNull;

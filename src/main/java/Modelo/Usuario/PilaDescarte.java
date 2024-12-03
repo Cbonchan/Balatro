@@ -1,6 +1,6 @@
 package Modelo.Usuario;
 
-import Modelo.SistemaCartas.Poker.*;
+import Modelo.SistemaCartas.Cartas.*;
 
 import java.util.ArrayList;
 import java.util.List;

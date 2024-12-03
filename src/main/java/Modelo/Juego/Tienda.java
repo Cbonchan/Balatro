@@ -1,7 +1,7 @@
 package Modelo.Juego;
 
 import Modelo.SistemaCartas.Activables.Activable;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.ArrayList;
 import java.util.List;
