@@ -1,0 +1,100 @@
+@@startuml diagramaClases
+/'incompleto'/
+
+ class Jugador {
+     - puntaje: int
+     - mano: Mano
+     - List<Poker> cartas
+
+     + Jugador(mano: Mano)
+     + seleccionarCarta(cartas: Poker): void
+     + jugar(tablero: Tablero): void
+     + descartarMano(tablero: Tablero): void
+     + cartasFaltantes(): int
+     + agregarCartas(List<Poker>): int
+     + deshacerEleccion(): void
+     - quitarCartas(mano: Mano): void
+
+ }
+
+
+ class Poker {
+     - palo: Palo
+     - figuta: Figura
+
+     + Poker(palo: Palo, figura: Figura)
+
+ }
+ class Mano {
+      - jugada: Jugada
+      - determinarJugada(List<Poker>): Jugada
+      +Mano()
+      + obtenerChips(): int
+      + aumentarChips(incremento: Chip): void
+      + cambiarChipPor(nuevoValor: int): void
+      + agregarCarta(cartaPoker: Poker): void
+      + sumarMultiplicador(Multiplicador incremento): void
+      + multiplicarMultiplicador(multiplicador: Multiplicador): void
+      + mejorarJugada(incrementador: int, multiplicador: Multiplicador, jugadaElegida String): void
+      + validarNombreMano(manoAValidar: String): boolean
+      + aumentarPuntos(puntos: int): void
+      + vaciarMano(): void
+      + calcularPuntaje(): int
+      + cartasAcumuladas(List<Poker>)): List<Poker>
+
+  }
+
+  abstract class Jugada{
+      +Jugada(chip: Chip, multiplicador: Multiplicador)
+      {abstract} validarNombreJugada(manoAValidar: String): boolean
+      {abstract} esJugadaValida(List<Poker>): boolean
+      {abstract} cartasJugadas(List<Poker>): List<Poker>
+      - ordenarCartas(List<Poker>): List<Poker>
+      + aumentarChips(incremento: Chip): void
+      +sumarMultiplicador(incremento: Multiplicador): void
+      +multiplicarMultiplicador(multiplicador: Multiplicador): void
+      +mejorar(incrementador: int, multiplicador: Multiplicador): void
+      +obtenerMultiplicador(): int
+      + calcularPuntaje(puntajeList Puntaje): int
+  }
+
+
+
+ class Tablero {
+     + jugarMano(mano: Mano): int
+     + descartarMano(mano: Mano): void
+     - chequearJokersJugada(): void
+     - chequearJokersDescarte(): void
+ }
+
+class PilaDescarte {
+    - manosDescartadas: List<Poker>
+
+    + PilaDescarte()
+    + cantidadManosDescartadas(): int
+    + descartarMano(mano: Mano): void
+    + reinsertarEnMazo(Mazo: mazo): void
+ }
+
+class Mazo{
+    -List<Poker> mazoDeCartas
+    +Mazo()
+    +getCartasDisponibles(): int
+    +cartaAleatoria(): Poker
+    +repartirCartas(jugador: Jugador): void
+    +reinsertarCartas(List<Poker>): void
+}
+
+Tablero *-- PilaDescarte
+Tablero o-- Jugador
+Jugador *-- Mano
+Mano -->"0..5   " Poker
+Mano *--"10 " Jugada
+Jugador --->"0..8  " Poker
+PilaDescarte -->"*" Mano
+Mazo <.. PilaDescarte
+Mazo ...> Jugador
+Tablero ..> Mano
+Tablero <.. Jugador
+Mazo -->"0..* " Poker
+ @enduml
