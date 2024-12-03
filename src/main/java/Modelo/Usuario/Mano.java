@@ -102,10 +102,10 @@ public class Mano {
     // Trabajar con class Multiplicador y Chips (hacer un new donde se llame solo chips)
 
     //post:aumenta el valor de los chips y mult de una jugada pasada por string
-    public void mejorarJugada(int incrementador, Multiplicador multiplicador, String jugada){
+    public void mejorarJugada(int incrementador, Multiplicador multiplicador, String jugadaElegida){
 
         for (Jugada jugadaAMejorar:jugadasPosibles){
-            if (jugadaAMejorar.validarNombreJugada(jugada)) {
+            if (jugadaAMejorar.validarNombreJugada(jugadaElegida)) {
                 jugadaAMejorar.mejorar(incrementador, multiplicador);
             }
         }
@@ -169,11 +169,6 @@ public class Mano {
         cartas.clear();
         jugada = null;
     }
-
-
-
-
-    // Viejo
 
 
 }

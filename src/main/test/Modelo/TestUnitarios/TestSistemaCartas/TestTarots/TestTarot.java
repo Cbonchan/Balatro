@@ -60,27 +60,26 @@ public class TestTarot {
 
 //TODO: Este test falla porque todavia esa parte de Tarot no esta implementada con el refactor actual.
 // Revisar la clase "CambiarPuntaje" de "SistemaDeEfecto" para mas detalles
-/*
+
     @Test
     public void test03tarotMejoraLaManoHighCardA20Puntos() {
 
-        //Arrrange
+        //Arrange
         Carta carta1 = new Carta(new Diamante(), new Rey());
         Mano mano = new Mano();
         mano.agregarCarta(carta1);
 
-        MejoraJugada tarot = new MejoraJugada("Test03", "Mejora high card", 20, new Multiplicador(5),
-                "Carta Alta", new MejorarJugada("Carta Alta"));
+        MejoraJugada tarot = new MejoraJugada("Test03", "Mejora high card", 20, new Multiplicador(5), new MejorarJugada("carta alta"));
 
         //Act
         tarot.activar(mano, "Sin contexto");
 
 
         //Assert
-        assertEquals(20, mano.obtenerMultiplicador());
+        assertEquals(20, mano.obtenerChips()); //! TESTEO POR IMPLEMENTACION
     }
 
- */
+
 
 
 }

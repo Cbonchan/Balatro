@@ -39,12 +39,13 @@ public class TestTienda {
             assertEquals(cartaNueva, cartaComprada);
         }
 
+
         @Test
         public void test02creoTiendaConElementosYComproTarot() {
             List<Joker> jokers = new ArrayList<>();
             List<Activable> tarots = List.of(
-                    new MejoraJugada("Test", "Test", 100, new Multiplicador(1), "par",new CambiarChips()),
-                    new MejoraJugada("Test2", "Test2", 100, new Multiplicador(1), "par",new CambiarChips()));
+                    new MejoraJugada("Test", "Test", 100, new Multiplicador(1),new CambiarChips()),
+                    new MejoraJugada("Test2", "Test2", 100, new Multiplicador(1),new CambiarChips()));
             Carta cartaNueva = new Carta(new Corazon(), new As());
             Tienda tienda = new Tienda(tarots, cartaNueva);
 
@@ -54,6 +55,8 @@ public class TestTienda {
             assertEquals(tarots.get(0), tarotComprado);
 
         }
+
+
 
 
 

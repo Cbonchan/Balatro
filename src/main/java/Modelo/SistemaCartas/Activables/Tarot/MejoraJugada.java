@@ -6,9 +6,9 @@ import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
 
 public class MejoraJugada extends Tarot{
-    public MejoraJugada(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String jugada, Efecto efecto){
+    public MejoraJugada(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, Efecto efecto){
         super(nombre,descripcion, incrementador, multiplicador, efecto);
-        this.efecto= new MejorarJugada(jugada);
+        this.efecto= efecto;
     }
 
     @Override
