@@ -155,7 +155,7 @@ public class ModeloController implements Initializable {
 
             // Asociar la carta al ImageView utilizando setUserData
             imageView.setUserData(carta);
-            mouseHoverEvents(imageView);
+            //mouseHoverEvents(imageView);
 
             cartas_mano.getChildren().add(imageView);
         }
