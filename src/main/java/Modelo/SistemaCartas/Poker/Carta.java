@@ -110,7 +110,7 @@ public class Carta {
 //Metodos JavaFX
     //post: devuelve una imagen correspondiente dependiendo de el estado de la carta
     public Image getImage(){
-        String pathname = "/images/Cartas"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
+        String pathname = "/images/Cartas/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
         return new Image(Carta.class.getResourceAsStream(pathname));
        }
 
