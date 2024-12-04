@@ -1,6 +1,7 @@
 package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
+import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.Usuario.Mano;
 
 import Modelo.SistemaCartas.Activables.Activable;
@@ -8,6 +9,7 @@ import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaPuntaje.Multiplicador;
 
 import com.google.gson.JsonObject;
+import javafx.scene.image.Image;
 
 public abstract class Joker implements Activable {
 
@@ -15,7 +17,7 @@ public abstract class Joker implements Activable {
     protected final String nombre;
     protected final String descripcion;
     protected final String activacion;
-    protected  Efecto efecto;
+    protected Efecto efecto;
     protected final int incrementador;
     protected final Multiplicador multiplicador;
 
@@ -38,6 +40,7 @@ public abstract class Joker implements Activable {
         this.incrementador = incrementador;
         this.multiplicador = multiplicador;
     }
+
 
     // No sé que factory
 
@@ -121,8 +124,6 @@ public abstract class Joker implements Activable {
    */
 
 
-
-
     // Getters y Setters
     public String getNombre(){
         return nombre;
@@ -135,5 +136,8 @@ public abstract class Joker implements Activable {
     // Post: Se activa el efecto del Joker
      public  abstract void activar(Mano mano, String contexto);
 
-
+    public Image getImage() {
+        String pathname = "/images/"+this.getNombre()+".png";
+        return new Image(Joker.class.getResourceAsStream(pathname));
+    }
 }

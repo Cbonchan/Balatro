@@ -12,75 +12,75 @@
 <?import javafx.scene.layout.VBox?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1250.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.ModeloController">
-    <FlowPane id="Cartas_Jugador" fx:id="cartas_jugador" layoutX="60.0" layoutY="518.0" prefHeight="209.0" prefWidth="1151.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+    <FlowPane id="Cartas_Jugador" fx:id="cartas_jugador" alignment="CENTER" layoutX="60.0" layoutY="518.0" prefHeight="209.0" prefWidth="1151.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView id="cartas_jugador" fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
       </children></FlowPane>
 
-   <FlowPane id="Slots_Jokers" fx:id="cartas_jugada" layoutX="390.0" layoutY="14.0" prefHeight="137.0" prefWidth="491.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+   <FlowPane id="Slots_Jokers" fx:id="cartas_joker" layoutX="390.0" layoutY="14.0" prefHeight="137.0" prefWidth="491.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
-         <ImageView fx:id="cartas_joker" fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
       </children></FlowPane>
@@ -89,41 +89,41 @@
       <children>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
       </children></FlowPane>
 
-   <FlowPane id="Mano_jugador" fx:id="cartas_mano" layoutX="414.0" layoutY="360.0" prefHeight="122.0" prefWidth="442.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+   <FlowPane id="Mano_jugador" fx:id="cartas_mano" alignment="CENTER" layoutX="352.0" layoutY="352.0" prefHeight="168.0" prefWidth="567.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="122.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="122.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="122.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="122.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="122.0" fitWidth="95.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
       </children></FlowPane>
@@ -132,33 +132,33 @@
       <children>
          <ImageView fitHeight="180.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="180.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="180.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="180.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
          <ImageView fitHeight="180.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@images/back_of_card.png" />
+               <Image url="@../images/back_of_card.png" />
             </image>
          </ImageView>
       </children></FlowPane>
-   <Button id="boton_jugar" fx:id="boton_jugar" layoutX="936.0" layoutY="387.0" mnemonicParsing="false" onAction="#jugar" prefHeight="55.0" prefWidth="119.0" text="Jugar" />
-   <Button id="boton-descartar" fx:id="boton_descartar" layoutX="1072.0" layoutY="387.0" mnemonicParsing="false" onAction="#descartarMano" prefHeight="71.0" prefWidth="178.0" text="Descartar" />
-   <GridPane alignment="TOP_CENTER" layoutX="14.0" layoutY="376.0" prefHeight="90.0" prefWidth="340.0">
+   <Button id="boton_jugar" fx:id="boton_jugar" layoutX="1015.0" layoutY="291.0" mnemonicParsing="false" onAction="#realizarJugada" prefHeight="69.0" prefWidth="178.0" text="Jugar" />
+   <Button id="boton_descartar" fx:id="boton_descartar" layoutX="1017.0" layoutY="438.0" mnemonicParsing="false" onAction="#descartarCartasMano" prefHeight="71.0" prefWidth="178.0" text="Descartar" />
+   <GridPane alignment="TOP_CENTER" layoutX="14.0" layoutY="399.0" prefHeight="90.0" prefWidth="340.0">
      <columnConstraints>
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="237.0" minWidth="10.0" prefWidth="225.0" />
        <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="115.0" />
@@ -174,24 +174,25 @@
          <Label id="multiplicador" fx:id="nro_mult" text="nroM" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
    </GridPane>
-   <VBox alignment="CENTER" layoutX="20.0" layoutY="34.0" prefHeight="224.0" prefWidth="291.0">
+   <VBox alignment="CENTER" layoutX="20.0" layoutY="6.0" prefHeight="224.0" prefWidth="291.0">
       <children>
          <Label prefHeight="54.0" prefWidth="265.0" text="Puntos a superar:" />
-         <Label id="puntos_a_superar" fx:id="puntos_a_superar" contentDisplay="CENTER" prefHeight="47.0" prefWidth="103.0" text="nroPS" />
+         <Label id="puntos_a_superar" fx:id="puntos_a_superar" contentDisplay="CENTER" prefHeight="47.0" prefWidth="274.0" text="nroPS" textAlignment="JUSTIFY" />
          <Label contentDisplay="CENTER" prefHeight="47.0" prefWidth="121.0" text="puntos:" textAlignment="CENTER" />
-         <Label id="puntos" fx:id="puntaje" text="nroP" />
+         <Label id="puntos" fx:id="puntaje" prefHeight="47.0" prefWidth="284.0" text="nroP" />
       </children>
    </VBox>
-   <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="258.0" prefHeight="94.0" prefWidth="143.0">
+   <VBox alignment="TOP_CENTER" layoutX="41.0" layoutY="217.0" prefHeight="94.0" prefWidth="249.0">
       <children>
          <Label text="Jugada:" textAlignment="CENTER" />
-         <Label id="tipo_jugada" fx:id="tipo_jugada" text="tipoJ" />
+         <Label id="tipo_jugada" fx:id="tipo_jugada" prefHeight="47.0" prefWidth="233.0" text="tipoJ" />
       </children>
    </VBox>
-   <VBox alignment="TOP_CENTER" layoutX="157.0" layoutY="258.0" prefHeight="94.0" prefWidth="143.0">
+   <VBox alignment="TOP_CENTER" layoutX="94.0" layoutY="305.0" prefHeight="94.0" prefWidth="143.0">
       <children>
          <Label text="Ronda:" textAlignment="CENTER" />
          <Label id="nro_ronda" fx:id="nro_ronda" text="nroR" />
       </children>
    </VBox>
+   <Button id="boton_jugar" fx:id="boton_deseleccionar" layoutX="1018.0" layoutY="364.0" mnemonicParsing="false" onAction="#cancelarMano" prefHeight="69.0" prefWidth="178.0" text="Cancelar" />
 </AnchorPane>

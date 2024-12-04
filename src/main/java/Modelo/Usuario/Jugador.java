@@ -40,6 +40,10 @@ public class Jugador {
         return (mano.obtenerChips());
     }
 
+    public int obtenerMult(){return (mano.obtenerMultiplicador());}
+
+    public List<Joker> obtenerJokers(){return jokers;}
+
     public int getCantidadCartas() {
         return cartas.size();
     }
@@ -91,12 +95,13 @@ public class Jugador {
     // Post: Descarta la mano actual y la agrega a la pila de descarte
     public  void descartarMano(){
         cartasDescartadas.descartarMano(mano);
+        mano.vaciarMano();
 
         for (Joker joker: jokers){
             joker.activar(mano, "Descarte");
         }
 
-        cartasDescartadas.reinsertarEnMazo(mazo);
+       // cartasDescartadas.reinsertarEnMazo(mazo);
         this.agregarCartasFaltantes();
     }
 

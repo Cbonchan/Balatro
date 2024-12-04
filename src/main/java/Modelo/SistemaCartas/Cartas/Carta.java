@@ -5,7 +5,9 @@ import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Cartas.Palo.Palo;
 import Modelo.SistemaCartas.Cartas.Figura.Figura;
 import javafx.scene.image.Image;
+import java.io.InputStream;
 
+import javax.swing.text.Element;
 import java.util.Objects;
 
 public class Carta {
@@ -28,7 +30,7 @@ public class Carta {
         return this.figura;
     }
 
-
+    public Palo getPalo(){return this.palo;}
     // Métodos
 
     // Getters
@@ -114,13 +116,15 @@ public class Carta {
         this.puntaje.cambiarMultiplicador(nuevoMultiplicador);
     }
 
+    // Falta :
 
 
-    //! Métodos JavaFX
+
+//Metodos JavaFX
     //post: devuelve una imagen correspondiente dependiendo de el estado de la carta
     public Image getImage(){
-        String pathname = "images/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
-        return new Image(Objects.requireNonNull(Carta.class.getResourceAsStream(pathname)));
-    }
+        String pathname = "/images/Cartas/"+this.figura.getNombre()+"_of_"+this.palo.getNombre()+".png";
+        return new Image(Carta.class.getResourceAsStream(pathname));
+       }
 
 }

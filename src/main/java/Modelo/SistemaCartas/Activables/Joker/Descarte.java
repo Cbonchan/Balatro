@@ -4,8 +4,6 @@ import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 import Modelo.Usuario.Mano;
 import Modelo.SistemaPuntaje.Multiplicador;
 
-import java.util.Objects;
-
 public class Descarte extends Joker {
 
 

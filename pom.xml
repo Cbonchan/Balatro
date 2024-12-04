@@ -20,10 +20,15 @@
 
     Replace the line below by: <javafx-version>18.0.2</javafx-version>
     -->
-    <javafx-version>18.0.2</javafx-version>
+    <javafx-version>19</javafx-version>
     <main-class>edu.fiuba.algo3.Main</main-class>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>org.jetbrains</groupId>
+      <artifactId>annotations</artifactId>
+      <version>16.0.1</version>
+    </dependency>
     <dependency>
       <groupId>com.googlecode.json-simple</groupId>
       <artifactId>json-simple</artifactId>
@@ -100,6 +105,14 @@
     </profile>
   </profiles>
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include> <!-- Incluye todos los archivos -->
+        </includes>
+      </resource>
+    </resources>
     <testSourceDirectory>src/main/test</testSourceDirectory>
     <plugins>
         <plugin>

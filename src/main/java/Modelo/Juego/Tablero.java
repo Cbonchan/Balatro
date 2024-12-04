@@ -1,14 +1,6 @@
 package Modelo.Juego;
 
 // Importaciones
-import Modelo.SistemaCartas.Activables.Tarot.Tarot;
-import Modelo.Usuario.Jugador;
-import Modelo.Usuario.Mano;
-import Modelo.Usuario.PilaDescarte;
-import Modelo.SistemaCartas.Activables.Joker.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Tablero {
 /*
