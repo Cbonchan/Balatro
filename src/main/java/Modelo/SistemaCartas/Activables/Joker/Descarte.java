@@ -14,9 +14,9 @@ public class Descarte extends Joker {
 
 
     // Viejo constructor
-    public Descarte(String nombre, String descripcion, int puntaje, int multiplicador){
+   /* public Descarte(String nombre, String descripcion, int puntaje, int multiplicador){
         super( nombre, descripcion, puntaje, new Multiplicador(multiplicador), "Descarte");
-    }
+    }*/
 
 
     @Override

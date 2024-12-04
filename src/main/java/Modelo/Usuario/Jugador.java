@@ -17,6 +17,8 @@ public class Jugador {
     private final List<Tarot> tarots;          // Tarots para activar max 2
     private final Mazo mazo;
     private final Mano mano;
+    private int cantidadDescartes;
+    private int cantidadJugadas;
     private int puntos;
 
     // Constructor
@@ -28,6 +30,8 @@ public class Jugador {
         this.mazo = new Mazo();
         this.puntos = 0;
         this.cartasDescartadas = new PilaDescarte();
+        this.cantidadDescartes = 0;
+        this.cantidadJugadas = 0;
     }
 
     //! Getters y Setters
@@ -94,6 +98,10 @@ public class Jugador {
 
     // Post: Descarta la mano actual y la agrega a la pila de descarte
     public  void descartarMano(){
+        if (!puedoDescartar()){
+            return;
+        }
+        this.cantidadDescartes--;
         cartasDescartadas.descartarMano(mano);
         mano.vaciarMano();
 
@@ -161,7 +169,10 @@ public class Jugador {
 
     // Post: Juega una mano
     public void jugarMano(){
-
+        if (!puedoJugar()){
+            return;
+        }
+        this.cantidadJugadas--;
         for (Joker joker: jokers){
             joker.activar(mano, "Mano Jugada");
         }
@@ -185,5 +196,20 @@ public class Jugador {
 
     public void tomarCartas() {
         mazo.repartirCartas(cartas);
+    }
+
+    private boolean puedoDescartar() {
+        return cantidadDescartes > 0;
+    }
+
+    private boolean puedoJugar() {
+        return cantidadJugadas > 0;
+    }
+
+
+
+    public void actualizarCantidadDeManosYDescartes(int manos, int descartes) {
+        cantidadJugadas = manos;
+        cantidadDescartes = descartes;
     }
 }

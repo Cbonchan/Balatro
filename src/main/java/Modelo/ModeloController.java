@@ -1,5 +1,3 @@
-
-
 package Modelo;
 
 import Modelo.SistemaCartas.Activables.Activable;
@@ -66,9 +64,14 @@ public class ModeloController implements Initializable {
     void descartarMano(ActionEvent event) {
 
     }
-//TESTING
+    //TESTING
     Jugador jugador = new Jugador();
     //ESTO DEBE SER REEMPLAZADO CON LA INICIALIZACION DEL JUEGO
+
+    // el jugador tiene metodos para verificar si puede continuar descartando o jugando,
+    //TODO: tenemos que hacer que se verifique si el jugador puede actuar o no, y si se supero el puntaje para concluir la ronda
+
+
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -206,5 +209,3 @@ public class ModeloController implements Initializable {
         updateCartasJugador();
     }
 }
-
-

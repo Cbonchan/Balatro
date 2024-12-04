@@ -1,7 +1,6 @@
 package Modelo.Juego;
 
 import Modelo.Usuario.Jugador;
-import Modelo.Usuario.Mazo;
 
 public class Ronda {
 
@@ -23,6 +22,7 @@ public class Ronda {
     }
     public void comenzar(Jugador jugador) {
         jugador.tomarCartas();
+        jugador.actualizarCantidadDeManosYDescartes(manos,descartes);
     }
 
     public boolean puedoDescartar() {

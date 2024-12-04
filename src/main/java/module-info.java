@@ -3,15 +3,14 @@ module Modelo {
     requires json.simple;
     requires com.google.gson;
     requires org.jetbrains.annotations;
-    //requires javafx.fxml;
-    requires java.desktop;
     requires javafx.fxml;
+    requires java.desktop;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.vistas;
 
-    // Archivos del trabajo
-    //opens Modelo to javafx.fxml;
-    //exports Modelo;
+    // Arhivos del trabajo
+    opens Modelo to javafx.fxml;
+    exports Modelo;
     exports Modelo.Juego;
     exports Modelo.Usuario;
     exports Modelo.SistemaCartas.Cartas.Palo;
@@ -21,5 +20,4 @@ module Modelo {
     exports Modelo.SistemaCartas.Activables.Joker;
     exports Modelo.SistemaCartas.Activables.Tarot;
     exports Modelo.SistemaPuntaje;
-
 }

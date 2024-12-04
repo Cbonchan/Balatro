@@ -1,26 +1,31 @@
 package Modelo.Juego;
 
+import Modelo.SistemaCartas.Activables.Joker.Descarte;
+import Modelo.SistemaCartas.Activables.Joker.PorJugada;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Figura.As;
+import Modelo.SistemaCartas.Cartas.Palo.Diamante;
+import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Usuario.Jugador;
+
+import java.util.List;
+
 public class Juego {
 
-    /*
+    /**/
 
     // Atributos
     Jugador jugador;
-
-    List<Ronda> rondas;
+    Ronda ronda;
+    //List<Ronda> rondas;
 
      public Juego(){
-        this.jugador = Jugador();
-        this.rondas = List.of(
-            new Ronda(),
-            new Ronda(),
-            new Ronda(),
-            new Ronda(),
-            new Ronda()
-        );
+        this.jugador = new Jugador();
+        this.ronda = new Ronda(0,2,2,100, new Tienda(List.of(new Descarte("prueba","prueba",1,new Multiplicador(1),new SumarPuntaje())),new Carta(new Diamante(),new As())));
     }
 
-
+/*
     public void comenzarJuego(){
         jugador
         // inicializamos rondas
