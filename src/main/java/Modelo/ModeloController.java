@@ -1,11 +1,10 @@
-/*
 
 
 package Modelo;
 
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
-import Modelo.SistemaCartas.Poker.Carta;
+import Modelo.SistemaCartas.Cartas.Carta;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -207,6 +206,5 @@ public class ModeloController implements Initializable {
         updateCartasJugador();
     }
 }
- */
 
 

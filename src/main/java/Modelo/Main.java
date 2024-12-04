@@ -1,4 +1,3 @@
-/*
 
 
 package Modelo;
@@ -23,4 +22,3 @@ public class Main extends Application {
         launch();
     }
 }
- */

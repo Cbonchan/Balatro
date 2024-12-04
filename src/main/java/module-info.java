@@ -5,6 +5,7 @@ module Modelo {
     requires org.jetbrains.annotations;
     //requires javafx.fxml;
     requires java.desktop;
+    requires javafx.fxml;
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.vistas;
 
@@ -13,9 +14,9 @@ module Modelo {
     //exports Modelo;
     exports Modelo.Juego;
     exports Modelo.Usuario;
-    exports Modelo.SistemaCartas.Poker.Palo;
-    exports Modelo.SistemaCartas.Poker.Figura;
-    exports Modelo.SistemaCartas.Poker;
+    exports Modelo.SistemaCartas.Cartas.Palo;
+    exports Modelo.SistemaCartas.Cartas.Figura;
+    exports Modelo.SistemaCartas.Cartas;
     exports Modelo.SistemaCartas.Jugadas;
     exports Modelo.SistemaCartas.Activables.Joker;
     exports Modelo.SistemaCartas.Activables.Tarot;
