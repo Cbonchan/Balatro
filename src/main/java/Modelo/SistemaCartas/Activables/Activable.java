@@ -10,6 +10,6 @@ public interface Activable {
 
     public String getDescripcion();
 
-    public Image getImage();
+    //public Image getImage();
 
 }
