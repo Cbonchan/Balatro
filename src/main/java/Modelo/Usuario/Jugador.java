@@ -98,9 +98,6 @@ public class Jugador {
 
     // Post: Descarta la mano actual y la agrega a la pila de descarte
     public  void descartarMano(){
-        if (!puedoDescartar()){
-            return;
-        }
         this.cantidadDescartes--;
         cartasDescartadas.descartarMano(mano);
         mano.vaciarMano();
@@ -169,9 +166,6 @@ public class Jugador {
 
     // Post: Juega una mano
     public void jugarMano(){
-        if (!puedoJugar()){
-            return;
-        }
         this.cantidadJugadas--;
         for (Joker joker: jokers){
             joker.activar(mano, "Mano Jugada");
@@ -198,11 +192,11 @@ public class Jugador {
         mazo.repartirCartas(cartas);
     }
 
-    private boolean puedoDescartar() {
+    public boolean quedanDescartes() {
         return cantidadDescartes > 0;
     }
 
-    private boolean puedoJugar() {
+    public boolean quedanJugadas() {
         return cantidadJugadas > 0;
     }
 

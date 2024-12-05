@@ -189,6 +189,13 @@ public class ModeloController implements Initializable {
 
     @FXML
     public void realizarJugada(){
+        /*if (jugador.quedanJugadas()){
+            jugador.jugarMano();
+            jugador.agregarCartasFaltantes();
+            updateLabels();
+            updateCartasMano();
+            updateCartasJugador();
+        }*/
         jugador.jugarMano();
         jugador.agregarCartasFaltantes();
         updateLabels();
@@ -204,6 +211,11 @@ public class ModeloController implements Initializable {
     }
     @FXML
     public void descartarCartasMano(){
+        /*if (jugador.quedanDescartes()){
+            jugador.descartarMano();
+            updateCartasMano();
+            updateCartasJugador();
+        }*/
         jugador.descartarMano();
         updateCartasMano();
         updateCartasJugador();
