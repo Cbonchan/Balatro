@@ -1,0 +1,118 @@
+@@startuml
+ package Modelo.SistemaCartas.Activables.Joker {
+
+     interface Activable {
+         +void activar(Mano mano, String contexto)
+     }
+
+     abstract class JokerGenerico implements Activable {
+         -String nombre
+         -String descripcion
+         -String activacion
+         -Efecto efecto
+         -int puntaje
+         -Multiplicador multiplicador
+
+
+         +JokerGenerico(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
+         String activacion, Efecto efecto)
+         +void activar(Mano mano, String contexto)
+     }
+
+     class AlPuntaje extends JokerGenerico{
+        +AlPuntaje(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion, Efecto efecto)
+     }
+
+     class Descarte extends JokerGenerico {
+         +Descarte(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+     }
+
+     class unoEn extends JokerGenerico{
+        +UnoEn(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+     }
+
+     class PorJugada extends JokerGenerico{
+        +PorJugada(String nombre, String descripcion, int puntos, Multiplicador multiplicador, String jugada, Efecto efecto)
+     }
+
+     class Combinacion implements Activable {
+         -String nombre
+         -String descripcion
+         -ArrayList<Joker> subcomodines
+
+         +Combinacion(String nombre, String descripcion, ArrayList<Activable> subcomodines)
+         +void activar(Mano mano, String contexto)
+
+     }
+ }
+
+ package Modelo.SistemaCartas.Activables.SistemaDeEfecto {
+     interface Efecto{
+         +void activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+
+     class AumentarChips implements Efecto{
+        +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class CambiarChips implements Efecto{
+             +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class CambiarMult implements Efecto{
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class MejorarJugada implements Efecto{
+            -String jugada
+            +MejorarJugada(String jugada)
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class MultiplicacionMult implements Efecto{
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+         }
+
+     class SumarMultiplicador implements Efecto{
+                 +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class MejorarJugada implements Efecto{
+     +MejorarJugada(String jugada)
+     +activar(int incrementador, Multiplicador multiplicador, Mano mano)
+     }
+}
+
+package Modelo.SistemaCartas.Activables.Tarot{
+    abstract class Tarot implements Activable{
+    - String nombre
+    - String descripcion
+    - int puntos
+    - Multiplicador multiplicador
+    -Efecto efecto
+        +Tarot(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, Efecto efecto)
+        +{abstract}activar(Mano mano, String contexto)
+    }
+
+    class MejoraJugada extends Tarot{
+    +MejoraJugada(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, Efecto efecto)
+    +activar(Mano mano, String contexto)
+    }
+
+    MejoraJugada -> MejorarJugada
+
+
+
+    Tarot -> Efecto
+
+}
+
+
+
+
+Efecto<----JokerGenerico
+Combinacion "1" -> "*" JokerGenerico
+
+
+ @enduml

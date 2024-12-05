@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface ActivableEnCarta{
++activar(Carta carta, String contexto)
+}
+
+abstract class TarotEnCarta implements ActivableEnCarta{
+-String nombre
+-String descripcion
++int puntos
++Multiplicador multiplicador
++EfectoEnCarta efecto
+
++TartotEnCarta(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, EfectoEnCarta efecto)
++activar(Carta carta, String contexto)
+}
+
+class MejoraCarta extends TarotEnCarta{
++MejoraCarta(String nombre, String descripcion, int puntaje, Multiplicador multiplicador, EfectoEnCarta efecto)
++activar(Carta carta, String contexto)
+}
+
+interface EfectoEnCarta{
++activar(int incrementador, Multiplicador multiplicador, Carta carta)
+}
+
+class MejorarCarta implements EfectoEnCarta{
+activar(int incrementador, Multiplicador multiplicador, Carta carta)
+}
+
+TarotEnCarta -> EfectoEnCarta
+
+@enduml
