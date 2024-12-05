@@ -2,6 +2,7 @@ package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.Usuario.Mano;
 import Modelo.SistemaCartas.Activables.Activable;
+import javafx.scene.image.Image;
 
 import java.util.ArrayList;
 
@@ -25,5 +26,11 @@ public class Combinacion implements Activable {
 
     public String getDescripcion(){
         return descripcion;
+    }
+
+    // Agregado por error al ejecutar JAVA FX
+    @Override
+    public Image getImage() {
+        return null;
     }
 }

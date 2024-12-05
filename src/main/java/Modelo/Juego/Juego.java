@@ -1,4 +1,8 @@
+/*
+
+
 package Modelo.Juego;
+
 
 import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
@@ -13,7 +17,7 @@ import java.util.List;
 
 public class Juego {
 
-    /**/
+
 
     // Atributos
     Jugador jugador;
@@ -48,6 +52,9 @@ public class Juego {
     public void terminarJuego(){
         //TODO implementar
     }
-    */
+
 }
+*/
+
+
 

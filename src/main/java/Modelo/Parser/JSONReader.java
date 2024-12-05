@@ -1,9 +1,22 @@
 package Modelo.Parser;
 
+import Modelo.Factories.CartaFactory;
 import Modelo.Factories.JokerFactory;
+import Modelo.Juego.Ronda;
+import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.ActivableEnCarta;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarCarta;
+import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarJugada;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
+import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
+import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
+import Modelo.SistemaCartas.Activables.Tarot.Tarot;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Figura.Figura;
+import Modelo.SistemaCartas.Cartas.Palo.Palo;
 import Modelo.SistemaPuntaje.Multiplicador;
+import Modelo.Usuario.Mazo;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -53,7 +66,7 @@ public class JSONReader {
         return jokers;
     }
 
-    private static ArrayList<Activable> procesarComodines(JsonArray comodines){
+    private static ArrayList<Activable> procesarJokers(JsonArray comodines){
 
         ArrayList<Activable> jokerList = new ArrayList<>();
         for (JsonElement joker: comodines){
@@ -65,7 +78,7 @@ public class JSONReader {
                 ArrayList<Activable> subComodinesList = new ArrayList<>();
                 JsonArray subsubcomodines = jokerObject.get("comodines").getAsJsonArray();
 
-                subComodinesList.addAll(procesarComodines(subsubcomodines));
+                subComodinesList.addAll(procesarJokers(subsubcomodines));
                 jokerList.add(new Combinacion(nombre, descripcion, subComodinesList));
             } else {
                 //! Verificar que no esten vacios
@@ -91,7 +104,7 @@ public class JSONReader {
                 // int multiplicador = efecto.get("multiplicador").getAsInt(); <- Viejo multiplicador
                 Multiplicador multiplicador = new Multiplicador(efecto.get("multiplicador").getAsInt());
 
-                jokerList.add(parsearJoker(nombre, descripcion, grupoActivacion, valorActivacion, puntos, multiplicador));
+                jokerList.add(crearJokerEnFactory(nombre, descripcion, grupoActivacion, valorActivacion, puntos, multiplicador));
             }
 
         }
@@ -111,40 +124,211 @@ public class JSONReader {
             JsonObject entryObject = entry.getValue().getAsJsonObject();
 
             JsonArray jokers = entryObject.getAsJsonArray("comodines");
-            //String descripcionCategoria = categoriaObject.get("descripcion").getAsString();
 
-            //!JsonArray jokers = validarJSON(jsonElement);
-
-            jokerList.addAll(procesarComodines(jokers));
+            jokerList.addAll(procesarJokers(jokers));
         }
 
         return jokerList;
     }
 
-    private static Joker parsearJoker(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, Multiplicador multiplicador){
+    private static Joker crearJokerEnFactory(String nombre, String descripcion, String grupoActivacion, String valorActivacion, int puntos, Multiplicador multiplicador){
         Joker nuevoJoker = JokerFactory.crearJoker(nombre, descripcion, grupoActivacion, puntos, multiplicador, valorActivacion);
-
         return nuevoJoker;
-        /*
-        if (grupoActivacion.equals("Mano Jugada")){
-            return new PorJugada(nombre, descripcion, puntos, multiplicador, valorActivacion);
-        } else if (grupoActivacion.equals("1 en")){
-            int valor = Integer.parseInt(valorActivacion);
-            return new unoEn(nombre, descripcion, puntos, multiplicador, valor);
 
-        } else if (grupoActivacion.equals("Descarte")){
-            return new Descarte(nombre, descripcion, puntos, multiplicador);
+    }
 
-        } else {
-            if (multiplicador > 1){
-                return new Multiplicador(nombre, descripcion, puntos, multiplicador);
-            } else if (puntos != 1){
-                return new SumarPuntaje(nombre, descripcion, puntos, multiplicador);
-            } else{
-                throw new RuntimeException("Efecto invalido");
+    public static ArrayList<Activable> obtenerTarotsEnJugada(Reader reader){
+        JsonElement jsonElement = JsonParser.parseReader(reader);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
 
+        ArrayList<Activable> tarotList = new ArrayList<>();
+
+        JsonArray tarotsArray = jsonObject.getAsJsonArray("tarots");
+
+
+        for(JsonElement tarotElement : tarotsArray){
+            JsonObject entryObject = tarotElement.getAsJsonObject();
+
+            String nombre = entryObject.get("nombre").getAsString();
+            String descripcion = entryObject.get("descripcion").getAsString();
+
+            String sobre = entryObject.get("sobre").getAsString();
+            String ejemplar = entryObject.get("ejemplar").getAsString();
+
+            JsonObject efectos = entryObject.getAsJsonObject("efecto");
+
+            int puntos = efectos.get("puntos").getAsInt();
+
+            Multiplicador multiplicador = new Multiplicador(efectos.get("multiplicador").getAsInt());
+
+            if (sobre.equals("mano")){
+                tarotList.add(new MejoraJugada(nombre, descripcion, puntos, multiplicador,
+                    new MejorarJugada(ejemplar)));
+            }
+
+        }
+        return tarotList;
+    }
+
+    public static ArrayList<ActivableEnCarta> obtenerTarotsEnCarta(Reader reader){
+        JsonElement jsonElement = JsonParser.parseReader(reader);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        ArrayList<ActivableEnCarta> tarotEnCartaList = new ArrayList<>();
+
+        JsonArray tarotsArray = jsonObject.getAsJsonArray("tarots");
+
+        for(JsonElement tarotElement : tarotsArray){
+            JsonObject entryObject = tarotElement.getAsJsonObject();
+
+            String nombre = entryObject.get("nombre").getAsString();
+            String descripcion = entryObject.get("descripcion").getAsString();
+
+            String sobre = entryObject.get("sobre").getAsString();
+            String ejemplar = entryObject.get("ejemplar").getAsString();
+
+            JsonObject efectos = entryObject.getAsJsonObject("efecto");
+
+            int puntos = efectos.get("puntos").getAsInt();
+
+            Multiplicador multiplicador = new Multiplicador(efectos.get("multiplicador").getAsInt());
+
+            if (sobre.equals("carta")){
+                tarotEnCartaList.add(new MejoraCarta(nombre, descripcion, puntos, multiplicador,
+                        new MejorarCarta()));
+            }
+
+        }
+        return tarotEnCartaList;
+    }
+
+
+
+    public static ArrayList<Ronda> obtenerRondas(Reader reader){
+        JsonElement jsonElement = JsonParser.parseReader(reader);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+
+        JsonArray rondasArray = jsonObject.getAsJsonArray("rondas");
+        ArrayList<Ronda> rondaList = new ArrayList<>();
+
+        for (JsonElement rondaElement : rondasArray) {
+            JsonObject rondaObject = rondaElement.getAsJsonObject();
+
+            int numeroDeRonda = rondaObject.get("nro").getAsInt();
+            int limiteDeManos = rondaObject.get("manos").getAsInt();
+            int limiteDeDescartes = rondaObject.get("descartes").getAsInt();
+            int puntajeASuperar = rondaObject.get("puntajeASuperar").getAsInt();
+
+            // Parsear la tienda
+            JsonObject tiendaObject = rondaObject.getAsJsonObject("tienda");
+            Tienda tienda = procesarTienda(tiendaObject);
+
+            // Crear la instancia de Ronda
+            Ronda ronda = new Ronda(numeroDeRonda, limiteDeManos, limiteDeDescartes, puntajeASuperar, tienda);
+            rondaList.add(ronda);
+        }
+
+        return rondaList;
+    }
+
+    private static Tienda procesarTienda(JsonObject tiendaObject){
+        JsonArray comodinesArray = tiendaObject.getAsJsonArray("comodines");
+        ArrayList<Activable> jokers = procesarJokers(comodinesArray);
+
+        JsonArray tarotsEnJugadaArray = tiendaObject.getAsJsonArray("tarots");
+        ArrayList<Activable> tarotsEnJugada = obtenerTarotsEnJugada(tarotsEnJugadaArray);
+
+        JsonArray tarotsEnCartaArray = tiendaObject.getAsJsonArray("tarots");
+        ArrayList<ActivableEnCarta> tarotsEnCarta = obtenerTarotsEnCarta(tarotsEnCartaArray);
+
+        JsonObject cartaObject = tiendaObject.getAsJsonObject("carta");
+        Carta carta = procesarCarta(cartaObject);
+
+        return new Tienda(tarotsEnJugada, carta, tarotsEnCarta);
+    }
+
+    public static ArrayList<Activable> obtenerTarotsEnJugada(JsonArray tarotsArray) {
+        ArrayList<Activable> tarotList = new ArrayList<>();
+
+        for (JsonElement tarotElement : tarotsArray) {
+            JsonObject entryObject = tarotElement.getAsJsonObject();
+
+            String nombre = entryObject.get("nombre").getAsString();
+            String descripcion = entryObject.get("descripcion").getAsString();
+
+            String sobre = entryObject.get("sobre").getAsString();
+            String ejemplar = entryObject.get("ejemplar").getAsString();
+
+            JsonObject efectos = entryObject.getAsJsonObject("efecto");
+
+            int puntos = efectos.get("puntos").getAsInt();
+            Multiplicador multiplicador = new Multiplicador(efectos.get("multiplicador").getAsInt());
+
+            if (sobre.equals("mano")) {
+                tarotList.add(new MejoraJugada(nombre, descripcion, puntos, multiplicador, new MejorarJugada(ejemplar)));
             }
         }
-         */
+
+        return tarotList;
     }
+
+    public static ArrayList<ActivableEnCarta> obtenerTarotsEnCarta(JsonArray tarotsArray) {
+        ArrayList<ActivableEnCarta> tarotList = new ArrayList<>();
+
+        for (JsonElement tarotElement : tarotsArray) {
+            JsonObject entryObject = tarotElement.getAsJsonObject();
+
+            String nombre = entryObject.get("nombre").getAsString();
+            String descripcion = entryObject.get("descripcion").getAsString();
+
+            String sobre = entryObject.get("sobre").getAsString();
+            String ejemplar = entryObject.get("ejemplar").getAsString();
+
+            JsonObject efectos = entryObject.getAsJsonObject("efecto");
+
+            int puntos = efectos.get("puntos").getAsInt();
+            Multiplicador multiplicador = new Multiplicador(efectos.get("multiplicador").getAsInt());
+
+            if (sobre.equals("carta")) {
+                tarotList.add(new MejoraCarta(nombre, descripcion, puntos, multiplicador, new MejorarCarta()));
+            }
+        }
+
+        return tarotList;
+    }
+
+    private static Carta procesarCarta(JsonObject cartaObject) {
+        String nombre = cartaObject.get("nombre").getAsString();
+        String palo = cartaObject.get("palo").getAsString();
+        String figura = cartaObject.get("numero").getAsString();
+        int puntos = cartaObject.get("puntos").getAsInt();
+        int multiplicador = cartaObject.get("multiplicador").getAsInt();
+
+        Carta carta = CartaFactory.crearCarta(palo, figura);
+
+        return carta;
+    }
+
+    public static Mazo obtenerMazo(Reader reader){
+        JsonElement jsonElement = JsonParser.parseReader(reader);
+        JsonObject jsonObject = jsonElement.getAsJsonObject();
+        JsonArray mazoArray = jsonObject.getAsJsonArray("mazo");
+        ArrayList<Carta> cartaList = new ArrayList<>();
+
+        for (JsonElement mazoElement : mazoArray) {
+            JsonObject mazoObject = mazoElement.getAsJsonObject();
+
+            String palo = mazoObject.get("palo").getAsString();
+            String figura = mazoObject.get("numero").getAsString();
+
+            Carta carta = CartaFactory.crearCarta(palo, figura);
+            cartaList.add(carta);
+        }
+
+        return new Mazo(52, cartaList);
+    }
+
+
+
+
 }

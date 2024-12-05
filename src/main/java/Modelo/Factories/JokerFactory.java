@@ -1,9 +1,6 @@
 package Modelo.Factories;
 
-import Modelo.SistemaCartas.Activables.Joker.Descarte;
-import Modelo.SistemaCartas.Activables.Joker.Joker;
-import Modelo.SistemaCartas.Activables.Joker.PorJugada;
-import Modelo.SistemaCartas.Activables.Joker.UnoEn;
+import Modelo.SistemaCartas.Activables.Joker.*;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MultiplicacionMult;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.SumarPuntaje;
@@ -11,7 +8,7 @@ import Modelo.SistemaPuntaje.Multiplicador;
 
 public class JokerFactory {
 
-    public static Joker crearJoker(String grupoActivacion, String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion){
+    public static Joker crearJoker(String nombre, String descripcion, String grupoActivacion, int incrementador, Multiplicador multiplicador, String activacion){
         if (grupoActivacion.equals("Mano Jugada")){
             if (incrementador > 1){
                 return new PorJugada(nombre, descripcion, incrementador, multiplicador, activacion, new SumarPuntaje());
@@ -34,7 +31,17 @@ public class JokerFactory {
                 return new Descarte(nombre, descripcion, incrementador, multiplicador, new MultiplicacionMult());
             }
         }
-        return null;
+        else {
+            if (incrementador > 1){
+                return new AlPuntaje(nombre, descripcion, incrementador, multiplicador, activacion, new SumarPuntaje());
+            } else if( incrementador == 1) {
+                return new AlPuntaje(nombre, descripcion, incrementador, multiplicador, activacion, new MultiplicacionMult());
+            } else {
+                throw new RuntimeException("Efecto invalido");
+            }
+
+        }
+
 
     }
 }

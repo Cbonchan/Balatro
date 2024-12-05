@@ -1,11 +1,19 @@
+
+
+
+
+
 package Modelo.TestUnitarios.TestUsuario;
+
 
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.ActivableEnCarta;
 import Modelo.SistemaCartas.Activables.Joker.Descarte;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
+import Modelo.SistemaCartas.Activables.Tarot.MejoraCarta;
 import Modelo.SistemaCartas.Activables.Tarot.MejoraJugada;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.SistemaCartas.Cartas.*;
@@ -23,11 +31,15 @@ import  static  org.junit.jupiter.api.Assertions.*;
 
 public class TestTienda {
 
+
         @Test
         public void test01creoTiendaConElementosYComproCarta() {
             List<Activable> tarots = List.of(new PorJugada("Test", "Test", 100, new Multiplicador(1), "par", new SumarPuntaje()));
+            List<ActivableEnCarta> tarotsEnCarta = List.of(new MejoraCarta("Test", "Test", 100, new Multiplicador(1), new MejorarCarta()));
+
+
             Carta cartaNueva = new Carta(new Corazon(), new As());
-            Tienda tienda = new Tienda(tarots, cartaNueva);
+            Tienda tienda = new Tienda(tarots, cartaNueva, tarotsEnCarta);
 
             Carta cartaComprada = tienda.comprarCarta();
 
@@ -41,8 +53,10 @@ public class TestTienda {
             List<Activable> tarots = List.of(
                     new MejoraJugada("Test", "Test", 100, new Multiplicador(1),new CambiarChips()),
                     new MejoraJugada("Test2", "Test2", 100, new Multiplicador(1),new CambiarChips()));
+            List<ActivableEnCarta> tarotsEnCarta = List.of(new MejoraCarta("Test", "Test", 100, new Multiplicador(1), new MejorarCarta()));
+
             Carta cartaNueva = new Carta(new Corazon(), new As());
-            Tienda tienda = new Tienda(tarots, cartaNueva);
+            Tienda tienda = new Tienda(tarots, cartaNueva, tarotsEnCarta);
 
             tienda.seleccionarActivable(tarots.get(0));
             Activable tarotComprado = tienda.comprarActibable();
@@ -52,14 +66,12 @@ public class TestTienda {
         }
 
 
-
-
-
         @Test
         public void test03creoTiendaConElementosYComproJoker() {
             Carta cartaNueva = new Carta(new Corazon(), new As());
             List<Activable> activables = List.of(new PorJugada("Test", "Test", 100, new Multiplicador(1), "par", new SumarPuntaje()), new Descarte("Test", "Test", 100, new Multiplicador(1), new AumentarChips()));
-            Tienda tienda = new Tienda(activables, cartaNueva);
+            List<ActivableEnCarta> tarotsEnCarta = List.of(new MejoraCarta("Test", "Test", 100, new Multiplicador(1), new MejorarCarta()));
+            Tienda tienda = new Tienda(activables, cartaNueva, tarotsEnCarta);
 
             tienda.seleccionarActivable(activables.get(0));
             Activable jokerComprado = tienda.comprarActibable();
@@ -68,4 +80,8 @@ public class TestTienda {
 
         }
 }
+
+
+
+
 

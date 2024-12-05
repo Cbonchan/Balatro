@@ -16,7 +16,7 @@ public class Mazo {
 
     // Atributos
     private int cartasDisponibles;
-    private final ArrayList<Carta> mazoDeCartas;
+    private final ArrayList<Carta> mazoDeCartas; //TODO: Cambiar "mazoDeCartas" a "cartas" (Camilo)
 
     // Constructor
     public Mazo() {
@@ -38,6 +38,12 @@ public class Mazo {
                 mazoDeCartas.add(new Carta(palo, valor));
             }
         }
+    }
+
+    // Constructor para el Parser
+    public Mazo(int cartasDisponibles, ArrayList<Carta> cartas) {
+        this.cartasDisponibles = cartasDisponibles;
+        this.mazoDeCartas = cartas;
     }
 
     // Getters y Setters
@@ -69,6 +75,17 @@ public class Mazo {
     public void reinsertarCartas(List<Carta> cartas) {
         mazoDeCartas.addAll(cartas);
         cartasDisponibles += cartas.size();
+    }
+
+    // Getters
+    public String obtenerPaloDeCarta(int indiceDeCarta) {
+        Carta carta = mazoDeCartas.get(indiceDeCarta-1);
+        return carta.getPalo().getNombre();
+    }
+
+    public String obtenerFiguraDeCarta(int indiceDeCarta){
+        Carta carta = mazoDeCartas.get(indiceDeCarta-1);
+        return carta.getFigura().getNombre();
     }
 
 

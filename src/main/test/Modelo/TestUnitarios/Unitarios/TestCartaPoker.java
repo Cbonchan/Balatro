@@ -1,9 +1,9 @@
 package Modelo.TestUnitarios.Unitarios;
 
 
-import Modelo.SistemaCartas.Poker.Carta;
-import Modelo.SistemaCartas.Poker.Figura.Reina;
-import Modelo.SistemaCartas.Poker.Palo.Diamante;
+import Modelo.SistemaCartas.Cartas.Carta;
+import Modelo.SistemaCartas.Cartas.Figura.Reina;
+import Modelo.SistemaCartas.Cartas.Palo.Diamante;
 import org.junit.jupiter.api.Test;
 
 public class TestCartaPoker {
