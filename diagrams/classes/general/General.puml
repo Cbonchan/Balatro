@@ -2,37 +2,53 @@
 /'incompleto'/
 
  class Jugador {
-     - puntaje: int
-     - mano: Mano
-     - List<Poker> cartas
+     - cantidadDescartes: int
+     - cantidadJugadas: int
+
 
      + Jugador(mano: Mano)
-     + seleccionarCarta(cartas: Poker): void
+     + seleccionarCarta(cartas: Carta): void
      + jugar(tablero: Tablero): void
      + descartarMano(tablero: Tablero): void
      + cartasFaltantes(): int
-     + agregarCartas(List<Poker>): int
+     + agregarCartas(List<Carta>): int
      + deshacerEleccion(): void
      - quitarCartas(mano: Mano): void
 
  }
 
 
- class Poker {
-     - palo: Palo
-     - figuta: Figura
+ class Carta {
 
-     + Poker(palo: Palo, figura: Figura)
+
+     + Carta(palo: Palo, figura: Figura)
 
  }
+
+abstract class Figura{
+    - nombre: String
+    +Figura (nombre: String)
+    + {abstract} orden(): int
+    + {abstract} asignarPuntaje(): Puntaje
+    + {abstract} esIgualA(): Boolean
+    + {abstract} miSiguienteFiguraEs(figura: Figura): Boolean
+}
+
+abstract class Palo{
+    - nombre: String
+    +Palo (nombre: String)
+    + {abstract} somosMismoPalo(palo: Palo): boolean
+}
+
+
  class Mano {
       - jugada: Jugada
-      - determinarJugada(List<Poker>): Jugada
+      - determinarJugada(List<Carta>): Jugada
       +Mano()
       + obtenerChips(): int
       + aumentarChips(incremento: Chip): void
       + cambiarChipPor(nuevoValor: int): void
-      + agregarCarta(cartaPoker: Poker): void
+      + agregarCarta(cartaCarta: Carta): void
       + sumarMultiplicador(Multiplicador incremento): void
       + multiplicarMultiplicador(multiplicador: Multiplicador): void
       + mejorarJugada(incrementador: int, multiplicador: Multiplicador, jugadaElegida String): void
@@ -40,16 +56,16 @@
       + aumentarPuntos(puntos: int): void
       + vaciarMano(): void
       + calcularPuntaje(): int
-      + cartasAcumuladas(List<Poker>)): List<Poker>
+      + cartasAcumuladas(List<Carta>)): List<Carta>
 
   }
 
   abstract class Jugada{
       +Jugada(chip: Chip, multiplicador: Multiplicador)
       {abstract} validarNombreJugada(manoAValidar: String): boolean
-      {abstract} esJugadaValida(List<Poker>): boolean
-      {abstract} cartasJugadas(List<Poker>): List<Poker>
-      - ordenarCartas(List<Poker>): List<Poker>
+      {abstract} esJugadaValida(List<Carta>): boolean
+      {abstract} cartasJugadas(List<Carta>): List<Carta>
+      - ordenarCartas(List<Carta>): List<Carta>
       + aumentarChips(incremento: Chip): void
       +sumarMultiplicador(incremento: Multiplicador): void
       +multiplicarMultiplicador(multiplicador: Multiplicador): void
@@ -58,17 +74,37 @@
       + calcularPuntaje(puntajeList Puntaje): int
   }
 
+ abstract class Joker implements Activable{
+    -nombre: String
+    -descripcion: String
+    -activacion: String
+    -efecto: Efecto
+    -incrementador: int
+    -multiplicador: Multiplicador
+    +Joker(nombre: String, descripcion: String, activacion: String, incrementador: int, multiplicador: Multiplicador,efecto: Efecto)
+    {abstract}activar(mano: Mano, contexto: String): void
+ }
+ abstract class Tarot implements Activable{
+    -nombre: String
+    -descripcion: String
+    -incrementador: int
+    -multiplicador: Multiplicador
+    -efecto: Efecto
 
-
- class Tablero {
-     + jugarMano(mano: Mano): int
-     + descartarMano(mano: Mano): void
-     - chequearJokersJugada(): void
-     - chequearJokersDescarte(): void
+    +Tarot(nombre: String, descripcion: String, incrementador: int, multiplicador: Multiplicador, efecto: Efecto)
+    {abstract}activar(mano: Mano, contexto: String): void
  }
 
+ interface Activable{
+    {abstract}activar(mano: Mano, contexto: String): void
+ }
+
+abstract class Efecto{
+{abstract} activar(incrementador: int, multiplicador: Multiplicador, mano: Mano): void
+}
+
 class PilaDescarte {
-    - manosDescartadas: List<Poker>
+    - manosDescartadas: List<Carta>
 
     + PilaDescarte()
     + cantidadManosDescartadas(): int
@@ -77,24 +113,63 @@ class PilaDescarte {
  }
 
 class Mazo{
-    -List<Poker> mazoDeCartas
+    -List<Carta> mazoDeCartas
     +Mazo()
     +getCartasDisponibles(): int
-    +cartaAleatoria(): Poker
+    +cartaAleatoria(): Carta
     +repartirCartas(jugador: Jugador): void
-    +reinsertarCartas(List<Poker>): void
+    +reinsertarCartas(List<Carta>): void
 }
 
-Tablero *-- PilaDescarte
-Tablero o-- Jugador
+class Ronda{
+-numero: int
+-manos: int
+-descartes: int
+-puntajeASuperar: int
+-tienda: Tienda
+
++Ronda(numero: int, manos: int, descartes: int, puntajeASuperar: int, tienda: Tienda)
++comenzar(jugador: Jugador): void
+}
+
+class Juego{
+-jugador: Jugador
+-rondas: List<Ronda>
+
++Juego(){
++comenzarJuego(): void
+}
+
+class Tienda{
+-List<Activable> activables
+-carta: Carta
++Tienda(List<Activable> activables, carta: Carta)
++comprarActivable(activable: Activable): void
++comprarCarta(carta: Carta): void
++cantidadDeElementosDisponibles(): int
+}
+
+Juego *--"8 " Ronda
+Ronda *-- Tienda
+PilaDescarte --* Jugador
 Jugador *-- Mano
-Mano -->"0..5   " Poker
-Mano *--"10 " Jugada
-Jugador --->"0..8  " Poker
-PilaDescarte -->"*" Mano
+Mano -->"0..5   " Carta
+Mano *-.-"10 " Jugada
+Jugador --->"0..8  " Carta
+PilaDescarte ..> Mano
 Mazo <.. PilaDescarte
 Mazo ...> Jugador
-Tablero ..> Mano
-Tablero <.. Jugador
-Mazo -->"0..* " Poker
+Mazo -->" 0..*    " Carta
+Carta --> Palo
+Carta --> Figura
+Mazo --* Jugador
+Jugador -->"0..5" Joker
+Jugador -->"0..2 " Tarot
+Efecto <|. Tarot
+Efecto <|. Joker
+Tienda--> Activable
+Carta <- Tienda
+Juego --> Jugador
+PilaDescarte -->"0..* " Carta
+Jugador <... Ronda
  @enduml
