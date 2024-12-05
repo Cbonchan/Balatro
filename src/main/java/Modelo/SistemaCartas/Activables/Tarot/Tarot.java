@@ -2,9 +2,11 @@ package Modelo.SistemaCartas.Activables.Tarot;
 
 // Importaciones
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.Efecto;
 import Modelo.SistemaPuntaje.Multiplicador;
 import Modelo.Usuario.Mano;
+import javafx.scene.image.Image;
 
 public abstract class Tarot implements Activable {
 
@@ -34,6 +36,11 @@ public abstract class Tarot implements Activable {
     }
 
     public  abstract void activar(Mano mano, String contexto);
+
+    public Image getImage() {
+        String pathname = "/images/Tarots/"+this.getNombre()+".png";
+        return new Image(Tarot.class.getResourceAsStream(pathname));
+    }
 
 }
 

@@ -105,5 +105,4 @@ public abstract class Jugada {
         return puntaje.calcularPuntaje();
     }
 
-
 }

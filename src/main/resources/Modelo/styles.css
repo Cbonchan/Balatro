@@ -1,7 +1,12 @@
 .root{
     -fx-font-size: 24pt;
+    -fx-background-image: url("../images/Background.png");
     -fx-background-color: linear-gradient(red, blue);
-    /*-fx-background-color: #536dfe;*/
+}
+
+.body{
+   background-image: url("../images/Background.png");
+
 }
 
 .label {
@@ -10,5 +15,5 @@
 }
 
 .button{
-    -fx-background-radius: 20px;
+    -fx-background-radius: 15px;
 }

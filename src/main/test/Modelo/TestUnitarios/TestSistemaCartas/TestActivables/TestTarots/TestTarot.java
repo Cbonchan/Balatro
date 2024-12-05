@@ -71,7 +71,6 @@ public class TestTarot {
         //Act
         tarot.activar(mano, "Sin contexto");
 
-
         //Assert
         assertEquals(20, mano.obtenerChips()); //! TESTEO POR IMPLEMENTACION
     }

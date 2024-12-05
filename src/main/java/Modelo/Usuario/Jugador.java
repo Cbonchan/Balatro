@@ -45,20 +45,25 @@ public class Jugador {
     }
 
     public int obtenerMult(){return (mano.obtenerMultiplicador());}
-
+    //JavaFX
+    public int obtenerCantidadJugadas(){return cantidadJugadas;}
+    //JavaFX
+    public int obtenerCantidadDescartes(){return cantidadDescartes;}
+    //JavaFX
     public List<Joker> obtenerJokers(){return jokers;}
+    //JavaFX
+    public List<Tarot> obtenerTarots(){return tarots;}
+    //javaFX
+    public List<Carta> obtenerCartas(){return cartas;}
 
     public int getCantidadCartas() {
         return cartas.size();
     }
 
-    public List<Carta> obtenerCartas(){return cartas;}
-
     public Mano obtenerMano(){return mano;}
     // Métodos
 
     //! MÉTODOS RELACIONADOS A MAZO:
-
 
     // Post: Rellena la mano hasta tener 8 Cartas
     public void agregarCartasFaltantes() {
@@ -76,8 +81,6 @@ public class Jugador {
     public void agregarCartas(List<Carta> cartasNuevas) {
         cartas.addAll(cartasNuevas);
     }
-
-
 
     //! MÉTODOS RELACIONADOS A MANO:
 
@@ -138,9 +141,6 @@ public class Jugador {
         }
     }
 
-
-
-
     //! METODOS RELACIONADOS A TAROT:
 
     // Post: Agrega un Tarot a mi lista de Tarots si no tengo 2
@@ -155,12 +155,7 @@ public class Jugador {
         tarots.remove(tarot);
     }
 
-
     //TODO: METODOS RELACIONADOS A TIENDA:
-
-
-
-
 
     //! METODOS PROPIOS:
 
@@ -171,7 +166,7 @@ public class Jugador {
             joker.activar(mano, "Mano Jugada");
         }
 
-        puntos = mano.calcularPuntaje();
+        puntos += mano.calcularPuntaje();
         mano.vaciarMano();
 
         //Mano CalcularPuntaje(Jokers) -> Calculo mi mano teniendo en cuenta los Jokers
@@ -197,10 +192,8 @@ public class Jugador {
     }
 
     public boolean quedanJugadas() {
-        return cantidadJugadas > 0;
+        return cantidadJugadas >= 0;
     }
-
-
 
     public void actualizarCantidadDeManosYDescartes(int manos, int descartes) {
         cantidadJugadas = manos;
