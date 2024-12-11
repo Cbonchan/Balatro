@@ -8,16 +8,23 @@ module Modelo {
     exports edu.fiuba.algo3;
     exports edu.fiuba.algo3.vistas;
 
-    // Arhivos del trabajo
+    // Archivos del trabajo
     opens Modelo to javafx.fxml;
     exports Modelo;
+
     exports Modelo.Juego;
-    exports Modelo.Usuario;
+
+    exports Modelo.SistemaCartas.Activables.Joker;
+    exports  Modelo.SistemaCartas.Activables.SistemaDeEfecto;
+    exports Modelo.SistemaCartas.Activables.Tarot;
+
+    exports Modelo.SistemaCartas.Cartas;
     exports Modelo.SistemaCartas.Cartas.Palo;
     exports Modelo.SistemaCartas.Cartas.Figura;
-    exports Modelo.SistemaCartas.Cartas;
+
     exports Modelo.SistemaCartas.Jugadas;
-    exports Modelo.SistemaCartas.Activables.Joker;
-    exports Modelo.SistemaCartas.Activables.Tarot;
+
     exports Modelo.SistemaPuntaje;
+
+    exports Modelo.Usuario;
 }
