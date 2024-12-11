@@ -2,6 +2,8 @@ package Modelo.Usuario;
 
 // Importaciones
 
+import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.Tarot.TarotEnCarta;
 import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
@@ -12,9 +14,10 @@ import java.util.ArrayList;
 public class Jugador {
     // Atributos
     private final PilaDescarte cartasDescartadas;
-    private final List<Carta> cartas;          // Cartas para elegir max 8
-    private final List<Joker> jokers;         // Jokers para activar max 5
+    private final List<Carta> cartas;           // Cartas para elegir max 8
+    private final List<Joker> jokers;           // Jokers para activar max 5
     private final List<Tarot> tarots;          // Tarots para activar max 2
+    private final List<TarotEnCarta> tarotsParaCarta;
     private final Mazo mazo;
     private final Mano mano;
     private int cantidadDescartes;
@@ -26,6 +29,7 @@ public class Jugador {
         this.cartas = new ArrayList<>();
         this.jokers = new ArrayList<>();
         this.tarots = new ArrayList<>();
+        this.tarotsParaCarta = new ArrayList<>();
         this.mano = new Mano();
         this.mazo = new Mazo();
         this.puntos = 0;
@@ -34,7 +38,11 @@ public class Jugador {
         this.cantidadJugadas = 0;
     }
 
-    //! Getters y Setters
+    // Métodos relacionados con JavaFX
+
+    public int getCantidadCartas() {
+        return cartas.size();
+    }
 
     public int getPuntos(){
         return puntos;
@@ -45,22 +53,20 @@ public class Jugador {
     }
 
     public int obtenerMult(){return (mano.obtenerMultiplicador());}
-    //JavaFX
+
     public int obtenerCantidadJugadas(){return cantidadJugadas;}
-    //JavaFX
+
     public int obtenerCantidadDescartes(){return cantidadDescartes;}
-    //JavaFX
+
     public List<Joker> obtenerJokers(){return jokers;}
-    //JavaFX
+
     public List<Tarot> obtenerTarots(){return tarots;}
-    //javaFX
+
     public List<Carta> obtenerCartas(){return cartas;}
 
-    public int getCantidadCartas() {
-        return cartas.size();
-    }
-
     public Mano obtenerMano(){return mano;}
+
+
     // Métodos
 
     //! MÉTODOS RELACIONADOS A MAZO:
@@ -70,7 +76,6 @@ public class Jugador {
         mazo.repartirCartas(cartas);
     }
 
-    //! EN DUDA
     //Post: Agrega una carta del Mazo a mi lista de cartas
     public int cartasFaltantes(){
         int actuales = cartas.size();
@@ -82,9 +87,8 @@ public class Jugador {
         cartas.addAll(cartasNuevas);
     }
 
-    //! MÉTODOS RELACIONADOS A MANO:
 
-    // Públicos
+    //! MÉTODOS RELACIONADOS A MANO:
 
     // Post: Selecciona una carta de mi lista de cartas y la agrega a mi mano
     public void seleccionarCarta(Carta cartaCarta){
@@ -127,21 +131,9 @@ public class Jugador {
         jokers.remove(joker);
     }
 
-    //Post: activa Jokers correspondientes tras realizar una jugada
-    private void chequearJokersDescarte(Mano mano, int puntaje){
-        for(Joker joker: this.jokers){
-            joker.activar(mano, "Descarte");
-        }
-    }
 
-    //Post: activa Jokers correspondientes tras realizar una jugada
-    private void chequearJokersJugada(Mano mano, int puntaje){
-        for(Joker joker: this.jokers){
-            joker.activar(mano, "Jugada");
-        }
-    }
 
-    //! METODOS RELACIONADOS A TAROT:
+    //! MÉTODOS RELACIONADOS A TAROT:
 
     // Post: Agrega un Tarot a mi lista de Tarots si no tengo 2
     public void agregarTarot(Tarot tarot) {
@@ -151,13 +143,26 @@ public class Jugador {
     }
 
     // Post: Elimina un Tarot de mi lista de Tarots
-    public void venderTarot(Tarot tarot){
+    public void eliminarTarot(Tarot tarot){
         tarots.remove(tarot);
     }
 
-    //TODO: METODOS RELACIONADOS A TIENDA:
 
-    //! METODOS PROPIOS:
+    public  void agregarTarot(TarotEnCarta tarot){
+        if (tarotsParaCarta.size() < 2){
+            tarotsParaCarta.add(tarot);
+        }
+    }
+
+    public  void eliminarTarot(TarotEnCarta tarot){
+        tarotsParaCarta.remove(tarot);
+    }
+
+    //TODO: MÉTODOS RELACIONADOS A TIENDA:
+
+
+
+    //! MÉTODOS PROPIOS:
 
     // Post: Juega una mano
     public void jugarMano(){
@@ -168,14 +173,6 @@ public class Jugador {
 
         puntos += mano.calcularPuntaje();
         mano.vaciarMano();
-
-        //Mano CalcularPuntaje(Jokers) -> Calculo mi mano teniendo en cuenta los Jokers
-        //chequearJokersJugada(Jugada, PuntajeLocal) -> Se chequean los Jokers dentro del calcular puntaje
-        // de mano
-        //Me devuelve el puntaje final
-        // chequeo jokers que afecten al puntaje final
-        //reset Mano
-        //me guardo el puntaje final
     }
 
     // Post: Compara si supero un puntaje
