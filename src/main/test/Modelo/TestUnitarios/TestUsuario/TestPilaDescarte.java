@@ -11,7 +11,7 @@ import java.util.List;
 
 import  static  org.junit.jupiter.api.Assertions.*;
 
-public class TestDescarte {
+public class TestPilaDescarte {
 
     @Test
     public void test01deshacerEleccionAumentaLasDisponibles(){
