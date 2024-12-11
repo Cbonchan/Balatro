@@ -33,10 +33,16 @@ public class Puntaje {
 
     // Públicos
 
-    // Post: Cambia el puntaje por otro
-    public void cambiarPuntaje(int incrementador, Multiplicador multiplicador){
+    // Post: Cambia el valor de los chips y los multiplicadores
+    public void cambiarPuntaje(int incrementador, Multiplicador multiplicador) {
         this.chip.cambiarChip(incrementador);
         this.multiplicador.cambiarMultiplicador(multiplicador);
+    }
+
+    // Post: Suma el valor de los chips y multiplica el valor de los multiplicadores
+    public void aumentarPuntaje(int incrementador, Multiplicador multiplicador){
+        this.chip = this.chip.sumar(new Chip(incrementador));
+        this.multiplicador= this.multiplicador.sumarMultiplicador(multiplicador);
     }
 
     //Post: Calcula en valor final del puntaje
