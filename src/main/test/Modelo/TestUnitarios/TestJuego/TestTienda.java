@@ -1,4 +1,4 @@
-package Modelo.TestUnitarios.TestUsuario;
+package Modelo.TestUnitarios.TestJuego;
 
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;

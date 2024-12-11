@@ -1,4 +1,4 @@
-package Modelo.TestUnitarios.Unitarios;
+package Modelo.TestUnitarios.TestJuego;
 
 public class TestTablero {
 
