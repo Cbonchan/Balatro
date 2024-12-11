@@ -35,7 +35,7 @@ public class TestJoker {
         mano.agregarCarta(carta1);
         mano.agregarCarta(carta2);
 
-        PorJugada joker = new PorJugada("Test01", "+100", 100, new Multiplicador(1), "par", new AumentarChips() );
+        PorJugada joker = new PorJugada("Test01", "+100", 100, new Multiplicador(1), "Pair", new AumentarChips() );
         int esperado = 260;
 
         // Act
@@ -62,7 +62,7 @@ public class TestJoker {
         mano.agregarCarta(carta1);
         mano.agregarCarta(carta2);
 
-        PorJugada joker = new PorJugada("Test02", "x4", 100, new Multiplicador(4), "par", new MultiplicacionMult() );
+        PorJugada joker = new PorJugada("Test02", "x4", 100, new Multiplicador(4), "Pair", new MultiplicacionMult() );
         int esperado = 240;
 
         // Act
@@ -169,7 +169,6 @@ public class TestJoker {
     public void test06CombinacionSeAplicaCorrectamente() {
 
         // Arrange
-
         Mano mano = new Mano();
         int puntos = 0;
         Random mockRandom = mock(Random.class);
@@ -185,7 +184,7 @@ public class TestJoker {
                 1, new SumarPuntaje(), mockRandom);
 
         PorJugada jokerPorJugada = new PorJugada("Test02", "x4", 1, new Multiplicador(4),
-                "carta alta", new MultiplicacionMult() );
+                "High Card", new MultiplicacionMult() );
 
         ArrayList<Activable> subcomodines = new ArrayList<>();
         subcomodines.add(jokerPorJugada);
@@ -203,10 +202,6 @@ public class TestJoker {
 
 
         assertEquals(esperado, resultado);
-
-
-
-
     }
 
     @Test
