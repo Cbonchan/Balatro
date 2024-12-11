@@ -10,6 +10,8 @@ public class MejorarJugada implements Efecto {
         this.jugada = jugada;
     }
 
+    // El puntaje de la jugada se suma en "incrementador" y "multiplicador"
+    // incrementador suma a los Chips y multiplicador se suma con Multiplicador
     @Override
     public void activar(int incrementador, Multiplicador multiplicador, Mano mano) {
         mano.mejorarJugada(incrementador, multiplicador, jugada);
