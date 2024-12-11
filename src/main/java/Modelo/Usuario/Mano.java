@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Mano {
     // Atributos
-    private static final List<Jugada> jugadasPosibles = List.of(
+    private final List<Jugada> jugadasPosibles = List.of(
             new RoyalFlush(),
             new FourOfAKind(), new FullHouse(), new ThreeOfAKind(),
             new TwoPair(), new Pair(), new StraightFlush(),
@@ -40,7 +40,7 @@ public class Mano {
         return null;
     }
 
-    // Getters
+    //! Métodos relacionados con JavaFX
 
     public List<Carta> obtenerCartas(){return cartas;}
 
@@ -54,14 +54,15 @@ public class Mano {
 
     public Jugada obtenerJugada(){return jugada;}
 
-    // Públicos
 
-    // Relación con Chips
+    //! MÉTODOS RELACIONADOS A CHIP:
+
+    // Post: Aumenta el valor de los chips de la Jugada
     public void aumentarChips(Chip incremento){
         jugada.aumentarChips(incremento);
     }
 
-    //post:cambiar el valor de chips de la pprimer carta seleccionada
+    // Post:cambiar el valor de chips de la primera carta seleccionada
     public void cambiarChipPor(int nuevoValorDeChip){
         Carta cartaSeleccionada=cartas.get(0);
         cartaSeleccionada.cambiarChip(nuevoValorDeChip);
@@ -69,20 +70,19 @@ public class Mano {
 
 
 
-    // Relación con Multiplicador
-
-    // Arreglado
+    //! MÉTODOS RELACIONADOS A MULTIPLICADOR:
 
     // Post: Suma el valor de los multiplicadores
     public void sumarMultiplicador(Multiplicador incremento){
         jugada.sumarMultiplicador(incremento);
     }
 
+    // Post: Multiplica el multiplicado de Jugada por el incremento
     public void multiplicarMultiplicador(Multiplicador incremento){
         jugada.multiplicarMultiplicador(incremento);
     }
 
-    // Post:cambia el valor de mult de la primer carta seleccionada
+    // Post: cambia el valor de mult de la primer carta seleccionada
     public void cambiarMultiplicadorPor(Multiplicador multiplicador){
         Carta cartaSeleccionada=cartas.get(0);
         cartaSeleccionada.cambiarMultiplicador(multiplicador);
@@ -90,19 +90,9 @@ public class Mano {
 
 
 
-    // Faltan :
+    //! MÉTODOS RELACIONADOS A TAROT:
 
-
-
-
-
-
-    //! METODOS RELACIONADOS A TAROT:
-
-
-    // Trabajar con class Multiplicador y Chips (hacer un new donde se llame solo chips)
-
-    //post:aumenta el valor de los chips y mult de una jugada pasada por string
+    // Post: aumenta el valor de los chips y mult de una jugada pasada por string
     public void mejorarJugada(int incrementador, Multiplicador multiplicador, String jugadaElegida){
 
         for (Jugada jugadaAMejorar:jugadasPosibles){
@@ -114,23 +104,44 @@ public class Mano {
 
 
 
-    //! METODOS RELACIONADOS A JOKER
+    //! MÉTODOS RELACIONADOS A JOKER:
 
+    // Post: Verifica si la jugada de un Joker corresponden a la jugada de la mano
     public boolean validarNombreMano(String manoAValidar){
         return this.jugada.validarNombreJugada(manoAValidar);
     }
 
+    // Post: Verifica si la jugada de un Joker corresponden a la jugada de la mano
     public List<Carta> cartasAcumuladas(List<Carta> lista){
         lista.addAll(cartas);
         return lista;
     }
 
+    // Post: Aumenta los puntos totales de la mano
     public  void aumentarPuntos(int incremento){
          puntos += incremento;
     }
 
 
-    //! METODOS RELACIONADOS A JUGADOR
+    //! MÉTODOS RELACIONADOS A JUGADOR
+
+    // Post: agrega a la mano una carta pasada por parámetro
+    public void agregarCarta(Carta cartaCarta) {
+        if (cartas.size() < 5) {
+            cartas.add(cartaCarta);
+        } else {
+            throw new IllegalStateException("La mano ya tiene 5 cartas.");
+        }
+
+        // Se actualiza la jugada en cada agregado de carta\
+        jugada = determinarJugada(cartas);
+    }
+
+    // Post: vacía la lista de cartas de la mano
+    public void vaciarMano() {
+        cartas.clear();
+        jugada = null;
+    }
 
     // Post: Calcula el puntaje con Jokers involucrados por Jugada
     public int calcularPuntaje() {
@@ -152,24 +163,5 @@ public class Mano {
         // int
         return this.puntos + (jugada.calcularPuntaje(puntajeTotal));
     }
-
-    // Post: agrega a la mano una carta pasada por parametro
-    public void agregarCarta(Carta cartaCarta) {
-        if (cartas.size() < 5) {
-            cartas.add(cartaCarta);
-        } else {
-            throw new IllegalStateException("La mano ya tiene 5 cartas.");
-        }
-
-        // Se actualiza la jugada en cada agregado de carta\
-        jugada = determinarJugada(cartas);
-    }
-
-    // Post: vacía la lista de cartas de la mano
-    public void vaciarMano() {
-        cartas.clear();
-        jugada = null;
-    }
-
 
 }
