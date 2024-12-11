@@ -23,12 +23,6 @@ public class FullHouse extends  Jugada{
 
     // Métodos
     @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("full");
-    }
-
-
-    @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         // No existe Full House con menos de 5 cartas
         if ( cartas.size() != 5 ){

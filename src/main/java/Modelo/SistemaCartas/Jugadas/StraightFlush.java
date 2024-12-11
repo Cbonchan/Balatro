@@ -17,16 +17,10 @@ public class StraightFlush extends  Jugada{
 
     // Constructor
     public StraightFlush() {
-        super("Escalera de Color", new Chip(100), new Multiplicador( 8));
+        super("Straight Flush", new Chip(100), new Multiplicador( 8));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("escalera de color");
-    }
-
-
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         return ( flush.esJugadaValida(cartas) && straight.esJugadaValida(cartas) );

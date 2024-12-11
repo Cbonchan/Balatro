@@ -17,16 +17,11 @@ public class RoyalFlush extends  Jugada {
 
     // Constructor
     public RoyalFlush() {
-        super( "Escalera Real",new Chip(100), new Multiplicador( 8));
+        super( "Royal Flush",new Chip(100), new Multiplicador( 8));
     }
 
 
     //  Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("escalera real");
-    }
-
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {
 

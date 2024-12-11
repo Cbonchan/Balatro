@@ -23,15 +23,10 @@ public class TwoPair extends  Jugada {
 
     // Constructores
     public TwoPair() {
-        super( "Doble Par",new Chip(20), new Multiplicador( 2));
+        super( "Two Pair",new Chip(20), new Multiplicador( 2));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("doble par");
-    }
-
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas){
         if (cartas.size() < 4) {

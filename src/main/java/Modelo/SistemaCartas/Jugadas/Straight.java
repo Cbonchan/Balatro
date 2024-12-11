@@ -14,15 +14,10 @@ public class Straight  extends  Jugada{
 
     // Constructor
     public Straight() {
-        super("Escalera", new Chip(30), new Multiplicador( 4));
+        super("Straight", new Chip(30), new Multiplicador( 4));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("escalera");
-    }
-
     @Override
     public  boolean esJugadaValida(@NotNull List<Carta> cartas) {
 

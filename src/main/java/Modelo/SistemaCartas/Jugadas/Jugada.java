@@ -29,9 +29,6 @@ public abstract class Jugada {
     // Abstractos
 
     // Post: Devuelve true si la jugada corresponde a una de las hijas
-    public abstract boolean validarNombreJugada(String manoAValidar);
-
-    // Post: Devuelve true si la jugada corresponde a una de las hijas
     public abstract boolean esJugadaValida(@NotNull List<Carta> cartas);
 
     // Post: Regresa la lista de cartas ordenadas de mayor a menor
@@ -64,6 +61,11 @@ public abstract class Jugada {
 
     // Listos:
 
+    // Post: Devuelve true si la jugada corresponde a una de las hijas
+    public boolean validarNombreJugada(String manoAValidar){
+        return manoAValidar.equals(nombre);
+    }
+
     public void aumentarChips(Chip incremento){
         puntaje.sumarChipCon(incremento);
     }
@@ -77,8 +79,7 @@ public abstract class Jugada {
     }
 
     public void mejorar(int incrementador, Multiplicador multiplicador){
-        this.puntaje.cambiarPuntaje(incrementador, multiplicador);
-
+        this.puntaje.aumentarPuntaje(incrementador, multiplicador);
     }
 
     public String getNombre() {

@@ -13,15 +13,10 @@ public class HighCard  extends  Jugada{
 
     // Constructor
     public HighCard() {
-        super( "Carta alta",new Chip(5), new Multiplicador( 1));
+        super( "High Card",new Chip(5), new Multiplicador( 1));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("carta alta");
-    }
-
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {
         return !cartas.isEmpty();

@@ -16,15 +16,10 @@ public class Pair extends Jugada {
 
     // Constructor
     public Pair() {
-        super( "Par",new Chip(10), new Multiplicador( 2));
+        super( "Pair",new Chip(10), new Multiplicador( 2));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("par");
-    }
-
     @Override
     public boolean esJugadaValida(@NotNull List<Carta> cartas) {
 

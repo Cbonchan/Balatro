@@ -16,14 +16,10 @@ public class FourOfAKind extends  Jugada {
 
     // Constructor
     public FourOfAKind() {
-        super("poker", new Chip(60), new Multiplicador( 7));
+        super("Four Of A Kind", new Chip(60), new Multiplicador( 7));
     }
 
     // Métodos
-    @Override
-    public boolean validarNombreJugada(String manoAValidar){
-        return manoAValidar.equals("poker");
-    }
 
     // Públicos
     @Override
