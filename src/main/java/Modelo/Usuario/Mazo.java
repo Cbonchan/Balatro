@@ -58,7 +58,6 @@ public class Mazo {
         int indice = (int) (Math.random() * cartasDisponibles);
         Carta cartaCarta = mazoDeCartas.get(indice);
         mazoDeCartas.remove(indice);
-        cartasDisponibles--;
         return cartaCarta;
     }
 
@@ -72,12 +71,14 @@ public class Mazo {
         }
     }
 
+    // Post: Se ingresan las cartas al mazo
     public void reinsertarCartas(List<Carta> cartas) {
         mazoDeCartas.addAll(cartas);
         cartasDisponibles += cartas.size();
     }
 
-    // Getters
+
+    //  Para el parser
     public String obtenerPaloDeCarta(int indiceDeCarta) {
         Carta carta = mazoDeCartas.get(indiceDeCarta-1);
         return carta.getPalo().getNombre();
@@ -87,21 +88,6 @@ public class Mazo {
         Carta carta = mazoDeCartas.get(indiceDeCarta-1);
         return carta.getFigura().getNombre();
     }
-
-
-
-
-    // Viejo
-    public void repartirCartas(Jugador jugador) {
-        List<Carta> cartasParaMandar = new ArrayList<>();
-
-        for (int i = 0; i < jugador.cartasFaltantes(); i++) {
-            cartasParaMandar.add(cartaAleatoria());
-        }
-        jugador.agregarCartas(cartasParaMandar);
-    }
-
-
 
 
 //TODO: este metodo puede simplificar significativamente el como se reparten las cartas, investigar
