@@ -30,11 +30,11 @@ public class Ronda {
     }
 
     public boolean puedoJugar() {
-        return manos > 0;
+        return manos >= 0;
     }
 
     public boolean puedoContinuar() {
-        return puedoJugar() || puedoDescartar();
+        return puedoJugar();
     }
 
     public boolean superoPuntaje(Jugador jugador) {

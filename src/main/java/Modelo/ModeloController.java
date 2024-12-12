@@ -1,6 +1,7 @@
 package Modelo;
 
 import Modelo.Juego.Ronda;
+import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.fxml.FXML;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import Modelo.Usuario.Jugador;
@@ -29,7 +31,9 @@ import java.util.ResourceBundle;
 
 public class ModeloController implements Initializable {
 
+    @FXML
     public FlowPane cartas_joker;
+
     @FXML
     private Button boton_descartar;
 
@@ -38,6 +42,9 @@ public class ModeloController implements Initializable {
 
     @FXML
     private Button boton_deseleccionar;
+
+    @FXML
+    private Button activar_tarot;
 
     @FXML
     private FlowPane puntajeCartas;
@@ -84,13 +91,9 @@ public class ModeloController implements Initializable {
     }
     //TESTING
     Jugador jugador = new Jugador();
+    Tienda tienda = new Tienda();
     int puntajeASuperar = 350;
     //ESTO DEBE SER REEMPLAZADO CON LA INICIALIZACION DEL JUEGO
-
-    // el jugador tiene metodos para verificar si puede continuar descartando o jugando,
-    //TODO: tenemos que hacer que se verifique si el jugador puede actuar o no, y si se supero el puntaje para concluir la ronda
-
-
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -129,11 +132,12 @@ public class ModeloController implements Initializable {
         });
     }
 
+    //post: actualiza los labels de la ronda
     private void updateLabels() {
         puntaje.setText(Integer.toString(jugador.getPuntos()));
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
 
-        if(jugador.obtenerCantidadJugadas()==-1){
+        if(jugador.obtenerCantidadJugadas()<0){
             numeroJugadas.setText("0");
         }else{
             numeroJugadas.setText(Integer.toString(jugador.obtenerCantidadJugadas()));
@@ -154,7 +158,7 @@ public class ModeloController implements Initializable {
             nro_mult.setText(Integer.toString(jugador.obtenerMult()));
         }
     }
-
+//post: actualiza las cartas del jugador y sus estados
     private void updateCartasJugador(){
         cartas_jugador.getChildren().clear(); // Limpiar cualquier contenido previo
 
@@ -182,7 +186,7 @@ public class ModeloController implements Initializable {
             cartas_jugador.getChildren().add(imageView);
         }
     }
-
+//post: actualiza las cartas de la mano y sus puntajes
     private void updateCartasMano(){
         cartas_mano.getChildren().clear();
         for (Carta carta : jugador.obtenerMano().obtenerCartas()) {
@@ -199,7 +203,7 @@ public class ModeloController implements Initializable {
             updatePuntajeCartas();
         }
     }
-
+//post: actualiza los puntajes de las cartas sobre la mano
     private void updatePuntajeCartas(){
         puntajeCartas.getChildren().clear();
         List<Carta> cartasEspeciales = jugador.obtenerMano().obtenerJugada().cartasJugadas(jugador.obtenerMano().obtenerCartas());
@@ -214,11 +218,11 @@ public class ModeloController implements Initializable {
             }
         }
     }
-
+//post: limpia la lista de puntajes sobre la mano
     private void reiniciarPuntajeCartas(){
         puntajeCartas.getChildren().clear();
     }
-
+//post: actualiza las cartas en los slots de jokers
     private void updateCartasJoker(){
         cartas_joker.getChildren().clear();
         for (Joker joker: jugador.obtenerJokers()){
@@ -233,7 +237,7 @@ public class ModeloController implements Initializable {
             cartas_joker.getChildren().add(imageView);
         }
     }
-
+//post: actualiza las cartas en los slots de tarots
     private void updateCartasTarot(){
         cartas_tarot.getChildren().clear();
         for (Tarot tarot: jugador.obtenerTarots()){
@@ -248,7 +252,7 @@ public class ModeloController implements Initializable {
             cartas_joker.getChildren().add(imageView);
         }
     }
-
+//post: verifica si el juego o ronda termino de una forma u otra
     private void updateGameState(){
         if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
@@ -261,16 +265,9 @@ public class ModeloController implements Initializable {
         }
     return;
     }
-
+//post: realiza la jugada usando las cartas de la mano
     @FXML
     public void realizarJugada(){
-        /*if (jugador.quedanJugadas()){
-            jugador.jugarMano();
-            jugador.agregarCartasFaltantes();
-            updateLabels();
-            updateCartasMano();
-            updateCartasJugador();
-        }*/
         if(!cartas_mano.getChildren().isEmpty()){
             jugador.jugarMano();
             jugador.agregarCartasFaltantes();
@@ -281,7 +278,7 @@ public class ModeloController implements Initializable {
             reiniciarPuntajeCartas();
         }
     }
-
+//post: vacia la mano del jugador y dedistribuye las cartas
     @FXML
     public void cancelarMano(){
         jugador.cancelarEleccion();
@@ -290,24 +287,18 @@ public class ModeloController implements Initializable {
         updateLabels();
         reiniciarPuntajeCartas();
     }
-
+//post: descarta las cartas de la mano y agrega las cartas faltantes a las cartas del jugador
     @FXML
     public void descartarCartasMano(){
-        /*if (jugador.quedanDescartes()){
-            jugador.descartarMano();
-            updateCartasMano();
-            updateCartasJugador();
-        }*/
-        if(!cartas_mano.getChildren().isEmpty()){
+        if(!cartas_mano.getChildren().isEmpty() && jugador.quedanDescartes()){
             jugador.descartarMano();
             updateLabels();
             updateCartasMano();
             updateCartasJugador();
             reiniciarPuntajeCartas();
         }
-
     }
-
+//post: aumenta el tamaño de una carta dinamicamente si pertenece a una jugada
     private void resaltarCartasJugada(FlowPane flowPane) {
         List<Carta> cartasEspeciales = jugador.obtenerMano().obtenerJugada().cartasJugadas(jugador.obtenerMano().obtenerCartas());
         for (Node node : flowPane.getChildren()) {
@@ -318,25 +309,21 @@ public class ModeloController implements Initializable {
                 if (cartasEspeciales.contains(carta)) {
                     // Ajustar tamaño para cartas especiales
                     aplicarAnimacion(imageView, 1.2);
-                    //imageView.setFitWidth(120); // Tamaño aumentado
-                    //imageView.setFitHeight(180);
                 } else {
                     // Restaurar tamaño normal para las demás cartas
                     aplicarAnimacion(imageView, 1.0);
-                    //imageView.setFitWidth(100);
-                    //imageView.setFitHeight(150);
                 }
             }
         }
     }
-
+//post: animacion de las cartas llamada por el metodo resaltarCartasJugada
     private void aplicarAnimacion(ImageView imageView, double escala) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(300), imageView);
         scaleTransition.setToX(escala);
         scaleTransition.setToY(escala);
         scaleTransition.play();
     }
-
+//post: crea una ventana emergente con un boton y el texto deseado
     private void mostrarVentanaEmergente(String Mensaje, String Descripcion) {
         Stage ventanaGanaste = new Stage();
         ventanaGanaste.setTitle(Mensaje);
@@ -359,34 +346,5 @@ public class ModeloController implements Initializable {
         // Mostrar la ventana
         ventanaGanaste.show();
     }
-
-   /* private void sincronizarFlowPanes(FlowPane flowPaneInferior, FlowPane flowPaneSuperior) {
-        // Asegúrate de que ambos FlowPane tengan el mismo número de hijos
-        /*if (flowPaneInferior.getChildren().size() != flowPaneSuperior.getChildren().size()) {
-            System.out.println("Los FlowPanes no tienen el mismo número de elementos.");
-            return;
-        }
-
-        // Iterar sobre los nodos de ambos FlowPanes
-        for (int i = 0; i < flowPaneInferior.getChildren().size(); i++) {
-            Node nodoInferior = flowPaneInferior.getChildren().get(i);
-            Node nodoSuperior = flowPaneSuperior.getChildren().get(i);
-
-            if (nodoInferior instanceof ImageView && nodoSuperior instanceof Label) {
-                ImageView imageView = (ImageView) nodoInferior;
-                Label label = (Label) nodoSuperior;
-
-                // Obtener la carta asociada al ImageView
-                Carta carta = (Carta) imageView.getUserData();
-
-                if (carta != null) {
-                    // Mostrar el puntaje en el Label
-                    label.setText(String.valueOf(carta.getValorNumChips()));
-                } else {
-                    label.setText(" "); // Por si no hay carta asociada
-                }
-            }
-        }
-    }*/
 
 }

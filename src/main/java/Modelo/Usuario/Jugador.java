@@ -131,8 +131,6 @@ public class Jugador {
         jokers.remove(joker);
     }
 
-
-
     //! MÉTODOS RELACIONADOS A TAROT:
 
     // Post: Agrega un Tarot a mi lista de Tarots si no tengo 2
