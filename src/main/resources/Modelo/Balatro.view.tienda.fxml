@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Modelo.ModeloController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.ModeloController">
+   <children>
+      <FlowPane fx:id="jokers_jugador" layoutX="76.0" layoutY="14.0" prefHeight="91.0" prefWidth="362.0" />
+      <FlowPane fx:id="tarots_jugador" layoutX="438.0" layoutY="14.0" prefHeight="91.0" prefWidth="151.0" />
+      <VBox layoutX="97.0" layoutY="147.0" prefHeight="253.0" prefWidth="341.0">
+         <children>
+            <FlowPane fx:id="jokers_tienda" prefHeight="200.0" prefWidth="200.0" />
+            <FlowPane fx:id="tarots_tienda" prefHeight="200.0" prefWidth="200.0" />
+            <FlowPane fx:id="carta_poker_tienda" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <Button layoutX="496.0" layoutY="200.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="100.0" text="comprar" />
+      <Button layoutX="496.0" layoutY="302.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="100.0" text="Siguiente ronda" />
+   </children>
 </AnchorPane>
