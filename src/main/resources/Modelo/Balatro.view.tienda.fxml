@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.ModeloController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.TiendaController">
    <children>
       <FlowPane fx:id="jokers_jugador" layoutX="76.0" layoutY="14.0" prefHeight="91.0" prefWidth="362.0" />
       <FlowPane fx:id="tarots_jugador" layoutX="438.0" layoutY="14.0" prefHeight="91.0" prefWidth="151.0" />
@@ -18,6 +17,6 @@
          </children>
       </VBox>
       <Button layoutX="496.0" layoutY="200.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="100.0" text="comprar" />
-      <Button layoutX="496.0" layoutY="302.0" mnemonicParsing="false" prefHeight="63.0" prefWidth="100.0" text="Siguiente ronda" />
+      <Button layoutX="496.0" layoutY="302.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="63.0" prefWidth="100.0" text="Siguiente ronda" />
    </children>
 </AnchorPane>

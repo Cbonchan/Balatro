@@ -8,9 +8,11 @@ import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.SistemaCartas.Cartas.Carta;
 import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -25,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -85,13 +88,13 @@ public class ModeloController implements Initializable {
     @FXML
     private FlowPane cartas_tarot;
 
-    @FXML
-    void descartarMano(ActionEvent event) {
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
-    }
     //TESTING
     Jugador jugador = new Jugador();
-    Tienda tienda = new Tienda();
+    //Tienda tienda = new Tienda();
     int puntajeASuperar = 350;
     //ESTO DEBE SER REEMPLAZADO CON LA INICIALIZACION DEL JUEGO
 
@@ -345,6 +348,15 @@ public class ModeloController implements Initializable {
 
         // Mostrar la ventana
         ventanaGanaste.show();
+    }
+
+
+    public void switchToScene2(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Balatro.view.tienda.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

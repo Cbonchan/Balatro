@@ -32,8 +32,7 @@ public class Juego {
 
 
     public void comenzarJuego(){
-        jugador
-        // inicializamos rondas
+      /*  // inicializamos rondas
 
         for (Ronda ronda : rondas){
             ronda.comenzar();
@@ -46,7 +45,7 @@ public class Juego {
             if(!ronda.superoPuntaje(jugador)){
                 terminarJuego();
             }
-            }
+            }*/
        }
 
     public void terminarJuego(){
