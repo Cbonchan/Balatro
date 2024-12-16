@@ -29,7 +29,8 @@ public class Juego {
         //obtenerla en tiempo de ejecucion
         //this.ronda = new Ronda(0,2,2,100, new Tienda(List.of(new Descarte("prueba","prueba",1,new Multiplicador(1),new SumarPuntaje())),new Carta(new Diamante(),new As())));
     }
-
+//!mucho de esto se hace de forma nativa en FX, aca tenemos que inicializar los componentes
+    //y facilitar funciones para avanzar, no nos encargamos del loop porque para eso es el controlador
 
     public void comenzarJuego(){
       /*  // inicializamos rondas
@@ -39,8 +40,7 @@ public class Juego {
             while(ronda.puedoContinuar() && !ronda.superoPuntaje(jugador)){
                 //! desconozco como funciona esto secuencialmente con javaFX como para completar
 
-                //!mucho de esto se hace de forma nativa en FX, aca tenemos que inicializar los componentes
-                //y facilitar funciones para avanzar, no nos encargamos del loop porque para eso es el controlador
+
             }
             if(!ronda.superoPuntaje(jugador)){
                 terminarJuego();
@@ -51,13 +51,17 @@ public class Juego {
     public void terminarJuego(){
         //TODO implementar
     }
-
+//post: cambia la ronda del juego, de esta forma es mas facil actualizar los datos ya sea desde el FX o desde aca
     public void avanzarRonda() {
         this.rondaActual=rondas.get(nroRonda-1);
         nroRonda++;
     }
 
+//JavaFX getter
+    public Ronda getRondaActual() {
+         return rondaActual;
     }
+}
 
 
 

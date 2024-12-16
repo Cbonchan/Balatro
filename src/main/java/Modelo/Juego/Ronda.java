@@ -21,7 +21,7 @@ public class Ronda {
         this.tienda = tienda;
     }
     public void comenzar(Jugador jugador) {
-        jugador.tomarCartas();
+        jugador.agregarCartasFaltantes();
         jugador.actualizarCantidadDeManosYDescartes(manos,descartes);
     }
 
@@ -41,5 +41,13 @@ public class Ronda {
         return jugador.soyMayorA(puntajeASuperar);
     }
 
+    //JavaFX getter
+    public int getNro() {
+        return nro;
+    }
+
+    public int getPuntajeASuperar() {
+        return puntajeASuperar;
+    }
 }
 

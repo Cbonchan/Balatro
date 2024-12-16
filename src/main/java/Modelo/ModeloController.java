@@ -1,5 +1,6 @@
 package Modelo;
 
+import Modelo.Juego.Juego;
 import Modelo.Juego.Ronda;
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
@@ -75,10 +76,7 @@ public class ModeloController implements Initializable {
 
     @FXML
     private Label numeroJugadas;
-
-    @FXML
-    private FlowPane cartas_jugada;
-
+    
     @FXML
     private FlowPane cartas_jugador;
 
@@ -91,25 +89,37 @@ public class ModeloController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
+    /*
+    Juego juegoEnCurso;
+    Jugador jugador;
+    Ronda rondaDeJuego = Juego.getRondaActual;
+    int puntajeASuperar = rondaDeJuego.getPuntajeASuperar();
+    */
     //TESTING
     Jugador jugador = new Jugador();
-    //Tienda tienda = new Tienda();
     int puntajeASuperar = 350;
     //ESTO DEBE SER REEMPLAZADO CON LA INICIALIZACION DEL JUEGO
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //elementos de la escena
         nro_chips.setText("0");
         nro_mult.setText("0");
-        nro_ronda.setText("1");
+        nro_ronda.setText("1");//TODO: esto tiene q cambiar a la ronda actual
+        //nro_ronda.setText(Integer.toString(ronda.getNro()));
         puntos_a_superar.setText(Integer.toString(puntajeASuperar));
+
+        //esto es referente al modelo en si
+
+        //jugador = this.juegoActual.getJugador();
         jugador.actualizarCantidadDeManosYDescartes(3,4);
+        //ronda.comenzar(jugador);
+
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
         numeroJugadas.setText(Integer.toString(jugador.obtenerCantidadJugadas()));
         puntaje.setText("0");
-        jugador.agregarCartasFaltantes();
+        jugador.agregarCartasFaltantes();//! esto se va una vez implementada la ronda
         jugar();
     }
 
@@ -161,6 +171,7 @@ public class ModeloController implements Initializable {
             nro_mult.setText(Integer.toString(jugador.obtenerMult()));
         }
     }
+
 //post: actualiza las cartas del jugador y sus estados
     private void updateCartasJugador(){
         cartas_jugador.getChildren().clear(); // Limpiar cualquier contenido previo
@@ -189,6 +200,7 @@ public class ModeloController implements Initializable {
             cartas_jugador.getChildren().add(imageView);
         }
     }
+
 //post: actualiza las cartas de la mano y sus puntajes
     private void updateCartasMano(){
         cartas_mano.getChildren().clear();
@@ -206,6 +218,7 @@ public class ModeloController implements Initializable {
             updatePuntajeCartas();
         }
     }
+
 //post: actualiza los puntajes de las cartas sobre la mano
     private void updatePuntajeCartas(){
         puntajeCartas.getChildren().clear();
@@ -221,10 +234,12 @@ public class ModeloController implements Initializable {
             }
         }
     }
+
 //post: limpia la lista de puntajes sobre la mano
     private void reiniciarPuntajeCartas(){
         puntajeCartas.getChildren().clear();
     }
+
 //post: actualiza las cartas en los slots de jokers
     private void updateCartasJoker(){
         cartas_joker.getChildren().clear();
@@ -240,6 +255,7 @@ public class ModeloController implements Initializable {
             cartas_joker.getChildren().add(imageView);
         }
     }
+
 //post: actualiza las cartas en los slots de tarots
     private void updateCartasTarot(){
         cartas_tarot.getChildren().clear();
@@ -369,7 +385,7 @@ public class ModeloController implements Initializable {
         ventanaGanaste.show();
     }
 
-
+//post: cambia la escena a la escena de la tienda
     public void switchToScene2() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Balatro.view.tienda.fxml"));
         stage = (Stage) nro_chips.getScene().getWindow();
@@ -378,4 +394,10 @@ public class ModeloController implements Initializable {
         stage.show();
     }
 
+/*
+//post: Cambia el juego al juego que se le pase por parametro
+    public void ActualizarJuego(Juego juegoActualizado){
+        this.juegoActual = juegoActualizado;
+    }
+*/
 }

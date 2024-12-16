@@ -87,7 +87,6 @@ public class Jugador {
         cartas.addAll(cartasNuevas);
     }
 
-
     //! MÉTODOS RELACIONADOS A MANO:
 
     // Post: Selecciona una carta de mi lista de cartas y la agrega a mi mano
@@ -176,10 +175,6 @@ public class Jugador {
     // Post: Compara si supero un puntaje
     public Boolean soyMayorA(int puntosASuperar){
         return (puntos >= puntosASuperar);
-    }
-
-    public void tomarCartas() {
-        mazo.repartirCartas(cartas);
     }
 
     public boolean quedanDescartes() {
