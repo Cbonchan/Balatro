@@ -195,5 +195,4 @@
       </children>
    </GridPane>
    <Button fx:id="activar_tarot" layoutX="1106.0" layoutY="48.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="143.0" text="Activar" />
-   <Button layoutX="197.0" layoutY="418.0" mnemonicParsing="false" onAction="#switchToScene2" text="Button" />
 </AnchorPane>

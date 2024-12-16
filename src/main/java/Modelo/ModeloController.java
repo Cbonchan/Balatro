@@ -255,6 +255,7 @@ public class ModeloController implements Initializable {
             cartas_joker.getChildren().add(imageView);
         }
     }
+
 //post: verifica si el juego o ronda termino de una forma u otra
     private void updateGameState(){
         if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
@@ -268,6 +269,7 @@ public class ModeloController implements Initializable {
         }
     return;
     }
+
 //post: realiza la jugada usando las cartas de la mano
     @FXML
     public void realizarJugada(){
@@ -281,6 +283,7 @@ public class ModeloController implements Initializable {
             reiniciarPuntajeCartas();
         }
     }
+
 //post: vacia la mano del jugador y dedistribuye las cartas
     @FXML
     public void cancelarMano(){
@@ -290,6 +293,7 @@ public class ModeloController implements Initializable {
         updateLabels();
         reiniciarPuntajeCartas();
     }
+
 //post: descarta las cartas de la mano y agrega las cartas faltantes a las cartas del jugador
     @FXML
     public void descartarCartasMano(){
@@ -301,6 +305,7 @@ public class ModeloController implements Initializable {
             reiniciarPuntajeCartas();
         }
     }
+
 //post: aumenta el tamaño de una carta dinamicamente si pertenece a una jugada
     private void resaltarCartasJugada(FlowPane flowPane) {
         List<Carta> cartasEspeciales = jugador.obtenerMano().obtenerJugada().cartasJugadas(jugador.obtenerMano().obtenerCartas());
@@ -319,6 +324,7 @@ public class ModeloController implements Initializable {
             }
         }
     }
+
 //post: animacion de las cartas llamada por el metodo resaltarCartasJugada
     private void aplicarAnimacion(ImageView imageView, double escala) {
         ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(300), imageView);
@@ -326,6 +332,7 @@ public class ModeloController implements Initializable {
         scaleTransition.setToY(escala);
         scaleTransition.play();
     }
+
 //post: crea una ventana emergente con un boton y el texto deseado
     private void mostrarVentanaEmergente(String Mensaje, String Descripcion) {
         Stage ventanaGanaste = new Stage();
@@ -338,7 +345,19 @@ public class ModeloController implements Initializable {
 
         Label mensaje = new Label(Descripcion);
         Button botonCerrar = new Button("Aceptar");
-        botonCerrar.setOnAction(event -> ventanaGanaste.close());
+        if (Mensaje.equals("GANASTE")){
+            botonCerrar.setOnAction(event -> {
+                try {
+                    switchToScene2();
+                    ventanaGanaste.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        else{
+            botonCerrar.setOnAction(event -> ventanaGanaste.close());
+        }
 
         layout.getChildren().addAll(mensaje, botonCerrar);
 
@@ -351,9 +370,9 @@ public class ModeloController implements Initializable {
     }
 
 
-    public void switchToScene2(ActionEvent event) throws IOException {
+    public void switchToScene2() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Balatro.view.tienda.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) nro_chips.getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
