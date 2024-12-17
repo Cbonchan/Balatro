@@ -244,7 +244,7 @@ public class JSONReader {
         JsonObject cartaObject = tiendaObject.getAsJsonObject("carta");
         Carta carta = procesarCarta(cartaObject);
 
-        return new Tienda(tarotsEnJugada, carta, tarotsEnCarta);
+        return new Tienda(jokers, tarotsEnJugada, carta, tarotsEnCarta);
     }
 
     public static ArrayList<Activable> obtenerTarotsEnJugada(JsonArray tarotsArray) {

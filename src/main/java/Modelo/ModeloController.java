@@ -28,6 +28,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -89,16 +90,12 @@ public class ModeloController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    /*
+
     Juego juegoEnCurso;
     Jugador jugador;
-    Ronda rondaDeJuego = Juego.getRondaActual;
-    int puntajeASuperar = rondaDeJuego.getPuntajeASuperar();
-    */
-    //TESTING
-    Jugador jugador = new Jugador();
-    int puntajeASuperar = 350;
-    //ESTO DEBE SER REEMPLAZADO CON LA INICIALIZACION DEL JUEGO
+    Ronda rondaDeJuego;
+    int puntajeASuperar ;
+
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -106,20 +103,21 @@ public class ModeloController implements Initializable {
         //elementos de la escena
         nro_chips.setText("0");
         nro_mult.setText("0");
-        nro_ronda.setText("1");//TODO: esto tiene q cambiar a la ronda actual
-        //nro_ronda.setText(Integer.toString(ronda.getNro()));
-        puntos_a_superar.setText(Integer.toString(puntajeASuperar));
 
-        //esto es referente al modelo en si
+        try {
+            // Obtén la instancia única de Juego
+            this.juegoEnCurso = Juego.getInstance();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
-        //jugador = this.juegoActual.getJugador();
-        jugador.actualizarCantidadDeManosYDescartes(3,4);
-        //ronda.comenzar(jugador);
+        this.rondaDeJuego = juegoEnCurso.getRondaActual();
+        jugador = this.juegoEnCurso.getJugador();
+        rondaDeJuego.comenzar(jugador);
 
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
         numeroJugadas.setText(Integer.toString(jugador.obtenerCantidadJugadas()));
         puntaje.setText("0");
-        jugador.agregarCartasFaltantes();//! esto se va una vez implementada la ronda
         jugar();
     }
 
@@ -147,6 +145,11 @@ public class ModeloController implements Initializable {
 
     //post: actualiza los labels de la ronda
     private void updateLabels() {
+
+        nro_ronda.setText(Integer.toString(rondaDeJuego.getNro()));
+        puntajeASuperar = rondaDeJuego.getPuntajeASuperar();
+        puntos_a_superar.setText(Integer.toString(puntajeASuperar));
+
         puntaje.setText(Integer.toString(jugador.getPuntos()));
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
 
@@ -394,10 +397,10 @@ public class ModeloController implements Initializable {
         stage.show();
     }
 
-/*
+
 //post: Cambia el juego al juego que se le pase por parametro
     public void ActualizarJuego(Juego juegoActualizado){
-        this.juegoActual = juegoActualizado;
+        this.juegoEnCurso = juegoActualizado;
     }
-*/
+
 }

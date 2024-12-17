@@ -2,6 +2,7 @@ package Modelo.Juego;
 
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.ActivableEnCarta;
+import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class Tienda {
    //Max de 2 jokers
     //Max de 2 Tarots
     //Max 1 carta
-
+    private final ArrayList<Activable> jokers;
     private final ArrayList<Activable> activablesEnMano;
     private final ArrayList<ActivableEnCarta> tarotsEnCarta;
     private Carta carta;
@@ -23,7 +24,8 @@ public class Tienda {
 
 
     // Constructor
-    public Tienda(List<Activable> activableEnMano, Carta carta, List<ActivableEnCarta> tarotsDeCarta) {
+    public Tienda(List<Activable> jokers, List<Activable> activableEnMano, Carta carta, List<ActivableEnCarta> tarotsDeCarta) {
+        this.jokers= new ArrayList<>(jokers);
         this.activablesEnMano = new ArrayList<>(activableEnMano);
         this.tarotsEnCarta = new ArrayList<>(tarotsDeCarta);
         this.carta = carta;
