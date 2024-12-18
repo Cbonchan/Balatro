@@ -174,6 +174,7 @@ public class Jugador {
 
         puntos += mano.calcularPuntaje();
         mano.vaciarMano();
+        mano.reiniciarPuntaje();
     }
 
     // Post: Compara si supero un puntaje

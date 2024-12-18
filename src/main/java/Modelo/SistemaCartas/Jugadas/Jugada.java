@@ -101,9 +101,11 @@ public abstract class Jugada {
     // Post: Devuelve el puntaje de la jugada
     public  int calcularPuntaje(Puntaje puntajeList){
 
-        puntaje.sumarNuevosChips(puntajeList);
-        puntaje.sumarNuevoMultiplicador(puntajeList);
-        return puntaje.calcularPuntaje();
+        puntajeList.sumarNuevosChips(puntaje);
+        puntajeList.sumarNuevoMultiplicador(puntaje);
+        //puntaje.sumarNuevosChips(puntajeList);
+        //puntaje.sumarNuevoMultiplicador(puntajeList);
+        return puntajeList.calcularPuntaje();
     }
 
 }

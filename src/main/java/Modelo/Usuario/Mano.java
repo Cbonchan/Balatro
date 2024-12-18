@@ -20,10 +20,13 @@ public class Mano {
     private  int puntos;
     private Jugada jugada;
     private List<Carta> cartas;
+    private Puntaje puntajeTotal;
 
     // Constructor
     public Mano() {
         this.cartas = new ArrayList<>();
+        this.puntajeTotal = new Puntaje( new Chip(0));
+
     }
 
     // Métodos
@@ -38,6 +41,10 @@ public class Mano {
             }
         }
         return null;
+    }
+
+    public void reiniciarPuntaje(){
+        this.puntajeTotal = new Puntaje( new Chip(0));
     }
 
     //! Métodos relacionados con JavaFX
@@ -68,8 +75,6 @@ public class Mano {
         cartaSeleccionada.cambiarChip(nuevoValorDeChip);
     }
 
-
-
     //! MÉTODOS RELACIONADOS A MULTIPLICADOR:
 
     // Post: Suma el valor de los multiplicadores
@@ -88,8 +93,6 @@ public class Mano {
         cartaSeleccionada.cambiarMultiplicador(multiplicador);
     }
 
-
-
     //! MÉTODOS RELACIONADOS A TAROT:
 
     // Post: aumenta el valor de los chips y mult de una jugada pasada por string
@@ -101,8 +104,6 @@ public class Mano {
             }
         }
     }
-
-
 
     //! MÉTODOS RELACIONADOS A JOKER:
 
@@ -121,7 +122,6 @@ public class Mano {
     public  void aumentarPuntos(int incremento){
          puntos += incremento;
     }
-
 
     //! MÉTODOS RELACIONADOS A JUGADOR
 
@@ -151,13 +151,12 @@ public class Mano {
         }
 
         // Calcula el puntaje de la mano
-        Puntaje puntajeTotal = new Puntaje( new Chip(0));
 
-        List <Carta> cartasUtilizadas =   jugada.cartasJugadas(cartas);
+        List <Carta> cartasUtilizadas =  jugada.cartasJugadas(cartas);
 
         // Suma de Puntaje de las cartas utilizadas
         for (Carta cartasUtilizada : cartasUtilizadas) {
-            cartasUtilizada.sumarPuntajeCon(puntajeTotal);
+            cartasUtilizada.sumarPuntajeCon(this.puntajeTotal);
         }
 
         // int

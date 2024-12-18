@@ -248,32 +248,32 @@ public class TiendaController implements Initializable {
             tarots_tienda.getChildren().add(imageView);
         }
         for (ActivableEnCarta tarotEnCarta: tienda.getTarotsEnCarta()){
-            ImageView imageView = new ImageView(tarotEnCarta.getImage());
-            imageView.setFitWidth(98); // Ancho de la carta
-            imageView.setFitHeight(150); // Alto de la carta
+            ImageView imageView2 = new ImageView(tarotEnCarta.getImage());
+            imageView2.setFitWidth(98); // Ancho de la carta
+            imageView2.setFitHeight(150); // Alto de la carta
 
             // Asociar la carta al ImageView utilizando setUserData
-            imageView.setUserData(tarotEnCarta);
+            imageView2.setUserData(tarotEnCarta);
 
             final boolean[] seleccionada = {false};
 
-            imageView.setOnMouseClicked(event -> {
+            imageView2.setOnMouseClicked(event -> {
                 if (!seleccionada[0]&&(tarotSeleccionada==null)) {
                     // Seleccionar: hacer la carta más grande
-                    imageView.setFitWidth(110); // Nuevo ancho más grande
-                    imageView.setFitHeight(170); // Nuevo alto más grande
-                    tarotEnCartaSeleccionado = (ActivableEnCarta) imageView.getUserData();
+                    imageView2.setFitWidth(110); // Nuevo ancho más grande
+                    imageView2.setFitHeight(170); // Nuevo alto más grande
+                    tarotEnCartaSeleccionado = (ActivableEnCarta) imageView2.getUserData();
                     seleccionada[0] = true; // Cambiar el estado a seleccionada
                 } else {
                     // Deseleccionar: volver al tamaño original
-                    imageView.setFitWidth(98); // Ancho original
-                    imageView.setFitHeight(150); // Alto original
+                    imageView2.setFitWidth(98); // Ancho original
+                    imageView2.setFitHeight(150); // Alto original
                     tarotEnCartaSeleccionado = null; // Ninguna carta seleccionada
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
 
-            tarots_tienda.getChildren().add(imageView);
+            tarots_tienda.getChildren().add(imageView2);
         }
     }
 
