@@ -2,14 +2,10 @@ package Modelo;
 
 import Modelo.Juego.Juego;
 import Modelo.Juego.Ronda;
-import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.ActivableEnCarta;
-import Modelo.SistemaCartas.Activables.Joker.Joker;
-import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.SistemaCartas.Cartas.Carta;
 import javafx.animation.ScaleTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -23,16 +19,18 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-
+import javafx.scene.media.*;
 import Modelo.Usuario.Jugador;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ModeloController implements Initializable {
@@ -105,6 +103,7 @@ public class ModeloController implements Initializable {
     Carta cartaSeleccionada;
     ActivableEnCarta activableEnCartaSeleccionada;
     Activable activableSeleccionada;
+    MediaPlayer mediaPlayer;
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -134,6 +133,7 @@ public class ModeloController implements Initializable {
 
     @FXML
     void jugar() {
+        music();
         updateLabels();
         updateCartasJugador();
         updateCartasMano();
@@ -152,6 +152,16 @@ public class ModeloController implements Initializable {
             imageView.setFitWidth(imageView.getFitWidth()-20); // Restaurar tamaño al retirar el mouse
             imageView.setFitHeight(imageView.getFitHeight()-20);
         });
+    }
+
+    public void music(){
+        // Usar getResource para obtener la ruta relativa
+        String musicFile = Objects.requireNonNull(getClass().getResource("/sounds/01.MainTheme.mp3")).toExternalForm();
+
+        // Crear el objeto Media
+        Media sound = new Media(musicFile);
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
     }
 
     //post: actualiza los labels de la ronda

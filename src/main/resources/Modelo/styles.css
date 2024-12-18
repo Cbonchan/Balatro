@@ -1,11 +1,13 @@
 .root{
     -fx-font-size: 24pt;
-    -fx-background-image: url("../images/Background.png");
+    -fx-background-image: url("../images/Background.jpeg");
+    background-size:cover;
     -fx-background-color: linear-gradient(red, blue);
 }
 
 .body{
-   background-image: url("../images/Background.png");
+   background-image: url("../images/Background.jpeg");
+    background-size:cover;
 
 }
 

@@ -268,7 +268,6 @@ public class JSONReader {
                 tarotList.add(new MejoraJugada(nombre, descripcion, puntos, multiplicador, new MejorarJugada(ejemplar)));
             }
         }
-    System.out.print("Lista de tarots lista");
         return tarotList;
     }
 
@@ -293,7 +292,6 @@ public class JSONReader {
                 tarotList.add(new MejoraCarta(nombre, descripcion, puntos, multiplicador, new MejorarCarta()));
             }
         }
-        System.out.print("Lista de tarots en carta lista");
         return tarotList;
     }
 
@@ -306,7 +304,6 @@ public class JSONReader {
 
         Carta carta = CartaFactory.crearCarta(palo, figura);
 
-        System.out.print("carta de poker lista");
         return carta;
     }
 
@@ -325,7 +322,6 @@ public class JSONReader {
             Carta carta = CartaFactory.crearCarta(palo, figura);
             cartaList.add(carta);
         }
-
         return new Mazo(52, cartaList);
     }
 

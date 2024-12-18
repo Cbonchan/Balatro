@@ -1,5 +1,6 @@
 module Modelo {
     requires javafx.controls;
+    requires javafx.media;
     requires json.simple;
     requires com.google.gson;
     requires org.jetbrains.annotations;

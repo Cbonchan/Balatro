@@ -30,52 +30,8 @@ public class Tienda {
         this.carta = carta;
     }
 
-        /*TODO: METODOS PARA COMPRAR LAS CARTAS, NO CREO QUE HAYA QUE IMPLEMENTAR DINERO
-           PORQUE NO APARECE EN NINGUN LUGAR DE LA DOCUMENTACION, PERO CUIDADO.
-        */
-
-    // al manejar comprables utilizamos polimorfismo
-    /*public void seleccionarActivable(Activable comprable) {
-        //testear si el comprable esta en la lista de tarots o tarotsEnCarta
-        if (!activableEnMano.contains(comprable) || !tarotsEnCarta.contains(comprable)) {
-            this.deseleccionarActivable();
-            return;
-        }
-        this.aComprar = comprable;
-    }*/
-
-
-    public Activable comprarActivableEnMano(Activable comprable) {
-        if (!tarot.contains(comprable)) {
-            return null;
-        }
-        Activable aux = this.tarot.get(this.tarot.indexOf(comprable)); ;
-        this.tarot.remove(comprable);
-        return aux;
-    }
-
-    public ActivableEnCarta comprarTarotEnCarta(ActivableEnCarta comprable) {
-        if (!tarotsEnCarta.contains(comprable)) {
-            return null;
-        }
-        ActivableEnCarta aux = this.tarotsEnCarta.get(this.tarotsEnCarta.indexOf(comprable));
-        this.tarotsEnCarta.remove(comprable);
-        return aux;
-    }
-
-    //debido a que cartas no es activable, no se me ocurre como se podría comprar de la misma forma
-    public Carta comprarCarta(){
-        Carta aux = this.carta;
-        this.carta = null;
-        return aux;
-    }
-
     public void venderCarta(){
         this.carta = null;
-    }
-
-    public int cantidadDeElementosDisponibles(){
-        return this.tarot.size() + this.tarotsEnCarta.size() + (this.carta == null ? 0 : 1);
     }
 
     public Carta getCartaALaVenta(){return carta;}
