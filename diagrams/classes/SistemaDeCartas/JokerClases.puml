@@ -5,7 +5,7 @@
          +void activar(Mano mano, String contexto)
      }
 
-     abstract class JokerGenerico implements Activable {
+     abstract class Joker implements Activable {
          -String nombre
          -String descripcion
          -String activacion
@@ -14,24 +14,24 @@
          -Multiplicador multiplicador
 
 
-         +JokerGenerico(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
+         +Joker(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
          String activacion, Efecto efecto)
          +void activar(Mano mano, String contexto)
      }
 
-     class AlPuntaje extends JokerGenerico{
+     class AlPuntaje extends Joker{
         +AlPuntaje(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion, Efecto efecto)
      }
 
-     class Descarte extends JokerGenerico {
+     class Descarte extends Joker {
          +Descarte(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
      }
 
-     class unoEn extends JokerGenerico{
+     class unoEn extends Joker{
         +UnoEn(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
      }
 
-     class PorJugada extends JokerGenerico{
+     class PorJugada extends Joker{
         +PorJugada(String nombre, String descripcion, int puntos, Multiplicador multiplicador, String jugada, Efecto efecto)
      }
 
@@ -111,8 +111,8 @@ package Modelo.SistemaCartas.Activables.Tarot{
 
 
 
-Efecto<----JokerGenerico
-Combinacion "1" -> "*" JokerGenerico
+Efecto<----Joker
+Combinacion "1" -> "*" Joker
 
 
  @enduml

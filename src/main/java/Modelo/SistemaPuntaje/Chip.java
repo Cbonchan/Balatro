@@ -15,7 +15,7 @@ public class Chip {
     }
 
     // Post: Multiplica el valor de los chips
-    public int multiplicarCon(int multiplicador) {
+    public float multiplicarCon(float multiplicador) {
         return  this.valor * multiplicador;
     }
 

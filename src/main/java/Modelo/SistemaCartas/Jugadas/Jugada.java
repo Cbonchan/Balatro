@@ -90,7 +90,7 @@ public abstract class Jugada {
 
     // Post: Devuelve true si la jugada corresponde a una de las hijas
 
-    public int obtenerMultiplicador(){
+    public float obtenerMultiplicador(){
         return (puntaje.obtenerMultiplicador());
     }
 
@@ -99,7 +99,7 @@ public abstract class Jugada {
     }
 
     // Post: Devuelve el puntaje de la jugada
-    public  int calcularPuntaje(Puntaje puntajeList){
+    public float calcularPuntaje(Puntaje puntajeList){
 
         puntajeList.sumarNuevosChips(puntaje);
         puntajeList.sumarNuevoMultiplicador(puntaje);

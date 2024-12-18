@@ -39,7 +39,7 @@ public class Carta {
         return this.puntaje.obtenerChips();
     }
 
-    public int getValorNumMultiplicador(){ return this.puntaje.obtenerMultiplicador();}
+    public float getValorNumMultiplicador(){ return this.puntaje.obtenerMultiplicador();}
 
 
     // Privados

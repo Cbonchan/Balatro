@@ -46,7 +46,7 @@ public class Puntaje {
     }
 
     //Post: Calcula en valor final del puntaje
-    public  int calcularPuntaje( ){
+    public  float calcularPuntaje( ){
         return  this.multiplicador.multiplicarCon(this.chip);
     }
 
@@ -102,7 +102,7 @@ public class Puntaje {
 
 
     //! Rompe encapsulamiento
-    public int obtenerMultiplicador(){
+    public float obtenerMultiplicador(){
         return (multiplicador.valorNumerico());
     }
 

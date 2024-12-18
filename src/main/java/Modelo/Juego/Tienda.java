@@ -2,7 +2,6 @@ package Modelo.Juego;
 
 import Modelo.SistemaCartas.Activables.Activable;
 import Modelo.SistemaCartas.Activables.ActivableEnCarta;
-import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Cartas.Carta;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class Tienda {
     //Max de 2 Tarots
     //Max 1 carta
     private final ArrayList<Activable> jokers;
-    private final ArrayList<Activable> activablesEnMano;
+    private final ArrayList<Activable> tarot;
     private final ArrayList<ActivableEnCarta> tarotsEnCarta;
     private Carta carta;
 
@@ -26,7 +25,7 @@ public class Tienda {
     // Constructor
     public Tienda(List<Activable> jokers, List<Activable> activableEnMano, Carta carta, List<ActivableEnCarta> tarotsDeCarta) {
         this.jokers= new ArrayList<>(jokers);
-        this.activablesEnMano = new ArrayList<>(activableEnMano);
+        this.tarot = new ArrayList<>(activableEnMano);
         this.tarotsEnCarta = new ArrayList<>(tarotsDeCarta);
         this.carta = carta;
     }
@@ -47,11 +46,11 @@ public class Tienda {
 
 
     public Activable comprarActivableEnMano(Activable comprable) {
-        if (!activablesEnMano.contains(comprable)) {
+        if (!tarot.contains(comprable)) {
             return null;
         }
-        Activable aux = this.activablesEnMano.get(this.activablesEnMano.indexOf(comprable)); ;
-        this.activablesEnMano.remove(comprable);
+        Activable aux = this.tarot.get(this.tarot.indexOf(comprable)); ;
+        this.tarot.remove(comprable);
         return aux;
     }
 
@@ -76,7 +75,7 @@ public class Tienda {
     }
 
     public int cantidadDeElementosDisponibles(){
-        return this.activablesEnMano.size() + this.tarotsEnCarta.size() + (this.carta == null ? 0 : 1);
+        return this.tarot.size() + this.tarotsEnCarta.size() + (this.carta == null ? 0 : 1);
     }
 
     public Carta getCartaALaVenta(){return carta;}
@@ -85,7 +84,7 @@ public class Tienda {
         return jokers;
     }
 
-    public ArrayList<Activable> getActivablesEnMano() {return activablesEnMano; }
+    public ArrayList<Activable> getTarot() {return tarot; }
 
     public ArrayList<ActivableEnCarta> getTarotsEnCarta() {
         return tarotsEnCarta;

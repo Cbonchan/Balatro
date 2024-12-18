@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
@@ -32,6 +33,9 @@ public class TiendaController implements Initializable {
 
     @FXML
     private FlowPane jokers_tienda;
+
+    @FXML
+    private FlowPane tarots_en_mano_tienda;
 
     @FXML
     private FlowPane tarots_jugador;
@@ -72,9 +76,9 @@ public class TiendaController implements Initializable {
     @FXML
     void jugar() {
         updateCartasJokerJugador();
-        updateCartasTarotJugador();
+        updateTodasLasTarotsDelJugador();
         updateCartasJokerTienda();
-        updateCartasTarotTienda();
+        updateTodasLasTarotsEnLaTienda();
         updateCartaDePokerEnTienda();
     }
 
@@ -117,7 +121,7 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
+            configurarTooltipActivable(imageView,joker);
             jokers_jugador.getChildren().add(imageView);
         }
     }
@@ -150,7 +154,7 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
+            configurarTooltipActivable(imageView,joker);
             jokers_tienda.getChildren().add(imageView);
         }
     }
@@ -183,9 +187,13 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
+            configurarTooltipActivable(imageView,tarot);
             tarots_jugador.getChildren().add(imageView);
         }
+
+    }
+
+    private void updateTarotEnCartaJugador(){
         for (ActivableEnCarta tarotEnCarta: jugador.obtenerTarotsParaCarta()){
             ImageView imageView = new ImageView(tarotEnCarta.getImage());
             imageView.setFitWidth(98); // Ancho de la carta
@@ -211,7 +219,7 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
+            configurarTooltipActivableEnCarta(imageView,tarotEnCarta);
             tarots_jugador.getChildren().add(imageView);
         }
     }
@@ -219,7 +227,8 @@ public class TiendaController implements Initializable {
 //post: actualiza las cartas de tarot en la tienda y sus selecciones
     private void updateCartasTarotTienda(){
         tarots_tienda.getChildren().clear();
-        for (Activable tarot: tienda.getActivablesEnMano()){
+
+        for (Activable tarot: tienda.getTarot()){
             ImageView imageView = new ImageView(tarot.getImage());
             imageView.setFitWidth(98); // Ancho de la carta
             imageView.setFitHeight(150); // Alto de la carta
@@ -244,9 +253,15 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
+            configurarTooltipActivable(imageView, tarot);
             tarots_tienda.getChildren().add(imageView);
         }
+
+    }
+
+    private void updateCartasTarotEnCartaTienda(){
+        tarots_en_mano_tienda.getChildren().clear();
+
         for (ActivableEnCarta tarotEnCarta: tienda.getTarotsEnCarta()){
             ImageView imageView2 = new ImageView(tarotEnCarta.getImage());
             imageView2.setFitWidth(98); // Ancho de la carta
@@ -272,9 +287,18 @@ public class TiendaController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
-
-            tarots_tienda.getChildren().add(imageView2);
+            configurarTooltipActivableEnCarta(imageView2, tarotEnCarta);
+            tarots_en_mano_tienda.getChildren().add(imageView2);
         }
+    }
+
+    private void updateTodasLasTarotsDelJugador(){
+        updateCartasTarotJugador();
+        updateTarotEnCartaJugador();
+    }
+    private void updateTodasLasTarotsEnLaTienda(){
+        updateCartasTarotTienda();
+        updateCartasTarotEnCartaTienda();
     }
 
 //post: actualiza el estado de la carta de poker a la venta y su seleccion
@@ -325,17 +349,17 @@ public class TiendaController implements Initializable {
     public void comprarTarot(){
         if(tarotSeleccionada!=null){
             jugador.agregarTarot(tarotSeleccionada);
-            tienda.getActivablesEnMano().remove(tarotSeleccionada);
+            tienda.getTarot().remove(tarotSeleccionada);
             tarotSeleccionada = null;
-            updateCartasTarotTienda();
-            updateCartasTarotJugador();
+            updateTodasLasTarotsEnLaTienda();
+            updateTodasLasTarotsDelJugador();
         }
         if(tarotEnCartaSeleccionado!=null){
             jugador.agregarTarotParaCarta(tarotEnCartaSeleccionado);
             tienda.getTarotsEnCarta().remove(tarotEnCartaSeleccionado);
             tarotEnCartaSeleccionado = null;
-            updateCartasTarotTienda();
-            updateCartasTarotJugador();
+            updateTodasLasTarotsEnLaTienda();
+            updateTodasLasTarotsDelJugador();
         }
 
     }
@@ -364,7 +388,26 @@ public class TiendaController implements Initializable {
             tarotJugadorEnCartaSeleccionado = null;
         }
 
-        updateCartasTarotJugador();
+        updateTodasLasTarotsDelJugador();
 
     }
+
+    private void configurarTooltipActivable(ImageView imageView, Activable activable){
+        Tooltip tooltip = new Tooltip(activable.getDescripcion());
+        tooltip.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-size: 14px;");
+
+        // Asociar el Tooltip al ImageView
+        Tooltip.install(imageView, tooltip);
+
+    }
+
+    private void configurarTooltipActivableEnCarta(ImageView imageView, ActivableEnCarta activableEnCarta){
+        Tooltip tooltip = new Tooltip(activableEnCarta.getDescripcion());
+        tooltip.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-size: 14px;");
+
+        // Asociar el Tooltip al ImageView
+        Tooltip.install(imageView, tooltip);
+
+    }
+
 }

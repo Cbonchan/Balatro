@@ -55,7 +55,7 @@ public class Mano {
         return (jugada.obtenerChips());
     }
 
-    public int obtenerMultiplicador(){
+    public float obtenerMultiplicador(){
         return (jugada.obtenerMultiplicador());
     }
 
@@ -147,7 +147,7 @@ public class Mano {
     }
 
     // Post: Calcula el puntaje con Jokers involucrados por Jugada
-    public int calcularPuntaje() {
+    public float calcularPuntaje() {
 
         if (jugada == null) {
             return 0;
@@ -162,7 +162,7 @@ public class Mano {
             cartasUtilizada.sumarPuntajeCon(this.puntajeTotal);
         }
 
-        // int
+        // float
         return jugada.calcularPuntaje(puntajeTotal);
     }
 

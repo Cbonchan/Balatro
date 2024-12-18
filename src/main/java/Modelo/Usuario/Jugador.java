@@ -52,7 +52,7 @@ public class Jugador {
         return (mano.obtenerChips());
     }
 
-    public int obtenerMult(){return (mano.obtenerMultiplicador());}
+    public float obtenerMult(){return (mano.obtenerMultiplicador());}
 
     public int obtenerCantidadJugadas(){return cantidadJugadas;}
 
@@ -147,8 +147,6 @@ public class Jugador {
         tarots.remove(tarot);
     }
 
-
-
     public  void agregarTarotParaCarta(ActivableEnCarta tarot){
         if (tarots.size()+tarotsParaCarta.size() < 2){
             tarotsParaCarta.add(tarot);
@@ -158,10 +156,6 @@ public class Jugador {
     public  void eliminarTarotParaCarta(ActivableEnCarta tarot){
         tarotsParaCarta.remove(tarot);
     }
-
-    //TODO: MÉTODOS RELACIONADOS A TIENDA:
-
-
 
     //! MÉTODOS PROPIOS:
 

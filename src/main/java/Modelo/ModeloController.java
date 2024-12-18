@@ -41,6 +41,9 @@ public class ModeloController implements Initializable {
     public FlowPane cartas_joker;
 
     @FXML
+    private AnchorPane Scene_pane;
+
+    @FXML
     private Button boton_descartar;
 
     @FXML
@@ -60,6 +63,9 @@ public class ModeloController implements Initializable {
 
     @FXML
     private Label nro_mult;
+
+    @FXML
+    private Label cartas_mazo;
 
     @FXML
     private Label nro_ronda;
@@ -107,6 +113,7 @@ public class ModeloController implements Initializable {
         nro_chips.setText("0");
         nro_mult.setText("0");
 
+
         try {
             // Obtén la instancia única de Juego
             this.juegoEnCurso = Juego.getInstance();
@@ -121,6 +128,7 @@ public class ModeloController implements Initializable {
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
         numeroJugadas.setText(Integer.toString(jugador.obtenerCantidadJugadas()));
         puntaje.setText("0");
+        cartas_mazo.setText(Integer.toString(jugador.obtenerMazo().getCartasDisponibles()));
         jugar();
     }
 
@@ -153,6 +161,7 @@ public class ModeloController implements Initializable {
         puntajeASuperar = rondaDeJuego.getPuntajeASuperar();
         puntos_a_superar.setText(Integer.toString(puntajeASuperar));
 
+        cartas_mazo.setText(Integer.toString(jugador.obtenerMazo().getCartasDisponibles()));
         puntaje.setText(Integer.toString(jugador.getPuntos()));
         numeroDescartes.setText(Integer.toString(jugador.obtenerCantidadDescartes()));
 
@@ -174,7 +183,7 @@ public class ModeloController implements Initializable {
             nro_mult.setText("0");
         }else {
             nro_chips.setText(Integer.toString(jugador.obtenerChips()));
-            nro_mult.setText(Integer.toString(jugador.obtenerMult()));
+            nro_mult.setText(Float.toString(jugador.obtenerMult()));
         }
     }
 
@@ -259,6 +268,8 @@ public class ModeloController implements Initializable {
             imageView.setUserData(joker);
             mouseHoverEvents(imageView);
 
+            configurarTooltipActivable(imageView, joker);
+
             cartas_joker.getChildren().add(imageView);
         }
     }
@@ -292,6 +303,7 @@ public class ModeloController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
+            configurarTooltipActivable(imageView, tarot);
             cartas_tarot.getChildren().add(imageView);
         }
         for (ActivableEnCarta tarotEnCarta: jugador.obtenerTarotsParaCarta()){
@@ -320,6 +332,7 @@ public class ModeloController implements Initializable {
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
+            configurarTooltipActivableEnCarta(imageView,tarotEnCarta);
             cartas_tarot.getChildren().add(imageView);
         }
     }
@@ -329,13 +342,13 @@ public class ModeloController implements Initializable {
         if(juegoEnCurso.getNroRonda()==9){
             mostrarVentanaEmergente("VICTORIA","Superaste las 8 rondas del juego, felicidades");
         }
-        if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
+        else if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
         }
-        if(jugador.soyMayorA(puntajeASuperar)){
+        else if(jugador.soyMayorA(puntajeASuperar)){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
         }
-        if(!jugador.quedanJugadas()){
+        else if(!jugador.quedanJugadas()){
             mostrarVentanaEmergente("PERDISTE", "No pudiste superar el puntaje");
         }
     return;
@@ -449,24 +462,36 @@ public class ModeloController implements Initializable {
         stage.show();
     }
 
-
-//post: Cambia el juego al juego que se le pase por parametro
-    public void ActualizarJuego(Juego juegoActualizado){
-        this.juegoEnCurso = juegoActualizado;
-    }
-
     //post: Activa los tarots
     public void ActivarTarot(){
         if(activableEnCartaSeleccionada!=null){
             activableEnCartaSeleccionada.activar(jugador.obtenerMano().obtenerCartas().get(0), "Sin contexto");
             jugador.eliminarTarotParaCarta(activableEnCartaSeleccionada);
             updateCartasTarot();
-        }
-        if(activableSeleccionada!=null){
+            updateCartasMano();
+        } else if(activableSeleccionada!=null){
             activableSeleccionada.activar(jugador.obtenerMano(), "Sin contexto");
             jugador.eliminarTarot(activableSeleccionada);
             updateCartasTarot();
+            updateCartasMano();
         }
+
+    }
+
+    private void configurarTooltipActivable(ImageView imageView, Activable activable) {
+        Tooltip tooltip = new Tooltip(activable.getDescripcion());
+        tooltip.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-size: 14px;");
+
+        // Asociar el Tooltip al ImageView
+        Tooltip.install(imageView, tooltip);
+    }
+
+    private void configurarTooltipActivableEnCarta(ImageView imageView, ActivableEnCarta activableEnCarta){
+        Tooltip tooltip = new Tooltip(activableEnCarta.getDescripcion());
+        tooltip.setStyle("-fx-background-color: #FFFFFF; -fx-text-fill: #000000; -fx-font-size: 14px;");
+
+        // Asociar el Tooltip al ImageView
+        Tooltip.install(imageView, tooltip);
 
     }
 }
