@@ -50,7 +50,6 @@ public class Puntaje {
         return  this.multiplicador.multiplicarCon(this.chip);
     }
 
-
     // Relación con Chip
 
     // Post: Cambia los chips por otros, usado en Tarot
@@ -70,7 +69,6 @@ public class Puntaje {
     }
 
 
-   // Falta:
     public int obtenerChips(){
         return (chip.valorNumerico());
     }
@@ -102,8 +100,6 @@ public class Puntaje {
         this.multiplicador = otroPuntaje.aumentarValorMultiplicador(this.multiplicador);
     }
 
-
-    // Falta:
 
     //! Rompe encapsulamiento
     public int obtenerMultiplicador(){

@@ -17,7 +17,7 @@ public class Mano {
             new Straight(), new Flush(), new HighCard()
     );
 
-    private  int puntos;
+   // private  int puntos;
     private Jugada jugada;
     private List<Carta> cartas;
     private Puntaje puntajeTotal;
@@ -66,7 +66,8 @@ public class Mano {
 
     // Post: Aumenta el valor de los chips de la Jugada
     public void aumentarChips(Chip incremento){
-        jugada.aumentarChips(incremento);
+        puntajeTotal.sumarChipCon(incremento);
+        //jugada.aumentarChips(incremento);
     }
 
     // Post:cambiar el valor de chips de la primera carta seleccionada
@@ -79,12 +80,14 @@ public class Mano {
 
     // Post: Suma el valor de los multiplicadores
     public void sumarMultiplicador(Multiplicador incremento){
-        jugada.sumarMultiplicador(incremento);
+        puntajeTotal.sumarMultiplicador(incremento);
+        //jugada.sumarMultiplicador(incremento);
     }
 
     // Post: Multiplica el multiplicado de Jugada por el incremento
     public void multiplicarMultiplicador(Multiplicador incremento){
-        jugada.multiplicarMultiplicador(incremento);
+        puntajeTotal.multiplicarMultiplicadorPor(incremento);
+        //jugada.multiplicarMultiplicador(incremento);
     }
 
     // Post: cambia el valor de mult de la primer carta seleccionada
@@ -119,8 +122,8 @@ public class Mano {
     }
 
     // Post: Aumenta los puntos totales de la mano
-    public  void aumentarPuntos(int incremento){
-         puntos += incremento;
+    public void aumentarPuntos(int incremento){
+        puntajeTotal.aumentarPuntaje(incremento,new Multiplicador(0));
     }
 
     //! MÉTODOS RELACIONADOS A JUGADOR
@@ -160,7 +163,7 @@ public class Mano {
         }
 
         // int
-        return this.puntos + (jugada.calcularPuntaje(puntajeTotal));
+        return jugada.calcularPuntaje(puntajeTotal);
     }
 
 }
