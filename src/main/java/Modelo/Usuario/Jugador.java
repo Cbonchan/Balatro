@@ -3,10 +3,8 @@ package Modelo.Usuario;
 // Importaciones
 
 import Modelo.SistemaCartas.Activables.Activable;
-import Modelo.SistemaCartas.Activables.Tarot.TarotEnCarta;
+import Modelo.SistemaCartas.Activables.ActivableEnCarta;
 import Modelo.SistemaCartas.Cartas.Carta;
-import Modelo.SistemaCartas.Activables.Joker.Joker;
-import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -15,9 +13,9 @@ public class Jugador {
     // Atributos
     private final PilaDescarte cartasDescartadas;
     private final List<Carta> cartas;           // Cartas para elegir max 8
-    private final List<Joker> jokers;           // Jokers para activar max 5
-    private final List<Tarot> tarots;          // Tarots para activar max 2
-    private final List<TarotEnCarta> tarotsParaCarta;
+    private final List<Activable> jokers;           // Jokers para activar max 5
+    private final List<Activable> tarots;          // Tarots para activar max 2
+    private final List<ActivableEnCarta> tarotsParaCarta;
     private final Mazo mazo;
     private final Mano mano;
     private int cantidadDescartes;
@@ -48,6 +46,8 @@ public class Jugador {
         return puntos;
     }
 
+    public void reiniciarPuntos(){puntos = 0;}
+
     public int obtenerChips(){
         return (mano.obtenerChips());
     }
@@ -58,14 +58,17 @@ public class Jugador {
 
     public int obtenerCantidadDescartes(){return cantidadDescartes;}
 
-    public List<Joker> obtenerJokers(){return jokers;}
+    public List<Activable> obtenerJokers(){return jokers;}
 
-    public List<Tarot> obtenerTarots(){return tarots;}
+    public List<Activable> obtenerTarots(){return tarots;}
+
+    public List<ActivableEnCarta> obtenerTarotsParaCarta(){return tarotsParaCarta;}
 
     public List<Carta> obtenerCartas(){return cartas;}
 
     public Mano obtenerMano(){return mano;}
 
+    public Mazo obtenerMazo(){return mazo;}
 
     // Métodos
 
@@ -108,7 +111,7 @@ public class Jugador {
         cartasDescartadas.descartarMano(mano);
         mano.vaciarMano();
 
-        for (Joker joker: jokers){
+        for (Activable joker: jokers){
             joker.activar(mano, "Descarte");
         }
 
@@ -119,39 +122,40 @@ public class Jugador {
     //! MÉTODOS RELACIONADOS A JOKER:
 
     // Post: Agrega un Joker a mi lista de Jokers si no tengo 5
-    public void agregarJoker(Joker joker) {
+    public void agregarJoker(Activable joker) {
         if (jokers.size() < 5){
             jokers.add(joker);
         }
     }
 
     // Post: Elimina un Joker de mi lista de Jokers
-    public  void eliminarJoker(Joker joker){
+    public  void eliminarJoker(Activable joker){
         jokers.remove(joker);
     }
 
     //! MÉTODOS RELACIONADOS A TAROT:
 
     // Post: Agrega un Tarot a mi lista de Tarots si no tengo 2
-    public void agregarTarot(Tarot tarot) {
-        if (tarots.size() < 2){
+    public void agregarTarot(Activable tarot) {
+        if (tarots.size()+tarotsParaCarta.size() < 2){
             tarots.add(tarot);
         }
     }
 
     // Post: Elimina un Tarot de mi lista de Tarots
-    public void eliminarTarot(Tarot tarot){
+    public void eliminarTarot(Activable tarot){
         tarots.remove(tarot);
     }
 
 
-    public  void agregarTarot(TarotEnCarta tarot){
-        if (tarotsParaCarta.size() < 2){
+
+    public  void agregarTarotParaCarta(ActivableEnCarta tarot){
+        if (tarots.size()+tarotsParaCarta.size() < 2){
             tarotsParaCarta.add(tarot);
         }
     }
 
-    public  void eliminarTarot(TarotEnCarta tarot){
+    public  void eliminarTarotParaCarta(ActivableEnCarta tarot){
         tarotsParaCarta.remove(tarot);
     }
 
@@ -164,7 +168,7 @@ public class Jugador {
     // Post: Juega una mano
     public void jugarMano(){
         this.cantidadJugadas--;
-        for (Joker joker: jokers){
+        for (Activable joker: jokers){
             joker.activar(mano, "Mano Jugada");
         }
 

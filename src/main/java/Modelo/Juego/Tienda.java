@@ -71,10 +71,25 @@ public class Tienda {
         return aux;
     }
 
+    public void venderCarta(){
+        this.carta = null;
+    }
+
     public int cantidadDeElementosDisponibles(){
         return this.activablesEnMano.size() + this.tarotsEnCarta.size() + (this.carta == null ? 0 : 1);
     }
 
+    public Carta getCartaALaVenta(){return carta;}
+
+    public ArrayList<Activable> getJokers() {
+        return jokers;
+    }
+
+    public ArrayList<Activable> getActivablesEnMano() {return activablesEnMano; }
+
+    public ArrayList<ActivableEnCarta> getTarotsEnCarta() {
+        return tarotsEnCarta;
+    }
 }
 
 

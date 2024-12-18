@@ -1,6 +1,5 @@
 package Modelo.TestUnitarios.TestUsuario;
 
-import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Joker.PorJugada;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.AumentarChips;
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.MejorarCarta;
@@ -141,29 +140,29 @@ public class TestJugador {
     }
 
     @Test
-    public void test09AgregarTarot() {
+    public void test09AgregarTarotParaCarta() {
         // Arrange
         Jugador jugador = new Jugador();
         MejoraCarta tarot = new MejoraCarta("Test01", "El puntaje pasa a ser 50",50, new Multiplicador(1), new MejorarCarta());
         int tarotsEsperados = 1;
 
         // Act
-        jugador.agregarTarot(tarot);
+        jugador.agregarTarotParaCarta(tarot);
 
         // Assert
         assertEquals(tarotsEsperados, jugador.obtenerTarots().size());
     }
 
     @Test
-    public void test10EliminarTarot() {
+    public void test10EliminarTarotParaCarta() {
         // Arrange
         Jugador jugador = new Jugador();
         MejoraCarta tarot = new MejoraCarta("Test01", "El puntaje pasa a ser 50",50, new Multiplicador(1), new MejorarCarta());
-        jugador.agregarTarot(tarot);
+        jugador.agregarTarotParaCarta(tarot);
         int tarotsEsperados = 0;
 
         // Act
-        jugador.eliminarTarot(tarot);
+        jugador.eliminarTarotParaCarta(tarot);
 
         // Assert
         assertEquals(tarotsEsperados, jugador.obtenerTarots().size());

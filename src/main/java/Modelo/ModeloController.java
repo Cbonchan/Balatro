@@ -4,6 +4,7 @@ import Modelo.Juego.Juego;
 import Modelo.Juego.Ronda;
 import Modelo.Juego.Tienda;
 import Modelo.SistemaCartas.Activables.Activable;
+import Modelo.SistemaCartas.Activables.ActivableEnCarta;
 import Modelo.SistemaCartas.Activables.Joker.Joker;
 import Modelo.SistemaCartas.Activables.Tarot.Tarot;
 import Modelo.SistemaCartas.Cartas.Carta;
@@ -95,7 +96,9 @@ public class ModeloController implements Initializable {
     Jugador jugador;
     Ronda rondaDeJuego;
     int puntajeASuperar ;
-
+    Carta cartaSeleccionada;
+    ActivableEnCarta activableEnCartaSeleccionada;
+    Activable activableSeleccionada;
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -190,6 +193,7 @@ public class ModeloController implements Initializable {
             mouseHoverEvents(imageView);
 
             // Configurar evento al hacer clic
+
             //Seleccionar Carta
             imageView.setOnMouseClicked(event -> {
                 Carta cartaSeleccionada = (Carta) imageView.getUserData();
@@ -246,7 +250,7 @@ public class ModeloController implements Initializable {
 //post: actualiza las cartas en los slots de jokers
     private void updateCartasJoker(){
         cartas_joker.getChildren().clear();
-        for (Joker joker: jugador.obtenerJokers()){
+        for (Activable joker: jugador.obtenerJokers()){
             ImageView imageView = new ImageView(joker.getImage());
             imageView.setFitWidth(98); // Ancho de la carta
             imageView.setFitHeight(150); // Alto de la carta
@@ -262,7 +266,7 @@ public class ModeloController implements Initializable {
 //post: actualiza las cartas en los slots de tarots
     private void updateCartasTarot(){
         cartas_tarot.getChildren().clear();
-        for (Tarot tarot: jugador.obtenerTarots()){
+        for (Activable tarot: jugador.obtenerTarots()){
             ImageView imageView = new ImageView(tarot.getImage());
             imageView.setFitWidth(98); // Ancho de la carta
             imageView.setFitHeight(150); // Alto de la carta
@@ -271,12 +275,60 @@ public class ModeloController implements Initializable {
             imageView.setUserData(tarot);
             mouseHoverEvents(imageView);
 
-            cartas_joker.getChildren().add(imageView);
+            final boolean[] seleccionada = {false};
+
+            imageView.setOnMouseClicked(event -> {
+                if (!seleccionada[0]&&(activableEnCartaSeleccionada==null)) {
+                    // Seleccionar: hacer la carta más grande
+                    imageView.setFitWidth(110); // Nuevo ancho más grande
+                    imageView.setFitHeight(170); // Nuevo alto más grande
+                    activableSeleccionada = (Activable) imageView.getUserData();
+                    seleccionada[0] = true; // Cambiar el estado a seleccionada
+                } else {
+                    // Deseleccionar: volver al tamaño original
+                    imageView.setFitWidth(98); // Ancho original
+                    imageView.setFitHeight(150); // Alto original
+                    activableSeleccionada = null; // Ninguna carta seleccionada
+                    seleccionada[0] = false; // Cambiar el estado a deseleccionada
+                }
+            });
+            cartas_tarot.getChildren().add(imageView);
+        }
+        for (ActivableEnCarta tarotEnCarta: jugador.obtenerTarotsParaCarta()){
+            ImageView imageView = new ImageView(tarotEnCarta.getImage());
+            imageView.setFitWidth(98); // Ancho de la carta
+            imageView.setFitHeight(150); // Alto de la carta
+
+            // Asociar la carta al ImageView utilizando setUserData
+            imageView.setUserData(tarotEnCarta);
+            mouseHoverEvents(imageView);
+
+            final boolean[] seleccionada = {false};
+
+            imageView.setOnMouseClicked(event -> {
+                if (!seleccionada[0]&&(activableSeleccionada == null)) {
+                    // Seleccionar: hacer la carta más grande
+                    imageView.setFitWidth(110); // Nuevo ancho más grande
+                    imageView.setFitHeight(170); // Nuevo alto más grande
+                    activableEnCartaSeleccionada = (ActivableEnCarta) imageView.getUserData();
+                    seleccionada[0] = true; // Cambiar el estado a seleccionada
+                } else {
+                    // Deseleccionar: volver al tamaño original
+                    imageView.setFitWidth(98); // Ancho original
+                    imageView.setFitHeight(150); // Alto original
+                    activableEnCartaSeleccionada = null; // Ninguna carta seleccionada
+                    seleccionada[0] = false; // Cambiar el estado a deseleccionada
+                }
+            });
+            cartas_tarot.getChildren().add(imageView);
         }
     }
 
 //post: verifica si el juego o ronda termino de una forma u otra
     private void updateGameState(){
+        if(juegoEnCurso.getNroRonda()==9){
+            mostrarVentanaEmergente("VICTORIA","Superaste las 8 rondas del juego, felicidades");
+        }
         if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
         }
@@ -403,4 +455,18 @@ public class ModeloController implements Initializable {
         this.juegoEnCurso = juegoActualizado;
     }
 
+    //post: Activa los tarots
+    public void ActivarTarot(){
+        if(activableEnCartaSeleccionada!=null){
+            activableEnCartaSeleccionada.activar(jugador.obtenerMano().obtenerCartas().get(0), "Sin contexto");
+            jugador.eliminarTarotParaCarta(activableEnCartaSeleccionada);
+            updateCartasTarot();
+        }
+        if(activableSeleccionada!=null){
+            activableSeleccionada.activar(jugador.obtenerMano(), "Sin contexto");
+            jugador.eliminarTarot(activableSeleccionada);
+            updateCartasTarot();
+        }
+
+    }
 }

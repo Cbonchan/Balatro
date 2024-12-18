@@ -21,7 +21,7 @@ module Modelo {
     exports Modelo.SistemaCartas.Cartas;
     exports Modelo.SistemaCartas.Cartas.Palo;
     exports Modelo.SistemaCartas.Cartas.Figura;
-
+    exports Modelo.SistemaCartas.Activables;
     exports Modelo.SistemaCartas.Jugadas;
 
     exports Modelo.SistemaPuntaje;

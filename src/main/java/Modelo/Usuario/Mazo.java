@@ -89,10 +89,8 @@ public class Mazo {
         return carta.getFigura().getNombre();
     }
 
-
-//TODO: este metodo puede simplificar significativamente el como se reparten las cartas, investigar
-    public void shuffle() {
-        Collections.shuffle(mazoDeCartas);
+    public void agregarCarta(Carta carta) {
+        mazoDeCartas.add(carta);
     }
 
 }

@@ -24,13 +24,19 @@ public class Combinacion implements Activable {
         }
     }
 
+
+    public String getNombre(){
+        return nombre;
+    }
+
     public String getDescripcion(){
         return descripcion;
     }
 
     // Agregado por error al ejecutar JAVA FX
-    @Override
     public Image getImage() {
-        return null;
+        String nombre = this.getNombre();
+        String pathname = "/images/Jokers/"+nombre+".png";
+        return new Image(Joker.class.getResourceAsStream(pathname));
     }
 }

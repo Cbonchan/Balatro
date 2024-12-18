@@ -138,7 +138,7 @@ public abstract class Joker implements Activable {
 
     public Image getImage() {
         String nombre = this.getNombre();
-        String pathname = "/images/Jokers/"+nombre.replace("","_")+".png";
+        String pathname = "/images/Jokers/"+nombre+".png";
         return new Image(Joker.class.getResourceAsStream(pathname));
     }
 }

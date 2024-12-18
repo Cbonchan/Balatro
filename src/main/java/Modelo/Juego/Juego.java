@@ -41,7 +41,7 @@ public class Juego {
 
 //post: cambia la ronda del juego, de esta forma es mas facil actualizar los datos ya sea desde el FX o desde aca
     public void avanzarRonda() {
-        this.rondaActual=rondas.get(nroRonda-1);
+        this.rondaActual=rondas.get(nroRonda);
         nroRonda++;
     }
 
@@ -52,6 +52,8 @@ public class Juego {
     public Ronda getRondaActual() {
          return rondaActual;
     }
+
+    public int getNroRonda() {return nroRonda;}
 }
 
 

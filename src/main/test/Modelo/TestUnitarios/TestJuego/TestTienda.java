@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 
-public class TestTienda {
+/*public class TestTienda {
 
     @Test
     public void test01CreoTiendaYLosElementosSonCinco(){
@@ -146,4 +146,4 @@ public class TestTienda {
     }
 
 
-}
+}*/

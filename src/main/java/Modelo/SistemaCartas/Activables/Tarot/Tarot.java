@@ -39,7 +39,7 @@ public abstract class Tarot implements Activable {
 
     public Image getImage() {
         String nombre = this.getNombre();
-        String pathname = "/images/Tarots/"+nombre.replace("", "_")+".png";
+        String pathname = "/images/Tarots/"+nombre+".png";
         return new Image(Tarot.class.getResourceAsStream(pathname));
     }
 

@@ -21,6 +21,7 @@ public class Ronda {
         this.tienda = tienda;
     }
     public void comenzar(Jugador jugador) {
+        jugador.reiniciarPuntos();
         jugador.agregarCartasFaltantes();
         jugador.actualizarCantidadDeManosYDescartes(manos,descartes);
     }
@@ -44,6 +45,10 @@ public class Ronda {
     //JavaFX getter
     public int getNro() {
         return nro;
+    }
+
+    public Tienda getTienda(){
+        return tienda;
     }
 
     public int getPuntajeASuperar() {

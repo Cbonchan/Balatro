@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1250.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.ModeloController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Modelo.ModeloController">
     <FlowPane id="Cartas_Jugador" fx:id="cartas_jugador" alignment="CENTER" layoutX="60.0" layoutY="518.0" prefHeight="209.0" prefWidth="1151.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="209.0" fitWidth="143.0" pickOnBounds="true" preserveRatio="true">
@@ -194,5 +194,5 @@
          <Label fx:id="numeroDescartes" text="nroD" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
    </GridPane>
-   <Button fx:id="activar_tarot" layoutX="1106.0" layoutY="48.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="143.0" text="Activar" />
+   <Button fx:id="activar_tarot" layoutX="1125.0" layoutY="48.0" mnemonicParsing="false" onAction="#ActivarTarot" prefHeight="23.0" prefWidth="143.0" text="Activar" />
 </AnchorPane>
