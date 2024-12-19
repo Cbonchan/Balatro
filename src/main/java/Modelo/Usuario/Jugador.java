@@ -167,7 +167,7 @@ public class Jugador {
         }
 
         puntos += mano.calcularPuntaje();
-        mano.vaciarMano();
+        cartasDescartadas.descartarMano(mano);
         mano.reiniciarPuntaje();
     }
 
@@ -187,5 +187,9 @@ public class Jugador {
     public void actualizarCantidadDeManosYDescartes(int manos, int descartes) {
         cantidadJugadas = manos;
         cantidadDescartes = descartes;
+    }
+
+    public void prepararMazo(){
+        this.cartasDescartadas.reinsertarEnMazo(this.mazo);
     }
 }

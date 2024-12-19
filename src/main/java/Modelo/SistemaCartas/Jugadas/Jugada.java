@@ -24,7 +24,6 @@ public abstract class Jugada {
         this.puntaje = new Puntaje(chips, multiplicador);
     }
 
-
     // Métodos
     // Abstractos
 
@@ -66,18 +65,7 @@ public abstract class Jugada {
         return manoAValidar.equals(nombre);
     }
 
-    public void aumentarChips(Chip incremento){
-        puntaje.sumarChipCon(incremento);
-    }
-
-    public void sumarMultiplicador(Multiplicador incremento){
-        puntaje.sumarMultiplicador(incremento);
-    }
-
-    public void multiplicarMultiplicador(Multiplicador incremento){
-        puntaje.multiplicarMultiplicadorPor(incremento);
-    }
-
+    //Post: cambia los valores de puntaje de la jugada
     public void mejorar(int incrementador, Multiplicador multiplicador){
         this.puntaje.aumentarPuntaje(incrementador, multiplicador);
     }
@@ -85,8 +73,6 @@ public abstract class Jugada {
     public String getNombre() {
         return nombre;
     }
-
-    // Falta
 
     // Post: Devuelve true si la jugada corresponde a una de las hijas
 
@@ -100,11 +86,8 @@ public abstract class Jugada {
 
     // Post: Devuelve el puntaje de la jugada
     public float calcularPuntaje(Puntaje puntajeList){
-
         puntajeList.sumarNuevosChips(puntaje);
         puntajeList.sumarNuevoMultiplicador(puntaje);
-        //puntaje.sumarNuevosChips(puntajeList);
-        //puntaje.sumarNuevoMultiplicador(puntajeList);
         return puntajeList.calcularPuntaje();
     }
 

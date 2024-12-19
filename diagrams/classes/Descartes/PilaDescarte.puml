@@ -1,0 +1,89 @@
+@@startuml diagramaClases
+
+
+ class Jugador {
+      - puntos: int
+      - cantidadDescartes: int
+      - cantidadJugadas: int
+      - mano: Mano
+      - mazo: Mazo
+      - cartasDescartadas: PilaDescarte
+      - List<Carta> cartas
+      - List<Activable> jokers
+      - List<Activable> tarots
+      - List<ActivableEnCarta> tarotsParaCarta
+      + Jugador(mano: Mano)
+      + seleccionarCarta(cartas: Poker): void
+      + cancelarEleccion():void
+      + descartarMano():void
+      + jugarMano(): void
+      + agregarCartas(List<Carta>): int
+      + agregarCartasFaltantes(): void
+      + agregarJoker(joker:Activable):void
+      + eliminarJoker(joker:Activable):void
+      + agregarTarot(tarot:Activable):void
+      + eliminarTarot(tarot:Activable):void
+      + agregarTarotParaCarta(tarot:ActivableEnCarta):void
+      + eliminarTarotParaCarta(tarot:ActivableEnCarta):void
+      + soyMayorA(puntosASuperar:int):void
+      + quedanDescartes():boolean
+      + quedanJugadas():boolean
+      + actualizarCantidadDeManosYDescartes(manos:int, descartes:int):void
+      + reiniciarPuntos():void
+  }
+
+
+ class Carta {
+     - palo: Palo
+     - figuta: Figura
+     + Carta(palo: Palo, figura: Figura)
+ }
+
+ class Mano {
+     - jugada: Jugada
+     - ArrayList<Carta> cartas
+     - ArrayList<Jugada> jugadasPosibles
+     - puntajeTotal:Puntaje
+     - determinarJugada(List<Carta>): Jugada
+     + Mano()
+     + reiniciarPuntaje():void
+     + obtenerChips(): int
+     + aumentarChips(incremento: Chip): void
+     + cambiarChipPor(nuevoValor: int): void
+     + agregarCarta(cartaCarta: Carta): void
+     + sumarMultiplicador(Multiplicador incremento): void
+     + multiplicarMultiplicador(multiplicador: Multiplicador): void
+     + mejorarJugada(incrementador: int, multiplicador: Multiplicador, jugadaElegida String): void
+     + validarNombreMano(manoAValidar: String): boolean
+     + aumentarPuntos(puntos: int): void
+     + vaciarMano(): void
+     + calcularPuntaje(): int
+     + cartasAcumuladas(List<Carta>)): List<Carta>
+ }
+
+class PilaDescarte {
+    - manosDescartadas: List<Carta>
+    - cantidadManosDescartadas: int
+    + PilaDescarte()
+    + descartarMano(mano: Mano): void
+    + reinsertarEnMazo(Mazo: mazo): void
+ }
+
+class Mazo{
+    -List<Carta> mazoDeCartas
+    +Mazo()
+    +getCartasDisponibles(): int
+    +cartaAleatoria(): Carta
+    +repartirCartas(jugador: Jugador): void
+    +reinsertarCartas(List<Carta>): void
+}
+
+Jugador *-- Mano
+Mano -->"0..5   " Carta
+Jugador --->"0..8  " Carta
+Jugador *-PilaDescarte
+PilaDescarte -->"*" Mano
+Mazo <.. PilaDescarte
+Mazo ...> Jugador
+Mazo ->"0..52 " Carta
+ @enduml

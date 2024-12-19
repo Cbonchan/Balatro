@@ -5,10 +5,7 @@ import Modelo.SistemaPuntaje.*;
 import Modelo.SistemaCartas.Cartas.Palo.Palo;
 import Modelo.SistemaCartas.Cartas.Figura.Figura;
 import javafx.scene.image.Image;
-import java.io.InputStream;
 
-import javax.swing.text.Element;
-import java.util.Objects;
 
 public class Carta {
     // Atributos

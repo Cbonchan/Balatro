@@ -49,7 +49,7 @@ public class TestPilaDescarte {
 
         pilaDescarte.descartarMano(mano);
 
-        assertEquals(1, pilaDescarte.cantidadManosDescartadas());
+        assertEquals(1, pilaDescarte.getCantidadManosDescartadas());
     }
 
     @Test

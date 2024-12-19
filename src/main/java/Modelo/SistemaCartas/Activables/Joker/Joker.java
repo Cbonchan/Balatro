@@ -1,13 +1,9 @@
 package Modelo.SistemaCartas.Activables.Joker;
 
 import Modelo.SistemaCartas.Activables.SistemaDeEfecto.*;
-import Modelo.SistemaCartas.Cartas.Carta;
 import Modelo.Usuario.Mano;
-
 import Modelo.SistemaCartas.Activables.Activable;
-
 import Modelo.SistemaPuntaje.Multiplicador;
-
 import com.google.gson.JsonObject;
 import javafx.scene.image.Image;
 
@@ -31,7 +27,6 @@ public abstract class Joker implements Activable {
         this.multiplicador = multiplicador;
     }
 
-    // Antiguo constructor
     public Joker(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion) {
 
         this.nombre = nombre;
@@ -40,7 +35,6 @@ public abstract class Joker implements Activable {
         this.incrementador = incrementador;
         this.multiplicador = multiplicador;
     }
-
 
     // No sé que factory
 
@@ -106,23 +100,6 @@ public abstract class Joker implements Activable {
         // Construir según el grupo de activación
         return crearJokerPorActivacion(jokerObject, nombre, descripcion, activacionObject, efecto, incrementador, multiplicador);
     }
-
-
-
-
-    /*
-        // Idea del Factory
-    private static ArrayList<Activable> procesarJsonComodines(JsonArray comodines) {
-        ArrayList<Activable> jokerList = new ArrayList<>();
-
-        for (JsonElement joker : comodines) {
-            JsonObject jokerObject = joker.getAsJsonObject();
-            jokerList.add(Joker.leerJson(jokerObject));
-        }
-        return jokerList;
-    }
-   */
-
 
     // Getters y Setters
     public String getNombre(){

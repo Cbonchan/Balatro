@@ -322,7 +322,7 @@ public class JSONReader {
             Carta carta = CartaFactory.crearCarta(palo, figura);
             cartaList.add(carta);
         }
-        return new Mazo(52, cartaList);
+        return new Mazo(cartaList);
     }
 
 

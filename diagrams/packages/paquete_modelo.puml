@@ -1,0 +1,102 @@
+@startuml
+
+package "Modelo"{
+
+package "Juego"{
+    [juego]
+    [Ronda]
+    [Tienda]
+}
+package "Usuario"{
+    [Jugador]
+    [Mano]
+    [Mazo]
+    [PilaDescarte]
+}
+package "SistemaPuntaje"{
+    [Chip]
+    [Multiplicador]
+    [Puntaje]
+}
+package "SistemaCartas"{
+    package "Activables"{
+        package "Joker"{
+            [joker]
+            [Combinacion]
+            [AlPuntaje]
+            [Descarte]
+            [PorJugada]
+            [UnoEn]
+        }
+        package "SistemaDeEfecto"{
+            [Efecto]
+            [EfectoEnCarta]
+            [MejorarCarta]
+            [MejorarJugada]
+            [MultiplicacionMult]
+            [SumarMultiplicador]
+            [SumarPuntaje]
+        }
+        package "Tarot"{
+            [tarot]
+            [TarotEnCarta]
+            [MejoraCarta]
+            [MejoraJugada]
+        }
+        [Activable]
+        [ActivableEnCarta]
+    }
+    package "Cartas"{
+        package "Figura"{
+         [figura]
+         [As]
+         [Rey]
+         [Reina]
+         [Jota]
+         [Diez]
+         [Nueve]
+         [Ocho]
+         [Siete]
+         [Seis]
+         [Cinco]
+         [Cuatro]
+         [Tres]
+         [Dos]
+        }
+       package "Palo"{
+         [palo]
+         [Corazon]
+         [Diamante]
+         [Pica]
+         [Trebol]
+       }
+       [Carta]
+    }
+    package "Jugadas"{
+    [Jugada]
+    [HighCard]
+    [Pair]
+    [TwoPair]
+    [ThreeOfAKind]
+    [FourOfAKind]
+    [Flush]
+    [Straight]
+    [FullHouse]
+    [StraightFlush]
+    }
+
+}
+
+}
+
+Jugadas --> "SistemaPuntaje"
+Figura --> "SistemaPuntaje"
+Cartas --> "SistemaPuntaje"
+Tarot ---> "SistemaDeEfecto"
+"SistemaDeEfecto"->"SistemaPuntaje"
+"Joker"--->"SistemaDeEfecto"
+"Juego"-->"Usuario"
+"Juego"-->"Activables"
+
+
+@enduml

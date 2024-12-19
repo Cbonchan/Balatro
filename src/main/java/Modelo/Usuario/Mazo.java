@@ -10,18 +10,15 @@ import Modelo.SistemaCartas.Cartas.Palo.Palo;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
 public class Mazo {
 
     // Atributos
-    private int cartasDisponibles;
-    private final ArrayList<Carta> mazoDeCartas; //TODO: Cambiar "mazoDeCartas" a "cartas" (Camilo)
+    private final ArrayList<Carta> Cartas;
 
     // Constructor
     public Mazo() {
-        this.cartasDisponibles = 52;
-        mazoDeCartas = new ArrayList<>();
+        Cartas = new ArrayList<>();
 
         Palo[] palos = {
                 new Corazon(), new Diamante(), new Trebol(), new Pica()};
@@ -35,29 +32,28 @@ public class Mazo {
 
         for (Palo palo : palos) {
             for (Figura valor : valores ) {
-                mazoDeCartas.add(new Carta(palo, valor));
+                Cartas.add(new Carta(palo, valor));
             }
         }
     }
 
     // Constructor para el Parser
-    public Mazo(int cartasDisponibles, ArrayList<Carta> cartas) {
-        this.cartasDisponibles = cartasDisponibles;
-        this.mazoDeCartas = cartas;
+    public Mazo( ArrayList<Carta> cartas) {
+        this.Cartas = cartas;
     }
 
     // Getters y Setters
     public int getCartasDisponibles(){
-        return cartasDisponibles;
+        return Cartas.size();
     }
 
     // Métodos
     
     // Privados
     private Carta cartaAleatoria() {
-        int indice = (int) (Math.random() * cartasDisponibles);
-        Carta cartaCarta = mazoDeCartas.get(indice);
-        mazoDeCartas.remove(indice);
+        int indice = (int) (Math.random() * Cartas.size());
+        Carta cartaCarta = Cartas.get(indice);
+        Cartas.remove(indice);
         return cartaCarta;
     }
 
@@ -67,30 +63,28 @@ public class Mazo {
     public void  repartirCartas(List<Carta> cartasACompletar) {
         while ( cartasACompletar.size() != 8 ){
             cartasACompletar.add(cartaAleatoria());
-            cartasDisponibles--;
         }
     }
 
     // Post: Se ingresan las cartas al mazo
     public void reinsertarCartas(List<Carta> cartas) {
-        mazoDeCartas.addAll(cartas);
-        cartasDisponibles += cartas.size();
+        Cartas.addAll(cartas);
     }
 
 
     //  Para el parser
     public String obtenerPaloDeCarta(int indiceDeCarta) {
-        Carta carta = mazoDeCartas.get(indiceDeCarta-1);
+        Carta carta = Cartas.get(indiceDeCarta-1);
         return carta.getPalo().getNombre();
     }
 
     public String obtenerFiguraDeCarta(int indiceDeCarta){
-        Carta carta = mazoDeCartas.get(indiceDeCarta-1);
+        Carta carta = Cartas.get(indiceDeCarta-1);
         return carta.getFigura().getNombre();
     }
 
     public void agregarCarta(Carta carta) {
-        mazoDeCartas.add(carta);
+        Cartas.add(carta);
     }
 
 }

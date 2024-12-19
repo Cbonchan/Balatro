@@ -6,17 +6,17 @@
      }
 
      abstract class Joker implements Activable {
-         -String nombre
-         -String descripcion
-         -String activacion
-         -Efecto efecto
-         -int puntaje
-         -Multiplicador multiplicador
-
-
+         -nombre:String
+         -descripcion:String
+         -activacion:String
+         -efecto:Efecto
+         -incrementador:int
+         -multiplicador:Multiplicador
          +Joker(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
          String activacion, Efecto efecto)
-         +void activar(Mano mano, String contexto)
+         +Joker(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
+                  String activacion)
+         +{abstract}activar(Mano mano, String contexto):void
      }
 
      class AlPuntaje extends Joker{
@@ -44,6 +44,7 @@
          +void activar(Mano mano, String contexto)
 
      }
+
  }
 
  package Modelo.SistemaCartas.Activables.SistemaDeEfecto {
@@ -78,10 +79,7 @@
                  +activar(int puntos, Multiplicador multiplicador, Mano mano)
      }
 
-     class MejorarJugada implements Efecto{
-     +MejorarJugada(String jugada)
-     +activar(int incrementador, Multiplicador multiplicador, Mano mano)
-     }
+
 }
 
 package Modelo.SistemaCartas.Activables.Tarot{
@@ -100,19 +98,13 @@ package Modelo.SistemaCartas.Activables.Tarot{
     +activar(Mano mano, String contexto)
     }
 
-    MejoraJugada -> MejorarJugada
-
 
 
     Tarot -> Efecto
 
+
 }
 
-
-
-
-Efecto<----Joker
-Combinacion "1" -> "*" Joker
 
 
  @enduml

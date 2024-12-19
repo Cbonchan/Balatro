@@ -13,7 +13,8 @@ public class PilaDescarte {
         cartasDescartadas = new ArrayList<>();
         cantidadManosDescartadas = 0;
     }
-    public int cantidadManosDescartadas(){
+
+    public int getCantidadManosDescartadas(){
         return cantidadManosDescartadas;
     }
 

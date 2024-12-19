@@ -22,24 +22,9 @@ public class Ronda {
     }
     public void comenzar(Jugador jugador) {
         jugador.reiniciarPuntos();
+        jugador.prepararMazo();
         jugador.agregarCartasFaltantes();
         jugador.actualizarCantidadDeManosYDescartes(manos,descartes);
-    }
-
-    public boolean puedoDescartar() {
-        return descartes > 0;
-    }
-
-    public boolean puedoJugar() {
-        return manos >= 0;
-    }
-
-    public boolean puedoContinuar() {
-        return puedoJugar();
-    }
-
-    public boolean superoPuntaje(Jugador jugador) {
-        return jugador.soyMayorA(puntajeASuperar);
     }
 
     //JavaFX getter
