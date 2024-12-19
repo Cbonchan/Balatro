@@ -57,7 +57,7 @@
          </ImageView>
       </children></FlowPane>
 
-   <FlowPane id="Slots_Jokers" fx:id="cartas_joker" layoutX="364.0" layoutY="14.0" prefHeight="137.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+   <FlowPane id="Slots_Jokers" fx:id="cartas_joker" alignment="CENTER" layoutX="364.0" layoutY="14.0" prefHeight="148.0" prefWidth="517.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="137.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -86,7 +86,7 @@
          </ImageView>
       </children></FlowPane>
 
-   <FlowPane id="Slots_Tarot" fx:id="cartas_tarot" layoutX="908.0" layoutY="14.0" prefHeight="137.0" prefWidth="212.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
+   <FlowPane id="Slots_Tarot" fx:id="cartas_tarot" alignment="CENTER" layoutX="897.0" layoutY="14.0" prefHeight="148.0" prefWidth="223.0" style="-fx-background-color: rgba(0, 0, 0, 0.5);">
       <children>
          <ImageView fitHeight="150.0" fitWidth="98.0" pickOnBounds="true" preserveRatio="true">
             <image>

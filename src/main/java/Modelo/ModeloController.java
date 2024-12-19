@@ -291,22 +291,20 @@ public class ModeloController implements Initializable {
 
             // Asociar la carta al ImageView utilizando setUserData
             imageView.setUserData(tarot);
-            mouseHoverEvents(imageView);
-
             final boolean[] seleccionada = {false};
 
             imageView.setOnMouseClicked(event -> {
                 if (!seleccionada[0]&&(activableEnCartaSeleccionada==null)) {
                     // Seleccionar: hacer la carta más grande
-                    imageView.setFitWidth(110); // Nuevo ancho más grande
-                    imageView.setFitHeight(170); // Nuevo alto más grande
+                    imageView.setFitWidth(125); // Nuevo ancho más grande
+                    imageView.setFitHeight(175); // Nuevo alto más grande
                     activableSeleccionada = (Activable) imageView.getUserData();
-                    seleccionada[0] = true; // Cambiar el estado a seleccionada
-                } else {
+                    seleccionada[0] = true;
+                } else if(activableSeleccionada.equals(tarot)) {
                     // Deseleccionar: volver al tamaño original
                     imageView.setFitWidth(98); // Ancho original
                     imageView.setFitHeight(150); // Alto original
-                    activableSeleccionada = null; // Ninguna carta seleccionada
+                    activableSeleccionada = null;// Ninguna carta seleccionada
                     seleccionada[0] = false; // Cambiar el estado a deseleccionada
                 }
             });
@@ -320,8 +318,6 @@ public class ModeloController implements Initializable {
 
             // Asociar la carta al ImageView utilizando setUserData
             imageView.setUserData(tarotEnCarta);
-            mouseHoverEvents(imageView);
-
             final boolean[] seleccionada = {false};
 
             imageView.setOnMouseClicked(event -> {
@@ -331,12 +327,13 @@ public class ModeloController implements Initializable {
                     imageView.setFitHeight(170); // Nuevo alto más grande
                     activableEnCartaSeleccionada = (ActivableEnCarta) imageView.getUserData();
                     seleccionada[0] = true; // Cambiar el estado a seleccionada
-                } else {
+
+                } else if(activableEnCartaSeleccionada.equals(tarotEnCarta)){
                     // Deseleccionar: volver al tamaño original
                     imageView.setFitWidth(98); // Ancho original
                     imageView.setFitHeight(150); // Alto original
                     activableEnCartaSeleccionada = null; // Ninguna carta seleccionada
-                    seleccionada[0] = false; // Cambiar el estado a deseleccionada
+                    seleccionada[0] = false;
                 }
             });
             configurarTooltipActivableEnCarta(imageView,tarotEnCarta);
@@ -447,7 +444,10 @@ public class ModeloController implements Initializable {
             });
         }
         else{
-            botonCerrar.setOnAction(event -> ventanaGanaste.close());
+            botonCerrar.setOnAction(event -> {
+                cerrarVentana();
+                ventanaGanaste.close();
+            });
         }
 
         layout.getChildren().addAll(mensaje, botonCerrar);
@@ -462,6 +462,8 @@ public class ModeloController implements Initializable {
 
 //post: cambia la escena a la escena de la tienda
     public void switchToScene2() throws IOException {
+        juegoEnCurso.avanzarRonda();
+
         Parent root = FXMLLoader.load(getClass().getResource("Balatro.view.tienda.fxml"));
         stage = (Stage) nro_chips.getScene().getWindow();
         scene = new Scene(root);
@@ -476,11 +478,13 @@ public class ModeloController implements Initializable {
             jugador.eliminarTarotParaCarta(activableEnCartaSeleccionada);
             updateCartasTarot();
             updateCartasMano();
+            activableEnCartaSeleccionada = null;
         } else if(activableSeleccionada!=null){
             activableSeleccionada.activar(jugador.obtenerMano(), "Sin contexto");
             jugador.eliminarTarot(activableSeleccionada);
             updateCartasTarot();
             updateCartasMano();
+            activableSeleccionada = null;
         }
 
     }
@@ -501,4 +505,11 @@ public class ModeloController implements Initializable {
         Tooltip.install(imageView, tooltip);
 
     }
+
+    private void cerrarVentana() {
+        // Obtener el Stage desde cualquier nodo del Scene
+        Stage stage = (Stage) Scene_pane.getScene().getWindow();
+        stage.close();
+    }
+
 }

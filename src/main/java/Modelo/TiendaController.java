@@ -88,8 +88,6 @@ public class TiendaController implements Initializable {
 
 //post: cambia la pantalla a las rondas jugables
     public void switchToScene1(ActionEvent event) throws IOException {
-        juegoEnCurso.avanzarRonda();
-
         root = FXMLLoader.load(getClass().getResource("Balatro.view.1.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
