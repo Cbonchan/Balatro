@@ -14,7 +14,7 @@ public class TestMultiplicador {
         Multiplicador multiplicador = new Multiplicador(5);
 
         // Act
-        int valor = multiplicador.valorNumerico();
+        float valor = multiplicador.valorNumerico();
 
         // Assert
         assertEquals(5, valor);
@@ -40,7 +40,7 @@ public class TestMultiplicador {
         Chip chip = new Chip(3);
 
         // Act
-        int resultado = multiplicador.multiplicarCon(chip);
+        float resultado = multiplicador.multiplicarCon(chip);
 
         // Assert
         assertEquals(15, resultado);
@@ -66,7 +66,7 @@ public class TestMultiplicador {
         Chip chip = new Chip(0);
 
         // Act
-        int resultado = multiplicador.multiplicarCon(chip);
+        float resultado = multiplicador.multiplicarCon(chip);
 
         // Assert
         assertEquals(0, resultado);

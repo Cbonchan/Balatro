@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -57,7 +58,9 @@ public class TiendaController implements Initializable {
     Activable tarotSeleccionada;
     ActivableEnCarta tarotJugadorEnCartaSeleccionado;
     ActivableEnCarta tarotEnCartaSeleccionado;
-//prepara los requisitos para la tienda
+
+    int nro;
+//post: prepara los requisitos para la tienda
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             // Obtén la instancia única de Juego
@@ -68,6 +71,7 @@ public class TiendaController implements Initializable {
 
         this.jugador=juegoEnCurso.getJugador();
         this.tienda=juegoEnCurso.getRondaActual().getTienda();
+
 
         jugar();
     }
@@ -194,6 +198,7 @@ public class TiendaController implements Initializable {
     }
 
     private void updateTarotEnCartaJugador(){
+
         for (ActivableEnCarta tarotEnCarta: jugador.obtenerTarotsParaCarta()){
             ImageView imageView = new ImageView(tarotEnCarta.getImage());
             imageView.setFitWidth(98); // Ancho de la carta
@@ -228,8 +233,11 @@ public class TiendaController implements Initializable {
     private void updateCartasTarotTienda(){
         tarots_tienda.getChildren().clear();
 
-        for (Activable tarot: tienda.getTarot()){
+        for (Activable tarot: tienda.getTarot()) {
             ImageView imageView = new ImageView(tarot.getImage());
+
+            System.out.println("Ruta de la imagen: " + tarot.getImage());
+
             imageView.setFitWidth(98); // Ancho de la carta
             imageView.setFitHeight(150); // Alto de la carta
 
@@ -239,7 +247,7 @@ public class TiendaController implements Initializable {
             final boolean[] seleccionada = {false};
 
             imageView.setOnMouseClicked(event -> {
-                if (!seleccionada[0]&&(tarotEnCartaSeleccionado==null)) {
+                if (!seleccionada[0] && (tarotEnCartaSeleccionado == null)) {
                     // Seleccionar: hacer la carta más grande
                     imageView.setFitWidth(110); // Nuevo ancho más grande
                     imageView.setFitHeight(170); // Nuevo alto más grande

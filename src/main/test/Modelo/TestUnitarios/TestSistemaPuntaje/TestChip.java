@@ -38,7 +38,7 @@ public class TestChip {
         Chip chip = new Chip(5);
 
         // Act
-        int resultado = chip.multiplicarCon(3);
+        float resultado = chip.multiplicarCon(3);
 
         // Assert
         assertEquals(15, resultado);
@@ -63,7 +63,7 @@ public class TestChip {
         Chip chip = new Chip(5);
 
         // Act
-        int resultado = chip.multiplicarCon(0);
+        float resultado = chip.multiplicarCon(0);
 
         // Assert
         assertEquals(0, resultado);

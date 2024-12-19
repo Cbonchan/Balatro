@@ -16,7 +16,7 @@ public class Flush extends Jugada{
 
     // Constructor
     public Flush() {
-        super("Flush", new Chip(35), new Multiplicador( 4));
+        super("color", new Chip(35), new Multiplicador( 4));
     }
 
     // Métodos

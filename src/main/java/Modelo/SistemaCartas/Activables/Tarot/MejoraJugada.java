@@ -15,8 +15,4 @@ public class MejoraJugada extends Tarot{
         this.efecto.activar(incrementador, multiplicador, mano);
     }
 
-    @Override
-    public Image getImage() {
-        return null;
-    }
 }

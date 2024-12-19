@@ -49,10 +49,10 @@ public class Jugador {
     public void reiniciarPuntos(){puntos = 0;}
 
     public int obtenerChips(){
-        return (mano.obtenerChips());
+        return (mano.obtenerChipsJugada());
     }
 
-    public float obtenerMult(){return (mano.obtenerMultiplicador());}
+    public float obtenerMult(){return (mano.obtenerMultiplicadorjugada());}
 
     public int obtenerCantidadJugadas(){return cantidadJugadas;}
 

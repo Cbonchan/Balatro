@@ -10,7 +10,7 @@ import java.util.List;
 public class Tienda {
 
     // Atributos
-   //Max de 2 jokers
+    //Max de 2 jokers
     //Max de 2 Tarots
     //Max 1 carta
     private final ArrayList<Activable> jokers;

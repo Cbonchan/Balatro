@@ -24,7 +24,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta);
         // Se ocupa una mano "High Card (5,1)"  + 10  = 15 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("High Card");
+        MejorarJugada mejorarJugada = new MejorarJugada("carta alta");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 5;
         int valorEsperado = 40;
@@ -46,7 +46,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta2);
         // Se ocupa una mano "Pair (10,2)" +  20  = 30 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Pair");
+        MejorarJugada mejorarJugada = new MejorarJugada("par");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 120;
@@ -72,7 +72,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta4);
         // Se ocupa una mano "Two Pair (20,2)" + 40= 60 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Two Pair");
+        MejorarJugada mejorarJugada = new MejorarJugada("doble par");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 210;
@@ -96,7 +96,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta3);
         // Se ocupa una mano "Three of a Kind (30, 3)" + 30  = 60 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Three Of A Kind");
+        MejorarJugada mejorarJugada = new MejorarJugada("trio");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 280;
@@ -124,7 +124,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta5);
         // Se ocupa una mano "Straight (30, 4)" y 20 = 50 (Chips Base)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Straight");
+        MejorarJugada mejorarJugada = new MejorarJugada("escalera");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 300;
@@ -152,7 +152,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta5);
         // Se ocupa una mano "Flush (35, 4)" + 35 = 70 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Flush");
+        MejorarJugada mejorarJugada = new MejorarJugada("color");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 400;
@@ -180,7 +180,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta5);
         // Se ocupa una mano "Full House (40, 4)" +  50 chips  =  90 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Full House");
+        MejorarJugada mejorarJugada = new MejorarJugada("full");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 500;
@@ -206,7 +206,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta4);
         // Se ocupa una mano "Four of a Kind (60,7)" +  40 = 100 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Four Of A Kind");
+        MejorarJugada mejorarJugada = new MejorarJugada("poker");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 880;
@@ -234,7 +234,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta5);
         // Se ocupa una mano "Straight Flush (100, 8)" + 20  = 120 (Chips)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Straight Flush");
+        MejorarJugada mejorarJugada = new MejorarJugada("escalera de color");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 1170;
@@ -262,7 +262,7 @@ public class TestMejorarJugada {
         mano.agregarCarta(carta5);
         // Se ocupa una mano "Royal Flush (100,8)"  + 51 = 151 (Base)
 
-        MejorarJugada mejorarJugada = new MejorarJugada("Royal Flush");
+        MejorarJugada mejorarJugada = new MejorarJugada("escalera real de color");
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 10;
         int valorEsperado = 1449;

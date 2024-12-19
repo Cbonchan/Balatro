@@ -23,7 +23,7 @@ public class TwoPair extends  Jugada {
 
     // Constructores
     public TwoPair() {
-        super( "Two Pair",new Chip(20), new Multiplicador( 2));
+        super( "doble par",new Chip(20), new Multiplicador( 2));
     }
 
     // Métodos

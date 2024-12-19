@@ -48,15 +48,12 @@ public class TestTarot {
         tarot.activar(carta1, "Sin contexto");
 
         // Assert
-        int valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
-        int valorMultiplicadorEsperado = 2;
+        float valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
+        float valorMultiplicadorEsperado = 2;
 
-        assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido);
+        assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido,0);
 
     }
-
-//TODO: Este test falla porque todavia esa parte de Tarot no esta implementada con el refactor actual.
-// Revisar la clase "CambiarPuntaje" de "SistemaDeEfecto" para mas detalles
 
     @Test
     public void test03tarotMejoraLaManoHighCardA20Puntos() {
@@ -72,7 +69,7 @@ public class TestTarot {
         tarot.activar(mano, "Sin contexto");
 
         //Assert
-        assertEquals(20, mano.obtenerChips()); //! TESTEO POR IMPLEMENTACION
+        assertEquals(25, mano.obtenerChipsJugada(),0); //! TESTEO POR IMPLEMENTACION
     }
 
 

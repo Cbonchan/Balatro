@@ -16,7 +16,7 @@ public class FourOfAKind extends  Jugada {
 
     // Constructor
     public FourOfAKind() {
-        super("Four Of A Kind", new Chip(60), new Multiplicador( 7));
+        super("poker", new Chip(60), new Multiplicador( 7));
     }
 
     // Métodos

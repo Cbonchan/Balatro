@@ -18,7 +18,7 @@ public class FullHouse extends  Jugada{
 
     // Constructor
     public FullHouse() {
-        super( "Full House",new Chip(40), new Multiplicador( 4));
+        super( "full",new Chip(40), new Multiplicador( 4));
     }
 
     // Métodos

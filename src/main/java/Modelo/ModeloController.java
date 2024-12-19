@@ -100,10 +100,8 @@ public class ModeloController implements Initializable {
     Jugador jugador;
     Ronda rondaDeJuego;
     int puntajeASuperar ;
-    Carta cartaSeleccionada;
     ActivableEnCarta activableEnCartaSeleccionada;
     Activable activableSeleccionada;
-    MediaPlayer mediaPlayer;
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -111,7 +109,6 @@ public class ModeloController implements Initializable {
         //elementos de la escena
         nro_chips.setText("0");
         nro_mult.setText("0");
-
 
         try {
             // Obtén la instancia única de Juego

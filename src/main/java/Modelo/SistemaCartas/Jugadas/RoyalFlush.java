@@ -17,7 +17,7 @@ public class RoyalFlush extends  Jugada {
 
     // Constructor
     public RoyalFlush() {
-        super( "Royal Flush",new Chip(100), new Multiplicador( 8));
+        super( "escalera real de color",new Chip(100), new Multiplicador( 8));
     }
 
 

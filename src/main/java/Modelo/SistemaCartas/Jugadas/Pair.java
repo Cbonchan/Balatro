@@ -16,7 +16,7 @@ public class Pair extends Jugada {
 
     // Constructor
     public Pair() {
-        super( "Pair",new Chip(10), new Multiplicador( 2));
+        super( "par",new Chip(10), new Multiplicador( 2));
     }
 
     // Métodos

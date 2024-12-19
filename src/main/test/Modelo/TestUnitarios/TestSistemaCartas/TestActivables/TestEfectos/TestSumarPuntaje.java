@@ -44,7 +44,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 20;
-        int valorEsperado = 80;
+        int valorEsperado = 100;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -70,7 +70,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 40;
-        int valorEsperado = 160;
+        int valorEsperado = 200;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -94,7 +94,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 30;
-        int valorEsperado = 210;
+        int valorEsperado = 270;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -122,7 +122,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 20;
-        int valorEsperado = 220;
+        int valorEsperado = 280;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -150,7 +150,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 40;
-        int valorEsperado = 320;
+        int valorEsperado = 440;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -178,7 +178,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 50;
-        int valorEsperado = 410;
+        int valorEsperado = 560;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -204,7 +204,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 40;
-        int valorEsperado = 740;
+        int valorEsperado = 980;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -232,7 +232,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 20;
-        int valorEsperado = 980;
+        int valorEsperado = 1120;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);
@@ -260,7 +260,7 @@ public class TestSumarPuntaje {
         SumarPuntaje sumarPuntaje = new SumarPuntaje();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 51;
-        int valorEsperado = 1259;
+        int valorEsperado = 1616;
 
         // Act
         sumarPuntaje.activar(incrementador, multiplicador, mano);

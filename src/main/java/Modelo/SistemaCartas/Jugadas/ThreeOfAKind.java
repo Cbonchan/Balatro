@@ -15,7 +15,7 @@ public class ThreeOfAKind extends  Jugada{
 
     // Constructor
     public ThreeOfAKind() {
-        super("Three Of A Kind", new Chip(30), new Multiplicador( 3));
+        super("trio", new Chip(30), new Multiplicador( 3));
     }
 
     // Métodos

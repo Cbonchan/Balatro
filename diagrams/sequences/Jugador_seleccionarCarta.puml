@@ -1,0 +1,18 @@
+@startuml
+participant Actor
+Actor -> Jugador : seleccionarCarta
+activate Jugador
+Jugador -> Mano : agregarCarta
+activate Mano
+Mano -> Mano : determinarJugada
+activate Mano
+Mano -> Jugada : esJugadaValida
+activate Jugada
+Jugada --> Mano
+deactivate Jugada
+Mano --> Mano
+deactivate Mano
+Mano --> Jugador
+deactivate Mano
+return
+@enduml

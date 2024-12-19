@@ -57,7 +57,7 @@ public class TestMano {
         int puntajeEsperado = 15;
 
         // Act
-        int puntaje = mano.calcularPuntaje();
+        float puntaje = mano.calcularPuntaje();
 
         // Assert
         assertEquals(puntajeEsperado, puntaje);

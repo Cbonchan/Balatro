@@ -14,7 +14,7 @@ public class TestPuntaje {
         Puntaje puntaje = new Puntaje(chip);
 
         // Act
-        int valorChip = puntaje.calcularPuntaje();
+        float valorChip = puntaje.calcularPuntaje();
 
         // Assert
         assertEquals(5, valorChip);
@@ -28,7 +28,7 @@ public class TestPuntaje {
         Puntaje puntaje = new Puntaje(chip, multiplicador);
 
         // Act
-        int valorPuntaje = puntaje.calcularPuntaje();
+        float valorPuntaje = puntaje.calcularPuntaje();
 
         // Assert
         assertEquals(10, valorPuntaje);
@@ -44,7 +44,7 @@ public class TestPuntaje {
 
         // Act
         puntaje1.sumarNuevosChips(puntaje2);
-        int valorPuntaje = puntaje1.calcularPuntaje();
+        float valorPuntaje = puntaje1.calcularPuntaje();
 
         // Assert
         assertEquals(8, valorPuntaje);
@@ -61,7 +61,7 @@ public class TestPuntaje {
 
         // Act
         puntaje1.sumarNuevoMultiplicador(puntaje2);
-        int valorPuntaje = puntaje1.calcularPuntaje();
+        float valorPuntaje = puntaje1.calcularPuntaje();
 
         // Assert
         assertEquals(30, valorPuntaje);
@@ -75,7 +75,7 @@ public class TestPuntaje {
         Puntaje puntaje = new Puntaje(chip, multiplicador);
 
         // Act
-        int valorPuntaje = puntaje.calcularPuntaje();
+        float valorPuntaje = puntaje.calcularPuntaje();
 
         // Assert
         assertEquals(20, valorPuntaje);

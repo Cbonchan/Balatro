@@ -42,7 +42,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(0), new Multiplicador(1));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, 0); // 0 chips * 1 multiplicador
@@ -55,7 +55,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(1), new Multiplicador(1));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, 2); // 1 chip * 1 multiplicador
@@ -68,7 +68,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(1000), new Multiplicador(5));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, 50000);
@@ -81,7 +81,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(100), new Multiplicador(0));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, 0); // 100 chips * 0 multiplicador
@@ -94,7 +94,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(100), new Multiplicador(-1));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, 200); // 200 chips * 1multiplicador
@@ -107,7 +107,7 @@ public class TestJugadaReal {
         Puntaje puntajeInicial = new Puntaje(new Chip(-100), new Multiplicador(2));
 
         // Act
-        int puntaje = jugada.calcularPuntaje(puntajeInicial);
+        float puntaje = jugada.calcularPuntaje(puntajeInicial);
 
         // Assert
         assertEquals(puntaje, -800); // -200 chips * 4 multiplicador

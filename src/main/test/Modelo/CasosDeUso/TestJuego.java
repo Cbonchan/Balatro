@@ -153,7 +153,7 @@
          tarot.activar(carta1, "Sin contexto");
 
          // Assert
-         int valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
+         float valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
          int valorMultiplicadorEsperado = 10;
 
          Assert.assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido);

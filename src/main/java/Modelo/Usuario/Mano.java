@@ -51,11 +51,11 @@ public class Mano {
 
     public List<Carta> obtenerCartas(){return cartas;}
 
-    public int obtenerChips(){
+    public int obtenerChipsJugada(){
         return (jugada.obtenerChips());
     }
 
-    public float obtenerMultiplicador(){
+    public float obtenerMultiplicadorjugada(){
         return (jugada.obtenerMultiplicador());
     }
 

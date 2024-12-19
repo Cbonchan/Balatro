@@ -45,7 +45,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 90;
+        int valorEsperado = 120;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -71,7 +71,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 180;
+        int valorEsperado = 240;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -95,7 +95,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 240;
+        int valorEsperado = 360;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -123,7 +123,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 250;
+        int valorEsperado = 400;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -151,7 +151,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 350;
+        int valorEsperado = 560;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -179,7 +179,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 450;
+        int valorEsperado = 720;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -205,7 +205,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 100;
+        int valorEsperado = 1400;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -233,7 +233,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 1080;
+        int valorEsperado = 1920;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);
@@ -261,7 +261,7 @@ public class TestSumarMultiplicador {
         SumarMultiplicador sumarMultiplicador = new SumarMultiplicador();
         Multiplicador multiplicador = new Multiplicador(1);
         int incrementador = 0; // No se usa en este efecto
-        int valorEsperado = 1359;
+        int valorEsperado = 2416;
 
         // Act
         sumarMultiplicador.activar(incrementador, multiplicador, mano);

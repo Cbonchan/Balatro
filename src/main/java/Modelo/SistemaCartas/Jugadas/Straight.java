@@ -14,7 +14,7 @@ public class Straight  extends  Jugada{
 
     // Constructor
     public Straight() {
-        super("Straight", new Chip(30), new Multiplicador( 4));
+        super("escalera", new Chip(30), new Multiplicador( 4));
     }
 
     // Métodos
