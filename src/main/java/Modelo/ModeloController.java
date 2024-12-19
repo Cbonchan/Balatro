@@ -94,7 +94,6 @@ public class ModeloController implements Initializable {
 
     private Stage stage;
     private Scene scene;
-    private Parent root;
 
     Juego juegoEnCurso;
     Jugador jugador;
@@ -102,6 +101,7 @@ public class ModeloController implements Initializable {
     int puntajeASuperar ;
     ActivableEnCarta activableEnCartaSeleccionada;
     Activable activableSeleccionada;
+    MediaPlayer mediaPlayer;
 
     //POST: Pone las condiciones del juego tal y como deben estar al momento dar play
     @Override
@@ -157,8 +157,14 @@ public class ModeloController implements Initializable {
 
         // Crear el objeto Media
         Media sound = new Media(musicFile);
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.play();
+    }
+    // Método para detener la música
+    public void detenerMusica() {
+        if (mediaPlayer != null && (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING || mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED)) {
+            mediaPlayer.stop();
+        }
     }
 
     //post: actualiza los labels de la ronda
@@ -343,13 +349,16 @@ public class ModeloController implements Initializable {
 
 //post: verifica si el juego o ronda termino de una forma u otra
     private void updateGameState(){
-        if(juegoEnCurso.getNroRonda()==9){
+        if((jugador.soyMayorA(puntajeASuperar))&&(rondaDeJuego.getNro()==8)){
             mostrarVentanaEmergente("VICTORIA","Superaste las 8 rondas del juego, felicidades");
         }
-        else if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())){
+        else if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())&&(rondaDeJuego.getNro()==8)){
+            mostrarVentanaEmergente("VICTORIA","Superaste las 8 rondas del juego, felicidades");
+        }
+        else if((jugador.soyMayorA(puntajeASuperar))&&(!jugador.quedanJugadas())&&(rondaDeJuego.getNro()!=8)){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
         }
-        else if(jugador.soyMayorA(puntajeASuperar)){
+        else if(jugador.soyMayorA(puntajeASuperar)&&(juegoEnCurso.getNroRonda()!=8)){
             mostrarVentanaEmergente("GANASTE", "Cumpliste con el puntaje pedido");
         }
         else if(!jugador.quedanJugadas()){
@@ -462,6 +471,7 @@ public class ModeloController implements Initializable {
 
 //post: cambia la escena a la escena de la tienda
     public void switchToScene2() throws IOException {
+        detenerMusica();
         juegoEnCurso.avanzarRonda();
 
         Parent root = FXMLLoader.load(getClass().getResource("Balatro.view.tienda.fxml"));
