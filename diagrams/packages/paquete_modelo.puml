@@ -3,100 +3,103 @@
 package "Modelo"{
 
 package "Juego"{
-    [juego]
-    [Ronda]
-    [Tienda]
+    [+juego]
+    [+Ronda]
+    [+Tienda]
 }
 package "Usuario"{
-    [Jugador]
-    [Mano]
-    [Mazo]
-    [PilaDescarte]
+    [+Jugador]
+    [+Mano]
+    [+Mazo]
+    [+PilaDescarte]
 }
 package "SistemaPuntaje"{
-    [Chip]
-    [Multiplicador]
-    [Puntaje]
+    [+Chip]
+    [+Multiplicador]
+    [+Puntaje]
 }
 package "SistemaCartas"{
     package "Activables"{
         package "Joker"{
-            [joker]
-            [Combinacion]
-            [AlPuntaje]
-            [Descarte]
-            [PorJugada]
-            [UnoEn]
+            [+joker]
+            [+Combinacion]
+            [+AlPuntaje]
+            [+Descarte]
+            [+PorJugada]
+            [+UnoEn]
         }
         package "SistemaDeEfecto"{
-            [Efecto]
-            [EfectoEnCarta]
-            [MejorarCarta]
-            [MejorarJugada]
-            [MultiplicacionMult]
-            [SumarMultiplicador]
-            [SumarPuntaje]
+            [+Efecto]
+            [+EfectoEnCarta]
+            [+MejorarCarta]
+            [+MejorarJugada]
+            [+MultiplicacionMult]
+            [+SumarMultiplicador]
+            [+SumarPuntaje]
         }
         package "Tarot"{
-            [tarot]
-            [TarotEnCarta]
-            [MejoraCarta]
-            [MejoraJugada]
+            [+tarot]
+            [+TarotEnCarta]
+            [+MejoraCarta]
+            [+MejoraJugada]
         }
-        [Activable]
-        [ActivableEnCarta]
+        [+Activable]
+        [+ActivableEnCarta]
     }
     package "Cartas"{
         package "Figura"{
-         [figura]
-         [As]
-         [Rey]
-         [Reina]
-         [Jota]
-         [Diez]
-         [Nueve]
-         [Ocho]
-         [Siete]
-         [Seis]
-         [Cinco]
-         [Cuatro]
-         [Tres]
-         [Dos]
+         [+figura]
+         [+As]
+         [+Rey]
+         [+Reina]
+         [+Jota]
+         [+Diez]
+         [+Nueve]
+         [+Ocho]
+         [+Siete]
+         [+Seis]
+         [+Cinco]
+         [+Cuatro]
+         [+Tres]
+         [+Dos]
         }
        package "Palo"{
-         [palo]
-         [Corazon]
-         [Diamante]
-         [Pica]
-         [Trebol]
+         [+palo]
+         [+Corazon]
+         [+Diamante]
+         [+Pica]
+         [+Trebol]
        }
-       [Carta]
+       [+Carta]
     }
     package "Jugadas"{
-    [Jugada]
-    [HighCard]
-    [Pair]
-    [TwoPair]
-    [ThreeOfAKind]
-    [FourOfAKind]
-    [Flush]
-    [Straight]
-    [FullHouse]
-    [StraightFlush]
+    [+Jugada]
+    [+HighCard]
+    [+Pair]
+    [+TwoPair]
+    [+ThreeOfAKind]
+    [+FourOfAKind]
+    [+Flush]
+    [+Straight]
+    [+FullHouse]
+    [+StraightFlush]
     }
 
 }
 
 }
 
-Jugadas --> "SistemaPuntaje"
-Figura --> "SistemaPuntaje"
-Cartas --> "SistemaPuntaje"
-Tarot ---> "SistemaDeEfecto"
-"SistemaDeEfecto"->"SistemaPuntaje"
-"Joker"--->"SistemaDeEfecto"
-"Juego"-->"Usuario"
-"Juego"-->"Activables"
-
+Jugadas ..> "SistemaPuntaje": "<<import>>"
+Cartas ..> "SistemaPuntaje": "<<import>>"
+Tarot ...> "SistemaDeEfecto": "<<import>>"
+"SistemaDeEfecto".>"SistemaPuntaje": "<<import>>"
+"Joker"..>"SistemaDeEfecto": "<<import>>"
+"Juego"..>"Usuario": "<<import>>"
+[+joker]..> [+Activable]: "<<refine>>"
+[+tarot]..> [+Activable]: "<<refine>>"
+[+TarotEnCarta]..>[+ActivableEnCarta]: "<<refine>>"
+"Juego"...>"SistemaCartas": "<<access>>"
+[+Carta]..>"Palo":"<<access>>"
+[+Carta]..>"Figura":"<<access>>"
 
 @enduml
