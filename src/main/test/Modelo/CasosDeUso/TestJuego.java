@@ -156,7 +156,7 @@
          float valorMultiplicadorObtenido = carta1.getValorNumMultiplicador(); //! TESTEO POR IMPLEMENTACION
          int valorMultiplicadorEsperado = 10;
 
-         Assert.assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido);
+         Assert.assertEquals(valorMultiplicadorEsperado, valorMultiplicadorObtenido,0);
 
      }
 
