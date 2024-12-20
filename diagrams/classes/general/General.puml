@@ -89,16 +89,18 @@ abstract class Palo{
      + cartasAcumuladas(List<Carta>)): List<Carta>
  }
 
-  abstract class Jugada{
-      +Jugada(chip: Chip, multiplicador: Multiplicador)
-      {abstract} validarNombreJugada(manoAValidar: String): boolean
-      {abstract} esJugadaValida(List<Carta>): boolean
-      {abstract} cartasJugadas(List<Carta>): List<Carta>
-      -ordenarCartas(List<Carta>): List<Carta>
-      +mejorar(incrementador: int, multiplicador: Multiplicador): void
-      +obtenerMultiplicador(): int
-      + calcularPuntaje(puntajeList Puntaje): int
-  }
+ abstract class Jugada{
+     #puntaje: Puntaje
+     -nombre:String
+     +Jugada(chip: Chip, multiplicador: Multiplicador)
+     {abstract} validarNombreJugada(manoAValidar: String): boolean
+     {abstract} esJugadaValida(List<Carta>): boolean
+     {abstract} cartasJugadas(List<Carta>): List<Carta>
+     -ordenarCartas(List<Carta>): List<Carta>
+     +mejorar(incrementador: int, multiplicador: Multiplicador): void
+     +obtenerMultiplicador(): int
+     + calcularPuntaje(puntajeList Puntaje): int
+ }
 
  abstract class Joker implements Activable{
     -nombre: String
@@ -200,16 +202,15 @@ interface ActivableEnCarta{
 +activar(Carta carta, String contexto)
 }
 
-abstract class TarotEnCarta implements ActivableEnCarta{
--String nombre
--String descripcion
-+int puntos
-+Multiplicador multiplicador
-+EfectoEnCarta efecto
-
-+TarotEnCarta(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, EfectoEnCarta efecto)
-+activar(Carta carta, String contexto)
-}
+ abstract class TarotEnCarta implements ActivableEnCarta{
+ -nombre:String
+ -descripcion:String
+ +puntos:int
+ +multiplicador:Multiplicador
+ +efecto:EfectoEnCarta
+ +TartotEnCarta(nombre:String , descripcion:String, incrementador:int, multiplicador:Multiplicador, efecto:EfectoEnCarta):void
+ +{abstract}activar(carta: Carta, contexto: String): void
+ }
 
 class MejoraCarta extends TarotEnCarta{
 +MejoraCarta(String nombre, String descripcion, int puntaje, Multiplicador multiplicador, EfectoEnCarta efecto)
@@ -242,6 +243,46 @@ class Cuatro extends Figura{}
 class Tres extends Figura{}
 class Dos extends Figura{}
 
+class Puntaje {
+    - chip: Chip
+    - multiplicador: Multiplicador
+    + Puntaje(chip: Chip)
+    + Puntaje(chip: Chip, multiplicador: Multiplicador)
+    - aumentarValorChip(Chip otroChip):Chip
+    - aumentarValorMultiplicador(Multiplicador otroMultiplicador):Multiplicador
+    + cambiarPuntaje(incrementador:int, multiplicador: Multiplicador):void
+    + aumentarPuntaje(incrementador:int, multiplicador: Multiplicador):void
+    +calcularPuntaje():float
+    + sumarChipCon(otroChip:Chip):void
+    + sumarNuevosChips(otroPuntaje: Puntaje):void
+    + sumarMultiplicador(incrementoMult: Multiplicador):void
+    + multiplicarMultiplicadorPor(incremento: Multiplicador):void
+    + sumarNuevoMultiplicador(otroPuntaje: Puntaje):void
+}
+
+class Chip {
+    - valor:int
+    + Chip(valor:int)
+    + sumar(otroChip:Chip):Chip
+    + multiplicarCon(multiplicador:float):float
+}
+
+class Multiplicador {
+    - valor:float
+    + Multiplicador(valor:float)
+    + multiplicarCon(Chip chip):float
+    + sumarMultiplicador(otroMultiplicador:Multiplicador):Multiplicador
+    + multiplicarCon(otroMultiplicador:Multiplicador):Multiplicador
+}
+
+Puntaje*--Chip
+Puntaje*--Multiplicador
+Mano *-- Puntaje
+Jugada o-- Puntaje
+Carta o-- Puntaje
+Joker*--Multiplicador
+Tarot*--Multiplicador
+TarotEnCarta-->Multiplicador
 TarotEnCarta -> EfectoEnCarta
 Juego *--"8 " Ronda
 Ronda *-- Tienda

@@ -69,19 +69,6 @@ class Puntaje{
     + calcularPuntaje(): void
 }
 
-class Multiplicador{
-    - valor: int
-    + Multiplicador(valor: int)
-    + sumar(otroMultiplicador: Multiplicador): Multiplicador
-    + multiplicarCon(chip: Chip): int
-}
-
-class Chip{
-    - valor: int
-    + Chip(valor: int)
-    + sumar(otroChip: Chip): Chip
-    + multiplicarCon(multiplicador int): int
-}
 
 class Carta {
     - palo: Palo
@@ -102,6 +89,8 @@ class Carta {
 }
 
 abstract class Jugada{
+    #puntaje: Puntaje
+    -nombre:String
     +Jugada(chip: Chip, multiplicador: Multiplicador)
     {abstract} validarNombreJugada(manoAValidar: String): boolean
     {abstract} esJugadaValida(List<Carta>): boolean
@@ -167,11 +156,10 @@ Jugador -right-> "8 " Carta
 Jugador -left-> Mano
 
 Mano o-- Carta
-Mano *-up- Puntaje
 Mano o-left- Jugada
 
-Puntaje *-- Chip
-Puntaje *-- Multiplicador
+
+Mano *-up- Puntaje
 
 Jugada o-left- Puntaje
 
