@@ -7,11 +7,15 @@ Jugador -> Activable : activar
 activate Activable
 Activable --> Jugador
 deactivate Activable
+Jugador -> Activable : activar
+activate Activable
+Activable --> Jugador
+deactivate Activable
 end
 Jugador -> Mano : calcularPuntaje
 activate Mano
 alt jugada == null
-note right of Mano : Exception: noHayJugada
+note right of Mano : Excepcion, no hay jugada para procesar
 end
 Mano -> Jugada : cartasJugadas
 activate Jugada

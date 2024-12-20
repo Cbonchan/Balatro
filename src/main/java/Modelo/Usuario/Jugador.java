@@ -164,6 +164,7 @@ public class Jugador {
         this.cantidadJugadas--;
         for (Activable joker: jokers){
             joker.activar(mano, "Mano Jugada");
+            joker.activar(mano, "1 En");
         }
 
         puntos += mano.calcularPuntaje();
