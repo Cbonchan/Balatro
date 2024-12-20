@@ -36,12 +36,12 @@
      }
 
      class Combinacion implements Activable {
-         -String nombre
-         -String descripcion
+         -nombre:String
+         -descripcion:String
          -ArrayList<Joker> subcomodines
 
-         +Combinacion(String nombre, String descripcion, ArrayList<Activable> subcomodines)
-         +void activar(Mano mano, String contexto)
+         +Combinacion(nombre:String, descripcion:String, ArrayList<Activable> subcomodines)
+         +void activar(Mano mano, String contexto):void
 
      }
 Joker->Efecto
