@@ -2,8 +2,8 @@
 participant Actor
 Actor -> Mano : calcularPuntaje
 activate Mano
-alt jugada == null
-note right of Mano : Empty
+alt jugada == Excepcion, no hay jugada valida
+note right of Mano : Si no hay jugada el calculo no se realiza
 end
 Mano -> Jugada : cartasJugadas
 activate Jugada
