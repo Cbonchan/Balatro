@@ -108,8 +108,33 @@ abstract class Palo{
     -incrementador: int
     -multiplicador: Multiplicador
     +Joker(nombre: String, descripcion: String, activacion: String, incrementador: int, multiplicador: Multiplicador,efecto: Efecto)
-    {abstract}activar(mano: Mano, contexto: String): void
+    +{abstract}activar(mano: Mano, contexto: String): void
  }
+ class AlPuntaje extends Joker{
+         +AlPuntaje(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion, Efecto efecto)
+      }
+
+      class Descarte extends Joker {
+          +Descarte(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+      }
+
+      class unoEn extends Joker{
+         +UnoEn(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+      }
+
+      class PorJugada extends Joker{
+         +PorJugada(String nombre, String descripcion, int puntos, Multiplicador multiplicador, String jugada, Efecto efecto)
+      }
+
+      class Combinacion implements Activable {
+          -String nombre
+          -String descripcion
+          -ArrayList<Joker> subcomodines
+
+          +Combinacion(String nombre, String descripcion, ArrayList<Activable> subcomodines)
+          +void activar(Mano mano, String contexto)
+
+      }
 
  abstract class Tarot implements Activable{
     -nombre: String
@@ -118,11 +143,11 @@ abstract class Palo{
     -multiplicador: Multiplicador
     -efecto: Efecto
     +Tarot(nombre: String, descripcion: String, incrementador: int, multiplicador: Multiplicador, efecto: Efecto)
-    {abstract}activar(mano: Mano, contexto: String): void
+    +{abstract}activar(mano: Mano, contexto: String): void
  }
 
  interface Activable{
-    {abstract}activar(mano: Mano, contexto: String): void
+    +{abstract}activar(mano: Mano, contexto: String): void
  }
 
 abstract class Efecto{
@@ -171,13 +196,59 @@ class Tienda{
     +Tienda(List<Activable> activables, carta: Carta)
     +venderCarta():void
 }
+interface ActivableEnCarta{
++activar(Carta carta, String contexto)
+}
 
+abstract class TarotEnCarta implements ActivableEnCarta{
+-String nombre
+-String descripcion
++int puntos
++Multiplicador multiplicador
++EfectoEnCarta efecto
+
++TarotEnCarta(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, EfectoEnCarta efecto)
++activar(Carta carta, String contexto)
+}
+
+class MejoraCarta extends TarotEnCarta{
++MejoraCarta(String nombre, String descripcion, int puntaje, Multiplicador multiplicador, EfectoEnCarta efecto)
++activar(Carta carta, String contexto)
+}
+
+interface EfectoEnCarta{
++activar(int incrementador, Multiplicador multiplicador, Carta carta)
+}
+
+class MejorarCarta implements EfectoEnCarta{
+activar(int incrementador, Multiplicador multiplicador, Carta carta)
+}
+
+class Corazon extends Palo{}
+class Diamante extends Palo{}
+class Trebol extends Palo{}
+class Pica extends Palo{}
+class As extends Figura{}
+class Rey extends Figura{}
+class Reina extends Figura{}
+class Jota extends Figura{}
+class Diez extends Figura{}
+class Nueve extends Figura{}
+class Ocho extends Figura{}
+class Siete extends Figura{}
+class Seis extends Figura{}
+class Cinco extends Figura{}
+class Cuatro extends Figura{}
+class Tres extends Figura{}
+class Dos extends Figura{}
+
+TarotEnCarta -> EfectoEnCarta
 Juego *--"8 " Ronda
 Ronda *-- Tienda
 PilaDescarte --* Jugador
 Jugador *-- Mano
 Mano -->"0..5   " Carta
-Mano *-.-"10 " Jugada
+Mano o--"10" Jugada
 Jugador --->"0..8  " Carta
 PilaDescarte ..> Mano
 Mazo <.. PilaDescarte
@@ -190,7 +261,8 @@ Jugador -->"0..5" Joker
 Jugador -->"0..2 " Tarot
 Efecto <|. Tarot
 Efecto <|. Joker
-Tienda--> Activable
+Tienda-->"3" Activable
+Tienda--> ActivableEnCarta
 Carta <- Tienda
 Juego --> Jugador
 PilaDescarte -->"0..* " Carta

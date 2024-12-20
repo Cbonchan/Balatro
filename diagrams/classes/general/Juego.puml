@@ -1,0 +1,60 @@
+@startuml
+
+class Juego{
+    -jugador: Jugador
+    -nroRonda: int
+    -rondas: List<Ronda>
+    -rondaActual: Ronda
+    +Juego()
+    +avanzarRonda():void
+}
+class Jugador {
+     - puntos: int
+     - cantidadDescartes: int
+     - cantidadJugadas: int
+     - mano: Mano
+     - mazo: Mazo
+     - cartasDescartadas: PilaDescarte
+     - List<Carta> cartas
+     - List<Activable> jokers
+     - List<Activable> tarots
+     - List<ActivableEnCarta> tarotsParaCarta
+     + Jugador(mano: Mano)
+     + seleccionarCarta(cartas: Poker): void
+     + cancelarEleccion():void
+     + descartarMano():void
+     + jugarMano(): void
+     + agregarCartas(List<Carta>): int
+     + agregarCartasFaltantes(): void
+     + agregarJoker(joker:Activable):void
+     + eliminarJoker(joker:Activable):void
+     + agregarTarot(tarot:Activable):void
+     + eliminarTarot(tarot:Activable):void
+     + agregarTarotParaCarta(tarot:ActivableEnCarta):void
+     + eliminarTarotParaCarta(tarot:ActivableEnCarta):void
+     + soyMayorA(puntosASuperar:int):void
+     + quedanDescartes():boolean
+     + quedanJugadas():boolean
+     + actualizarCantidadDeManosYDescartes(manos:int, descartes:int):void
+     + reiniciarPuntos():void
+ }
+ class Ronda{
+     -numero: int
+     -manos: int
+     -descartes: int
+     -puntajeASuperar: int
+     -tienda: Tienda
+     +Ronda(numero: int, manos: int, descartes: int, puntajeASuperar: int, tienda: Tienda)
+     +comenzar(jugador: Jugador): void
+ }
+ class Tienda{
+     -List<Activable> activables
+     -carta: Carta
+     +Tienda(List<Activable> activables, carta: Carta)
+     +venderCarta():void
+ }
+Juego *--"8 " Ronda
+Juego --> Jugador
+Ronda *-- Tienda
+
+@enduml

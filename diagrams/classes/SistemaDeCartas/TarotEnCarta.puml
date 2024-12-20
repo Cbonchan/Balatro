@@ -2,31 +2,30 @@
 'https://plantuml.com/class-diagram
 
 interface ActivableEnCarta{
-+activar(Carta carta, String contexto)
++activar(carta:Carta, contexto:String):void
 }
 
-abstract class TarotEnCarta implements ActivableEnCarta{
--String nombre
--String descripcion
-+int puntos
-+Multiplicador multiplicador
-+EfectoEnCarta efecto
-
-+TartotEnCarta(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, EfectoEnCarta efecto)
-+activar(Carta carta, String contexto)
-}
+ abstract class TarotEnCarta implements ActivableEnCarta{
+ -nombre:String
+ -descripcion:String
+ +puntos:int
+ +multiplicador:Multiplicador
+ +efecto:EfectoEnCarta
+ +TartotEnCarta(nombre:String , descripcion:String, incrementador:int, multiplicador:Multiplicador, efecto:EfectoEnCarta):void
+ +{abstract}activar(carta: Carta, contexto: String): void
+ }
 
 class MejoraCarta extends TarotEnCarta{
-+MejoraCarta(String nombre, String descripcion, int puntaje, Multiplicador multiplicador, EfectoEnCarta efecto)
-+activar(Carta carta, String contexto)
++MejoraCarta(nombre:String, descripcion:String, puntaje:int, multiplicador:Multiplicador, efecto:EfectoEnCarta):void
++activar(Carta carta, String contexto):void
 }
 
 interface EfectoEnCarta{
-+activar(int incrementador, Multiplicador multiplicador, Carta carta)
++activar(incrementador:int, multiplicador:Multiplicador ,carta:Carta):void
 }
 
 class MejorarCarta implements EfectoEnCarta{
-activar(int incrementador, Multiplicador multiplicador, Carta carta)
++activar(incrementador:int, multiplicador: Multiplicador, carta: Carta):void
 }
 
 TarotEnCarta -> EfectoEnCarta
