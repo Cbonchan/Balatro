@@ -36,8 +36,6 @@ public class Juego {
         }
         return instancia; // Devuelve la instancia existente
     }
-//!mucho de esto se hace de forma nativa en FX, aca tenemos que inicializar los componentes
-    //y facilitar funciones para avanzar, no nos encargamos del loop porque para eso es el controlador
 
 //post: cambia la ronda del juego, de esta forma es mas facil actualizar los datos ya sea desde el FX o desde aca
     public void avanzarRonda() {
