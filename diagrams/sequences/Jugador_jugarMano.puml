@@ -1,0 +1,112 @@
+@startuml
+participant Actor
+Actor -> Jugador : jugarMano
+activate Jugador
+loop jokers
+Jugador -> Activable : activar
+activate Activable
+Activable --> Jugador
+deactivate Activable
+Jugador -> Activable : activar
+activate Activable
+Activable --> Jugador
+deactivate Activable
+end
+Jugador -> Mano : calcularPuntaje
+activate Mano
+alt jugada == null
+note right of Mano : Excepcion, no hay jugada para procesar
+end
+Mano -> Jugada : cartasJugadas
+activate Jugada
+Jugada --> Mano
+deactivate Jugada
+loop cartasUtilizadas
+Mano -> Carta : sumarPuntajeCon
+activate Carta
+Carta -> Puntaje : sumarNuevosChips
+activate Puntaje
+Puntaje -> Puntaje : aumentarValorChip
+activate Puntaje
+Puntaje --> Puntaje
+deactivate Puntaje
+Puntaje --> Carta
+deactivate Puntaje
+Carta -> Puntaje : sumarNuevoMultiplicador
+activate Puntaje
+Puntaje -> Puntaje : aumentarValorMultiplicador
+activate Puntaje
+Puntaje --> Puntaje
+deactivate Puntaje
+Puntaje --> Carta
+deactivate Puntaje
+Carta --> Mano
+deactivate Carta
+end
+Mano -> Jugada : calcularPuntaje
+activate Jugada
+Jugada -> Puntaje : sumarNuevosChips
+activate Puntaje
+Puntaje -> Puntaje : aumentarValorChip
+activate Puntaje
+Puntaje --> Puntaje
+deactivate Puntaje
+Puntaje --> Jugada
+deactivate Puntaje
+Jugada -> Puntaje : sumarNuevoMultiplicador
+activate Puntaje
+Puntaje -> Puntaje : aumentarValorMultiplicador
+activate Puntaje
+Puntaje --> Puntaje
+deactivate Puntaje
+Puntaje --> Jugada
+deactivate Puntaje
+Jugada -> Puntaje : calcularPuntaje
+activate Puntaje
+Puntaje -> Multiplicador : multiplicarCon
+activate Multiplicador
+Multiplicador --> Puntaje
+deactivate Multiplicador
+Puntaje --> Jugada
+deactivate Puntaje
+Jugada --> Mano
+deactivate Jugada
+Mano --> Jugador
+deactivate Mano
+Jugador -> PilaDescarte : descartarMano
+activate PilaDescarte
+PilaDescarte -> Mano : cartasAcumuladas
+activate Mano
+Mano --> PilaDescarte
+deactivate Mano
+PilaDescarte -> Mano : vaciarMano
+activate Mano
+Mano --> PilaDescarte
+deactivate Mano
+PilaDescarte --> Jugador
+deactivate PilaDescarte
+Jugador -> Mano : reiniciarPuntaje
+activate Mano
+create Chip
+Mano -> Chip : new
+activate Chip
+Chip --> Mano
+deactivate Chip
+create Puntaje
+Mano -> Puntaje : new
+activate Puntaje
+create Multiplicador
+Puntaje -> Multiplicador : new
+activate Multiplicador
+Multiplicador --> Puntaje
+deactivate Multiplicador
+Puntaje -> Puntaje : new
+activate Puntaje
+Puntaje --> Puntaje
+deactivate Puntaje
+Puntaje --> Mano
+deactivate Puntaje
+Mano --> Jugador
+deactivate Mano
+return
+@enduml

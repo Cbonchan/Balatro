@@ -1,0 +1,55 @@
+@startuml
+class Carta {
+     - palo: Palo
+     - figuta: Figura
+     - nombre: String
+     - puntaje: Puntaje
+     - miAnteriorCartaEs(figuraActual: Figura): boolean
+     - esMismaFiguraQue(figuraActual: Figura): boolean
+     - miPaloEs(paloActual: Palo): boolean
+     + Carta(palo: Palo, figura: Figura)
+     + obtenerOrden(): int
+     + laCartaSiguienteEs(siguienteCartaList: Poker): boolean
+     + laCartaSiguienteMismoPalo(siguienteCartaList: Poker): boolean
+     + tieneMismaFiguraQue(siguienteCartaList: Poker): boolean
+     + esFiguraIgualA(figura: Figura): boolean
+     + sumarPuntajeCon(otroPuntaje: Puntaje): void
+     + getImage():Image
+ }
+
+abstract class Figura{
+    - nombre: String
+    +Figura (nombre: String)
+    + {abstract} orden(): int
+    + {abstract} asignarPuntaje(): Puntaje
+    + {abstract} esIgualA(): Boolean
+    + {abstract} miSiguienteFiguraEs(figura: Figura): Boolean
+}
+class As extends Figura{}
+class Rey extends Figura{}
+class Reina extends Figura{}
+class Jota extends Figura{}
+class Diez extends Figura{}
+class Nueve extends Figura{}
+class Ocho extends Figura{}
+class Siete extends Figura{}
+class Seis extends Figura{}
+class Cinco extends Figura{}
+class Cuatro extends Figura{}
+class Tres extends Figura{}
+class Dos extends Figura{}
+
+abstract class Palo{
+    - nombre: String
+    +Palo (nombre: String)
+    + {abstract} somosMismoPalo(palo: Palo): boolean
+}
+class Corazon extends Palo{}
+class Diamante extends Palo{}
+class Trebol extends Palo{}
+class Pica extends Palo{}
+
+Carta --> Palo
+Carta --> Figura
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+participant Actor
+Actor -> Jugador : seleccionarCarta
+activate Jugador
+Jugador -> Mano : agregarCarta
+activate Mano
+alt cartas.size() < 5
+else 
+note right of Mano : No califica para jugadas de 5 cartas
+end
+Mano -> Mano : determinarJugada
+activate Mano
+loop jugadasPosibles
+Mano -> Jugada : esJugadaValida
+activate Jugada
+Jugada --> Mano
+deactivate Jugada
+alt jugada.esJugadaValida(cartas)
+note right of Mano : Encuentra una jugada que coincide con la mano
+end
+end
+Mano --> Mano
+deactivate Mano
+Mano --> Jugador
+deactivate Mano
+return
+@enduml

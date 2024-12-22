@@ -1,0 +1,39 @@
+@startuml
+class Puntaje {
+    - chip: Chip
+    - multiplicador: Multiplicador
+    + Puntaje(chip: Chip)
+    + Puntaje(chip: Chip, multiplicador: Multiplicador)
+    - aumentarValorChip(Chip otroChip):Chip
+    - aumentarValorMultiplicador(Multiplicador otroMultiplicador):Multiplicador
+    + cambiarPuntaje(incrementador:int, multiplicador: Multiplicador):void
+    + aumentarPuntaje(incrementador:int, multiplicador: Multiplicador):void
+    +calcularPuntaje():float
+    + sumarChipCon(otroChip:Chip):void
+    + sumarNuevosChips(otroPuntaje: Puntaje):void
+    + sumarMultiplicador(incrementoMult: Multiplicador):void
+    + multiplicarMultiplicadorPor(incremento: Multiplicador):void
+    + sumarNuevoMultiplicador(otroPuntaje: Puntaje):void
+}
+
+class Chip {
+
+    - valor:int
+    + Chip(valor:int)
+    + sumar(otroChip:Chip):Chip
+    + multiplicarCon(multiplicador:float):float
+}
+
+class Multiplicador {
+
+    - valor:float
+    + Multiplicador(valor:float)
+    + multiplicarCon(Chip chip):float
+    + sumarMultiplicador(otroMultiplicador:Multiplicador):Multiplicador
+    + multiplicarCon(otroMultiplicador:Multiplicador):Multiplicador
+
+}
+
+Puntaje*--Chip
+Puntaje*--Multiplicador
+@enduml

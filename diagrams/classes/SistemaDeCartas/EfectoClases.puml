@@ -1,0 +1,38 @@
+@startuml
+
+package Modelo.SistemaCartas.Activables.SistemaDeEfecto {
+     interface Efecto{
+         +void activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+
+     class AumentarChips implements Efecto{
+        +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class CambiarChips implements Efecto{
+             +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class CambiarMult implements Efecto{
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class MejorarJugada implements Efecto{
+            -String jugada
+            +MejorarJugada(String jugada)
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+     class MultiplicacionMult implements Efecto{
+            +activar(int puntos, Multiplicador multiplicador, Mano mano)
+         }
+
+     class SumarMultiplicador implements Efecto{
+                 +activar(int puntos, Multiplicador multiplicador, Mano mano)
+     }
+
+
+}
+
+@enduml

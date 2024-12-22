@@ -7,9 +7,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 ## Grupo {09}
 
 * **Basterra Sebastián Nahuel - 110428** - [Cbonchan](https://github.com/Cbonchan)
-* **Integrante 2** - [integrante3](https://github.com/integrante2)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Camilo Ignacio Campos Durán - 109368** - [CCamposD](https://github.com/CCamposD)
+* **Andy Bruno Ames Berrospi - 105366** - [AndyAmes](https://github.com/AndyAmes)
+* **Franco Gabriel Boggia - 109175** - [Gabynose](https://github.com/Gabynose)
+* **Martin Facundo Limardo - 110780** - [Lemonchelo](https://github.com/Lemonchelo)
 
 Corrector: **{Corrector}**
 

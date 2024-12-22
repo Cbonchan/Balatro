@@ -1,0 +1,114 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Jugador {
+     - puntos: int
+     - cantidadDescartes: int
+     - cantidadJugadas: int
+     - mano: Mano
+     - mazo: Mazo
+     - cartasDescartadas: PilaDescarte
+     - List<Carta> cartas
+     - List<Activable> jokers
+     - List<Activable> tarots
+     - List<ActivableEnCarta> tarotsParaCarta
+     + Jugador(mano: Mano)
+     + seleccionarCarta(cartas: Poker): void
+     + cancelarEleccion():void
+     + descartarMano():void
+     + jugarMano(): void
+     + agregarCartas(List<Carta>): int
+     + agregarCartasFaltantes(): void
+     + agregarJoker(joker:Activable):void
+     + eliminarJoker(joker:Activable):void
+     + agregarTarot(tarot:Activable):void
+     + eliminarTarot(tarot:Activable):void
+     + agregarTarotParaCarta(tarot:ActivableEnCarta):void
+     + eliminarTarotParaCarta(tarot:ActivableEnCarta):void
+     + soyMayorA(puntosASuperar:int):void
+     + quedanDescartes():boolean
+     + quedanJugadas():boolean
+     + actualizarCantidadDeManosYDescartes(manos:int, descartes:int):void
+     + reiniciarPuntos():void
+ }
+class PilaDescarte {
+    - manosDescartadas: List<Carta>
+    - cantidadManosDescartadas: int
+    + PilaDescarte()
+    + descartarMano(mano: Mano): void
+    + reinsertarEnMazo(Mazo: mazo): void
+ }
+class Mazo{
+    -List<Carta> mazoDeCartas
+    +Mazo()
+    +getCartasDisponibles(): int
+    +cartaAleatoria(): Carta
+    +repartirCartas(jugador: Jugador): void
+    +reinsertarCartas(List<Carta>): void
+}
+class Mano {
+     - jugada: Jugada
+     - ArrayList<Carta> cartas
+     - ArrayList<Jugada> jugadasPosibles
+     - puntajeTotal:Puntaje
+     - determinarJugada(List<Carta>): Jugada
+     + Mano()
+     + reiniciarPuntaje():void
+     + obtenerChips(): int
+     + aumentarChips(incremento: Chip): void
+     + cambiarChipPor(nuevoValor: int): void
+     + agregarCarta(cartaCarta: Carta): void
+     + sumarMultiplicador(Multiplicador incremento): void
+     + multiplicarMultiplicador(multiplicador: Multiplicador): void
+     + mejorarJugada(incrementador: int, multiplicador: Multiplicador, jugadaElegida String): void
+     + validarNombreMano(manoAValidar: String): boolean
+     + aumentarPuntos(puntos: int): void
+     + vaciarMano(): void
+     + calcularPuntaje(): int
+     + cartasAcumuladas(List<Carta>)): List<Carta>
+ }
+ class Carta {
+      - palo: Palo
+      - figuta: Figura
+      - nombre: String
+      - puntaje: Puntaje
+      - miAnteriorCartaEs(figuraActual: Figura): boolean
+      - esMismaFiguraQue(figuraActual: Figura): boolean
+      - miPaloEs(paloActual: Palo): boolean
+      + Carta(palo: Palo, figura: Figura)
+      + obtenerOrden(): int
+      + laCartaSiguienteEs(siguienteCartaList: Poker): boolean
+      + laCartaSiguienteMismoPalo(siguienteCartaList: Poker): boolean
+      + tieneMismaFiguraQue(siguienteCartaList: Poker): boolean
+      + esFiguraIgualA(figura: Figura): boolean
+      + sumarPuntajeCon(otroPuntaje: Puntaje): void
+      + getImage():Image
+  }
+   abstract class Joker {
+      -nombre: String
+      -descripcion: String
+      -activacion: String
+      -efecto: Efecto
+      -incrementador: int
+      -multiplicador: Multiplicador
+      +Joker(nombre: String, descripcion: String, activacion: String, incrementador: int, multiplicador: Multiplicador,efecto: Efecto)
+      {abstract}activar(mano: Mano, contexto: String): void
+   }
+
+   abstract class Tarot {
+      -nombre: String
+      -descripcion: String
+      -incrementador: int
+      -multiplicador: Multiplicador
+      -efecto: Efecto
+      +Tarot(nombre: String, descripcion: String, incrementador: int, multiplicador: Multiplicador, efecto: Efecto)
+      {abstract}activar(mano: Mano, contexto: String): void
+   }
+
+   Jugador -->"0..5" Joker
+   Jugador -->"0..2 " Tarot
+   Jugador *-- Mano
+   Jugador --->"0..8  " Carta
+   PilaDescarte --* Jugador
+   Mazo --* Jugador
+@enduml

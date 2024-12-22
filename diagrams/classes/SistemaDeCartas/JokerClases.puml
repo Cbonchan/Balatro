@@ -1,0 +1,54 @@
+@@startuml
+ package Modelo.SistemaCartas.Activables.Joker {
+
+     interface Activable {
+         +void activar(Mano mano, String contexto)
+     }
+
+     abstract class Joker implements Activable {
+         -nombre:String
+         -descripcion:String
+         -activacion:String
+         -efecto:Efecto
+         -incrementador:int
+         -multiplicador:Multiplicador
+         +Joker(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
+         String activacion, Efecto efecto)
+         +Joker(String nombre, String descripcion, int puntaje, Multiplicador multiplicacion,
+                  String activacion)
+         +{abstract}activar(Mano mano, String contexto):void
+     }
+
+     class AlPuntaje extends Joker{
+        +AlPuntaje(String nombre, String descripcion, int incrementador, Multiplicador multiplicador, String activacion, Efecto efecto)
+     }
+
+     class Descarte extends Joker {
+         +Descarte(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+     }
+
+     class unoEn extends Joker{
+        +UnoEn(String nombre, String descripcion, int puntos, Multiplicador multiplicador, Efecto efecto)
+     }
+
+     class PorJugada extends Joker{
+        +PorJugada(String nombre, String descripcion, int puntos, Multiplicador multiplicador, String jugada, Efecto efecto)
+     }
+
+     class Combinacion implements Activable {
+         -nombre:String
+         -descripcion:String
+         -ArrayList<Joker> subcomodines
+
+         +Combinacion(nombre:String, descripcion:String, ArrayList<Activable> subcomodines)
+         +void activar(Mano mano, String contexto):void
+
+     }
+Joker->Efecto
+
+ }
+
+
+
+
+ @enduml

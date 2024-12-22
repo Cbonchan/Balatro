@@ -1,0 +1,49 @@
+@startuml
+
+class Tienda{
+    -ArrayList<Activable> jokers;
+    -ArrayList<Activable> tarot;
+    -ArrayList<ActivableEnCarta> tarotsEnCarta;
+    -carta: Carta
+    +Tienda(List<Activable> activables, carta: Carta)
+    +venderCarta():void
+}
+interface Activable{
+    +{abstract}activar(mano: Mano, contexto: String): void
+ }
+interface ActivableEnCarta{
+     +{abstract}activar(carta: Carta, contexto: String): void
+ }
+ abstract class Joker implements Activable{
+    -nombre: String
+    -descripcion: String
+    -activacion: String
+    -efecto: Efecto
+    -incrementador: int
+    -multiplicador: Multiplicador
+    +Joker(nombre: String, descripcion: String, activacion: String, incrementador: int, multiplicador: Multiplicador,efecto: Efecto)
+    +{abstract}activar(mano: Mano, contexto: String): void
+ }
+
+ abstract class Tarot implements Activable{
+    -nombre: String
+    -descripcion: String
+    -incrementador: int
+    -multiplicador: Multiplicador
+    -efecto: Efecto
+    +Tarot(nombre: String, descripcion: String, incrementador: int, multiplicador: Multiplicador, efecto: Efecto)
+    +{abstract}activar(mano: Mano, contexto: String): void
+ }
+
+ abstract class TarotEnCarta implements ActivableEnCarta{
+ -nombre:String
+ -descripcion:String
+ +puntos:int
+ +multiplicador:Multiplicador
+ +efecto:EfectoEnCarta
+ +TartotEnCarta(nombre:String , descripcion:String , incrementador:int , multiplicador:Multiplicador , efecto:EfectoEnCarta )
+ +{abstract}activar(carta: Carta, contexto: String): void
+ }
+Tienda-->"3" Activable
+Tienda--> ActivableEnCarta
+@enduml

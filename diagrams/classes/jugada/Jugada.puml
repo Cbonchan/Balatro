@@ -1,0 +1,175 @@
+@startuml diagramaClases
+
+class Jugador {
+    - puntos: int
+    - cantidadDescartes: int
+    - cantidadJugadas: int
+    - mano: Mano
+    - mazo: Mazo
+    - cartasDescartadas: PilaDescarte
+    - List<Carta> cartas
+    - List<Activable> jokers
+    - List<Activable> tarots
+    - List<ActivableEnCarta> tarotsParaCarta
+    + Jugador(mano: Mano)
+    + seleccionarCarta(cartas: Poker): void
+    + cancelarEleccion():void
+    + descartarMano():void
+    + jugarMano(): void
+    + agregarCartas(List<Carta>): int
+    + agregarCartasFaltantes(): void
+    + agregarJoker(joker:Activable):void
+    + eliminarJoker(joker:Activable):void
+    + agregarTarot(tarot:Activable):void
+    + eliminarTarot(tarot:Activable):void
+    + agregarTarotParaCarta(tarot:ActivableEnCarta):void
+    + eliminarTarotParaCarta(tarot:ActivableEnCarta):void
+    + soyMayorA(puntosASuperar:int):void
+    + quedanDescartes():boolean
+    + quedanJugadas():boolean
+    + actualizarCantidadDeManosYDescartes(manos:int, descartes:int):void
+    + reiniciarPuntos():void
+}
+
+class Mano {
+    - jugada: Jugada
+          - ArrayList<Carta> cartas
+          - ArrayList<Jugada> jugadasPosibles
+          - puntajeTotal:Puntaje
+          - determinarJugada(List<Carta>): Jugada
+          + Mano()
+          + reiniciarPuntaje():void
+          + obtenerChips(): int
+          + aumentarChips(incremento: Chip): void
+          + cambiarChipPor(nuevoValor: int): void
+          + agregarCarta(cartaCarta: Carta): void
+          + sumarMultiplicador(Multiplicador incremento): void
+          + multiplicarMultiplicador(multiplicador: Multiplicador): void
+          + mejorarJugada(incrementador: int, multiplicador: Multiplicador, jugadaElegida String): void
+          + validarNombreMano(manoAValidar: String): boolean
+          + aumentarPuntos(puntos: int): void
+          + vaciarMano(): void
+          + calcularPuntaje(): int
+          + cartasAcumuladas(List<Carta>)): List<Carta>
+}
+
+class Puntaje{
+    - chip:Chip
+    - multiplicador: Multiplicador
+    + Puntaje(chip: Chip, multiplicador: Multiplicador)
+    + Puntaje(chip: Chip)
+    + aumentarValorChip(otroChip: Chip): Chip
+    + aumentarValorMultiplicador(otroMultiplicador: Multiplicador): Multiplicador
+    + aumentarPuntaje(incrementador: int, multiplicador: Multiplicador):void
+    + sumarChipsCon(otroChip: Chip):void
+    + sumarNuevosChips(otroPuntaje: Puntaje): void
+    + sumarMultiplicador(incrementoMult: Multiplicador):void
+    + sumarNuevoMultiplicador(otroPuntaje: Puntaje): void
+    + multiplicarMultiplicadorPor(incremento Multiplicador): void
+    + calcularPuntaje(): void
+}
+
+
+class Carta {
+    - palo: Palo
+    - figuta: Figura
+    - nombre: String
+    - puntaje: Puntaje
+    - miAnteriorCartaEs(figuraActual: Figura): boolean
+    - esMismaFiguraQue(figuraActual: Figura): boolean
+    - miPaloEs(paloActual: Palo): boolean
+    + Carta(palo: Palo, figura: Figura)
+    + obtenerOrden(): int
+    + laCartaSiguienteEs(siguienteCartaList: Poker): boolean
+    + laCartaSiguienteMismoPalo(siguienteCartaList: Poker): boolean
+    + tieneMismaFiguraQue(siguienteCartaList: Poker): boolean
+    + esFiguraIgualA(figura: Figura): boolean
+    + sumarPuntajeCon(otroPuntaje: Puntaje): void
+    + getImage():Image
+}
+
+abstract class Jugada{
+    #puntaje: Puntaje
+    -nombre:String
+    +Jugada(chip: Chip, multiplicador: Multiplicador)
+    {abstract} validarNombreJugada(manoAValidar: String): boolean
+    {abstract} esJugadaValida(List<Carta>): boolean
+    {abstract} cartasJugadas(List<Carta>): List<Carta>
+    -ordenarCartas(List<Carta>): List<Carta>
+    +mejorar(incrementador: int, multiplicador: Multiplicador): void
+    +obtenerMultiplicador(): int
+    + calcularPuntaje(puntajeList Puntaje): int
+}
+
+class RoyalFlush extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class StraightFlush extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class FourOfAKind extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class FullHouse extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class Flush extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class Straight extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class ThreeOfAKind extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class TwoPair extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class Pair extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+class HighCard extends Jugada{
+    + esJugadaValida(List< Poker>): boolean
+    + cartasJugadas(List<Poker>): List<Carta>
+}
+
+
+Jugador -right-> "8 " Carta
+Jugador -left-> Mano
+
+Mano o-- Carta
+Mano o-left- Jugada
+
+
+Mano *-up- Puntaje
+
+Jugada o-left- Puntaje
+
+Carta o-- Puntaje
+
+FourOfAKind --right> TwoPair
+FullHouse -left-> Pair
+FullHouse -right-> ThreeOfAKind
+RoyalFlush -right-> Flush
+StraightFlush -right-> Straight
+StraightFlush -left-> Flush
+TwoPair -left-> Pair
+@enduml
